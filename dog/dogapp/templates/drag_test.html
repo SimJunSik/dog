@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+	<title></title>
+	<style type="text/css">
+		#container1{
+		   border:1px solid #666666;
+		   margin:10px;
+		   width:1500px;
+		   height:100px;    
+		}
+
+		#container2{
+		   border:1px solid #cccccc;
+		   margin:10px;
+		   width:1500px;
+		   height:500px;   
+		}
+
+		#block1{
+		    background-color:#cccccc;
+		    width: 100px;
+		    height:50px;
+		    position:absolute;        
+		}
+
+
+		#block2{
+		    background-color:#999999;
+		    width: 10px;
+		    height:500px;  
+		    position:absolute;
+		    z-index: 3;
+		    overflow: hidden;
+		    /*
+		    background-image: url(../../static/img/bg2.jpg);
+		    background-repeat:no-repeat;
+		    background-size: cover;
+		    */
+		}
+
+		#block2_content{
+			position: absolute;
+			width: 1500px;
+			height: 500px;
+			z-index: 3;
+		}
+
+		#block3{
+		    background-color:yellow;
+		    width: 1500px;
+		    height:500px;  
+		    position:absolute;
+		    z-index: 2;
+		    /*
+		    background-image: url(../../static/img/bg4.jpg);
+		    background-repeat:no-repeat;
+		    background-size: cover;
+		    */
+		}
+
+		#overlay_block{
+			position: absolute;
+			background-color: black;
+			opacity: 0.6;
+			width: 100px;
+			height: 500px;
+			z-index: 3;
+		}
+
+		#button{
+			position: absolute;
+			right: 0;
+			top: 45%;
+			z-index: 10;
+			-webkit-transform: translate(50%, 0%);
+	        -ms-transform: translate(50%, 0%);
+	        -moz-transform: translate(50%, 0%);
+	        -o-transform: translate(50%, 0%);
+	        transform: translate(50%, 0%);
+		}
+		.right_line{
+			position: absolute;
+			right: 0;
+			width: 8px;
+			height: 100%;
+			background-color: white;
+			z-index : 3;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="container1">
+	    <div id="block1">
+	    </div>
+	</div>
+
+	<div id="container2">
+	    <div id="block2">
+	    	<div id="block2_content">
+	    		<img src="../../static/img/angel_after.jpg" style="width: 100%; height: 500px;">
+	    	</div>
+	    	<!--
+	    	<div id="button">
+	    		<img src="../../static/img/arrow_img.png" style="width: 50px; height: 50px; z-index: 10;">
+	    	</div>
+	    	-->
+	    	<div class="right_line">
+
+	    	</div>
+	    </div>
+	    <div id="block3">
+	    	<img src="../../static/img/angel_before.jpg" style="width: 100%; height: 500px;">
+	    </div>
+	    <!--
+	    <div id="overlay_block">
+
+	    </div>
+	-->
+	</div>
+
+
+	<script type="text/javascript">
+		$(window).load(function(){
+    		$('#block1').draggable({
+			    drag: function() {
+			        $('#block2').css('width',$(this).position().left); 
+			    },
+			    axis: 'x',
+			    containment: '#container1',
+			    stop: function(){
+			        $('#block2').css('width',$(this).position().left);  
+			    }    
+			});
+		});
+	</script>
+</body>
+</html>

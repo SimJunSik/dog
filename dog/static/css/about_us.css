@@ -1,0 +1,246 @@
+
+
+		/*  폰트 import  */
+		@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+		@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+		/*  상단 고정 메뉴바 css  */
+		.top{
+			width: 100%;
+			position: fixed;     /*  화면상 위치 고정  */
+			z-index: 3;          /*  z값 결정  */
+			top : 0;
+		}
+		.top_logo{
+			margin-top: 10px;
+			margin-left: 30px;
+			float: left;
+		}
+		.top_nav{
+			float: right;		 
+			margin-top: 1%;		 /*  top 여백 설정  */
+		}
+		.menu{
+			margin-left: 20px;
+			margin-right: 20px;
+			color: #EDA900;
+		}
+		.top_logo_img{
+			width: 100px;
+			height: 50px;
+			margin: 0;
+		}
+		.menu_slash{
+			color: #BDBDBD;
+			font-size: 18px;
+		}
+		.top_logo_txt{
+			font-size: 40px;
+			font-family: 'Clicker Script', cursive;
+			color: #EDA900;
+		}
+		/*  end   */
+
+
+		/*  Top으로 스크롤링 css  */
+		.go_top {
+			position:fixed; 
+			bottom:20px; 
+			right:10px; 
+			width:40px;
+			height:40px;
+			text-align:center;
+			border-radius:40px;
+			background-color:rgba(102,102,102,.7)
+		}
+
+		.go_top span {
+			display:block;
+			padding-top:12px;
+			font-size:11px;
+			color:#fff;
+		}
+
+
+
+		/*  mid css  */
+		.mid{
+			margin: 0;
+		}
+		.mid_img{
+			position: fixed;
+	        width: 100%;
+	        height: 100%;
+	       	top : 0;
+	       	z-index: -2;
+		}
+		.mid_txt{
+			z-index: -1;
+			position: fixed;
+			top : 15%;
+			left: 50%;
+
+			-webkit-transform: translate(-50%, 0%);
+			-ms-transform: translate(-50%, 0%);
+			-moz-transform: translate(-50%, 0%);
+			-o-transform: translate(-50%, 0%);
+			transform: translate(-50%, 0%);
+		}
+		.content{
+			text-align: center; /*  자식 div를 가운데 정렬하기 위해서 사용
+									자식 div에서는 display : inline-block; 해야함 */
+		}
+
+
+			/*  팀 소개 css  */
+			.who_we_are{
+				height: 1000px;
+				background-color: #EAEAEA;
+				margin-top: 55%;
+				margin-bottom: 30%;
+			}
+			.intr_content{
+				font-size: 100%;
+				font-family: 'Hanna', serif;
+				line-height: 1.5em;
+			}
+			.team_txt{
+				width: 100%;
+				display: inline-block; /*  가운데  정렬할 div */
+			}
+			.team_title{
+				width: 100%;
+				display: inline-block; /*  가운데  정렬할 div */
+			}
+
+
+			/*  팀원 각자 소개 css  */
+			.self_introduction{
+				width: 100%;
+				height: 1150px;
+				background-color: #EAEAEA;
+				margin-top: 30%;
+				margin-bottom: 0%;
+			}
+			#team1, #team2, #team3, #team4, #team5{
+				display: none; /*  안보이게 설정 */
+			}
+			.our_team{
+				width: 100%;
+			}
+			.our_team_img{
+				width: 100%;
+			}
+			.container_top{
+				text-align: center;
+				margin-bottom: 3%;
+			}
+			.cotainer_bot{
+				text-align: center;
+			}
+			.name{
+				font-family: 'Pacifico', cursive;
+			}
+
+
+				/*  자기소개 css  */
+				.container {
+				  position: relative;
+				  width: 15%;
+				  display: inline-block;
+				}
+
+				.image {
+				  display: block;
+				  width: 100%;
+				  height: auto;
+				}
+
+				.overlay {
+				  position: absolute;
+				  text-align: center;
+				  top: 0;
+				  bottom: 0;
+				  left: 0;
+				  right: 0;
+				  height: 100%;
+				  width: 100%;
+				  display: none;
+				  opacity: 0; /*  div 투명도 --> 0이라서 안보임 */
+				  transition: .5s ease; /*  효과 이벤트가 걸리는 시간(0.5초)  
+				  							2s로 하면 overlay가 2초동안 서서히 진행*/
+				  background-color: #EDA900;
+				}
+
+				.container:hover .overlay { /*  container div에 hover 했을 때 overlay 속성 변경  */
+				  display: block;
+				  opacity: 1; /*  0에서 1로 되기 때문에 안보이다가 보임 */
+				}
+
+				.text {
+				  color: white;
+				  font-size: 20px;
+				  position: absolute;
+				  top: 30%;
+				  left: 50%;
+				  transform: translate(-50%, -50%); /*  해당 div 좌표(x,y)값을 옮김  
+				  										그래서 강아지 사진이 튀어나옴  */
+				  -ms-transform: translate(-50%, -50%);
+				  width: 100%;
+				}
+
+
+				.title {
+				    color: grey;
+				    font-size: 13px;
+				    font-family: 'Pacifico', cursive;
+				}
+
+				button {
+				    border: none;
+				    outline: 0;
+				    display: inline-block;
+				    padding: 8px;
+				    color: white;
+				    background-color: #000;
+				    text-align: center;
+				    cursor: pointer;
+				    width: 100%;
+				    font-size: 18px;
+				}
+
+				a {
+				    text-decoration: none;
+				    font-size: 22px;
+				    color: black;
+				}
+
+				button:hover, a:hover {
+				    opacity: 0.7;
+				}
+
+				.contact{
+					display: inline-block;
+					position: absolute;
+					top: 70%;
+					left: 30%;
+				}
+
+
+				/*  팀 연락처 소개 css  */
+				.contact_us{
+					text-align: center;
+					background-color: #191919;
+				}
+		/*  end  */
+	
+
+
+
+
+		body{
+			overflow-x: hidden;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+		}
