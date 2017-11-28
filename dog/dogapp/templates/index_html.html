@@ -264,7 +264,7 @@
 			top: 20%;
 			height: 70%;
 			width: 6%;
-			z-index: 9999;
+			z-index: 8888;
 		}
 
 		.now{
@@ -465,6 +465,7 @@ body {font-family: Verdana,sans-serif;margin:0}
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
+  z-index: 9999;
 }
 
 /* Position the "next button" to the right */
@@ -1052,6 +1053,14 @@ body {font-family: Verdana,sans-serif;margin:0}
 						$("#content1_top_line").css("width", "0%");
 						$("#content1_left_line").css("height", "0%");
 						$("#content_square1").css("top", "0%");
+
+
+						$("#content1_link_bottom_line").css("width", "0%");
+						$("#content1_link_right_line").css("height", "0%");
+						$("#content1_link_top_line").css("width", "0%");
+						$("#content1_link_left_line").css("height", "0%");
+
+
 						overlay1_flag=0;
 					}
 
@@ -1067,6 +1076,12 @@ body {font-family: Verdana,sans-serif;margin:0}
 						$("#content2_top_line").css("width", "0%");
 						$("#content2_left_line").css("height", "0%");
 						$("#content_square2").css("top", "0%");
+
+
+						$("#content2_link_bottom_line").css("width", "0%");
+						$("#content2_link_right_line").css("height", "0%");
+						$("#content2_link_top_line").css("width", "0%");
+						$("#content2_link_left_line").css("height", "0%");
 						overlay2_flag=0;
 					}
 
@@ -1082,6 +1097,12 @@ body {font-family: Verdana,sans-serif;margin:0}
 						$("#content3_top_line").css("width", "0%");
 						$("#content3_left_line").css("height", "0%");
 						$("#content_square3").css("top", "0%");
+
+
+						$("#content3_link_bottom_line").css("width", "0%");
+						$("#content3_link_right_line").css("height", "0%");
+						$("#content3_link_top_line").css("width", "0%");
+						$("#content3_link_left_line").css("height", "0%");
 						overlay3_flag=0;
 					}
 
@@ -1303,17 +1324,17 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 	<script>
 		var slideIndex = 1;
-		showSlides(slideIndex);
+		showSlides(slideIndex,0);
 
 		function plusSlides(n) {
-		  showSlides(slideIndex += n);
+		  showSlides(slideIndex += n,1);
 		}
 
 		function currentSlide(n) {
-		  showSlides(slideIndex = n);
+		  showSlides(slideIndex = n,1);
 		}
 
-		function showSlides(n) {
+		function showSlides(n,check) {
 		  var i;
 		  var slides = document.getElementsByClassName("mySlides");
 		  var dots = document.getElementsByClassName("dot");
@@ -1328,11 +1349,12 @@ body {font-family: Verdana,sans-serif;margin:0}
 		  slides[slideIndex-1].style.display = "block";  
 		  dots[slideIndex-1].className += " active";
 
-		  setTimeout(function(){
-		  	 slideIndex++;
-		  	 showSlides(slideIndex);
-		  }, 4000);
-
+		  if(check==0){
+			  setTimeout(function(){
+			  	 slideIndex++;
+			  	 showSlides(slideIndex,0);
+			  }, 4000);
+			}
 		}
 	</script>
 </body>
