@@ -30,9 +30,30 @@
 			position: absolute;
 			left: 20%;
 			top : 20%;
-			width: 200px;
-			height: 200px;
+			width: 15%;
+			height: 10vw;
 			z-index : 3;
+			opacity: 0;
+		}
+
+		.div_link{
+			position: absolute;
+			left: 60%;
+			top : 80%;
+			width: 80px;
+			height: 4vw;
+			z-index : 3;
+			opacity: 0;
+		}
+
+		.square_content{
+			position: absolute;
+			left: 40%;
+			top : 20%;
+			width: 60%;
+			height: 10vw;
+			z-index : 3;
+			opacity: 0;
 		}
 
 		.content_square{
@@ -80,12 +101,13 @@
 
 
 		.back_img{
-			width: 25%;
+			width: 0%;
 			height: 1000px;
 			position: absolute;
 			top: 0;
-			z-index: -9999;
-			background-image: url(../../static/img/bg4.jpg);
+			z-index: -10;
+			background-color: #ebd8b8;
+			box-shadow: 10px 10px 10px black;
 		}
 
 
@@ -94,19 +116,24 @@
 			z-index: 2;
 			background-color: black;
 			opacity: 0.7;
-			width: 100%;
+			width: 33.3%;
 			height: 10vw;
 			overflow: hidden;
+			background-image: url(../../static/img/dog_with_me.jpeg);
+			background-repeat: no-repeat;
+			background-size:100%;
+			float: left;
 		}
 
 		.overlay_content1{
-			width: 70%;
-			height: 400px;
+			width: 80%;
+			height: 200px;
 			background-color: white;
 			opacity: 0;
-			float: left;
 			position: absolute;
-			left: 30%;
+			left: 15%;
+			top: 60%;
+			text-align: left;
 		}
 
 
@@ -117,19 +144,24 @@
 			z-index: 2;
 			background-color: #5CD1E5;
 			opacity: 0.7;
-			width: 100%;
+			width: 33.3%;
 			height: 10vw;
 			overflow: hidden;
+			background-image: url(../../static/img/dog_mbti.jpeg);
+			background-repeat: no-repeat;
+			background-size:100%;
+			float: left;
 		}
 
 		.overlay_content2{
-			width: 70%;
-			height: 400px;
+			width: 80%;
+			height: 200px;
 			background-color: white;
 			opacity: 0;
-			float: left;
 			position: absolute;
-			left: 30%;
+			left: 15%;
+			top: 60%;	
+			text-align: left;
 		}
 
 
@@ -140,19 +172,24 @@
 			z-index: 2;
 			background-color: #F2CB61;
 			opacity: 0.7;
-			width: 100%;
+			width: 33.3%;
 			height: 10vw;
 			overflow: hidden;
+			background-image: url(../../static/img/dog_shelter.jpg);
+			background-repeat: no-repeat;
+			background-size:100%;
+			float: left;
 		}
 
 		.overlay_content3{
-			width: 70%;
-			height: 400px;
+			width: 80%;
+			height: 200px;
 			background-color: white;
 			opacity: 0;
-			float: left;
 			position: absolute;
-			left: 30%;
+			left: 15%;
+			top: 60%;
+			text-align: left;	
 		}
 
 
@@ -192,9 +229,10 @@
 
 		.tmp_div{
 			width: 100%;
-			height: 1px;
-			background-color: white;
-			margin-bottom: 70%;
+			height: 40%;
+			background-color: transparent;
+			margin-bottom: 0%;
+			z-index: -9999;
 		}
 
 		.square_text{
@@ -225,7 +263,7 @@
 			right: 0;
 			top: 20%;
 			height: 70%;
-			width: 5%;
+			width: 6%;
 			z-index: 9999;
 		}
 
@@ -257,30 +295,44 @@
 
 /*  상단 고정 메뉴바 css  */
     .top{
-      width: 80%;
+      width: 100%;
       position: fixed;     /*  화면상 위치 고정  */
       z-index: 3;          /*  z값 결정  */
       top : 0;
-      left: 50%;
-      -webkit-transform: translate(-50%, 0%);
-          -ms-transform: translate(-50%, 0%);
-          -moz-transform: translate(-50%, 0%);
-          -o-transform: translate(-50%, 0%);
-          transform: translate(-50%, 0%);
+      height: 60px;
     }
+
     .top_logo{
+      position: absolute; 
       margin-top: 10px;
       margin-left: 30px;
-      float: left;
+      width: 30%;
+      text-align: center;
+      left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      font-weight: 900;
     }
-    .top_nav{
-      float: right;    
-      margin-top: 1%;    /*  top 여백 설정  */
+    .top_nav{  
+      position: absolute;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 50%;
+      text-align: center;
+      left: 50%;
+      -webkit-transform: translate(-50%, 250%);
+      -ms-transform: translate(-50%, 250%);
+      -moz-transform: translate(-50%, 250%);
+      -o-transform: translate(-50%, 250%);
+      transform: translate(-50%, 250%);
     }
     .menu{
       margin-left: 10px;
       margin-right: 10px;
-      color: #EDA900;
+      color: #B5996D;
+      font-weight: 900;
     }
     .menu:hover {
       font-weight: 900;
@@ -298,7 +350,7 @@
     .top_logo_txt{
       font-size: 40px;
       font-family: 'Clicker Script', cursive;
-      color: #EDA900;
+      color: #B5996D;
     }
 
     .top_nav a{
@@ -322,12 +374,12 @@
         /*height: 4vw;*/
         height: auto;
         text-align: center;
-        margin-bottom: 5%;
+        margin-bottom: 3%;
       }
 
       .domain_content{
         width: 70%;
-        height: 25vw;
+        height: 15vw;
         background-color: black;
         margin: auto;
       }
@@ -387,9 +439,110 @@
 			margin: 0;
 		}
 	</style>
+
+	<style>
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;margin:0}
+.mySlides {display:none}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 26px;
+  font-weight: 900;
+  padding: 8px 12px;
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  line-height: 1.5em;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
 </head>
 </head>
-<body style="background-color: black; height: 7000px; position: relative;">
+<body style="background: linear-gradient( to right,#F7F1E6, #ebd8b8 ); height: 3650px; position: relative;">
 
 	<!--  상단 고졍 메뉴바 div  -->
 	<div class='top'>
@@ -418,7 +571,7 @@
 	<div class="side_bar">
 		<div style="width: 70%; float: left; height: 100%; text-align: left;">
 			<Br><Br><Br><Br><Br><Br><Br><Br><Br><Br><Br><Br><Br><Br>
-			<span class="now_div" style="color: white; font-size: 15px;">
+			<span class="now_div" style="color: white; font-size: 15px; float: right;">
 				intro
 			</span>
 		</div>
@@ -447,7 +600,46 @@
 	</div>
 
 	<div class="top_div">
-		<img src="../../static/img/bg1.jpg" style="width: 100%; height: auto;">
+		
+
+		<div class="slideshow-container">
+
+			<div class="mySlides fade">
+			  <div class="numbertext" style="color: black;">
+			  	강아지는 자기 자신을 사랑하는 것보다,<br>
+			  	지구 상에서 유일하게 당신을 더 사랑합니다.
+			  </div>
+			  <img src="../../static/img/bg1.jpg" style="width:100%; height: 45vw;">
+			</div>
+
+			<div class="mySlides fade">
+			  <div class="numbertext">
+			  	모든 사람이 강아지만큼 무조건 사랑하는 능력이 있다면,<br>
+			  	이 세상은 더 좋은 곳이 될 것입니다.
+			  </div>
+			  <img src="../../static/img/bg2.jpg" style="width:100%; height: 45vw;">
+			</div>
+
+			<div class="mySlides fade">
+			  <div class="numbertext">
+			  	인생에서 내 목표는<br>
+			  	우리 강아지가 나를 좋은 사람으로 인정하는 사람이 되는 것입니다.
+			  </div>
+			  <img src="../../static/img/bg3.jpg" style="width:100%;  height: 45vw;">
+			</div>
+
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+		</div>
+		<br>
+
+		<div style="text-align:center">
+		  <span class="dot" onclick="currentSlide(1)"></span> 
+		  <span class="dot" onclick="currentSlide(2)"></span> 
+		  <span class="dot" onclick="currentSlide(3)"></span> 
+		</div>
+
 	</div>
 	<div class="tmp_div">
 
@@ -470,9 +662,33 @@
 					</div>
 					<div class="square_text">
 						<span style="color: white; font-size: 40px;">
-							DOG
+							통계
 						</span>
 					</div>
+			</div>
+			<div class="square_content">
+				<span style="font-size: 30px; color: white;">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque justo orci
+			</div>
+
+			<div class="div_link">
+				<div class="bottom_line" id="link_bottom_line">
+
+				</div>
+				<div class="left_line" id="link_left_line">
+
+				</div>
+				<div class="top_line" id="link_top_line">
+
+				</div>
+				<div class="right_line" id="link_right_line">
+
+				</div>
+				<div class="square_text">
+					<span style="color: white; font-size: 40px;">
+						→
+					</span>
+				</div>
 			</div>
 		</div>
 
@@ -497,7 +713,28 @@
 					</div>
 			</div>
 			<div class="overlay_content1">
+				<span style="font-size: 20px;">
+				
+				</span>
+			</div>
+			<div class="div_link">
+					<div class="bottom_line" id="content1_link_bottom_line" style="opacity: 1;">
 
+					</div>
+					<div class="left_line" id="content1_link_left_line" style="opacity: 1;">
+
+					</div>
+					<div class="top_line" id="content1_link_top_line" style="opacity: 1;">
+
+					</div>
+					<div class="right_line" id="content1_link_right_line" style="opacity: 1;">
+
+					</div>
+					<div class="square_text">
+						<span style="color: white; font-size: 40px;">
+							→
+						</span>
+					</div>
 			</div>
 		</div>
 
@@ -524,6 +761,25 @@
 			<div class="overlay_content2">
 
 			</div>
+			<div class="div_link">
+					<div class="bottom_line" id="content2_link_bottom_line" style="opacity: 1;">
+
+					</div>
+					<div class="left_line" id="content2_link_left_line" style="opacity: 1;">
+
+					</div>
+					<div class="top_line" id="content2_link_top_line" style="opacity: 1;">
+
+					</div>
+					<div class="right_line" id="content2_link_right_line" style="opacity: 1;">
+
+					</div>
+					<div class="square_text">
+						<span style="color: white; font-size: 40px;">
+							→
+						</span>
+					</div>
+			</div>
 		</div>
 
 		<div class="overlay_div3" style="text-align: center;">
@@ -542,62 +798,51 @@
 					</div>
 					<div class="content_square_text">
 						<span style="color: white; font-size: 20px;">
-							통개자료
+							전국보호소
 						</span>
 					</div>
 			</div>
 			<div class="overlay_content3">
 
 			</div>
-		</div>
-
-
-
-
-
-		<div class="overlay_div4" style="text-align: center;">
-			<div class="content_square"  id="content_square4">
-					<div class="bottom_line" id="content4_bottom_line" style="height: 5px;">
+			<div class="div_link">
+					<div class="bottom_line" id="content3_link_bottom_line" style="opacity: 1;">
 
 					</div>
-					<div class="left_line" id="content4_left_line" style="width: : 5px;">
+					<div class="left_line" id="content3_link_left_line" style="opacity: 1;">
 
 					</div>
-					<div class="top_line" id="content4_top_line" style="height: 5px;">
+					<div class="top_line" id="content3_link_top_line" style="opacity: 1;">
 
 					</div>
-					<div class="right_line" id="content4_right_line" style="width: : 5px;">
+					<div class="right_line" id="content3_link_right_line" style="opacity: 1;">
 
 					</div>
-					<div class="content_square_text">
-						<span style="color: white; font-size: 20px;">
-							데려갈개
+					<div class="square_text">
+						<span style="color: white; font-size: 40px;">
+							→
 						</span>
 					</div>
 			</div>
-			<div class="overlay_content4">
-
-			</div>
 		</div>
 
-
-
-
-
+		<!--
 		<div class="video_div">
 			<video id="dog_video" width="25%" autoplay muted loop="auto">
 				  <source src="../../static/video/dog_video.mp4" type="video/mp4">
 				Your browser does not support the video tag.
 			</video>
 		</div>
+		-->
 	</div>
 
 
 	<div class='bottom'>
-			<div class='domain'>
-				<span style="color: white; font-size: 3rem;"> www.Euljiro-3-ga.com </span>
 
+			<div class='domain'>
+				<span style="color: white; font-size: 3rem;"> puppysignal.com </span>
 			</div>
+
 			<div class='domain_content' style="background-color: black;">
 				<div class='contact' style="background-color: black;">
 					<span><img class="logo_icon" src="../../static/img/logo.png"></span>
@@ -606,26 +851,10 @@
 						<strong>CONTACT</strong>
 						<hr width="50%" align="left" style="color:#EDA900; background-color:#EDA900; height:1px; border:none;" />
 					</span>
-					<br>
-					<span style="color: white; font-size: 1rem;">
-						<img class="contact_icon" src="../../static/img/phone_img.png" align="middle">
-						&nbsp;<strong>010-4618-2620</strong>
-					</span>
 					<br><br>
 					<span style="color: white; font-size: 1rem;">
 						<img class="contact_icon" src="../../static/img/email_img.png" align="middle">
-						&nbsp;<strong>example@gmail.com</strong>
-					</span>
-					<br><br>
-					<span style="color: white; font-size: 1rem;">
-						<img class="contact_icon" src="../../static/img/location_img.png" align="middle">
-						&nbsp;<strong>Eulji-ro-3-ga, Jung-gu, Seoul</strong>
-					</span>
-					<br><br>
-					<span style="color: white;">
-						<img class='contact_sns_icon' src="../../static/img/facebook_img.png" align="middle">
-						&nbsp;
-						<img class='contact_sns_icon' src="../../static/img/insta_img.png" align="middle">
+						&nbsp;<strong>puppysignal@gmail.com</strong>
 					</span>
 				</div>
 
@@ -783,13 +1012,16 @@
 
 						$('.back_img').css({'position':'fixed', 'z-index' : '-9999'});
 						$('.square').css({'left' : '0%', 'opacity' : '0'});
+						$('.square_content').css({'left' : '0%', 'opacity' : '0'});
+
+						$('.div_link').css({'left' : '0%', 'opacity' : '0'});
 						flag1=1;
 					}
 				}
 
 
 
-				if(tmp_offset*0.8 < height && height < tmp_offset*1.2){
+				if(tmp_offset*0.8 < height && height < tmp_offset*1.5){
 					if(flag1==1){
 						$(".back_img").animate({
 					      height: '+=100px',
@@ -798,7 +1030,11 @@
 
 					    $('.back_img').css({'position':'fixed', 'z-index' : '-9999'});
 					    $('.square').css({'left' : '20%', 'opacity' : '1'});
+					    $('.square_content').css({'left' : '40%', 'opacity' : '1'});
+
+					    $('.div_link').css({'left' : '80%', 'opacity' : '1'});
 					    move("");
+					    move("link_");
 						flag1=0;
 					}
 
@@ -806,7 +1042,7 @@
 
 					if(overlay1_flag == 1){
 						$('.overlay_div1').animate({
-								height: '-=300px'
+								height: '-=400px'
 							});
 						$(".overlay_content1").animate({
 							    opacity: '-=0.5'
@@ -821,7 +1057,7 @@
 
 					if(overlay2_flag == 1){
 						$('.overlay_div2').animate({
-								height: '-=300px'
+								height: '-=400px'
 							});
 						$(".overlay_content2").animate({
 							    opacity: '-=0.5'
@@ -836,7 +1072,7 @@
 
 					if(overlay3_flag == 1){
 						$('.overlay_div3').animate({
-								height: '-=300px'
+								height: '-=400px'
 							});
 						$(".overlay_content3").animate({
 							    opacity: '-=0.5'
@@ -849,31 +1085,16 @@
 						overlay3_flag=0;
 					}
 
-
-					if(overlay4_flag == 1){
-						$('.overlay_div4').animate({
-								height: '-=300px'
-							});
-						$(".overlay_content4").animate({
-							    opacity: '-=0.5'
-							});
-						$("#content4_bottom_line").css("width", "0%");
-						$("#content4_right_line").css("height", "0%");
-						$("#content4_top_line").css("width", "0%");
-						$("#content4_left_line").css("height", "0%");
-						$("#content_square4").css("top", "0%");
-						overlay4_flag=0;
-					}
 				}
 
 				var square_offset = $('.square').offset().top;
 
 				var overlay1_offset = $('.overlay_div1').offset().top;
 
-				if(overlay1_offset - square_offset < 100){
+				if(overlay1_offset - square_offset < 400){
 					if(overlay1_flag==0){
 						$('.overlay_div1').animate({
-							height: '+=300px'
+							height: '+=400px'
 						});
 						$(".overlay_content1").animate({
 						      opacity: '+=0.5'
@@ -883,15 +1104,15 @@
 						    });
 						overlay1_flag=1;
 						move("content1_");
-
+						move("content1_link_")
 					}
 
-					$(".now_div").html("content1");
+					$(".now_div").html("content");
 				}
 
 
 
-				if(overlay1_offset - square_offset < 150){
+				if(overlay1_offset - square_offset < 400){
 					if(opacity_flag==0){
 						$(".back_img").animate({
 					      opacity : "0",
@@ -900,7 +1121,7 @@
 					}
 				}
 
-				if(overlay1_offset - square_offset > 150){
+				if(overlay1_offset - square_offset > 400){
 					if(opacity_flag==1){
 						$(".back_img").animate({
 					      opacity : "1",
@@ -912,10 +1133,10 @@
 
 				var overlay2_offset = $('.overlay_div2').offset().top;
 
-				if(overlay2_offset - square_offset < 100){
+				if(overlay2_offset - square_offset < 400){
 					if(overlay2_flag==0){
 						$('.overlay_div2').animate({
-							height: '+=300px'
+							height: '+=400px'
 						});
 						$(".overlay_content2").animate({
 						      opacity: '+=0.5'
@@ -925,19 +1146,20 @@
 						    });
 						overlay2_flag=1;
 						move("content2_");
+						move("content2_link_")
 					}
 
-					$(".now_div").html("content2");
+					//$(".now_div").html("content2");
 				}
 
 
 
 				var overlay3_offset = $('.overlay_div3').offset().top;
 
-				if(overlay3_offset - square_offset < 100){
+				if(overlay3_offset - square_offset < 400){
 					if(overlay3_flag==0){
 						$('.overlay_div3').animate({
-							height: '+=300px'
+							height: '+=400px'
 						});
 						$(".overlay_content3").animate({
 						      opacity: '+=0.5'
@@ -947,37 +1169,15 @@
 						    });
 						overlay3_flag=1;
 						move("content3_");
+						move("content3_link_")
 					}
 
-					$(".now_div").html("content3");
-				}
-
-
-				var overlay4_offset = $('.overlay_div4').offset().top;
-
-				if(overlay4_offset - square_offset < 100){
-					if(overlay4_flag==0){
-						$('.overlay_div4').animate({
-							height: '+=300px'
-						});
-						$(".overlay_content4").animate({
-						      opacity: '+=0.5'
-						    });
-						$("#content_square4").animate({
-						      top: '20%'
-						    });
-						overlay4_flag=1;
-						move("content4_");
-					}
-
-					$(".now_div").html("content4");
+					//$(".now_div").html("content3");
 				}
 
 
 
-
-
-
+				/*
 				var video_div_offset = $('.video_div').offset().top;
 
 				
@@ -992,7 +1192,7 @@
 				else{
 					$('.back_img').css('display', 'block');
 				}
-				
+				*/
 
 
 
@@ -1013,13 +1213,28 @@
 			    /*  상단 고정 메뉴바 이벤트  */
                 if(height > 100){
                     if(flag3==0){
-                        $('.top').css("background-color", "#EDA900");
-                        $('.top').animate({
-                        	width: '100%'
-                        });
+                        $('.top').css("background-color", "#B5996D");
                         $('.top_logo_txt').css("color", "#ffffff")
                         //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
                         $('.menu').css("color", "#ffffff");
+
+                        $('.top_logo').animate({
+                        	left : '5%',
+                        });
+
+                        $('.top_nav').animate({
+                        	left: '85%',
+                        });
+
+                        $('.top_nav').css({
+                        	'-webkit-transform' : 'translate(-50%, 50%)',
+						    '-ms-transform' : 'translate(-50%, 50%)',
+						    '-moz-transform' : 'translate(-50%, 50%)',
+						    '-o-transform' : 'translate(-50%, 50%)',
+						    'transform' : 'translate(-50%, 50%)'
+                        });
+
+
                         flag3=1;
                     }
                 }
@@ -1027,19 +1242,33 @@
                 if(height < 100){
                     if(flag3==1){
                         $('.top').css("background-color", "transparent");
-                        $('.top').animate({
-                        	width: '80%'
-                        });
-                        $('.top_logo_txt').css("color", "#EDA900");
+                        $('.top_logo_txt').css("color", "#B5996D");
                         //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
-                        $('.menu').css("color", "#EDA900");
+                        $('.menu').css("color", "#B5996D");
+
+                        $('.top_logo').animate({
+                        	left : '50%',
+                        });
+
+                        $('.top_nav').animate({
+                        	left: '50%',
+                        });
+
+                        $('.top_nav').css({
+                        	'-webkit-transform' : 'translate(-50%, 250%)',
+						    '-ms-transform' : 'translate(-50%, 250%)',
+						    '-moz-transform' : 'translate(-50%, 250%)',
+						    '-o-transform' : 'translate(-50%, 250%)',
+						    'transform' : 'translate(-50%, 250%)'
+                        });
+
                         flag3=0;
                     }
                 }
 		});
 
 
-
+		/*
 		$(document).ready(function(){ 
 		    //** notice we are including jquery and the color plugin at 
 		    //** http://code.jquery.com/color/jquery.color-2.1.0.js
@@ -1068,8 +1297,43 @@
 		        } else { }
 		    });
 		});
+		*/
 
+	</script>
 
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		  var dots = document.getElementsByClassName("dot");
+		  if (n > slides.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+		      slides[i].style.display = "none";  
+		  }
+		  for (i = 0; i < dots.length; i++) {
+		      dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";  
+		  dots[slideIndex-1].className += " active";
+
+		  setTimeout(function(){
+		  	 slideIndex++;
+		  	 showSlides(slideIndex);
+		  }, 4000);
+
+		}
 	</script>
 </body>
 </html>

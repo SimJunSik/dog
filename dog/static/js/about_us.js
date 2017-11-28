@@ -39,6 +39,7 @@
 
 
 				/*  Who we are 텍스트 강조 이벤트 */
+				/*
 				var who_we_are_offset = $('.who_we_are').offset().top;
 
 				if(height > who_we_are_offset-100){
@@ -48,7 +49,7 @@
 						flag2=1;
 					}
 				}
-
+				*/
 
 
 
@@ -71,7 +72,7 @@
 
 
 				/*  배경이미지 변경 이벤트  */
-
+				/*
 				if(height > who_we_are_offset+100){
 					$('.mid_img_src').attr("src","../../static/img/bg7.jpg");
 				}
@@ -83,6 +84,7 @@
 				if (height < who_we_are_offset+100){
 					$('.mid_img_src').attr("src","../../static/img/bg1.jpg");
 				}
+				*/
 		});
 
 
