@@ -18,7 +18,7 @@
 					if(flag1==0){
 						$('.top').css("background-color", "#EDA900");
 						$('.top_logo_txt').css("color", "#ffffff")
-						$('.top_logo_txt').animate({fontSize: '50px'}, "fast");
+						$('.top_logo_txt').animate({fontSize: '2vw'}, "fast");
 						$('.menu').css("color", "#ffffff");
 						flag1=1;
 					}
@@ -28,7 +28,7 @@
 					if(flag1==1){
 						$('.top').css("background-color", "transparent");
 						$('.top_logo_txt').css("color", "#EDA900");
-						$('.top_logo_txt').animate({fontSize: '40px'}, "fast");
+						$('.top_logo_txt').animate({fontSize: '2vw'}, "fast");
 						$('.menu').css("color", "#EDA900");
 						flag1=0;
 					}
@@ -58,13 +58,13 @@
 
 
 				if(height > self_introduction_offset-100){
-					if(flag3==0){
+					if(flag2==0){
 						$('#team1').fadeIn(1000);
 						$('#team2').delay(500).fadeIn(1000);
 						$('#team3').delay(600).fadeIn(1000);
 						$('#team4').delay(700).fadeIn(1000);
 						$('#team5').delay(800).fadeIn(1000);
-						flag3=1;
+						flag2=1;
 					}
 				}
 
@@ -85,6 +85,72 @@
 					$('.mid_img_src').attr("src","../../static/img/bg1.jpg");
 				}
 				*/
+
+
+
+				/*  상단 고정 메뉴바 이벤트  */
+                if(height > 100){
+                    if(flag3==0){
+                        $('.top').css("background-color", "#B5996D");
+                        $('.top_logo_txt').css("color", "#ffffff")
+                        //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
+                        $('.menu').css("color", "#ffffff");
+
+                        $('.top_logo').animate({
+                        	left : '5%',
+                        });
+
+                        $('.top_nav').animate({
+                        	left: '85%',
+                        });
+
+                        $('.top').animate({
+                        	height : '3vw',
+                        });
+
+                        $('.top_nav').css({
+                        	'-webkit-transform' : 'translate(-50%, 50%)',
+						    '-ms-transform' : 'translate(-50%, 50%)',
+						    '-moz-transform' : 'translate(-50%, 50%)',
+						    '-o-transform' : 'translate(-50%, 50%)',
+						    'transform' : 'translate(-50%, 50%)'
+                        });
+
+
+                        flag3=1;
+                    }
+                }
+
+                if(height < 100){
+                    if(flag3==1){
+                        $('.top').css("background-color", "white");
+                        $('.top_logo_txt').css("color", "#B5996D");
+                        //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
+                        $('.menu').css("color", "#B5996D");
+
+                        $('.top_logo').animate({
+                        	left : '50%',
+                        });
+
+                        $('.top_nav').animate({
+                        	left: '50%',
+                        });
+
+                        $('.top').animate({
+                        	height : '5vw',
+                        });
+
+                        $('.top_nav').css({
+                        	'-webkit-transform' : 'translate(-50%, 250%)',
+						    '-ms-transform' : 'translate(-50%, 250%)',
+						    '-moz-transform' : 'translate(-50%, 250%)',
+						    '-o-transform' : 'translate(-50%, 250%)',
+						    'transform' : 'translate(-50%, 250%)'
+                        });
+
+                        flag3=0;
+                    }
+                }
 		});
 
 
@@ -95,6 +161,7 @@
 
 
 		/*  Top으로 스크롤링 함수  */
+		/*
 		$(document).ready(function(){
 			$(".top_scroll").click(function(){
 				return $("html, body").animate({scrollTop:0},900),!1})
@@ -111,3 +178,4 @@
 				});
 			});
 		});
+		*/
