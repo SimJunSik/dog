@@ -148,7 +148,7 @@
 			.self_introduction{
 				width: 100%;
 				height: 80vw;
-				background-color: #EAEAEA;
+				background-color: #F7F1E6;
 				margin-top: 50%;
 				margin-bottom: 0%;
 			}
@@ -200,7 +200,7 @@
 				  opacity: 0; /*  div 투명도 --> 0이라서 안보임 */
 				  transition: .5s ease; /*  효과 이벤트가 걸리는 시간(0.5초)  
 				  							2s로 하면 overlay가 2초동안 서서히 진행*/
-				  background-color: #EDA900;
+				  background-color: #ebd8b8;
 				}
 
 				.container:hover .overlay { /*  container div에 hover 했을 때 overlay 속성 변경  */
