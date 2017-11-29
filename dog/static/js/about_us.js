@@ -101,7 +101,7 @@
                         });
 
                         $('.top_nav').animate({
-                        	left: '85%',
+                        	left: '80%',
                         });
 
                         $('.top').animate({
