@@ -13,29 +13,6 @@
 				/*  scroll 값 확인용 함수호출  */
 
 
-				/*  상단 고정 메뉴바 이벤트  */
-				if(height > 100){
-					if(flag1==0){
-						$('.top').css("background-color", "#EDA900");
-						$('.top_logo_txt').css("color", "#ffffff")
-						$('.top_logo_txt').animate({fontSize: '2vw'}, "fast");
-						$('.menu').css("color", "#ffffff");
-						flag1=1;
-					}
-				}
-
-				if(height < 100){
-					if(flag1==1){
-						$('.top').css("background-color", "transparent");
-						$('.top_logo_txt').css("color", "#EDA900");
-						$('.top_logo_txt').animate({fontSize: '2vw'}, "fast");
-						$('.menu').css("color", "#EDA900");
-						flag1=0;
-					}
-				}
-
-
-
 
 
 				/*  Who we are 텍스트 강조 이벤트 */
@@ -88,20 +65,21 @@
 
 
 
-				/*  상단 고정 메뉴바 이벤트  */
+							    /*  상단 고정 메뉴바 이벤트  */
                 if(height > 100){
                     if(flag3==0){
                         $('.top').css("background-color", "#B5996D");
-                        $('.top_logo_txt').css("color", "#ffffff")
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_white.png");
                         //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
                         $('.menu').css("color", "#ffffff");
-
+                        
                         $('.top_logo').animate({
-                        	left : '5%',
+                        	marginLeft : '10%',
                         });
 
                         $('.top_nav').animate({
-                        	left: '80%',
+                        	marginLeft : '80%',
+                        	marginTop : '-2%'
                         });
 
                         $('.top').animate({
@@ -109,14 +87,15 @@
                         });
 
                         $('.top_nav').css({
-                        	'-webkit-transform' : 'translate(-50%, 50%)',
-						    '-ms-transform' : 'translate(-50%, 50%)',
-						    '-moz-transform' : 'translate(-50%, 50%)',
-						    '-o-transform' : 'translate(-50%, 50%)',
-						    'transform' : 'translate(-50%, 50%)'
+                        	/*
+                        	'-webkit-transform' : 'translate(-50%, 0%)',
+						    '-ms-transform' : 'translate(-50%, 0%)',
+						    '-moz-transform' : 'translate(-50%, 0%)',
+						    '-o-transform' : 'translate(-50%, 0%)',
+						    'transform' : 'translate(-50%, 0%)'
+						    */
                         });
-
-
+						
                         flag3=1;
                     }
                 }
@@ -124,16 +103,18 @@
                 if(height < 100){
                     if(flag3==1){
                         $('.top').css("background-color", "white");
-                        $('.top_logo_txt').css("color", "#B5996D");
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
                         //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
                         $('.menu').css("color", "#B5996D");
+                        
 
                         $('.top_logo').animate({
-                        	left : '50%',
+                        	marginLeft : '50%',
                         });
 
                         $('.top_nav').animate({
-                        	left: '50%',
+                        	marginLeft: '50%',
+                        	marginTop : '-0%'
                         });
 
                         $('.top').animate({
@@ -141,13 +122,12 @@
                         });
 
                         $('.top_nav').css({
-                        	'-webkit-transform' : 'translate(-50%, 250%)',
-						    '-ms-transform' : 'translate(-50%, 250%)',
-						    '-moz-transform' : 'translate(-50%, 250%)',
-						    '-o-transform' : 'translate(-50%, 250%)',
-						    'transform' : 'translate(-50%, 250%)'
+                        	'-webkit-transform' : 'translate(-50%, 0%)',
+						    '-ms-transform' : 'translate(-50%, 0%)',
+						    '-moz-transform' : 'translate(-50%, 0%)',
+						    '-o-transform' : 'translate(-50%, 0%)',
+						    'transform' : 'translate(-50%, 0%)'
                         });
-
                         flag3=0;
                     }
                 }
@@ -155,10 +135,11 @@
 
 
 		/*  scroll 값 확인용 함수  */
+		/*
 		function log(str){
 		    $('#tmp').text(str);
 		}
-
+		*/
 
 		/*  Top으로 스크롤링 함수  */
 		/*

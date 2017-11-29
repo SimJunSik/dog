@@ -329,30 +329,29 @@
     }
 
     .top_logo{
-      position: absolute; 
+      position: relative;
       margin-top: 0.5vw;
-      margin-left: 1.5vw;
-      width: 30%;
-      text-align: center;
-      left: 50%;
+      margin-left: 50%;
       -webkit-transform: translate(-50%, 0%);
       -ms-transform: translate(-50%, 0%);
       -moz-transform: translate(-50%, 0%);
       -o-transform: translate(-50%, 0%);
       transform: translate(-50%, 0%);
+      width: 30%;
+      text-align: center;
       font-weight: 900;
     }
     .top_nav{  
-      position: absolute;
+      position: relative;
       /*margin-top: 3%;*/    /*  top 여백 설정  */
       width: 50%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
       text-align: center;
-      left: 50%;
-      -webkit-transform: translate(-50%, 250%);
-      -ms-transform: translate(-50%, 250%);
-      -moz-transform: translate(-50%, 250%);
-      -o-transform: translate(-50%, 250%);
-      transform: translate(-50%, 250%);
     }
     .menu{
       margin-left: 0.5vw;
@@ -363,11 +362,11 @@
     }
     .menu:hover {
       font-weight: 900;
-      font-size: 20px;
+      font-size: 1vw;
     }
     .top_logo_img{
-      width: 100px;
-      height: 50px;
+      width: 14vw;
+      height: 2vw;
       margin: 0;
     }
     .menu_slash{
@@ -575,10 +574,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 	<!--  상단 고졍 메뉴바 div  -->
 	<div class='top'>
 			<div class='top_logo'>
-				<!--
-				<img class='top_logo_img' src="./logo.png">
-				-->
-				<span class="top_logo_txt">Euliro-3-gA</span>
+				<img class='top_logo_img' src="../../static/img/logo_txt_color.png">	
 			</div>
 			<div class='top_nav'>
 				<a href="../"><span class="menu" id="w"> HOME </span></a>
@@ -874,12 +870,12 @@ body {font-family: Verdana,sans-serif;margin:0}
 	<div class='bottom'>
 
 			<div class='domain'>
-				<span style="color: white; font-size: 2vw;"> puppysignal.com </span>
+				<img class='top_logo_img' src="../../static/img/logo_txt_color.png">
 			</div>
 
 			<div class='domain_content' style="background-color: black;">
 				<div class='contact' style="background-color: black;">
-					<span><img class="logo_icon" src="../../static/img/logo.png"></span>
+					<span><img class="logo_icon" src="../../static/img/logo_img_color.png"></span>
 					<br><br>
 					<span class='domain_content_title'>
 						<strong>CONTACT</strong>
@@ -1268,16 +1264,17 @@ body {font-family: Verdana,sans-serif;margin:0}
                 if(height > 100){
                     if(flag3==0){
                         $('.top').css("background-color", "#B5996D");
-                        $('.top_logo_txt').css("color", "#ffffff")
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_white.png");
                         //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
                         $('.menu').css("color", "#ffffff");
-
+                        
                         $('.top_logo').animate({
-                        	left : '5%',
+                        	marginLeft : '10%',
                         });
 
                         $('.top_nav').animate({
-                        	left: '80%',
+                        	marginLeft : '80%',
+                        	marginTop : '-2%'
                         });
 
                         $('.top').animate({
@@ -1285,14 +1282,15 @@ body {font-family: Verdana,sans-serif;margin:0}
                         });
 
                         $('.top_nav').css({
-                        	'-webkit-transform' : 'translate(-50%, 50%)',
-						    '-ms-transform' : 'translate(-50%, 50%)',
-						    '-moz-transform' : 'translate(-50%, 50%)',
-						    '-o-transform' : 'translate(-50%, 50%)',
-						    'transform' : 'translate(-50%, 50%)'
+                        	/*
+                        	'-webkit-transform' : 'translate(-50%, 0%)',
+						    '-ms-transform' : 'translate(-50%, 0%)',
+						    '-moz-transform' : 'translate(-50%, 0%)',
+						    '-o-transform' : 'translate(-50%, 0%)',
+						    'transform' : 'translate(-50%, 0%)'
+						    */
                         });
-
-
+						
                         flag3=1;
                     }
                 }
@@ -1300,16 +1298,18 @@ body {font-family: Verdana,sans-serif;margin:0}
                 if(height < 100){
                     if(flag3==1){
                         $('.top').css("background-color", "white");
-                        $('.top_logo_txt').css("color", "#B5996D");
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
                         //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
                         $('.menu').css("color", "#B5996D");
+                        
 
                         $('.top_logo').animate({
-                        	left : '50%',
+                        	marginLeft : '50%',
                         });
 
                         $('.top_nav').animate({
-                        	left: '50%',
+                        	marginLeft: '50%',
+                        	marginTop : '-0%'
                         });
 
                         $('.top').animate({
@@ -1317,13 +1317,12 @@ body {font-family: Verdana,sans-serif;margin:0}
                         });
 
                         $('.top_nav').css({
-                        	'-webkit-transform' : 'translate(-50%, 250%)',
-						    '-ms-transform' : 'translate(-50%, 250%)',
-						    '-moz-transform' : 'translate(-50%, 250%)',
-						    '-o-transform' : 'translate(-50%, 250%)',
-						    'transform' : 'translate(-50%, 250%)'
+                        	'-webkit-transform' : 'translate(-50%, 0%)',
+						    '-ms-transform' : 'translate(-50%, 0%)',
+						    '-moz-transform' : 'translate(-50%, 0%)',
+						    '-o-transform' : 'translate(-50%, 0%)',
+						    'transform' : 'translate(-50%, 0%)'
                         });
-
                         flag3=0;
                     }
                 }
