@@ -30,7 +30,7 @@
 			position: absolute;
 			left: 20%;
 			top : 20%;
-			width: 15%;
+			width: 10vw;
 			height: 10vw;
 			z-index : 3;
 			opacity: 0;
@@ -40,7 +40,7 @@
 			position: absolute;
 			left: 60%;
 			top : 78%;
-			width: 80px;
+			width: 4vw;
 			height: 4vw;
 			z-index : 3;
 			opacity: 0;
@@ -59,8 +59,8 @@
 		.content_square{
 			position: absolute;
 			float: left;
-			width: 200px;
-			height: 200px;
+			width: 10vw;
+			height: 10vw;
 			z-index : 3;
 			left: 15%;
 		}
@@ -119,15 +119,23 @@
 			width: 33.3%;
 			height: 10vw;
 			overflow: hidden;
+			float: left;
+		}
+
+		.overlay_div1_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
 			background-image: url(../../static/img/dog_with_me.jpeg);
 			background-repeat: no-repeat;
-			background-size:100%;
-			float: left;
+			background-size:100% 100%;
 		}
 
 		.overlay_content1{
 			width: 80%;
-			height: 15vh;
+			height: 25vh;
 			background-color: white;
 			opacity: 0;
 			position: absolute;
@@ -147,15 +155,23 @@
 			width: 33.3%;
 			height: 10vw;
 			overflow: hidden;
+			float: left;
+		}
+
+		.overlay_div2_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
 			background-image: url(../../static/img/dog_mbti.jpeg);
 			background-repeat: no-repeat;
-			background-size:100%;
-			float: left;
+			background-size:100% 100%;
 		}
 
 		.overlay_content2{
 			width: 80%;
-			height: 15vh;
+			height: 25vh;
 			background-color: white;
 			opacity: 0;
 			position: absolute;
@@ -175,15 +191,24 @@
 			width: 33.3%;
 			height: 10vw;
 			overflow: hidden;
+			float: left;
+		}
+
+
+		.overlay_div3_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
 			background-image: url(../../static/img/dog_shelter.jpg);
 			background-repeat: no-repeat;
-			background-size:100%;
-			float: left;
+			background-size:100% 100%;
 		}
 
 		.overlay_content3{
 			width: 80%;
-			height: 15vh;
+			height: 25vh;
 			background-color: white;
 			opacity: 0;
 			position: absolute;
@@ -299,14 +324,14 @@
       position: fixed;     /*  화면상 위치 고정  */
       z-index: 3;          /*  z값 결정  */
       top : 0;
-      height: 80px;
+      height: 5vw;
       background-color: white;
     }
 
     .top_logo{
       position: absolute; 
-      margin-top: 10px;
-      margin-left: 30px;
+      margin-top: 0.5vw;
+      margin-left: 1.5vw;
       width: 30%;
       text-align: center;
       left: 50%;
@@ -330,9 +355,10 @@
       transform: translate(-50%, 250%);
     }
     .menu{
-      margin-left: 10px;
-      margin-right: 10px;
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
       color: #B5996D;
+      font-size: 0.5vw;
       font-weight: 900;
     }
     .menu:hover {
@@ -346,10 +372,10 @@
     }
     .menu_slash{
       color: #BDBDBD;
-      font-size: 18px;
+      font-size: 1vw;
     }
     .top_logo_txt{
-      font-size: 40px;
+      font-size: 2vw;
       font-family: 'Clicker Script', cursive;
       color: #B5996D;
     }
@@ -404,18 +430,18 @@
       }
 
       .contact_icon{
-        width: 50px; 
-        height: 50px;
+        width: 2.25vw; 
+        height: 2.25vw;
       }
 
       .contact_sns_icon{
-        width: 40px;
-        height: 40px;
+        width: 2vw;
+        height: 2vw;
       }
 
       .domain_content_title{
         color: white;
-        font-size: 3rem;
+        font-size: 1.5vw;
       }
 
       .share{
@@ -494,7 +520,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 /* Number text (1/3 etc) */
 .numbertext {
   color: #f2f2f2;
-  font-size: 26px;
+  font-size: 1.25vw;
   font-weight: 900;
   padding: 8px 12px;
   position: absolute;
@@ -663,13 +689,13 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 					</div>
 					<div class="square_text">
-						<span style="color: white; font-size: 40px;">
+						<span style="color: white; font-size: 2vw;">
 							통계
 						</span>
 					</div>
 			</div>
 			<div class="square_content">
-				<span style="font-size: 30px; color: white;">
+				<span style="font-size: 1.5vw; color: white;">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque justo orci
 			</div>
 
@@ -687,7 +713,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 				</div>
 				<div class="square_text">
-					<span style="color: white; font-size: 40px;">
+					<span style="color: white; font-size: 2vw;">
 						→
 					</span>
 				</div>
@@ -695,136 +721,142 @@ body {font-family: Verdana,sans-serif;margin:0}
 		</div>
 
 		<div class="overlay_div1" style="text-align: center;">
-			<div class="content_square" id="content_square1">
-					<div class="bottom_line" id="content1_bottom_line" style="height: 5px;">
+			<div class="overlay_div1_child">
+				<div class="content_square" id="content_square1">
+						<div class="bottom_line" id="content1_bottom_line" style="height: 5px;">
 
-					</div>
-					<div class="left_line" id="content1_left_line" style="width: : 5px;">
+						</div>
+						<div class="left_line" id="content1_left_line" style="width: : 5px;">
 
-					</div>
-					<div class="top_line" id="content1_top_line" style="height: 5px;">
+						</div>
+						<div class="top_line" id="content1_top_line" style="height: 5px;">
 
-					</div>
-					<div class="right_line" id="content1_right_line" style="width: : 5px;">
+						</div>
+						<div class="right_line" id="content1_right_line" style="width: : 5px;">
 
-					</div>
-					<div class="content_square_text">
-						<span style="color: white; font-size: 20px;">
-							멍미테스트
-						</span>
-					</div>
-			</div>
-			<div class="overlay_content1">
-				<span style="font-size: 20px;">
-				
-				</span>
-			</div>
-			<div class="div_link">
-					<div class="bottom_line" id="content1_link_bottom_line" style="opacity: 1;">
+						</div>
+						<div class="content_square_text">
+							<span style="color: white; font-size: 1vw;;">
+								멍미테스트
+							</span>
+						</div>
+				</div>
+				<div class="overlay_content1">
+					<span style="font-size: 20px;">
+					
+					</span>
+				</div>
+				<div class="div_link">
+						<div class="bottom_line" id="content1_link_bottom_line" style="opacity: 1;">
 
-					</div>
-					<div class="left_line" id="content1_link_left_line" style="opacity: 1;">
+						</div>
+						<div class="left_line" id="content1_link_left_line" style="opacity: 1;">
 
-					</div>
-					<div class="top_line" id="content1_link_top_line" style="opacity: 1;">
+						</div>
+						<div class="top_line" id="content1_link_top_line" style="opacity: 1;">
 
-					</div>
-					<div class="right_line" id="content1_link_right_line" style="opacity: 1;">
+						</div>
+						<div class="right_line" id="content1_link_right_line" style="opacity: 1;">
 
-					</div>
-					<div class="square_text">
-						<span style="color: white; font-size: 40px;">
-							→
-						</span>
-					</div>
+						</div>
+						<div class="square_text">
+							<span style="color: white; font-size: 2vw;">
+								→
+							</span>
+						</div>
+				</div>
 			</div>
 		</div>
 
 		<div class="overlay_div2" style="text-align: center;">
-			<div class="content_square"  id="content_square2">
-					<div class="bottom_line" id="content2_bottom_line" style="height: 5px;">
+			<div class="overlay_div2_child">
+				<div class="content_square"  id="content_square2">
+						<div class="bottom_line" id="content2_bottom_line" style="height: 5px;">
 
-					</div>
-					<div class="left_line" id="content2_left_line" style="width: : 5px;">
+						</div>
+						<div class="left_line" id="content2_left_line" style="width: : 5px;">
 
-					</div>
-					<div class="top_line" id="content2_top_line" style="height: 5px;">
+						</div>
+						<div class="top_line" id="content2_top_line" style="height: 5px;">
 
-					</div>
-					<div class="right_line" id="content2_right_line" style="width: : 5px;">
+						</div>
+						<div class="right_line" id="content2_right_line" style="width: : 5px;">
 
-					</div>
-					<div class="content_square_text">
-						<span style="color: white; font-size: 20px;">
-							MBTI
-						</span>
-					</div>
-			</div>
-			<div class="overlay_content2">
+						</div>
+						<div class="content_square_text">
+							<span style="color: white; font-size: 1vw;">
+								MBTI
+							</span>
+						</div>
+				</div>
+				<div class="overlay_content2">
 
-			</div>
-			<div class="div_link">
-					<div class="bottom_line" id="content2_link_bottom_line" style="opacity: 1;">
+				</div>
+				<div class="div_link">
+						<div class="bottom_line" id="content2_link_bottom_line" style="opacity: 1;">
 
-					</div>
-					<div class="left_line" id="content2_link_left_line" style="opacity: 1;">
+						</div>
+						<div class="left_line" id="content2_link_left_line" style="opacity: 1;">
 
-					</div>
-					<div class="top_line" id="content2_link_top_line" style="opacity: 1;">
+						</div>
+						<div class="top_line" id="content2_link_top_line" style="opacity: 1;">
 
-					</div>
-					<div class="right_line" id="content2_link_right_line" style="opacity: 1;">
+						</div>
+						<div class="right_line" id="content2_link_right_line" style="opacity: 1;">
 
-					</div>
-					<div class="square_text">
-						<span style="color: white; font-size: 40px;">
-							→
-						</span>
-					</div>
+						</div>
+						<div class="square_text">
+							<span style="color: white; font-size: 2vw;">
+								→
+							</span>
+						</div>
+				</div>
 			</div>
 		</div>
 
 		<div class="overlay_div3" style="text-align: center;">
-			<div class="content_square"  id="content_square3">
-					<div class="bottom_line" id="content3_bottom_line" style="height: 5px;">
+			<div class="overlay_div3_child">
+				<div class="content_square"  id="content_square3">
+						<div class="bottom_line" id="content3_bottom_line" style="height: 5px;">
 
-					</div>
-					<div class="left_line" id="content3_left_line" style="width: : 5px;">
+						</div>
+						<div class="left_line" id="content3_left_line" style="width: : 5px;">
 
-					</div>
-					<div class="top_line" id="content3_top_line" style="height: 5px;">
+						</div>
+						<div class="top_line" id="content3_top_line" style="height: 5px;">
 
-					</div>
-					<div class="right_line" id="content3_right_line" style="width: : 5px;">
+						</div>
+						<div class="right_line" id="content3_right_line" style="width: : 5px;">
 
-					</div>
-					<div class="content_square_text">
-						<span style="color: white; font-size: 20px;">
-							전국보호소
-						</span>
-					</div>
-			</div>
-			<div class="overlay_content3">
+						</div>
+						<div class="content_square_text">
+							<span style="color: white; font-size: 1vw;">
+								전국보호소
+							</span>
+						</div>
+				</div>
+				<div class="overlay_content3">
 
-			</div>
-			<div class="div_link">
-					<div class="bottom_line" id="content3_link_bottom_line" style="opacity: 1;">
+				</div>
+				<div class="div_link">
+						<div class="bottom_line" id="content3_link_bottom_line" style="opacity: 1;">
 
-					</div>
-					<div class="left_line" id="content3_link_left_line" style="opacity: 1;">
+						</div>
+						<div class="left_line" id="content3_link_left_line" style="opacity: 1;">
 
-					</div>
-					<div class="top_line" id="content3_link_top_line" style="opacity: 1;">
+						</div>
+						<div class="top_line" id="content3_link_top_line" style="opacity: 1;">
 
-					</div>
-					<div class="right_line" id="content3_link_right_line" style="opacity: 1;">
+						</div>
+						<div class="right_line" id="content3_link_right_line" style="opacity: 1;">
 
-					</div>
-					<div class="square_text">
-						<span style="color: white; font-size: 40px;">
-							→
-						</span>
-					</div>
+						</div>
+						<div class="square_text">
+							<span style="color: white; font-size: 2vw;">
+								→
+							</span>
+						</div>
+				</div>
 			</div>
 		</div>
 
@@ -842,7 +874,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 	<div class='bottom'>
 
 			<div class='domain'>
-				<span style="color: white; font-size: 3rem;"> puppysignal.com </span>
+				<span style="color: white; font-size: 2vw;"> puppysignal.com </span>
 			</div>
 
 			<div class='domain_content' style="background-color: black;">
@@ -889,7 +921,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 			</div>
 
 			<div class="copyright">
-				<span style="color: white; font-size: 2rem;">
+				<span style="color: white; font-size: 1vw;">
 					© 2017 EULJIRO-3-GA ALL RIGHTS RESERVED
 					<BR><BR><BR>
 				</span>>
@@ -1248,12 +1280,16 @@ body {font-family: Verdana,sans-serif;margin:0}
                         	left: '85%',
                         });
 
+                        $('.top').animate({
+                        	height : '3vw',
+                        });
+
                         $('.top_nav').css({
-                        	'-webkit-transform' : 'translate(-50%, 120%)',
-						    '-ms-transform' : 'translate(-50%, 120%)',
-						    '-moz-transform' : 'translate(-50%, 120%)',
-						    '-o-transform' : 'translate(-50%, 120%)',
-						    'transform' : 'translate(-50%, 120%)'
+                        	'-webkit-transform' : 'translate(-50%, 50%)',
+						    '-ms-transform' : 'translate(-50%, 50%)',
+						    '-moz-transform' : 'translate(-50%, 50%)',
+						    '-o-transform' : 'translate(-50%, 50%)',
+						    'transform' : 'translate(-50%, 50%)'
                         });
 
 
@@ -1274,6 +1310,10 @@ body {font-family: Verdana,sans-serif;margin:0}
 
                         $('.top_nav').animate({
                         	left: '50%',
+                        });
+
+                        $('.top').animate({
+                        	height : '5vw',
                         });
 
                         $('.top_nav').css({
