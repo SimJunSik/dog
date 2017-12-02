@@ -91,7 +91,7 @@
 		.mid_txt{
 			z-index: -1;
 			position: fixed;
-			top : 15%;
+			top : 30%;
 			left: 50%;
 
 			-webkit-transform: translate(-50%, 0%);
@@ -136,8 +136,8 @@
 				margin-top: 50%;
 				margin-bottom: 0%;
 			}
-			#team1, #team2, #team3, #team4, #team5{
-				display: none; /*  안보이게 설정 */
+			.team1, .team2, .team3, .team4, .team5{
+				 display: none; /*  안보이게 설정 */
 			}
 			.our_team{
 				width: 100%;

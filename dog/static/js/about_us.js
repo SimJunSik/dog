@@ -35,12 +35,13 @@
 
 
 				if(height > self_introduction_offset-100){
+					//var container_obj = document.getElementsByClassName('container');
 					if(flag2==0){
-						$('#team1').fadeIn(1000);
-						$('#team2').delay(500).fadeIn(1000);
-						$('#team3').delay(600).fadeIn(1000);
-						$('#team4').delay(700).fadeIn(1000);
-						$('#team5').delay(800).fadeIn(1000);
+						$('.team1').fadeIn(1000);
+						$('.team2').delay(500).fadeIn(1000);
+						$('.team3').delay(600).fadeIn(1000);
+						$('.team4').delay(700).fadeIn(1000);
+						$('.team5').delay(800).fadeIn(1000);
 						flag2=1;
 					}
 				}

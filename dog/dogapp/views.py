@@ -16,3 +16,11 @@ def AboutView(request) :
 	return render(request, './about_us.html')
 
 
+def StatsView(request) :
+
+	return render(request, './stats.html')
+
+
+def ShelterView(request) :
+
+	return render(request, './site.html')

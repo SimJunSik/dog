@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>통계자료</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
+    <script type="text/javascript" src="../../static/js/stats.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/stats.css">
+
+	
+</head>
+
+<body>
+	<script type="text/javascript">
+	
+</script>
+
+
+	<button onclick="topFunction()" id="topBtn" title="Go to top">TOP</button>
+
+	
+		<div class='top'>
+			<div class='top_logo'>
+				<img class='top_logo_img' src="../../static/img/logo_txt_color.png">	
+			</div>
+			<div class='top_nav'>
+				<a href="../"><span class="menu" id="w"> HOME </span></a>
+				<span class='menu_slash'> / </span>
+				<span class="menu" id="tmp"> 멍미테스트 </span>
+				<span class='menu_slash'> / </span>
+				<span class="menu" id="h"> MBTI </span>
+				<span class='menu_slash'> / </span>
+				<a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../shelter"><span class="menu" id="h"> 데려갈개 </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../about_us"><span class="menu"> 우린누구개 </span></a>
+
+			</div>
+		</div>
+
+
+	<div class='page'>	
+		<div class='vidBox'>
+			<video autoplay loop muted id="dogVid">
+				<source src='../../static/video/sleepy_dog.mp4' type='video/mp4'>
+					Your browser does not support HTML5 video.
+			</video>
+
+
+		</div>
+		<br><br>
+		<a href="#layer2" class="btn-example">유기견 퀴즈</a>
+		<div class="dim-layer">
+			    <div class="dimBg"></div>
+			    <div id="layer2" class="pop-layer">
+			        <div class="pop-container">
+			            <div class="pop-conts">
+			                <!--content //-->
+			                <p class="ctxt mb20">간단 OX 퀴즈<br> <br>
+					 	 	1. 반려견이 죽을 떄까지 사는 가족의 비율은 1/4 정도이다. <br>
+					 	 	x 10% 정도<br><br>
+						 	2. 포획된 유기견은 대부분 수용소에서 자연사한다. <br>
+						 	x 안락사<br><br>
+						 	3. 유기견은 휴가철에 더 많이 버려진다. <br>
+						 	o<br><br>
+						 	4. 현재 국내에서 반려견의 온라인 매매는 금지되어 있다. <br>
+						 	x 가능<br><br>
+			                </p>
+
+			                <div class="btn-r">
+			                    <a href="#" class="btn-layerClose">Close</a>
+			                </div>
+			                <!--// content-->
+			            </div>
+			        </div>
+			    </div>
+			</div>
+
+	</div>
+	
+			
+
+
+	<div class='page'>
+		<div class="hero-image">
+		  <div class="hero-text" >
+		    <h1>알고 계셨나요?</h1>
+		    <p style='color:red;'>우리나라 유기동물 현실</p>
+				
+		  </div>
+		</div>	
+	</div>
+
+	
+
+	<div class='page'>
+
+		<div class='stat_img' id='stat_img1' >
+			<div class='stat_img_1'>
+				<img id='stat_img1_1' src='../../static/img/stat1.png' style='width: 80%; position: absolute; top:60px; left:0;'>
+			</div>
+			<div class='stat_img_2'>
+				<img id='stat_img1_2' src='../../static/img/stat2.png' style='width: 80%; position: absolute; top:60px; left:0; visibility: hidden; transform: rotate(-2deg); transform-origin:center'>
+			</div>
+			<button id="showTruth1" onclick="showHidden1()" style='position:absolute;right:0;bottom:40%;'> 클릭해보세요</button>
+			
+		</div>
+	</div>
+
+	<div class='page'>
+		<div class='stat_img' id='stat_img2'>
+			<div class='stat_img_1'>			
+				<img id='stat_img2_1' src='../../static/img/stat2.png' style='width: 80%; position: absolute; top:60px; left:0;'>
+			</div>
+			<div class='stat_img_2'>		
+				<img id='stat_img2_2' src='../../static/img/stat4.png' style='width: 80%; position: absolute; top:60px; left:0; visibility: hidden; transform: rotate(-2deg); transform-origin:center'>
+			</div>
+			<button id="showTruth2" onclick="showHidden2()" style='position:absolute;right:0;bottom:40%;'> 클릭해보세요</button>
+		</div>
+	</div>
+
+	<div class='page'>
+		<div class='stat_img' id='stat_img3'>
+			<div class='stat_img_1'>			
+				<img id='stat_img3_1' src='../../static/img/stat4.png' style='width: 80%; position: absolute; top:60px; left:0;'>
+			</div>
+			<div class='stat_img_2'>						
+				<img id='stat_img3_2' src='../../static/img/stat2.png' style='width: 80%; position: absolute; top:60px; left:0; visibility: hidden; transform: rotate(-2deg); transform-origin:center'>
+			</div>
+			<button id="showTruth3" onclick="showHidden3()" style='position:absolute;right:0;bottom:40%;'> 클릭해보세요</button>	
+
+		</div>
+	</div>
+
+	<div class='page'>
+		<div class='stat_img' id='stat_img4'>
+			<div class='stat_img_1'>			
+				<img id='stat_img4_1' src='../../static/img/stat3.jpg' style='width: 80%; position: absolute; top:60px; left:0;'>
+			</div>
+			<div class='stat_img_2'>									
+				<img id='stat_img4_2' src='../../static/img/stat4.png' style='width: 80%; position: absolute; top:60px; left:0; visibility: hidden; transform: rotate(-2deg); transform-origin:center'>
+
+			</div>
+			<button id="showTruth4" style='position:absolute;right:0;bottom:40%;'> 클릭해보세요</button>	
+			
+
+		</div>
+			
+	</div>
+
+	<div class='page'>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<p> 당신은 어떻게 하시겠습니까?
+			<br>
+			<br>
+			<br>
+			<button id="showTruth4" >멍미테스트</button>	
+			
+			<a href="../shelter"><button id="showTruth4" >데려갈개</button>	<br></a>
+		</p>
+		
+	</div>
+
+
+</body>
+
+<script type="text/javascript">
+$('.btn-example').click(function(){
+        var $href = $(this).attr('href');
+        layer_popup($href);
+    });
+    function layer_popup(el){
+
+        var $el = $(el);        //레이어의 id를 $el 변수에 저장
+        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+
+        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+        var $elWidth = ~~($el.outerWidth()),
+            $elHeight = ~~($el.outerHeight()),
+            docWidth = $(document).width(),
+            docHeight = $(document).height();
+
+        // 화면의 중앙에 레이어를 띄운다.
+        if ($elHeight < docHeight || $elWidth < docWidth) {
+            $el.css({
+                marginTop: -$elHeight /2,
+                marginLeft: -$elWidth/2
+            })
+        } else {
+            $el.css({top: 0, left: 0});
+        }
+
+        $el.find('a.btn-layerClose').click(function(){
+            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+            return false;
+        });
+
+        $('.layer .dimBg').click(function(){
+            $('.dim-layer').fadeOut();
+            return false;
+        });
+
+    }
+</script>
+
+</html>
+
+
+
+
