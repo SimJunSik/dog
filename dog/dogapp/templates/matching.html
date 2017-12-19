@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<style type="text/css">
+	*{
+		margin: 0;
+	}
+		/*  상단 고정 메뉴바 css  */
+	
+    .top{
+      width: 100%;
+      position: fixed;     /*  화면상 위치 고정  */
+      z-index: 3;          /*  z값 결정  */
+      top : 0;
+      height: 5vw;
+      background-color: white;
+    }
+
+    .top_logo{
+      position: relative;
+      margin-top: 0.5vw;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      width: 30%;
+      text-align: center;
+      font-weight: 900;
+    }
+    .top_nav{  
+      position: relative;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 50%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      text-align: center;
+    }
+    .menu{
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
+      color: #B5996D;
+      font-size: 1vw;
+      font-weight: 900;
+    }
+    .menu:hover {
+      font-weight: 900;
+      font-size: 1vw;
+    }
+    .top_logo_img{
+      width: 14vw;
+      height: 2vw;
+      margin: 0;
+    }
+    .menu_slash{
+      color: #BDBDBD;
+      font-size: 1vw;
+    }
+    .top_logo_txt{
+      font-size: 2vw;
+      font-family: 'Clicker Script', cursive;
+      color: #B5996D;
+    }
+
+    .top_nav a{
+    	text-decoration: none;
+    }
+
+    .top_title{
+    	width: 100%;
+    	background-color: white;
+    	height: 5vw;
+    }
+
+    .logo_img_div{
+    	width: 80%;
+    	height: 100%;
+    	background-color: white;
+    	margin: auto;
+    	margin-top: 5%;
+    }
+
+    html{
+	  font-size: 62.5%;
+	}
+
+/*  end   */
+
+
+/*  middle  */
+	.middle{
+		width: 60%;
+		height: 63vw;
+		margin: auto;
+		background-color: black;
+	}
+
+	.question{
+		position: relative;
+		width: 100%;
+		height: 30vw;
+		background-color: black;
+	}
+
+	.question_stage{
+		width: 80%;
+		height: 2vw;
+		margin: auto;
+	}
+
+	.question_body{
+		position: absolute;
+		width: 70%;
+		height: 20vw;
+		margin: auto;
+		background-color: white;
+		left: 50%;
+		top: 50%;
+	    -webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	    -moz-transform: translate(-50%,-50%);
+	    -o-transform: translate(-50%, -50%);
+	    transform: translate(-50%, -50%);
+	}
+
+	button {
+		width: 3vw;
+		height: 3vw;
+		background-color: white;
+		border-radius: 50%;
+	}
+
+	button:hover {
+		background-color: yellow;
+	}
+
+
+	#question1{
+		display: block;
+	}
+
+	#question2, #question3, #question4, #question5, #question6, #question7{
+		display: none;
+	}
+
+/*  end  */
+
+/*  side  */
+	.side_bar{
+		width: 20%;
+		position: fixed;
+		right: 0;
+		height: 50%;
+		background-color: white; 
+	}
+
+	.side_bar_content{
+		width: 20%;
+		position: relative;
+		background-color: white;
+		height: 100%;
+	}
+
+	.sharing_icon{
+		width: 100%;
+		margin-bottom: 40%;
+		margin-left: 40%;
+	}
+/*  end  */
+
+/*  check box  */
+.checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
+  content: ' ';
+  display: inline-block;
+  width: 21px;  /* 체크박스의 너비를 지정 */
+  height: 21px;  /* 체크박스의 높이를 지정 */
+  line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
+  margin: -2px 8px 0 0;
+  text-align: center; 
+  vertical-align: middle;
+  background: #ffffff;
+  border: 4px solid #ffffff;
+  border-radius : 3px;
+  box-shadow: 0px 1px 2px rgba(255,255,255,0.5), inset 0px -15px 10px -12px rgba(255,255,255,0.5);
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label:active:before,
+.checks input[type="checkbox"]:checked + label:active:before {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+  font-size:16px;
+}
+
+.checks input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
+  content: '\2714';  /* 체크표시 유니코드 사용 */
+  color: #9FC93C;
+  text-shadow: 1px 1px #fff;
+  background: #9FC93C;
+  border-color: #9FC93C;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(0,0,0,0.1);
+  font-size:16px;
+}
+
+.checks.small input[type="checkbox"] + label {
+  font-size: 12px;
+}
+
+.checks.small input[type="checkbox"] + label:before {
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  font-size: 11px;
+}
+
+.checks.etrans input[type="checkbox"] + label {
+  padding-left: 30px;
+  font-size:16px;
+}
+.checks.etrans input[type="checkbox"] + label:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 0;
+  opacity: .6;
+  box-shadow: none;
+  border-color: #000000;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+  font-size:16px;
+}
+
+.checks.etrans input[type="checkbox"]:checked + label:before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity:1; 
+  background: transparent;
+  border-color:transparent #000000 #000000 transparent;
+  border-top-color:transparent;
+  border-left-color:transparent;
+  -ms-transform:rotate(45deg);
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+font-size:16px;
+}
+.checks.etrans{
+    font-size:16px;
+  }
+
+.no-csstransforms .checks.etrans input[type="checkbox"]:checked + label:before {
+  /*content:"\2713";*/
+  content: "\2714";
+  top: 0;
+  left: 0;
+  width: 21px;
+  line-height: 21px;
+  color: #000000;
+  text-align: center;
+  border: 1px solid #000000;
+
+/* end  */
+	</style>
+
+
+	<script type="text/javascript">
+		var flag3=0;
+
+$(window).scroll(function () {
+	/*  scroll 값  */
+	var height = $(document).scrollTop();
+
+
+
+	/*  상단 고정 메뉴바 이벤트  */
+                if(height > 100){
+                    if(flag3==0){
+                        $('.top').css("background-color", "#B5996D");
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_white.png");
+                        //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
+                        $('.menu').css("color", "#ffffff");
+                        
+                        $('.top_logo').animate({
+                            marginLeft : '10%',
+                        });
+
+                        $('.top_nav').animate({
+                            marginLeft : '80%',
+                            marginTop : '-2%'
+                        });
+
+                        $('.top').animate({
+                            height : '3vw',
+                        });
+
+                        $('.top_nav').css({
+                            /*
+                            '-webkit-transform' : 'translate(-50%, 0%)',
+                            '-ms-transform' : 'translate(-50%, 0%)',
+                            '-moz-transform' : 'translate(-50%, 0%)',
+                            '-o-transform' : 'translate(-50%, 0%)',
+                            'transform' : 'translate(-50%, 0%)'
+                            */
+                        });
+                        
+                        flag3=1;
+                    }
+                }
+
+                if(height < 100){
+                    if(flag3==1){
+                        $('.top').css("background-color", "white");
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
+                        //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
+                        $('.menu').css("color", "#B5996D");
+                        
+
+                        $('.top_logo').animate({
+                            marginLeft : '50%',
+                        });
+
+                        $('.top_nav').animate({
+                            marginLeft: '50%',
+                            marginTop : '-0%'
+                        });
+
+                        $('.top').animate({
+                            height : '5vw',
+                        });
+
+                        $('.top_nav').css({
+                            '-webkit-transform' : 'translate(-50%, 0%)',
+                            '-ms-transform' : 'translate(-50%, 0%)',
+                            '-moz-transform' : 'translate(-50%, 0%)',
+                            '-o-transform' : 'translate(-50%, 0%)',
+                            'transform' : 'translate(-50%, 0%)'
+                        });
+                        flag3=0;
+                    }
+                }
+});
+	</script>
+</head>
+<body>
+	<!--  상단 고졍 메뉴바 div  -->
+	<div class='top'>
+			<div class='top_logo'>
+				<img class='top_logo_img' src="../../static/img/logo_txt_color.png">	
+			</div>
+			<div class='top_nav'>
+				<a href="../"><span class="menu" id="w"> HOME </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../matching"><span class="menu" id="tmp"> 멍미테스트 </span></a>
+				<span class='menu_slash'> / </span>
+				<span class="menu" id="h"> MBTI </span>
+				<span class='menu_slash'> / </span>
+				<a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../shelter"><span class="menu" id="h"> 데려갈개 </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../about_us"><span class="menu"> 우린누구개 </span></a>
+
+			</div>
+	</div>
+
+	<div class="top_title">
+		<div class="logo_img_div">
+			<p style="font-size: 1.5vw; font-weight: 900;">
+			<img src="../../static/img/logo_img_color.png" align="middle" style="width: 5vw; height: auto;">
+			MATCHING
+			</p>
+		</div>
+	</div>
+
+
+	<div class="side_bar">
+		<div class="side_bar_content">
+			<div class="sharing_icon">
+				<img class='contact_sns_icon' src="../../static/img/facebook_img3.png" align="middle" style="width: 50%;">
+			</div>
+			<div class="sharing_icon">
+				<img class='contact_sns_icon' src="../../static/img/kakao_img3.png" align="middle"  style="width: 50%;">
+			</div>
+			<div class="sharing_icon">
+				<img class='contact_sns_icon' src="../../static/img/twitter_img.png" align="middle"  style="width: 50%;">
+			</div>
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="heart_rate" style="position: relative; width: 100%; background-color: black; height: 25vw;">
+			<div style="height: 100%; width: 33%; float: left; background-color: black;">
+				<img src="../../static/img/human.png" style="max-width: 100%; height: auto;">
+			</div>
+			<div style="height: 100%; width: 33%; float: left; background-color: black;">
+				<img id="heart_rate_img" src="../../static/img/test1.gif" style="max-width: 100%; height: auto; margin-top: 20%;">
+			</div>
+			<div style="height: 100%; width: 33%; float: left; background-color: black;">
+				<img src="../../static/img/dog.png" style="max-width: 100%; height: auto;">
+			</div>
+		</div>
+		<div class="question">
+			<div class="question_stage">
+				<table style="width: 100%; text-align: center;">
+					<tr>
+						<td>
+							<button id="question1_btn" onclick="question_change('1')"> 1 </button>
+						</td>
+						<td>
+							<button id="question2_btn" onclick="question_change('2')"> 2 </button>
+						</td>
+						<td>
+							<button id="question3_btn" onclick="question_change('3')"> 3 </button>
+						</td>
+						<td>
+							<button id="question4_btn" onclick="question_change('4')"> 4 </button>
+						</td>
+						<td>
+							<button id="question5_btn" onclick="question_change('5')"> 5 </button>
+						</td>
+						<td>
+							<button id="question6_btn" onclick="question_change('6')"> 6 </button>
+						</td>
+						<td>
+							<button id="question7_btn" onclick="question_change('7')"> 7 </button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="question_body">
+				<div class="question_content" id="question1">
+					<div class="question_title" style="width: 100%; height: 2vw; text-align: center;">
+						<span style="font-size: 24px;">
+							QUESTION1
+						</span>
+					</div>
+					<form>
+						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
+							<input type=checkbox id="q1_answer1" name="question1" onclick="question_ch(this, '1')">
+							<label for="q1_answer1">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER1</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q1_answer2"  name="question1" onclick="question_ch(this, '1')">
+							<label for="q1_answer2">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER2</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q1_answer3" name="question1" onclick="question_ch(this, '1')">
+							<label for="q1_answer3">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER3</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q1_answer4" name="question1" onclick="question_ch(this, '1')">
+							<label for="q1_answer4">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER4</h4>
+		                    </label>
+	                    </div>
+					</form>
+				</div>
+
+
+				<div class="question_content" id="question2">
+					<div class="question_title" style="width: 100%; height: 2vw; text-align: center;">
+						<span style="font-size: 24px;">
+							QUESTION2
+						</span>
+					</div>
+					<form>
+						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
+							<input type=checkbox id="q2_answer1" name="question2" onclick="question_ch(this, '2')">
+							<label for="q2_answer1">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER1</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q2_answer2"  name="question2" onclick="question_ch(this, '2')">
+							<label for="q2_answer2">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER2</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q2_answer3" name="question2" onclick="question_ch(this, '2')">
+							<label for="q2_answer3">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER3</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q2_answer4" name="question2" onclick="question_ch(this, '2')">
+							<label for="q2_answer4">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER4</h4>
+		                    </label>
+	                    </div>
+					</form>
+				</div>
+
+
+				<div class="question_content" id="question3">
+					<div class="question_title" style="width: 100%; height: 2vw; text-align: center;">
+						<span style="font-size: 24px;">
+							QUESTION3
+						</span>
+					</div>
+					<form>
+						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
+							<input type=checkbox id="q3_answer1" name="question3" onclick="question_ch(this, '3')">
+							<label for="q3_answer1">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER1</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q3_answer2"  name="question3" onclick="question_ch(this, '3')">
+							<label for="q3_answer2">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER2</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q3_answer3" name="question3" onclick="question_ch(this, '3')">
+							<label for="q3_answer3">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER3</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q3_answer4" name="question3" onclick="question_ch(this, '3')">
+							<label for="q3_answer4">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER4</h4>
+		                    </label>
+	                    </div>
+					</form>
+				</div>
+
+
+
+				<div class="question_content" id="question4">
+					<div class="question_title" style="width: 100%; height: 2vw; text-align: center;">
+						<span style="font-size: 24px;">
+							QUESTION4
+						</span>
+					</div>
+					<form>
+						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
+							<input type=checkbox id="q4_answer1" name="question4" onclick="question_ch(this, '4')">
+							<label for="q4_answer1">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER1</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q4_answer2"  name="question4" onclick="question_ch(this, '4')">
+							<label for="q4_answer2">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER2</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q4_answer3" name="question4" onclick="question_ch(this, '4')">
+							<label for="q4_answer3">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER3</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q4_answer4" name="question4" onclick="question_ch(this, '4')">
+							<label for="q4_answer4">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER4</h4>
+		                    </label>
+	                    </div>
+					</form>
+				</div>
+
+
+
+				<div class="question_content" id="question5">
+					<div class="question_title" style="width: 100%; height: 2vw; text-align: center;">
+						<span style="font-size: 24px;">
+							QUESTION5
+						</span>
+					</div>
+					<form>
+						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
+							<input type=checkbox id="q5_answer1" name="question5" onclick="question_ch(this, '5')">
+							<label for="q5_answer1">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER1</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q5_answer2"  name="question5" onclick="question_ch(this, '5')">
+							<label for="q5_answer2">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER2</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q5_answer3" name="question5" onclick="question_ch(this, '5')">
+							<label for="q5_answer3">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER3</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q5_answer4" name="question5" onclick="question_ch(this, '5')">
+							<label for="q5_answer4">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER4</h4>
+		                    </label>
+	                    </div>
+					</form>
+				</div>
+
+
+
+				<div class="question_content" id="question6">
+					<div class="question_title" style="width: 100%; height: 2vw; text-align: center;">
+						<span style="font-size: 24px;">
+							QUESTION6
+						</span>
+					</div>
+					<form>
+						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
+							<input type=checkbox id="q6_answer1" name="question6" onclick="question_ch(this, '6')">
+							<label for="q6_answer1">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER1</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q6_answer2"  name="question6" onclick="question_ch(this, '6')">
+							<label for="q6_answer2">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER2</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q6_answer3" name="question6" onclick="question_ch(this, '6')">
+							<label for="q6_answer3">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER3</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q6_answer4" name="question6" onclick="question_ch(this, '6')">
+							<label for="q6_answer4">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER4</h4>
+		                    </label>
+	                    </div>
+					</form>
+				</div>
+
+
+
+				<div class="question_content" id="question7">
+					<div class="question_title" style="width: 100%; height: 2vw; text-align: center;">
+						<span style="font-size: 24px;">
+							QUESTION7
+						</span>
+					</div>
+					<form>
+						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
+							<input type=checkbox id="q7_answer1" name="question7" onclick="question_ch(this, '7')">
+							<label for="q7_answer1">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER1</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q7_answer2"  name="question7" onclick="question_ch(this, '7')">
+							<label for="q7_answer2">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER2</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q7_answer3" name="question7" onclick="question_ch(this, '7')">
+							<label for="q7_answer3">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER3</h4>
+		                    </label>
+		                    <br><br><br>
+		                    <input type=checkbox id="q7_answer4" name="question7" onclick="question_ch(this, '7')">
+							<label for="q7_answer4">
+		                            <style>
+		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+		                                h4 {font-family: 'Hanna';}
+		                            </style>
+		                            <h4>ANSWER4</h4>
+		                    </label>
+	                    </div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="submit_btn_div" style="width: 80%; margin: auto; height: 2vw; background-color: black; text-align: center;">
+			<button id="submit_btn" onclick="submit_func()" style="width: 100px; height: 100px;" disabled="true">SUBMIT</button>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var idx = 2;
+		var check_cnt = 0;
+		var add_flag = 0;
+		var minus_flag = 0;
+		function submit_func(){
+			alert("submit!");
+		}
+
+		function question_ch(a, num){
+        
+		        var obj = document.getElementsByName("question" + num);
+
+		        for(var i=0; i<obj.length; i++){
+
+		            if(obj[i] != a){
+
+		                obj[i].checked = false;
+
+		            }
+
+		        }
+
+
+		        add_flag = 0;
+
+		        for(var i=1; i<=7; i++){
+		        	var cnt = 0;
+					var obj = document.getElementsByName("question" + num);
+					for(var j=0; j<obj.length; j++){
+
+			            if(obj[j].checked == true){
+			                $('#question' + num + '_btn').css('background-color', '#B5996D');
+			                cnt++;
+			                if(add_flag == 0){
+			                	if(check_cnt <=7){				             
+					                check_cnt++;
+					            }
+				                add_flag=1;
+				            }
+
+				     		if(check_cnt == 7){
+				                $('#submit_btn').attr("disabled", false);
+				                $('#heart_rate_img').attr('src', '../../static/img/test' + String(6) + '.gif');
+				            }
+				            else{
+				                $('#heart_rate_img').attr('src', '../../static/img/test' + String(check_cnt) + '.gif');
+				            }
+			                break;
+			            }
+
+			        }
+
+			        if(cnt == 0){
+			        	$('#question' + num + '_btn').css('background-color', 'white');
+			        	if(minus_flag == 0){
+			        		check_cnt--;
+			        		minus_flag=1;
+			        	}
+			        	$('#heart_rate_img').attr('src', '../../static/img/test' + String(check_cnt) + '.gif');
+			        }
+				}
+		        
+		}
+
+		function question_change(num){
+			$(".question_content").css('display', 'none');
+			$("#question" + num).css('display', 'block');
+		}
+
+	</script>
+</body>
+</html>

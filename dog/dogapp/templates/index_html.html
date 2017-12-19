@@ -579,9 +579,16 @@ body {font-family: Verdana,sans-serif;margin:0}
 			<div class='top_nav'>
 				<a href="../"><span class="menu" id="w"> HOME </span></a>
 				<span class='menu_slash'> / </span>
-				<span class="menu" id="tmp"> 멍미테스트 </span>
+				<a href="../matching"><span class="menu" id="tmp"> 멍미테스트 </span></a>
 				<span class='menu_slash'> / </span>
-				<span class="menu" id="h"> MBTI </span>
+				<!--
+				{% if user.id_str == 'unknown' %}
+					<a href="../login"><span class="menu" id="h"> LOGIN </span></a>
+				{% else %}
+					<a href="../"><span class="menu" id="h"> LOGOUT </span></a>
+				{% endif %}
+				-->
+				<a href="../"><span class="menu" id="h"> MBTI </span></a>
 				<span class='menu_slash'> / </span>
 				<a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
 				<span class='menu_slash'> / </span>

@@ -8,3 +8,15 @@ class Dog(models.Model) :
 
 	def __str__(self) :
 		return self.name
+
+
+class User(models.Model) :
+
+	id_str = models.CharField(max_length=20)
+
+	psw_str = models.CharField(max_length=20)
+
+	auth = models.IntegerField(default=1)
+
+	def __str__(self) :
+		return self.id_str

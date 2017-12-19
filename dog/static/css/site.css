@@ -66,6 +66,20 @@
     	text-decoration: none;
     }
 
+    .top_title{
+    	width: 100%;
+    	background-color: white;
+    	height: 5vw;
+    }
+
+    .logo_img_div{
+    	width: 80%;
+    	height: 100%;
+    	background-color: white;
+    	margin: auto;
+    	margin-top: 5%;
+    }
+
 
 .title_content {
  	background: pink;
