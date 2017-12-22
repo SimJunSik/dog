@@ -78,3 +78,21 @@ def validate_username(request):
     if data['is_taken']:
         data['error_message'] = '이미 존재하는 ID입니다.'
     return JsonResponse(data)
+
+
+
+def result_dog(request) :
+
+	select = []
+
+	for i in range(1,8) :
+		tmp = request.POST['question' + str(i)]
+		select.append(tmp)
+
+	print(select)
+
+	data = {
+		'result' : 'bichon'
+	}
+
+	return JsonResponse(data)

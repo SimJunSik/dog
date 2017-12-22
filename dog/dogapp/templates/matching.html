@@ -460,15 +460,17 @@ $(window).scroll(function () {
 				</table>
 			</div>
 			<div class="question_body">
+				<form method="post" action="" id="question_form" name="question_form">
+					{% csrf_token %}
 				<div class="question_content" id="question1">
 					<div class="question_title" style="width: 100%; height: 2vw; text-align: center;">
 						<span style="font-size: 24px;">
 							QUESTION1
 						</span>
 					</div>
-					<form>
+
 						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
-							<input type=checkbox id="q1_answer1" name="question1" onclick="question_ch(this, '1')">
+							<input type=checkbox id="q1_answer1" name="question1" onclick="question_ch(this, '1')" value="1">
 							<label for="q1_answer1">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -477,7 +479,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER1</h4>
 		                    </label>
 		                    <br>
-		                    <input type=checkbox id="q1_answer2"  name="question1" onclick="question_ch(this, '1')">
+		                    <input type=checkbox id="q1_answer2"  name="question1" onclick="question_ch(this, '1')" value="2">
 							<label for="q1_answer2">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -486,7 +488,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER2</h4>
 		                    </label>
 		                    <br>
-		                    <input type=checkbox id="q1_answer3" name="question1" onclick="question_ch(this, '1')">
+		                    <input type=checkbox id="q1_answer3" name="question1" onclick="question_ch(this, '1')" value="3">
 							<label for="q1_answer3">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -495,7 +497,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER3</h4>
 		                    </label>
 		                    <br>
-		                    <input type=checkbox id="q1_answer4" name="question1" onclick="question_ch(this, '1')">
+		                    <input type=checkbox id="q1_answer4" name="question1" onclick="question_ch(this, '1')" value="4">
 							<label for="q1_answer4">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -504,7 +506,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER4</h4>
 		                    </label>
 	                    </div>
-					</form>
+
 				</div>
 
 
@@ -514,9 +516,9 @@ $(window).scroll(function () {
 							QUESTION2
 						</span>
 					</div>
-					<form>
+		
 						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
-							<input type=checkbox id="q2_answer1" name="question2" onclick="question_ch(this, '2')">
+							<input type=checkbox id="q2_answer1" name="question2" onclick="question_ch(this, '2')" value="1">
 							<label for="q2_answer1">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -524,8 +526,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER1</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q2_answer2"  name="question2" onclick="question_ch(this, '2')">
+		                    <br>
+		                    <input type=checkbox id="q2_answer2"  name="question2" onclick="question_ch(this, '2')" value="2">
 							<label for="q2_answer2">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -533,8 +535,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER2</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q2_answer3" name="question2" onclick="question_ch(this, '2')">
+		                    <br>
+		                    <input type=checkbox id="q2_answer3" name="question2" onclick="question_ch(this, '2')" value="3">
 							<label for="q2_answer3">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -542,8 +544,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER3</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q2_answer4" name="question2" onclick="question_ch(this, '2')">
+		                    <br>
+		                    <input type=checkbox id="q2_answer4" name="question2" onclick="question_ch(this, '2')" value="4">
 							<label for="q2_answer4">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -552,7 +554,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER4</h4>
 		                    </label>
 	                    </div>
-					</form>
+	
 				</div>
 
 
@@ -562,9 +564,9 @@ $(window).scroll(function () {
 							QUESTION3
 						</span>
 					</div>
-					<form>
+
 						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
-							<input type=checkbox id="q3_answer1" name="question3" onclick="question_ch(this, '3')">
+							<input type=checkbox id="q3_answer1" name="question3" onclick="question_ch(this, '3')" value="1">
 							<label for="q3_answer1">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -572,8 +574,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER1</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q3_answer2"  name="question3" onclick="question_ch(this, '3')">
+		                    <br>
+		                    <input type=checkbox id="q3_answer2"  name="question3" onclick="question_ch(this, '3')" value="2">
 							<label for="q3_answer2">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -581,8 +583,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER2</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q3_answer3" name="question3" onclick="question_ch(this, '3')">
+		                    <br>
+		                    <input type=checkbox id="q3_answer3" name="question3" onclick="question_ch(this, '3')" value="3">
 							<label for="q3_answer3">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -590,8 +592,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER3</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q3_answer4" name="question3" onclick="question_ch(this, '3')">
+		                    <br>
+		                    <input type=checkbox id="q3_answer4" name="question3" onclick="question_ch(this, '3')" value="4">
 							<label for="q3_answer4">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -600,7 +602,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER4</h4>
 		                    </label>
 	                    </div>
-					</form>
+		
 				</div>
 
 
@@ -611,9 +613,9 @@ $(window).scroll(function () {
 							QUESTION4
 						</span>
 					</div>
-					<form>
+			
 						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
-							<input type=checkbox id="q4_answer1" name="question4" onclick="question_ch(this, '4')">
+							<input type=checkbox id="q4_answer1" name="question4" onclick="question_ch(this, '4')" value="1">
 							<label for="q4_answer1">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -621,8 +623,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER1</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q4_answer2"  name="question4" onclick="question_ch(this, '4')">
+		                    <br>
+		                    <input type=checkbox id="q4_answer2"  name="question4" onclick="question_ch(this, '4')" value="2">
 							<label for="q4_answer2">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -630,8 +632,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER2</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q4_answer3" name="question4" onclick="question_ch(this, '4')">
+		                    <br>
+		                    <input type=checkbox id="q4_answer3" name="question4" onclick="question_ch(this, '4')" value="3">
 							<label for="q4_answer3">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -639,8 +641,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER3</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q4_answer4" name="question4" onclick="question_ch(this, '4')">
+		                    <br>
+		                    <input type=checkbox id="q4_answer4" name="question4" onclick="question_ch(this, '4')" value="4">
 							<label for="q4_answer4">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -649,7 +651,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER4</h4>
 		                    </label>
 	                    </div>
-					</form>
+	
 				</div>
 
 
@@ -660,9 +662,9 @@ $(window).scroll(function () {
 							QUESTION5
 						</span>
 					</div>
-					<form>
+	
 						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
-							<input type=checkbox id="q5_answer1" name="question5" onclick="question_ch(this, '5')">
+							<input type=checkbox id="q5_answer1" name="question5" onclick="question_ch(this, '5')" value="1">
 							<label for="q5_answer1">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -670,8 +672,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER1</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q5_answer2"  name="question5" onclick="question_ch(this, '5')">
+		                    <br>
+		                    <input type=checkbox id="q5_answer2"  name="question5" onclick="question_ch(this, '5')" value="2">
 							<label for="q5_answer2">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -679,8 +681,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER2</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q5_answer3" name="question5" onclick="question_ch(this, '5')">
+		                    <br>
+		                    <input type=checkbox id="q5_answer3" name="question5" onclick="question_ch(this, '5')" value="3">
 							<label for="q5_answer3">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -688,8 +690,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER3</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q5_answer4" name="question5" onclick="question_ch(this, '5')">
+		                    <br>
+		                    <input type=checkbox id="q5_answer4" name="question5" onclick="question_ch(this, '5')" value="4">
 							<label for="q5_answer4">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -698,7 +700,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER4</h4>
 		                    </label>
 	                    </div>
-					</form>
+	
 				</div>
 
 
@@ -709,9 +711,9 @@ $(window).scroll(function () {
 							QUESTION6
 						</span>
 					</div>
-					<form>
+	
 						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
-							<input type=checkbox id="q6_answer1" name="question6" onclick="question_ch(this, '6')">
+							<input type=checkbox id="q6_answer1" name="question6" onclick="question_ch(this, '6')" value="1">
 							<label for="q6_answer1">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -719,8 +721,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER1</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q6_answer2"  name="question6" onclick="question_ch(this, '6')">
+		                    <br>
+		                    <input type=checkbox id="q6_answer2"  name="question6" onclick="question_ch(this, '6')" value="2">
 							<label for="q6_answer2">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -728,8 +730,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER2</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q6_answer3" name="question6" onclick="question_ch(this, '6')">
+		                    <br>
+		                    <input type=checkbox id="q6_answer3" name="question6" onclick="question_ch(this, '6')" value="3">
 							<label for="q6_answer3">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -737,8 +739,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER3</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q6_answer4" name="question6" onclick="question_ch(this, '6')">
+		                    <br>
+		                    <input type=checkbox id="q6_answer4" name="question6" onclick="question_ch(this, '6')" value="4">
 							<label for="q6_answer4">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -747,7 +749,7 @@ $(window).scroll(function () {
 		                            <h4>ANSWER4</h4>
 		                    </label>
 	                    </div>
-					</form>
+
 				</div>
 
 
@@ -758,9 +760,9 @@ $(window).scroll(function () {
 							QUESTION7
 						</span>
 					</div>
-					<form>
+
 						<div class="checks etrans" style="margin-bottom: -20px; margin-top: -0px;">
-							<input type=checkbox id="q7_answer1" name="question7" onclick="question_ch(this, '7')">
+							<input type=checkbox id="q7_answer1" name="question7" onclick="question_ch(this, '7')" value="1">
 							<label for="q7_answer1">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -768,8 +770,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER1</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q7_answer2"  name="question7" onclick="question_ch(this, '7')">
+		                    <br>
+		                    <input type=checkbox id="q7_answer2"  name="question7" onclick="question_ch(this, '7')" value="2">
 							<label for="q7_answer2">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -777,8 +779,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER2</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q7_answer3" name="question7" onclick="question_ch(this, '7')">
+		                    <br>
+		                    <input type=checkbox id="q7_answer3" name="question7" onclick="question_ch(this, '7')" value="3">
 							<label for="q7_answer3">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -786,8 +788,8 @@ $(window).scroll(function () {
 		                            </style>
 		                            <h4>ANSWER3</h4>
 		                    </label>
-		                    <br><br><br>
-		                    <input type=checkbox id="q7_answer4" name="question7" onclick="question_ch(this, '7')">
+		                    <br>
+		                    <input type=checkbox id="q7_answer4" name="question7" onclick="question_ch(this, '7')" value="4">
 							<label for="q7_answer4">
 		                            <style>
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
@@ -796,12 +798,14 @@ $(window).scroll(function () {
 		                            <h4>ANSWER4</h4>
 		                    </label>
 	                    </div>
-					</form>
+
 				</div>
+
+					<div class="submit_btn_div" style="width: 80%; margin: auto; height: 2vw; text-align: center;">
+						<input type="button" id="submit_btn" name="submit_btn" style="width: 100px; height: 100px;" disabled="true" value="submit">
+					</div>
+				</form>
 			</div>
-		</div>
-		<div class="submit_btn_div" style="width: 80%; margin: auto; height: 2vw; background-color: black; text-align: center;">
-			<button id="submit_btn" onclick="submit_func()" style="width: 100px; height: 100px;" disabled="true">SUBMIT</button>
 		</div>
 	</div>
 
@@ -811,8 +815,43 @@ $(window).scroll(function () {
 		var add_flag = 0;
 		var minus_flag = 0;
 		function submit_func(){
-			alert("submit!");
+			//alert("submit!");
+
+			$.ajax({
+			        url: '../result_dog/',
+			        data: {
+			          'select': select
+			        },
+			        dataType: 'json',
+			        success: function (data) {
+			          	//alert(data.is_taken);
+			        }
+			 });
 		}
+
+			$(document).ready(function() 
+			{
+				$("#submit_btn").click(function()
+				{
+					var formData = $("#question_form").serialize();
+		 
+					$.ajax({
+			 					type : "POST",
+			 					url : "../result_dog/",
+			 					cache : false,
+			 					data : formData,
+			 					error : onError,
+			 					success: function (data) {
+						          //alert(data.result);
+						          alert("success");
+						        }
+					});
+				});
+			});
+
+			function onSuccess(json, status){alert($.trim(json));}
+			function onError(data, status){alert("error");}
+
 
 		function question_ch(a, num){
         
@@ -840,10 +879,11 @@ $(window).scroll(function () {
 			                $('#question' + num + '_btn').css('background-color', '#B5996D');
 			                cnt++;
 			                if(add_flag == 0){
-			                	if(check_cnt <=7){				             
+			                	if(check_cnt < 7){				             
 					                check_cnt++;
 					            }
 				                add_flag=1;
+				                minus_flag=0;
 				            }
 
 				     		if(check_cnt == 7){
@@ -876,5 +916,6 @@ $(window).scroll(function () {
 		}
 
 	</script>
+
 </body>
 </html>
