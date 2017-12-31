@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=Edge"> 
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+   <link rel="stylesheet" type="text/css" href="../../static/css/site.css">
+   <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Copse|Luckiest+Guy|Racing+Sans+One" rel="stylesheet">
+
+
+   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+   <style type="text/css">
+      .area{
+         position: relative;
+         width: 100%;
+         height: 400px;
+         display : none;
+      }
+   </style>
+   <script type="text/javascript">
+    var flag3 = 0;
+  
+      function test2(name){
+         $('.area').css('display', 'none');
+         $('#' + name).css('display', 'block');
+      }
+
+  (function ()
+{
+    function k(a, b, c)
+    {
+        if (a.addEventListener) {
+            a.addEventListener(b, c, false);
+        }
+        else {
+            a.attachEvent && a.attachEvent("on" + b, c);
+        }
+    }
+    function g(a)
+    {
+        if (typeof window.onload != "function")
+        {
+            window.onload = a;
+        }
+        else {
+            var b = window.onload;
+            window.onload = function ()
+            {
+                b();
+                a()
+            }
+        }
+    }
+    function h()
+    {
+        var a = {};
+        for (type in {
+            Top : "", Left : ""
+        })
+        {
+            var b = type == "Top" ? "Y" : "X";
+            if (typeof window["page" + b + "Offset"] != "undefined") {
+                a[type.toLowerCase()] = window["page" + b + "Offset"];
+            }
+            else
+            {
+                b = document.documentElement.clientHeight ? document.documentElement : document.body;
+                a[type.toLowerCase()] = b["scroll" + type];
+            }
+        }
+        return a
+    }
+    function l()
+    {
+        var a = document.body, b;
+        if (window.innerHeight) {
+            b = window.innerHeight;
+        }
+        else if (a.parentElement.clientHeight) {
+            b = a.parentElement.clientHeight;
+        }
+        else if (a && a.clientHeight) {
+            b = a.clientHeight;
+        }
+        return b
+    }
+    function i(a)
+    {
+        this.parent = document.body;
+        this.createEl(this.parent, a);
+        this.size = Math.random() * 4 + 4;
+        this.el.style.width = Math.round(this.size) + "px";
+        this.el.style.height = Math.round(this.size) + "px";
+        this.maxLeft = document.body.offsetWidth - this.size;
+        this.maxTop = document.body.offsetHeight - this.size;
+        this.left = Math.random() * this.maxLeft;
+        this.top = h().top + 1;
+        this.angle = 1.4 + 0.2 * Math.random();
+        this.minAngle = 1.4;
+        this.maxAngle = 1.6;
+        this.angleDelta = 0.01 * Math.random();
+        this.speed = 4 + Math.random()
+    }
+    var j = false;
+    g(function ()
+    {
+        j = true;
+    });
+    var f = true;
+    window.createSnow = function (a, b)
+    {
+        if (j)
+        {
+            var c = [], m = setInterval(function ()
+            {
+                f && b > c.length && Math.random() < b * 0.0025 && c.push(new i(a));
+                !f && !c.length && clearInterval(m);
+                //var dog_poster_offset_top = $('.dog_poster').offset().top;
+                var map_offset_top = $('.map_div').offset().top;
+
+
+                for (var e = h().top, n = l(), d = c.length - 1; d >= 0; d--) 
+                  if (c[d]) if (c[d].top < e || c[d].top + c[d].size + 1 > e + n || c[d].top > map_offset_top) {
+                    c[d].remove();
+                    c[d] = null;
+                    c.splice(d, 1)
+                }
+                else {
+                    c[d].move();
+                    c[d].draw();
+                }
+            }, 40);
+            k(window, "scroll", function ()
+            {
+                for (var e = c.length - 1; e >= 0; e--) {
+                    c[e].draw();
+                }
+            })
+        }
+        else {
+            g(function () 
+            {
+                createSnow(a, b);
+            });
+        }
+    };
+    window.removeSnow = function ()
+    {
+        f = false;
+    };
+    i.prototype = 
+    {
+        createEl : function (a, b)
+        {
+            this.el = document.createElement("img");
+            this.el.setAttribute("src", b + "../../static/img/snow" + Math.floor(Math.random() * 4) + ".gif");
+            this.el.style.position = "absolute";
+            this.el.style.display = "block";
+            this.el.style.zIndex = "99999";
+            this.parent.appendChild(this.el)
+        },
+        move : function ()
+        {
+            if (this.angle < this.minAngle || this.angle > this.maxAngle) {
+                this.angleDelta =- this.angleDelta;
+            }
+            this.angle += this.angleDelta;
+            this.left += this.speed * Math.cos(this.angle * Math.PI);
+            this.top -= this.speed * Math.sin(this.angle * Math.PI);
+            if (this.left < 0) {
+                this.left = this.maxLeft;
+            }
+            else if (this.left > this.maxLeft) {
+                this.left = 0;
+            }
+        },
+        draw : function ()
+        {
+            this.el.style.top = Math.round(this.top) + "px";
+            this.el.style.left = Math.round(this.left) + "px";
+        },
+        remove : function ()
+        {
+            this.parent.removeChild(this.el);
+            this.parent = this.el = null;
+        }
+    }
+})
+();
+
+    createSnow('./', 500);
+</script>
+<script>
+    var index = 1;
+    var delay = 1000;
+    function move(idx) {
+          $("#dog_img" + idx).animate({
+              opacity : 1
+          }, delay);
+          $("#dog_img" + idx).animate({
+              opacity : 0
+          }, delay);
+
+
+          index++;
+          if(index > 5){
+            index=1;
+          }
+          setTimeout(function(){
+              move(index);
+          }, delay*2);
+    }
+
+    move(index);
+
+
+    /*  scroll 이벤트 관리 변수 */
+    var flag3 = 0;
+
+
+    /*  scroll 이벤트  */
+    $(window).scroll(function () {
+
+        /*  scroll 값  */
+        var height = $(document).scrollTop();
+
+
+
+
+
+
+
+                  /*  상단 고정 메뉴바 이벤트  */
+                if(height > 100){
+                    if(flag3==0){
+                        $('.top').css("background-color", "#B5996D");
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_white.png");
+                        //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
+                        $('.menu').css("color", "#ffffff");
+                        
+                        $('.top_logo').animate({
+                          marginLeft : '10%',
+                        });
+
+                        $('.top_nav').animate({
+                          marginLeft : '80%',
+                          marginTop : '-2%'
+                        });
+
+                        $('.top').animate({
+                          height : '3vw',
+                        });
+
+            
+                        flag3=1;
+                    }
+                }
+
+                if(height < 100){
+                    if(flag3==1){
+                        $('.top').css("background-color", "white");
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
+                        //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
+                        $('.menu').css("color", "#B5996D");
+                        
+
+                        $('.top_logo').animate({
+                          marginLeft : '50%',
+                        });
+
+                        $('.top_nav').animate({
+                          marginLeft: '50%',
+                          marginTop : '-0%'
+                        });
+
+                        $('.top').animate({
+                          height : '5vw',
+                        });
+
+                        $('.top_nav').css({
+                          '-webkit-transform' : 'translate(-50%, 0%)',
+                '-ms-transform' : 'translate(-50%, 0%)',
+                '-moz-transform' : 'translate(-50%, 0%)',
+                '-o-transform' : 'translate(-50%, 0%)',
+                'transform' : 'translate(-50%, 0%)'
+                        });
+                        flag3=0;
+                    }
+                }
+    });
+</script>
+
+
+<style type="text/css">
+  #dog_img1, #dog_img2, #dog_img3, #dog_img4, #dog_img5{
+    display: block;
+    opacity: 0;
+  }
+
+</style>
+
+   <title>site link</title>
+</head>
+
+
+<body>
+  
+   <div class='top'>
+      <div class='top_logo'>
+        <img class='top_logo_img' src="../../static/img/logo_txt_color.png">  
+      </div>
+      <div class='top_nav'>
+        <a href="../"><span class="menu" id="w"> HOME </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../matching"><span class="menu" id="tmp"> 멍미테스트 </span></a>
+        <span class='menu_slash'> / </span>
+        <span class="menu" id="h"> MBTI </span>
+        <span class='menu_slash'> / </span>
+        <a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../"><span class="menu" id="h"> 데려갈개 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../about_us"><span class="menu"> 우린누구개 </span></a>
+
+      </div>
+  </div>
+
+    <div class="top_title">
+      <div class="logo_img_div">
+        <p style="font-size: 1.5vw; font-weight: 900;">
+        <img src="../../static/img/logo_img_color.png" align="middle" style="width: 5vw; height: auto;">
+        데려갈개
+        </p>
+      </div>
+    </div>
+   <!-- title 주는것   -->
+<br>
+<div class="slider" style="width: 100% height : 450px; background-color: #6C6C6C; z-index: 1; ">
+   <div class="sider_content" style='width:45%; height:400px; background-color:#FFF5E6; text-align: center; margin: auto; z-index: 1;'>
+      <div style='position: absolute;  z-index: 3; left: 50%;
+          -webkit-transform: translate(-50%, -2%);
+          -ms-transform: translate(-50%, -2%);
+          -moz-transform: translate(-50%, -2%);
+          -o-transform: translate(-50%,-2%);
+          transform: translate(-50%, -2%); width: 35%;'>
+         <img src="../../static/img/televison1.png" alt="" style="width: 100%;">
+      </div>      
+      <div id="slider" style='width:20%; position:absolute; z-index:2;
+       left: 50%; margin-top: 4%;
+          -webkit-transform: translate(-50%, 10%);
+          -ms-transform: translate(-50%, 10%);
+          -moz-transform: translate(-50%, 10%);
+          -o-transform: translate(-50%, 10%);
+          transform: translate(-50%, 10%);'>
+         <figure>
+            <img src="../../static/img/saddogs_saddog1.png" alt="" >
+            <img src="../../static/img/saddogs_saddog3.png" alt="" >
+            <img src="../../static/img/saddogs_saddog4.png" alt="" >
+         </figure>
+      </div>   
+   </div>
+</div>
+<!--
+<div class="title_slider" style="width: 100% height: 50px background-color: #8C8C8C; z-index: 1;">
+   <div class="title_contect" style="width:50%; height:50px; background-color:#FFF5E6 ;text-align: center; margin:auto; text-align: center; font-size: 30px z-index:2;" >
+      <div class="title_content">
+         <span ><strong> 
+         You Can Change Their Life </strong>
+         </span>
+      </div>
+   </div>
+</div>
+-->
+
+
+<div class="dog_poster" style="position: relative; width: 100%;">
+      <img id="dog_pt" src="../../static/img/dog_poster6.png"  style="width: 100%;">
+
+      <img id="dog_img1" src="../../static/img/dog_img.png" style="width: 3%; height: 6%; z-index: 9999; position: absolute; top: 15%; left: 50%;">
+
+      <img id="dog_img2" src="../../static/img/dog_img.png" style="width: 3%; height: 6%; z-index: 9999; position: absolute; top: 15%; left: 60%;">
+
+      <img id="dog_img3" src="../../static/img/dog_img.png" style="width: 3%; height: 6%; z-index: 9999; position: absolute; top: 17%; left: 72%;">
+
+      <img id="dog_img4" src="../../static/img/dog_img.png" style="width: 3%; height: 6%; z-index: 9999; position: absolute; top: 27.5%; left: 60%;">
+
+      <img id="dog_img5" src="../../static/img/dog_img.png" style="width: 3%; height: 6%; z-index: 9999; position: absolute; top: 27.5%; left: 40%;">
+</div>
+
+
+
+<div class='map_img' style="background-color: white;">
+      <map id="imgmap2017111914538" name="imgmap2017111914538">
+         <area shape="rect" alt="" title="" coords="199,66,274,96" target="" onclick="test2('gangwon');"/>
+         <area shape="rect" alt="" title="" coords="140,84,180,105" target="" onclick="test2('seoul');" />
+         <area shape="rect" alt="" title="" coords="50,72,100,88" target="" onclick="test2('incheon');" />
+         <area shape="rect" alt="" title="" coords="78,104,141,128" target="" onclick="test2('gyeonggi');" />
+         <area shape="rect" alt="" title="" coords="60,143,120,163" target="" onclick="test2('chungnam');" />
+         <area shape="rect" alt="" title="" coords="128,134,186,155" target="" onclick="test2('chungbuk');" />
+         <area shape="rect" alt="" title="" coords="238,157,307,182" target="" onclick="test2('gyeongbuk');" />
+         <area shape="rect" alt="" title="" coords="220,205,271,225" target="" onclick="test2('daegu');" />
+         <area shape="rect" alt="" title="" coords="276,231,310,249" target="" onclick="test2('ulsan');" />
+         <area shape="rect" alt="" title="" coords="248,262,301,280" target="" onclick="test2('busan');" />
+         <area shape="rect" alt="" title="" coords="171,244,238,267" target="" onclick="test2('gyeongnam');" />
+         <area shape="rect" alt="" title="" coords="71,255,136,276" target="" onclick="test2('gwangju');" />
+         <area shape="rect" alt="" title="" coords="90,213,149,233" target="" onclick="test2('jeonbuk');" />
+         <area shape="rect" alt="" title="" coords="104,171,167,194" target="" onclick="test2('daejeon');" />
+         <area shape="rect" alt="" title="" coords="59,286,121,304" target="" onclick="test2('jeonnam');" />
+         <area shape="rect" alt="" title="" coords="53,363,87,380" target="" onclick="test2('jeju');" />
+         <!-- Created by Online Image Map Editor (http://www.maschek.hu/imagemap/index) -->
+      </map>
+</div>     
+
+    <div class="map_div" style="width: 100%; height: auto; margin: 0; display: flex;">
+      <img src="../../static/img/korea_map.jpg" style="width: auto; height: auto;" alt="" usemap="#imgmap2017111914538">
+
+      <div class="area" id="seoul">
+          <p style="font-size: 12px;">in seoul</p>
+          <div class="area_site1" id="seoul" style=" width: 80% ; height: 20%; background-color: skyblue; margin: auto;" > 
+            <div class="area_image" style="width: 25%; height: 100%;">
+                <p style="font-size: 12px; width: 100%; height: 100%; margin: 0;">
+                  <a href="http://www.google.co.kr/">
+                  <img src="../../static/img/seoyoung_img_225.jpg" align="middle" style="max-width: 100%; max-height: 100%;" />
+                  </a>
+                  기부 사이트 1
+                </p>
+            </div>
+          </div>
+
+          <div class="area_site1" style=" width: 80% ;height: 20% ; background-color: skyblue; margin: auto;" > 
+            <p style="font-size: 12px;">기부 사이트 2 </p>
+          </div>
+
+          <div class="area_site1" style=" width: 80% ;height: 20%; background-color: skyblue; margin: auto;" > 
+            <p style="font-size: 12px;">기부 사이트 3</p>
+          </div>
+      </div>
+
+        <div class='area' id="incheon">
+          <p style="font-size: 100px;">
+             Incheon
+          </p>
+       </div>
+
+       <div class='area' id="gyeonggi">
+          <p style="font-size: 100px;">
+             Gyeonggi
+          </p>
+       </div>
+
+    </div>
+</body>
+</html>
+

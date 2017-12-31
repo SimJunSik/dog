@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function check(){
+
+			var form_var = document.login_frm;
+			var psw_var = document.getElementById('psw').value;
+			var re_psw_var = document.getElementById('re-psw').value;
+
+			if(psw_var.length == 0 || re_psw_var.length == 0){
+				alert("패스워드를 입력해주세요.");
+				return;
+			}
+
+			if(psw_var == re_psw_var){
+				form_var.action = "./login.html";
+			}
+
+			else{
+				alert("패스워드가 다릅니다.");
+			}
+
+		}
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#id").change(function () {
+			      var username = $(this).val();
+
+			      $.ajax({
+			        url: './validate_username/',
+			        data: {
+			          'username': username
+			        },
+			        dataType: 'json',
+			        success: function (data) {
+			          if (data.is_taken) {
+			            $('#valid_id').css('color', "red");
+			            $('#valid_id').html("이미 존재하는 ID입니다.");
+			          }
+			          else{
+			          	$('#valid_id').css('color', "green");
+			            $('#valid_id').html("OK");
+			          }
+			        }
+			      });
+
+			    });
+		});
+	</script>
+
+</head>
+<body>
+	<form method="post" name="login_frm" onsubmit="return check()">
+	  {% csrf_token %}
+	  ID :<br>
+	  <input type="text" id="id" name="id" value="">
+	  <span id="valid_id" style="font-size: 10px;">
+	  	
+	  </span>
+	  <br>
+	  Password :<br>
+	  <input type="password" id="psw" name="psw" value="">
+	  <br>
+	  Re-Password :<br>
+	  <input type="password" id="re-psw" name="re-psw" value="">
+	  <br><br>
+	  <input type="submit" value="Submit">
+	</form> 
+</body>
+</html>

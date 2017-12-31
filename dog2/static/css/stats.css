@@ -1,0 +1,454 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+/*
+font-family: 'Jeju Myeongjo', serif;
+font-family: 'Nanum Gothic', serif;
+font-family: 'Hanna', serif;
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+    height: 100%;
+    margin:0;
+    background-color:#F7F1E6;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+
+
+
+
+
+.pop-layer .pop-container {
+  padding: 20px 25px;
+}
+
+.pop-layer p.ctxt {
+  color: #666;
+  line-height: 25px;
+}
+
+.pop-layer .btn-r {
+  width: 100%;
+  margin: 10px 0 20px;
+  padding-top: 10px;
+  border-top: 1px solid #DDD;
+  text-align: right;
+}
+
+.pop-layer {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 410px;
+  height: auto;
+  background-color: #fff;
+  border: 5px solid #3571B5;
+  z-index: 10;
+}
+
+.dim-layer {
+  display: none;
+  position: fixed;
+  
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.dim-layer .dimBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+
+.dim-layer .pop-layer {
+  display: block;
+}
+
+a.btn-layerClose {
+  display: inline-block;
+  height: 25px;
+  padding: 0 14px 0;
+  border: 1px solid #304a8a;
+  background-color: #3f5a9d;
+  font-size: 13px;
+  color: #fff;
+  line-height: 25px;
+}
+
+a.btn-layerClose:hover {
+  border: 1px solid #091940;
+  background-color: #1f326a;
+  color: #fff;
+}
+
+
+
+
+
+  /*  상단 고정 메뉴바 css  */
+  .top{
+      width: 100%;
+      position: fixed;     /*  화면상 위치 고정  */
+      z-index: 3;          /*  z값 결정  */
+      top : 0;
+      height: 5vw;
+      background-color: white;
+    }
+
+    .top_logo{
+      position: relative;
+      margin-top: 0.5vw;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      width: 30%;
+      text-align: center;
+      font-weight: 900;
+    }
+    .top_nav{  
+      position: relative;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 50%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      text-align: center;
+    }
+
+
+    .menu{
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
+      color: #B5996D;
+      font-size: 1vw;
+      font-weight: 900;
+    }
+    .menu:hover {
+      font-weight: 900;
+      font-size: 1vw;
+    }
+    .top_logo_img{
+      width: 14vw;
+      height: 2vw;
+      margin: 0;
+    }
+    .menu_slash{
+      color: #BDBDBD;
+      font-size: 1vw;
+    }
+    .top_logo_txt{
+      font-size: 2vw;
+      font-family: 'Clicker Script', cursive;
+      color: #B5996D;
+    }
+
+    .top_nav a{
+      text-decoration: none;
+    }
+
+    .top_title{
+      width: 100%;
+      background-color: white;
+      height: 5vw;
+    }
+
+    .logo_img_div{
+      width: 80%;
+      height: 100%;
+      background-color: white;
+      margin: auto;
+      margin-top: 5%;
+    }
+
+.page{
+    height: 100%;
+    position:relative;
+    text-align: center;
+    background-color:#F7F1E6;
+    z-index: 1;
+}
+
+/*.page_sub{
+    position: relative;
+    text-align: center;
+    background-color: #F7F1E6;
+}*/
+
+
+
+#last_next{
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    font-family: 'Hanna', serif;
+    font-size: 70px;
+}
+
+.stat_img{
+    position:relative;
+    width: 60%; height: 100%; margin: 0 auto;
+}
+
+.btn{
+  position:relative;
+  margin-bottom:0;
+}
+
+.btn-example{
+  text-decoration: none;
+  font-family: 'Hanna', serif;
+  background-color: #242424;
+  border-radius: 20px;
+  font-size: 30px;
+  margin: 30px;
+  padding: 10px;
+  color: white;
+  width: 200px;
+  text-align: center;
+  box-shadow: 2px 2px 2px gray;
+  border-style: groove;
+  border-color: #666666;
+  border-width: 5px;
+  letter-spacing: 4px;
+}
+
+
+
+.hero-image2 {
+    opacity: 0.8;
+    filter: alpha(opacity=50);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text h1 {  
+    font-family: 'Hanna', serif;
+    text-shadow: 0px 0px 10px gray;
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:white;
+    font-size:80px;
+    letter-spacing: 5px;
+}
+
+.hero-text p {  
+    font-family: 'Nanum Gothic', serif;
+    text-align: center;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    background-color: #F7F1E6;
+    border-radius: 20px;
+    width: 500px;
+    height: 30px;
+    line-height: 30px;
+    transform: translate(-50%, -50%);
+    color: #B5996D ;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size:20px;
+    box-shadow: 1px 1px 3px #6b593c;
+}
+
+
+.vidBox{
+    /*margin-top:15%;*/
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+
+}
+
+
+#dogVid{
+    max-width:100%;
+    max-height:100%; 
+    margin-top:10%;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+}
+
+
+#donateBtn{
+
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: black; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+}
+
+#topBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: black; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+}
+
+#showTruth1{
+
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: black; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+    font-family: 'Hanna', serif;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+#showTruth2{
+  
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: black; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+    font-family: 'Hanna', serif;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+#showTruth3{
+
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: black; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+    font-family: 'Hanna', serif;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+#showTruth4{
+  
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: black; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 30px; /* Rounded corners */
+    font-family: 'Hanna', serif;
+    font-size: 18px;
+    font-weight: 100;
+    letter-spacing: 2px;
+    box-shadow: 2px 2px 2px gray;
+}
+#tobBtn:hover {
+    background-color: #777; /* Add a dark-grey background on hover */
+}
+
+
+/* Popup container */
+.popup_quiz {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup_quiz .popup_quiz_text {
+    visibility: hidden;
+    width: 160px;
+    background-color: #F7F1E6;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup_quiz .popup_quiz_text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup_quiz .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+
+
+
+

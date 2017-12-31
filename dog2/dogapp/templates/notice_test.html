@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+
+    </style>
+	<style type="text/css">
+		/*  상단 고정 메뉴바 css  */
+	
+    .top{
+      width: 100%;
+      position: fixed;     /*  화면상 위치 고정  */
+      z-index: 6;          /*  z값 결정  */
+      top : 0;
+      height: 5vw;
+      background-color: white;
+    }
+
+    .top_logo{
+      position: relative;
+      margin-top: 0.5vw;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      width: 30%;
+      text-align: center;
+      font-weight: 900;
+    }
+    .top_nav{  
+      position: relative;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 50%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      text-align: center;
+    }
+    .menu{
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
+      color: #B5996D;
+      font-size: 1vw;
+      font-weight: 900;
+    }
+    .menu:hover {
+      font-weight: 900;
+      font-size: 1vw;
+    }
+    .top_logo_img{
+      width: 14vw;
+      height: 2vw;
+      margin: 0;
+    }
+    .menu_slash{
+      color: #BDBDBD;
+      font-size: 1vw;
+    }
+    .top_logo_txt{
+      font-size: 2vw;
+      font-family: 'Clicker Script', cursive;
+      color: #B5996D;
+    }
+
+    .top_nav a{
+    	text-decoration: none;
+    }
+
+    .top_title{
+    	width: 100%;
+    	background-color: white;
+    	height: 5vw;
+    }
+
+    .logo_img_div{
+    	width: 80%;
+    	height: 100%;
+    	background-color: white;
+    	margin: auto;
+    	margin-top: 5%;
+    }
+
+    html{
+	  font-size: 62.5%;
+	}
+
+	body{
+		margin: 0;
+	}
+
+/*  end   */
+/*  middle  */
+	.middle{
+		width: 100%;
+		height: 70vw;
+		background-color: transparent;
+		position: relative;
+	}
+
+	.map_div{
+		position: relative;
+		width: 100%;
+		height: 20vw;
+		background-color: green;
+	}
+
+	.list_div{
+		position: relative;
+		width: 100%;
+		height: auto;
+		background-color: yellow;
+	}
+
+  .list_content{
+    position: relative;
+    width: 100%;
+    height: 300px;
+  }
+
+  .board{
+    position: relative;
+    width: 70%;
+    height: 100%;
+    float: left;
+  }
+
+  .board_menu{
+    position: relative;
+    width: 30%;
+    height: 100%;
+    background-color: black;
+    float: left;
+  }
+
+  .function_div{
+    position: relative;
+    width: 100%;
+    height: 7vw;
+  }
+
+  .buttons{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    -moz-transform: translate(0%, -50%);
+    -o-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: auto;
+  }
+/*  end  */
+	</style>
+  <script>
+
+              var x_marker_list = {};
+              var y_marker_list = {};
+
+              function distance(lat1, lon1, lat2, lon2, unit) {
+                var radlat1 = Math.PI * lat1/180
+                var radlat2 = Math.PI * lat2/180
+                var theta = lon1-lon2
+                var radtheta = Math.PI * theta/180
+                var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                dist = Math.acos(dist)
+                dist = dist * 180/Math.PI
+                dist = dist * 60 * 1.1515
+                if (unit=="K") { dist = dist * 1.609344 }
+                if (unit=="N") { dist = dist * 0.8684 }
+                return dist
+              }
+
+              function my_location(){
+                  var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: -34.397, lng: 150.644},
+                    zoom: 12
+                  });
+                  var infoWindow = new google.maps.InfoWindow({map: map});
+
+                  var geocoder = new google.maps.Geocoder();
+
+                  document.getElementById('submit').addEventListener('click', function() {
+                    geocodeAddress(geocoder, map);
+                  });
+
+                  // Try HTML5 geolocation.
+                  if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                      var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                      };
+
+                      infoWindow.setPosition(pos);
+                      infoWindow.setContent('Location found.');
+                      map.setCenter(pos);
+                      var iconBase = '../../static/img/';
+                var icons = {
+                  parking: {
+                    icon: iconBase + 'parking_lot_maps.png'
+                  },
+                  library: {
+                    icon: iconBase + 'library_maps.png'
+                  },
+                  info: {
+                    icon: iconBase + 'info-i_maps.png'
+                  },
+                  puppy: {
+                    icon: iconBase + 'puppy_footprint2.png'
+                  }
+                };
+
+                var features = [
+               
+                ];
+
+                for(var key in x_marker_list){
+                  features.push({
+                    position: new google.maps.LatLng(x_marker_list[key], y_marker_list[key]),
+                    type: 'puppy'
+                  });
+                }
+
+
+                //alert(distance(x_marker_list[0], y_marker_list[0], x_marker_list[1], y_marker_list[1], 'K'));
+                
+                for(var key in x_marker_list){
+                  if(distance(x_marker_list[key], y_marker_list[key], position.coords.latitude, position.coords.longitude, 'K') <= 3){
+                    $('#' + key.trim()).css('display' , 'block');
+                  }
+                  else{
+                    $('#' + key.trim()).css('display' , 'none');
+                  }
+                }
+                
+
+                // Create markers.
+                features.forEach(function(feature) {
+                  var marker = new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map
+                  });
+
+                  marker.addListener('click', function() {
+                    map.setZoom(20);
+                    map.setCenter(marker.getPosition());
+                    alert("click event");
+                  });
+                });
+                    }, function() {
+                      handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                  } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                  }
+
+                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                  infoWindow.setPosition(pos);
+                  infoWindow.setContent(browserHasGeolocation ?
+                                        'Error: The Geolocation service failed.' :
+                                        'Error: Your browser doesn\'t support geolocation.');
+                }
+              }
+
+
+              var map;
+              function initMap() {
+                var markers = '{{ markers|escapejs }}';
+                //alert(markers);
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 16,
+                  center: new google.maps.LatLng(37.49, 127.02),
+                  mapTypeId: 'roadmap'
+                });
+
+                while(markers.length > 0){
+                  pk_position_start = markers.indexOf('"pk');
+                  pk_tmp = markers.substring(pk_position_start+5, markers.length);
+                  //alert(pk_tmp);
+                  pk_position_end = pk_tmp.indexOf(',');
+                  pk_position = pk_tmp.substring(0, pk_position_end);
+                  //alert(pk_position);
+
+
+
+                  x_position_start = markers.indexOf('"x');
+                  x_tmp = markers.substring(x_position_start+4, markers.length);
+                  //alert(x_tmp);
+                  x_position_end = x_tmp.indexOf(',');
+                  x_position = x_tmp.substring(0, x_position_end);
+                  //alert(x_position);
+                  //x_marker_list.push(x_position);
+
+                  pk_str = String(pk_position).trim();
+                  //alert(pk_str);
+                  if(pk_str.length > 0){
+                    x_marker_list[pk_str] = x_position;
+                  }
+
+
+                  y_position_start = markers.indexOf('"y');
+                  y_tmp = markers.substring(y_position_start+4, markers.length);
+                  //alert(y_tmp);
+                  y_position_end = y_tmp.indexOf(',');
+                  y_position = y_tmp.substring(0, y_position_end);
+                  //alert(y_position);
+                  //y_marker_list.push(y_position);
+                  if(pk_str.length > 0){
+                    y_marker_list[pk_str] = y_position;
+                  }
+
+                  markers = y_tmp.substring(y_position_end, markers.length);
+                }
+
+                //alert(x_marker_list);
+                console.log(x_marker_list);
+
+                var iconBase = '../../static/img/';
+                var icons = {
+                  puppy: {
+                    icon: iconBase + 'puppy_footprint2.png'
+                  }
+                };
+
+                var features = [
+               
+                ];
+
+                for(var key in x_marker_list){
+                  features.push({
+                    position: new google.maps.LatLng(x_marker_list[key], y_marker_list[key]),
+                    type: 'puppy'
+                  });
+                }
+                
+
+                //console.log(features);
+
+                // Create markers.
+                features.forEach(function(feature) {
+                  var marker = new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map
+                  });
+
+                  marker.addListener('click', function() {
+                    map.setZoom(20);
+                    map.setCenter(marker.getPosition());
+                    alert("click event");
+                  });
+                });
+
+               var geocoder = new google.maps.Geocoder();
+
+                document.getElementById('submit').addEventListener('click', function() {
+                  geocodeAddress(geocoder, map);
+                });
+              }
+
+
+              function geocodeAddress(geocoder, resultsMap) {
+                var address = document.getElementById('address').value;
+                geocoder.geocode({'address': address}, function(results, status) {
+                  if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                      map: resultsMap,
+                      position: results[0].geometry.location               
+                    });
+                    //alert(results[0].geometry.location.lat());
+                    //alert(results[0].geometry.location.lng());
+                    //alert(document.getElementById('address').value);
+                    /*
+                    $.ajax({
+                      url: '/register_marker/',
+                      data: {
+                        'location_name': document.getElementById('address').value,
+                        'x' : results[0].geometry.location.lat(),
+                        'y' : results[0].geometry.location.lng()
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        alert(data.result);
+                      }
+                    });
+                    */
+                  } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                  }
+                });
+              }
+            </script>
+
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_E5Ls2VQ_yDsadA9-KhCLTBFoJ6AxuJo&callback=initMap">
+            </script>
+</head>
+<body>
+	<div class='top'>
+      <div class='top_logo'>
+        <img class='top_logo_img' src="../../static/img/logo_txt_color.png">  
+      </div>
+      <div class='top_nav'>
+        <a href="../"><span class="menu" id="w"> HOME </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../matching"><span class="menu" id="tmp"> 멍미테스트 </span></a>
+        <span class='menu_slash'> / </span>
+        <span class="menu" id="h"> MBTI </span>
+        <span class='menu_slash'> / </span>
+        <a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../shelter"><span class="menu" id="h"> 데려갈개 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../about_us"><span class="menu"> 우린누구개 </span></a>
+
+      </div>
+  </div>
+
+    <div class="top_title">
+      <div class="logo_img_div">
+        <p style="font-size: 1.5vw; font-weight: 900;">
+        <img src="../../static/img/logo_img_color.png" align="middle" style="width: 5vw; height: auto;">
+        데려갈개
+        </p>
+      </div>
+    </div>
+
+    <div class='middle'>
+      <div class='board'>
+      	<div class='map_div'>
+      		<div id="floating-panel">
+  		      <input id="address" type="textbox" value="">
+  		      <input id="submit" type="button" value="Geocode">
+            <button onclick="my_location()">asdasd</button>
+  		    </div>
+      		<div id="map"></div>
+      	</div>
+
+        <div class='function_div'>
+          <div class='buttons'>
+            <a href="../take_dog"><button> 데리고 있어요 </button></a>
+            <a href="../notice"><button style="margin-left: 5vw; margin-right: 5vw;"> 잃어버렸어요 </button></a>
+            <button> 입양소에 있어요 </button>
+          </div>
+        </div>
+
+      	<div class='list_div'>
+          {% for dog in dogs %}
+            <div class='list_content' id="{{dog.pk}}">
+              <div class='dog_img_div' style="width: 30%; float: left;">
+                <img src="{{dog.img_src}}" style="max-width: 100%; height: 200px;">
+              </div>
+              <div class='location_name_div' style="width: 50%; float: left;">
+                <span style="font-size: 20px;">
+                  위치 : {{dog.location_name}}<br>
+                  이름 : {{dog.dog_name}}
+                </span>
+              </div>
+              <div class='button_div' style="width: 20%; float: left;">
+                비밀번호 : <input type="text" id="psw_txt{{dog.pk}}" name="psw_txt"><br>
+                <button id="ch_btn_{{dog.pk}}" onclick="change_marker(this.id)">수정</button>
+                <button id="del_btn_{{dog.pk}}" onclick="delete_marker(this.id)">삭제</button>
+              </div>
+            </div>
+          {% endfor %}
+      	</div>
+      </div>
+      <div class='board_menu'>
+        <a href="../register_dog"><button>등록하기</button></a>
+      </div>
+    </div>
+    <script type="text/javascript">
+       function register_dog(){
+
+                var geocoder = new google.maps.Geocoder();
+
+                  document.getElementById('submit').addEventListener('click', function() {
+                    geocodeAddress(geocoder, map);
+                  });
+
+                var address = document.getElementById('address').value;
+                geocoder.geocode({'address': address}, function(results, status) {
+                  if (status === 'OK') {
+                    $.ajax({
+                      url: '/register_marker/',
+                      data: {
+                        'location_name': document.getElementById('address').value,
+                        'x' : results[0].geometry.location.lat(),
+                        'y' : results[0].geometry.location.lng(),
+                        'image_src' : document.getElementById('id_image').value,
+                        'dog_name' : document.getElementById('id_dog_name').value
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        alert(data.result);
+                      }
+                    });
+
+                  } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                  }
+                });
+        }
+
+
+        function delete_marker(btn_id){
+          //alert(btn_id);
+          var btn_id_str = String(btn_id);
+          var pk_id = btn_id_str.substring(8, btn_id_str.length);
+
+          var psw_txt = $("#psw_txt" + pk_id).val();
+          //alert(psw_txt);
+
+          //alert(pk_id);
+          
+                    $.ajax({
+                      url: '/delete_marker/',
+                      data: {
+                        'pk_id' : pk_id,
+                        'psw_txt' : psw_txt
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        alert(data.result);
+                        location.reload();
+                      }
+                    });
+            
+          }
+
+          function change_marker(btn_id){
+            var btn_id_str = String(btn_id);
+            var pk_id = btn_id_str.substring(7, btn_id_str.length);
+
+            var psw_txt = $("#psw_txt" + pk_id).val();
+
+            $.ajax({
+                      url: '/change_marker/',
+                      data: {
+                        'pk_id' : pk_id,
+                        'psw_txt' : psw_txt
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        alert(data.result);
+                        if(data.result == 'success'){
+                          window.location.replace("../register_dog/"+String(pk_id));
+                        }
+                      }
+            });
+          }
+    </script>
+</body>
+</html>

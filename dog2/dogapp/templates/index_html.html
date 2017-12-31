@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110211149-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-110211149-1');
+	</script>
+	<title></title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://code.jquery.com/color/jquery.color-2.1.0.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Clicker+Script" rel="stylesheet">
+
+
+	<meta property="og:image" content="http://puppysignal.com/static/img/seoyoung_img.jpg"/>
+
+	<meta name="description" content="내게 맞는 강아지를 찾아보세요.">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="퍼피시그널">
+	<meta property="og:description" content="내게 맞는 강아지를 찾아보세요.">
+	<meta property="og:url" content="http://puppysignal.com">
+
+
+	<style type="text/css">
+	@media (min-width:501px) {
+		.square{
+			position: absolute;
+			left: 20%;
+			top : 20%;
+			width: 10vw;
+			height: 10vw;
+			z-index : 3;
+			opacity: 0;
+		}
+
+		.div_link{
+			position: absolute;
+			left: 60%;
+			top : 78%;
+			width: 4vw;
+			height: 4vw;
+			z-index : 3;
+			opacity: 0;
+		}
+
+		.content_title_txt{
+			color: white;
+			font-size: 1vw;
+		}
+
+		.content_title_link{
+			color: white;
+			font-size: 2vw;
+		}
+
+		.square_content{
+			position: absolute;
+			left: 40%;
+			top : 20%;
+			width: 60%;
+			height: 10vw;
+			z-index : 3;
+			opacity: 0;
+		}
+
+		.content_square{
+			position: absolute;
+			float: left;
+			width: 10vw;
+			height: 10vw;
+			z-index : 3;
+			left: 15%;
+		}
+
+		.bottom_line{
+			position: absolute;
+			bottom: 0;
+			width: 0%;
+			height: 8px;
+			background-color: white;
+			z-index : 3;
+		}
+		.left_line{
+			position: absolute;
+			left: 0;
+			width: 8px;
+			height: 0%;
+			background-color: white;
+			z-index : 3;
+		}
+		.top_line{
+			position: absolute;
+			top: 0;
+			width: 0%;
+			height: 8px;
+			background-color: white;
+			z-index : 3;
+		}
+		.right_line{
+			position: absolute;
+			right: 0;
+			width: 8px;
+			height: 0%;
+			background-color: white;
+			z-index : 3;
+		}
+
+
+
+		.back_img{
+			width: 0%;
+			height: 1000px;
+			position: absolute;
+			top: 0;
+			z-index: -10;
+			background-color: #ebd8b8;
+			box-shadow: 10px 10px 10px black;
+		}
+
+
+		.overlay_div1{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			opacity: 1;
+			width: 33.3%;
+			height: 10vw;
+			overflow: hidden;
+			float: left;
+		}
+
+		.overlay_div1_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
+			background-image: url(../../static/img/matching_img.png);
+			background-repeat: no-repeat;
+			background-size:100% 100%;
+		}
+
+		.overlay_content1{
+			width: 80%;
+			height: 25vh;
+			background-color: white;
+			opacity: 0;
+			position: absolute;
+			left: 15%;
+			top: 50%;
+			text-align: left;
+		}
+
+
+
+
+		.overlay_div2{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			opacity: 1;
+			width: 33.3%;
+			height: 10vw;
+			overflow: hidden;
+			float: left;
+		}
+
+		.overlay_div2_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
+			background-image: url(../../static/img/mbti_img.png);
+			background-repeat: no-repeat;
+			background-size:100% 100%;
+		}
+
+		.overlay_content2{
+			width: 80%;
+			height: 25vh;
+			background-color: white;
+			opacity: 0;
+			position: absolute;
+			left: 15%;
+			top: 50%;	
+			text-align: left;
+		}
+
+
+
+
+		.overlay_div3{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			opacity: 1;
+			width: 33.3%;
+			height: 10vw;
+			overflow: hidden;
+			float: left;
+		}
+
+
+		.overlay_div3_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
+			background-image: url(../../static/img/shelter_img.png);
+			background-repeat: no-repeat;
+			background-size:100% 100%;
+		}
+
+		.overlay_content3{
+			width: 80%;
+			height: 25vh;
+			background-color: white;
+			opacity: 0;
+			position: absolute;
+			left: 15%;
+			top: 50%;
+			text-align: left;	
+		}
+
+
+
+
+
+		.overlay_div4{
+			position: relative;
+			z-index: 2;
+			background-color: yellow;
+			opacity: 0.7;
+			width: 100%;
+			height: 10vw;
+			overflow: hidden;
+		}
+
+		.overlay_content4{
+			width: 70%;
+			height: 400px;
+			background-color: white;
+			opacity: 0;
+			float: left;
+			position: absolute;
+			left: 30%;
+		}
+
+
+
+
+
+
+
+		.top_div{
+			width: 100%;
+			height: auto;
+		}
+
+		.tmp_div{
+			width: 100%;
+			height: 40%;
+			background-color: transparent;
+			margin-bottom: 0%;
+			z-index: -9999;
+		}
+
+		.square_text{
+			position: absolute;
+			top: 50%;
+			left: 30%;
+			-webkit-transform: translate(0%, -50%);
+            -ms-transform: translate(0%, -50%);
+            -moz-transform: translate(0%, -50%);
+            -o-transform: translate(0%, -50%);
+            transform: translate(0%, -50%);
+		}
+
+
+		.content_square_text{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+		}
+
+		.side_bar{
+			position: fixed;
+			right: 0;
+			top: 20%;
+			height: 70%;
+			width: 6%;
+			z-index: 8888;
+		}
+
+		.now{
+			color: white;
+		}
+
+		.after{
+			color: white;
+		}
+
+		.progress{
+			margin-left: 15%;
+			height: 400px;
+			position: relative;
+		}
+
+		.video_div{
+			text-align: center;
+			width: 100%;
+			height: auto;
+		}
+
+		.middle_div{
+			width: 100%;
+			margin-bottom: 50%;
+		}
+
+
+/*  상단 고정 메뉴바 css  */
+    .top{
+      width: 100%;
+      position: fixed;     /*  화면상 위치 고정  */
+      z-index: 3;          /*  z값 결정  */
+      top : 0;
+      height: 5vw;
+      background-color: white;
+    }
+
+    .top_logo{
+      position: relative;
+      margin-top: 0.5vw;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      width: 30%;
+      text-align: center;
+      font-weight: 900;
+    }
+    .top_nav{  
+      position: relative;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 80%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      text-align: center;
+    }
+    .menu{
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
+      color: #B5996D;
+      font-size: 1vw;
+      font-weight: 900;
+    }
+    .menu:hover {
+      font-weight: 900;
+      font-size: 1vw;
+    }
+    .top_logo_img{
+      width: 14vw;
+      height: 2vw;
+      margin: 0;
+    }
+    .menu_slash{
+      color: #BDBDBD;
+      font-size: 1vw;
+    }
+    .top_logo_txt{
+      font-size: 2vw;
+      font-family: 'Clicker Script', cursive;
+      color: #B5996D;
+    }
+
+    .top_nav a{
+    	text-decoration: none;
+    }
+/*  end   */
+
+		/* bottom*/
+	  .bottom{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        /*height: 30vw;*/
+        height: auto;
+        background-color: black;
+      }
+
+      .domain{
+        width: 100%;
+        /*height: 4vw;*/
+        height: auto;
+        text-align: center;
+        margin-bottom: 3%;
+      }
+
+      .domain_content{
+        width: 70%;
+        height: 15vw;
+        background-color: black;
+        margin: auto;
+      }
+
+      .contact{
+        width: 30%;
+        height: 100%;
+        background-color: black;
+        float: left;
+      }
+
+      .crowd_funding{
+        width: 30%;
+        height: 100%;
+        float: left;
+      }
+
+      .logo_icon{
+        width: 100px;
+        height: 100px;
+      }
+
+      .contact_icon{
+        width: 2.25vw; 
+        height: 2.25vw;
+      }
+
+      .contact_sns_icon{
+        width: 2vw;
+        height: 2vw;
+      }
+
+      .domain_content_title{
+        color: white;
+        font-size: 1.5vw;
+      }
+
+      .share{
+        width: 30%;
+        height: 100%;
+        float: left;
+      }
+
+      .copyright{
+        width: 100%;
+        text-align: center;
+      }
+
+      body{
+      	height: 200vw;
+      }
+
+  }
+
+
+
+
+
+
+
+
+  @media (max-width:500px) {
+  		body{
+  			height: 900vw;
+  		}
+
+  		.square{
+			position: absolute;
+			left: 20%;
+			top : 20%;
+			width: 30vw;
+			height: 30vw;
+			z-index : 3;
+			opacity: 0;
+		}
+
+		.div_link{
+			position: absolute;
+			left: 60%;
+			top : 78%;
+			width: 12vw;
+			height: 12vw;
+			z-index : 3;
+			opacity: 0;
+		}
+
+		.content_title_txt{
+			color: white;
+			font-size: 3vw;
+		}
+
+		.content_title_link{
+			color: white;
+			font-size: 6vw;
+		}
+
+		.square_content{
+			position: absolute;
+			left: 40%;
+			top : 35%;
+			width: 60%;
+			height: 10vw;
+			z-index : 3;
+			opacity: 0;
+		}
+
+		.content_square{
+			position: absolute;
+			float: left;
+			width: 30vw;
+			height: 30vw;
+			z-index : 3;
+			left: 15%;
+		}
+
+		.bottom_line{
+			position: absolute;
+			bottom: 0;
+			width: 0%;
+			height: 8px;
+			background-color: white;
+			z-index : 3;
+		}
+		.left_line{
+			position: absolute;
+			left: 0;
+			width: 8px;
+			height: 0%;
+			background-color: white;
+			z-index : 3;
+		}
+		.top_line{
+			position: absolute;
+			top: 0;
+			width: 0%;
+			height: 8px;
+			background-color: white;
+			z-index : 3;
+		}
+		.right_line{
+			position: absolute;
+			right: 0;
+			width: 8px;
+			height: 0%;
+			background-color: white;
+			z-index : 3;
+		}
+
+
+
+		.back_img{
+			width: 0%;
+			height: 1000px;
+			position: absolute;
+			top: 0;
+			z-index: -10;
+			background-color: #ebd8b8;
+			box-shadow: 10px 10px 10px black;
+		}
+
+
+		.overlay_div1{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			opacity: 1;
+			width: 100%;
+			height: 10vw;
+			overflow: hidden;
+			float: left;
+		}
+
+		.overlay_div1_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
+			background-image: url(../../static/img/matching_img.png);
+			background-repeat: no-repeat;
+			background-size:100% 100%;
+		}
+
+		.overlay_content1{
+			width: 80%;
+			height: 25vh;
+			background-color: white;
+			opacity: 0;
+			position: absolute;
+			left: 15%;
+			top: 50%;
+			text-align: left;
+		}
+
+
+
+
+		.overlay_div2{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			opacity: 1;
+			width: 100%;
+			height: 10vw;
+			overflow: hidden;
+			float: left;
+		}
+
+		.overlay_div2_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
+			background-image: url(../../static/img/mbti_img.png);
+			background-repeat: no-repeat;
+			background-size:100% 100%;
+		}
+
+		.overlay_content2{
+			width: 80%;
+			height: 25vh;
+			background-color: white;
+			opacity: 0;
+			position: absolute;
+			left: 15%;
+			top: 50%;	
+			text-align: left;
+		}
+
+
+
+
+		.overlay_div3{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			opacity: 1;
+			width: 100%;
+			height: 10vw;
+			overflow: hidden;
+			float: left;
+		}
+
+
+		.overlay_div3_child{
+			position: relative;
+			z-index: 2;
+			background-color: transparent;
+			width: 100%;
+			height: 60vh;
+			background-image: url(../../static/img/shelter_img.png);
+			background-repeat: no-repeat;
+			background-size:100% 100%;
+		}
+
+		.overlay_content3{
+			width: 80%;
+			height: 25vh;
+			background-color: white;
+			opacity: 0;
+			position: absolute;
+			left: 15%;
+			top: 50%;
+			text-align: left;	
+		}
+
+
+
+
+
+		.overlay_div4{
+			position: relative;
+			z-index: 2;
+			background-color: yellow;
+			opacity: 0.7;
+			width: 100%;
+			height: 10vw;
+			overflow: hidden;
+		}
+
+		.overlay_content4{
+			width: 70%;
+			height: 400px;
+			background-color: white;
+			opacity: 0;
+			float: left;
+			position: absolute;
+			left: 30%;
+		}
+
+
+
+
+
+
+
+		.top_div{
+			width: 100%;
+			height: auto;
+		}
+
+		.tmp_div{
+			width: 100%;
+			height: 40%;
+			background-color: transparent;
+			margin-bottom: 0%;
+			z-index: -9999;
+		}
+
+		.square_text{
+			position: absolute;
+			top: 50%;
+			left: 30%;
+			-webkit-transform: translate(0%, -50%);
+            -ms-transform: translate(0%, -50%);
+            -moz-transform: translate(0%, -50%);
+            -o-transform: translate(0%, -50%);
+            transform: translate(0%, -50%);
+		}
+
+
+		.content_square_text{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+		}
+
+		.side_bar{
+			position: fixed;
+			right: 0;
+			top: 20%;
+			height: 70%;
+			width: 6%;
+			z-index: 8888;
+		}
+
+		.now{
+			color: white;
+		}
+
+		.after{
+			color: white;
+		}
+
+		.progress{
+			margin-left: 15%;
+			height: 400px;
+			position: relative;
+		}
+
+		.video_div{
+			text-align: center;
+			width: 100%;
+			height: auto;
+		}
+
+		.middle_div{
+			width: 100%;
+			margin-bottom: 50%;
+		}
+
+
+/*  상단 고정 메뉴바 css  */
+    .top{
+      width: 100%;
+      position: fixed;     /*  화면상 위치 고정  */
+      z-index: 3;          /*  z값 결정  */
+      top : 0;
+      height: 9vw;
+      background-color: white;
+    }
+
+    .top_logo{
+      position: relative;
+      margin-top: 0.5vw;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      width: 50%;
+      text-align: center;
+      font-weight: 900;
+    }
+    .top_nav{  
+      position: relative;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 100%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      text-align: center;
+    }
+    .menu{
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
+      color: #B5996D;
+      font-size: 2vw;
+      font-weight: 900;
+    }
+    .menu:hover {
+      font-weight: 900;
+      font-size: 1vw;
+    }
+    .top_logo_img{
+      width: 28vw;
+      height: 4vw;
+      margin: 0;
+    }
+    .menu_slash{
+      color: #BDBDBD;
+      font-size: 1vw;
+    }
+    .top_logo_txt{
+      font-size: 2vw;
+      font-family: 'Clicker Script', cursive;
+      color: #B5996D;
+    }
+
+    .top_nav a{
+    	text-decoration: none;
+    }
+/*  end   */
+
+		/* bottom*/
+	  .bottom{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        /*height: 30vw;*/
+        height: auto;
+        background-color: black;
+      }
+
+      .domain{
+        width: 100%;
+        /*height: 4vw;*/
+        height: auto;
+        text-align: center;
+        margin-bottom: 3%;
+      }
+
+      .domain_content{
+        width: 70%;
+        height: 15vw;
+        background-color: black;
+        margin: auto;
+      }
+
+      .contact{
+        width: 30%;
+        height: 100%;
+        background-color: black;
+        float: left;
+      }
+
+      .crowd_funding{
+        width: 30%;
+        height: 100%;
+        float: left;
+      }
+
+      .logo_icon{
+        width: 10vw;
+        height: 10vw;
+      }
+
+      .contact_icon{
+        width: 2.25vw; 
+        height: 2.25vw;
+      }
+
+      .contact_sns_icon{
+        width: 2vw;
+        height: 2vw;
+      }
+
+      .domain_content_title{
+        color: white;
+        font-size: 1.5vw;
+      }
+
+      .share{
+        width: 30%;
+        height: 100%;
+        float: left;
+      }
+
+      .copyright{
+        width: 100%;
+        text-align: center;
+      }
+  }
+
+      body, html{
+        width: 100%;
+      }
+
+      html{
+        font-size: 62.5%;
+      }
+		*{
+			margin: 0;
+		}
+	</style>
+
+	<style>
+* {box-sizing:border-box}
+body {font-family: Verdana,sans-serif;margin:0}
+@media (min-width:501px) {
+	.mySlides {display:none}
+
+	.cover_img{
+		width: 100%;
+		height: 45vw;
+	}
+
+	/* Slideshow container */
+	.slideshow-container {
+	  max-width: 100%;
+	  position: relative;
+	  margin: auto;
+	}
+
+	/* Next & previous buttons */
+	.prev, .next {
+	  cursor: pointer;
+	  position: absolute;
+	  top: 50%;
+	  width: auto;
+	  padding: 16px;
+	  margin-top: -22px;
+	  color: white;
+	  font-weight: bold;
+	  font-size: 18px;
+	  transition: 0.6s ease;
+	  border-radius: 0 3px 3px 0;
+	  z-index: 9999;
+	}
+
+	/* Position the "next button" to the right */
+	.next {
+	  right: 0;
+	  border-radius: 3px 0 0 3px;
+	}
+
+	/* On hover, add a black background color with a little bit see-through */
+	.prev:hover, .next:hover {
+	  background-color: rgba(0,0,0,0.8);
+	}
+
+	/* Caption text */
+	.text {
+	  color: #f2f2f2;
+	  font-size: 15px;
+	  padding: 8px 12px;
+	  position: absolute;
+	  bottom: 8px;
+	  width: 100%;
+	  text-align: center;
+	}
+
+	/* Number text (1/3 etc) */
+	.numbertext {
+	  color: #f2f2f2;
+	  font-size: 1.25vw;
+	  font-weight: 900;
+	  padding: 8px 12px;
+	  position: absolute;
+	  top: 15%;
+	  left: 5%;
+	  line-height: 1.5em;
+	}
+
+	/* The dots/bullets/indicators */
+	.dot {
+	  cursor: pointer;
+	  height: 15px;
+	  width: 15px;
+	  margin: 0 2px;
+	  background-color: #bbb;
+	  border-radius: 50%;
+	  display: inline-block;
+	  transition: background-color 0.6s ease;
+	}
+
+	.active, .dot:hover {
+	  background-color: #717171;
+	}
+
+	/* Fading animation */
+	.fade {
+	  -webkit-animation-name: fade;
+	  -webkit-animation-duration: 1.5s;
+	  animation-name: fade;
+	  animation-duration: 1.5s;
+	}
+}
+
+@media (max-width:500px) {
+	.mySlides {display:none}
+
+	.cover_img{
+		width: 100%;
+		height: 90vw;
+	}
+
+	/* Slideshow container */
+	.slideshow-container {
+	  max-width: 100%;
+	  position: relative;
+	  margin: auto;
+	}
+
+	/* Next & previous buttons */
+	.prev, .next {
+	  cursor: pointer;
+	  position: absolute;
+	  top: 50%;
+	  width: auto;
+	  padding: 16px;
+	  margin-top: -22px;
+	  color: white;
+	  font-weight: bold;
+	  font-size: 18px;
+	  transition: 0.6s ease;
+	  border-radius: 0 3px 3px 0;
+	  z-index: 9999;
+	}
+
+	/* Position the "next button" to the right */
+	.next {
+	  right: 0;
+	  border-radius: 3px 0 0 3px;
+	}
+
+	/* On hover, add a black background color with a little bit see-through */
+	.prev:hover, .next:hover {
+	  background-color: rgba(0,0,0,0.8);
+	}
+
+	/* Caption text */
+	.text {
+	  color: #f2f2f2;
+	  font-size: 15px;
+	  padding: 8px 12px;
+	  position: absolute;
+	  bottom: 8px;
+	  width: 100%;
+	  text-align: center;
+	}
+
+	/* Number text (1/3 etc) */
+	.numbertext {
+	  color: #f2f2f2;
+	  font-size: 1.25vw;
+	  font-weight: 900;
+	  padding: 8px 12px;
+	  position: absolute;
+	  top: 15%;
+	  left: 5%;
+	  line-height: 1.5em;
+	}
+
+	/* The dots/bullets/indicators */
+	.dot {
+	  cursor: pointer;
+	  height: 15px;
+	  width: 15px;
+	  margin: 0 2px;
+	  background-color: #bbb;
+	  border-radius: 50%;
+	  display: inline-block;
+	  transition: background-color 0.6s ease;
+	}
+
+	.active, .dot:hover {
+	  background-color: #717171;
+	}
+
+	/* Fading animation */
+	.fade {
+	  -webkit-animation-name: fade;
+	  -webkit-animation-duration: 1.5s;
+	  animation-name: fade;
+	  animation-duration: 1.5s;
+	}
+}
+
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+</head>
+<body style="background: linear-gradient( to right,#F7F1E6, #ebd8b8 ); position: relative;">
+
+	<!--  상단 고졍 메뉴바 div  -->
+	<div class='top'>
+			<div class='top_logo'>
+				<img class='top_logo_img' src="../../static/img/logo_txt_color.png">	
+			</div>
+			<div class='top_nav'>
+				<a href="../"><span class="menu" id="w"> HOME </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../matching"><span class="menu" id="tmp"> 멍미테스트 </span></a>
+				<span class='menu_slash'> / </span>
+				<!--
+				{% if user.id_str == 'unknown' %}
+					<a href="../login"><span class="menu" id="h"> LOGIN </span></a>
+				{% else %}
+					<a href="../"><span class="menu" id="h"> LOGOUT </span></a>
+				{% endif %}
+				-->
+				<a href="../notice"><span class="menu" id="h"> 찾아줄개 </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../shelter"><span class="menu" id="h"> 데려갈개 </span></a>
+				<span class='menu_slash'> / </span>
+				<a href="../about_us"><span class="menu"> 우린누구개 </span></a>
+
+			</div>
+	</div>
+
+	<div class="side_bar">
+		<div style="width: 70%; float: left; height: 100%; text-align: left;">
+			<Br><Br><Br><Br><Br><Br><Br><Br><Br><Br><Br><Br><Br><Br>
+			<span class="now_div" style="color: white; font-size: 15px; float: right;">
+				intro
+			</span>
+		</div>
+		<div style="width: 30%; float: left;">
+			<div class="now">
+				N<br>
+				O<Br>
+				W<br>
+				<br>
+			</div>
+
+			<div class="progress">
+
+				<hr id="side_progress" width="5%" align="left" style="color:white; background-color: white; height:1%; border:none;" />
+			</div>
+
+			<div class="after">
+				<br>
+				A<br>
+				F<Br>
+				T<br>
+				E<Br>
+				R<br>
+			</div>
+		</div>
+	</div>
+
+	<div class="top_div">
+		
+
+		<div class="slideshow-container">
+
+			<div class="mySlides fade">
+			  <div class="numbertext" style="color: black;">
+			  	강아지는 자기 자신을 사랑하는 것보다,<br>
+			  	지구 상에서 유일하게 당신을 더 사랑합니다.
+			  </div>
+			  <img class="cover_img" src="../../static/img/cover_img1.webp">
+			</div>
+
+			<div class="mySlides fade">
+			  <div class="numbertext" style="color: black;">
+			  	모든 사람이 강아지만큼 무조건 사랑하는 능력이 있다면,<br>
+			  	이 세상은 더 좋은 곳이 될 것입니다.
+			  </div>
+			  <img class="cover_img" src="../../static/img/cover_img2.webp">
+			</div>
+
+			<div class="mySlides fade">
+			  <div class="numbertext">
+			  	인생에서 내 목표는<br>
+			  	우리 강아지가 나를 좋은 사람으로 인정하는 사람이 되는 것입니다.
+			  </div>
+			  <img class="cover_img" src="../../static/img/cover_img3.webp">
+			</div>
+
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+		</div>
+		<br>
+
+		<div style="text-align:center">
+		  <span class="dot" onclick="currentSlide(1)"></span> 
+		  <span class="dot" onclick="currentSlide(2)"></span> 
+		  <span class="dot" onclick="currentSlide(3)"></span> 
+		</div>
+
+	</div>
+	<div class="tmp_div">
+
+	</div>
+
+	<div class="middle_div">
+		<div class="back_img" id="back_img">
+			<div class="square">
+					<div class="bottom_line" id="bottom_line">
+
+					</div>
+					<div class="left_line" id="left_line">
+
+					</div>
+					<div class="top_line" id="top_line">
+
+					</div>
+					<div class="right_line" id="right_line">
+
+					</div>
+					<div class="square_text">
+						<span class="content_title_txt">
+							통계
+						</span>
+					</div>
+			</div>
+			<div class="square_content">
+				<span class="content_title_txt">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque justo orci
+			</div>
+
+			<div class="div_link" style="top: 70%;">
+				<div class="bottom_line" id="link_bottom_line">
+
+				</div>
+				<div class="left_line" id="link_left_line">
+
+				</div>
+				<div class="top_line" id="link_top_line">
+
+				</div>
+				<div class="right_line" id="link_right_line">
+
+				</div>
+				<div class="square_text">
+					<span class="content_title_link">
+						→
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="overlay_div1" style="text-align: center;">
+			<div class="overlay_div1_child">
+				<div class="content_square" id="content_square1">
+						<div class="bottom_line" id="content1_bottom_line" style="height: 5px;">
+
+						</div>
+						<div class="left_line" id="content1_left_line" style="width: : 5px;">
+
+						</div>
+						<div class="top_line" id="content1_top_line" style="height: 5px;">
+
+						</div>
+						<div class="right_line" id="content1_right_line" style="width: : 5px;">
+
+						</div>
+						<div class="content_square_text">
+							<span class="content_title_txt">
+								멍미테스트
+							</span>
+						</div>
+				</div>
+				<div class="overlay_content1">
+					<span style="font-size: 20px;">
+					
+					</span>
+				</div>
+				<div class="div_link">
+						<div class="bottom_line" id="content1_link_bottom_line" style="opacity: 1;">
+
+						</div>
+						<div class="left_line" id="content1_link_left_line" style="opacity: 1;">
+
+						</div>
+						<div class="top_line" id="content1_link_top_line" style="opacity: 1;">
+
+						</div>
+						<div class="right_line" id="content1_link_right_line" style="opacity: 1;">
+
+						</div>
+						<div class="square_text">
+							<span class="content_title_link">
+								→
+							</span>
+						</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="overlay_div2" style="text-align: center;">
+			<div class="overlay_div2_child">
+				<div class="content_square"  id="content_square2">
+						<div class="bottom_line" id="content2_bottom_line" style="height: 5px;">
+
+						</div>
+						<div class="left_line" id="content2_left_line" style="width: : 5px;">
+
+						</div>
+						<div class="top_line" id="content2_top_line" style="height: 5px;">
+
+						</div>
+						<div class="right_line" id="content2_right_line" style="width: : 5px;">
+
+						</div>
+						<div class="content_square_text">
+							<span class="content_title_txt">
+								MBTI
+							</span>
+						</div>
+				</div>
+				<div class="overlay_content2">
+
+				</div>
+				<div class="div_link">
+						<div class="bottom_line" id="content2_link_bottom_line" style="opacity: 1;">
+
+						</div>
+						<div class="left_line" id="content2_link_left_line" style="opacity: 1;">
+
+						</div>
+						<div class="top_line" id="content2_link_top_line" style="opacity: 1;">
+
+						</div>
+						<div class="right_line" id="content2_link_right_line" style="opacity: 1;">
+
+						</div>
+						<div class="square_text">
+							<span class="content_title_link">
+								→
+							</span>
+						</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="overlay_div3" style="text-align: center;">
+			<div class="overlay_div3_child">
+				<div class="content_square"  id="content_square3">
+						<div class="bottom_line" id="content3_bottom_line" style="height: 5px;">
+
+						</div>
+						<div class="left_line" id="content3_left_line" style="width: : 5px;">
+
+						</div>
+						<div class="top_line" id="content3_top_line" style="height: 5px;">
+
+						</div>
+						<div class="right_line" id="content3_right_line" style="width: : 5px;">
+
+						</div>
+						<div class="content_square_text">
+							<span class="content_title_txt">
+								전국보호소
+							</span>
+						</div>
+				</div>
+				<div class="overlay_content3">
+
+				</div>
+				<div class="div_link">
+						<div class="bottom_line" id="content3_link_bottom_line" style="opacity: 1;">
+
+						</div>
+						<div class="left_line" id="content3_link_left_line" style="opacity: 1;">
+
+						</div>
+						<div class="top_line" id="content3_link_top_line" style="opacity: 1;">
+
+						</div>
+						<div class="right_line" id="content3_link_right_line" style="opacity: 1;">
+
+						</div>
+						<div class="square_text">
+							<span class="content_title_link">
+								→
+							</span>
+						</div>
+				</div>
+			</div>
+		</div>
+
+		<!--
+		<div class="video_div">
+			<video id="dog_video" width="25%" autoplay muted loop="auto">
+				  <source src="../../static/video/dog_video.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		</div>
+		-->
+	</div>
+
+
+	<div class='bottom'>
+
+			<div class='domain'>
+				<img class='top_logo_img' src="../../static/img/logo_txt_color.png">
+			</div>
+
+			<div class='domain_content' style="background-color: black;">
+				<div class='contact' style="background-color: black;">
+					<span><img class="logo_icon" src="../../static/img/logo_img_color.png"></span>
+					<br><br>
+					<span class='domain_content_title'>
+						<strong>CONTACT</strong>
+						<hr width="50%" align="left" style="color:#EDA900; background-color:#EDA900; height:1px; border:none;" />
+					</span>
+					<br><br>
+					<span style="color: white; font-size: 1vw;">
+						<img class="contact_icon" src="../../static/img/email_img.png" align="middle">
+						&nbsp;<strong>puppysignal@gmail.com</strong>
+					</span>
+				</div>
+
+
+				<div class='crowd_funding'>
+					<span  class='domain_content_title'>
+						<strong>CROWD FUNDING</strong>
+						<hr width="80%" align="left" style="color:#EDA900; background-color:#EDA900; height:1px; border:none;" />
+					</span>
+					<span style="color: white; font-size: 1vw;">
+						<strong>www.ohmycompany.com</strong>
+					</span>
+				</div>
+
+
+				<div class='share'>
+					<span  class='domain_content_title'>
+						<strong>SHARING</strong>
+						<hr width="80%" align="left" style="color:#EDA900; background-color:#EDA900; height:1px; border:none;" />
+						</span>
+					<span style="color: white; font-size: 1vw;">
+						<img class='contact_sns_icon' src="../../static/img/facebook_img.png" align="middle">
+						&nbsp;페이스북 공유
+						<br>
+						<img class='contact_sns_icon' src="../../static/img/kakao_img.png" align="middle">
+						&nbsp;카카오톡 공유
+						<br>
+					</span>
+				</div>
+			</div>
+
+			<div class="copyright">
+				<span style="color: white; font-size: 1vw;">
+					© 2017 EULJIRO-3-GA ALL RIGHTS RESERVED
+					<BR><BR><BR>
+				</span>>
+			</div>
+	</div>
+
+
+
+
+	<script>
+		//move();
+
+		function side_progress(){
+		  var elem = document.getElementById("side_progress");   
+		  var height = 1;
+
+		    if (height >= 100) {
+		      clearInterval(id);
+		    } else {
+		      height++; 
+		      elem.style.height = height + '%'; 
+		    }
+		}
+
+		function move(name) {
+		  var elem = document.getElementById(name + "bottom_line");   
+		  var width = 1;
+		  var id = setInterval(frame, 5);
+		  move2(name + "left_line");
+		  move3(name + "top_line");
+		  move4(name + "right_line");
+		  function frame() {
+		    if (width >= 100) {
+		      clearInterval(id);
+		      //move2();
+		    } else {
+		      width++; 
+		      elem.style.width = width + '%'; 
+		    }
+		  }
+		}
+
+		function move2(name) {
+		  var elem = document.getElementById(name);   
+		  var height = 1;
+		  var id = setInterval(frame, 5);
+		  function frame() {
+		    if (height >= 100) {
+		      clearInterval(id);
+		      //move3();
+		    } else {
+		      height++; 
+		      elem.style.height = height + '%'; 
+		    }
+		  }
+		}
+
+		function move3(name) {
+		  var elem = document.getElementById(name);   
+		  var width = 1;
+		  var id = setInterval(frame, 5);
+		  function frame() {
+		    if (width >= 100) {
+		      clearInterval(id);
+		      //move4();
+		    } else {
+		      width++; 
+		      elem.style.width = width + '%'; 
+		    }
+		  }
+		}
+
+		function move4(name) {
+		  var elem = document.getElementById(name);   
+		  var height = 1;
+		  var id = setInterval(frame, 5);
+		  function frame() {
+		    if (height >= 100) {
+		      clearInterval(id);
+		    } else {
+		      height++; 
+		      elem.style.height = height + '%'; 
+		    }
+		  }
+		}
+
+
+		var flag0 = 0;
+		var flag1 = 0;
+
+		var flag3 = 0;
+		var flag4 = 0;
+
+
+
+		var overlay1_flag = 0;
+		var overlay2_flag = 0;
+		var overlay3_flag = 0;
+		var overlay4_flag = 0;
+
+
+
+		var opacity_flag = 0;
+
+		var side_progress_elem = document.getElementById("side_progress");
+		var ovrelay_elem = document.getElementById("back_img");
+		var video_elem = document.getElementById("dog_video");
+		var o = 1;
+
+		$(window).scroll(function () {
+
+				var w = $(window).width();
+
+				/*  scroll 값  */
+				var height = $(document).scrollTop();
+
+
+				//alert(w);
+
+				if(w > 500){
+
+			    /*  상단 고정 메뉴바 이벤트  */
+                if(height > 100){
+                    if(flag3==0){
+                        $('.top').css("background-color", "#B5996D");
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_white.png");
+                        //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
+                        $('.menu').css("color", "#ffffff");
+                        
+                        $('.top_logo').animate({
+                        	marginLeft : '10%',
+                        });
+
+                        $('.top_nav').animate({
+                        	marginLeft : '80%',
+                        	marginTop : '-2%'
+                        });
+
+                        $('.top').animate({
+                        	height : '3vw',
+                        });
+
+                        $('.top_nav').css({
+                        	/*
+                        	'-webkit-transform' : 'translate(-50%, 0%)',
+						    '-ms-transform' : 'translate(-50%, 0%)',
+						    '-moz-transform' : 'translate(-50%, 0%)',
+						    '-o-transform' : 'translate(-50%, 0%)',
+						    'transform' : 'translate(-50%, 0%)'
+						    */
+                        });
+						
+                        flag3=1;
+                    }
+                }
+
+                if(height < 100){
+                    if(flag3==1){
+                        $('.top').css("background-color", "white");
+                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
+                        //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
+                        $('.menu').css("color", "#B5996D");
+                        
+
+                        $('.top_logo').animate({
+                        	marginLeft : '50%',
+                        });
+
+                        $('.top_nav').animate({
+                        	marginLeft: '50%',
+                        	marginTop : '-0%'
+                        });
+
+                        $('.top').animate({
+                        	height : '5vw',
+                        });
+
+                        $('.top_nav').css({
+                        	'-webkit-transform' : 'translate(-50%, 0%)',
+						    '-ms-transform' : 'translate(-50%, 0%)',
+						    '-moz-transform' : 'translate(-50%, 0%)',
+						    '-o-transform' : 'translate(-50%, 0%)',
+						    'transform' : 'translate(-50%, 0%)'
+                        });
+                        flag3=0;
+                    }
+                }
+
+            }
+
+            if(w < 500){
+            	if(height > 100){
+            		$('.top').css({
+                        	'-webkit-transform' : 'translate(0%, -50%)',
+						    '-ms-transform' : 'translate(0%, -50%)',
+						    '-moz-transform' : 'translate(0%, -50%)',
+						    '-o-transform' : 'translate(0%, -50%)',
+						    'transform' : 'translate(0%, -50%)'
+                        });
+            	}
+
+            	if(height < 100){
+            		$('.top').css({
+                        	'-webkit-transform' : 'translate(0%, 0%)',
+						    '-ms-transform' : 'translate(0%, 0%)',
+						    '-moz-transform' : 'translate(0%, 0%)',
+						    '-o-transform' : 'translate(0%, 0%)',
+						    'transform' : 'translate(0%, 0%)'
+                        });
+            	}
+            }
+
+
+            var tmp_offset = $('.tmp_div').offset().top;
+
+				if(height < tmp_offset*0.5){
+					if(flag1==0){
+						$(".back_img").animate({
+						      height: '-=100px',
+						      width: '0%'
+						    });
+
+						$('.back_img').css({'position':'fixed', 'z-index' : '-9999'});
+						$('.square').css({'left' : '0%', 'opacity' : '0'});
+						$('.square_content').css({'left' : '0%', 'opacity' : '0'});
+
+						$('.div_link').css({'left' : '0%', 'opacity' : '0'});
+						flag1=1;
+					}
+				}
+
+
+
+				if(tmp_offset*0.8 < height && height < tmp_offset*1.5){
+					if(flag1==1){
+						$(".back_img").animate({
+					      height: '+=100px',
+					      width: '+=75%'
+					    });
+
+					    $('.back_img').css({'position':'fixed', 'z-index' : '-9999'});
+					    $('.square').css({'left' : '20%', 'opacity' : '1'});
+					    $('.square_content').css({'left' : '40%', 'opacity' : '1'});
+
+					    $('.div_link').css({'left' : '80%', 'opacity' : '1'});
+					    move("");
+					    move("link_");
+						flag1=0;
+					}
+
+					$(".now_div").html("intro");
+
+					if(overlay1_flag == 1){
+						$('.overlay_div1').animate({
+								height: '-=400px'
+							});
+						$(".overlay_content1").animate({
+							    opacity: '-=0.5'
+							});
+						$("#content1_bottom_line").css("width", "0%");
+						$("#content1_right_line").css("height", "0%");
+						$("#content1_top_line").css("width", "0%");
+						$("#content1_left_line").css("height", "0%");
+						$("#content_square1").css("top", "0%");
+
+
+						$("#content1_link_bottom_line").css("width", "0%");
+						$("#content1_link_right_line").css("height", "0%");
+						$("#content1_link_top_line").css("width", "0%");
+						$("#content1_link_left_line").css("height", "0%");
+
+
+						overlay1_flag=0;
+					}
+
+					if(overlay2_flag == 1){
+						$('.overlay_div2').animate({
+								height: '-=400px'
+							});
+						$(".overlay_content2").animate({
+							    opacity: '-=0.5'
+							});
+						$("#content2_bottom_line").css("width", "0%");
+						$("#content2_right_line").css("height", "0%");
+						$("#content2_top_line").css("width", "0%");
+						$("#content2_left_line").css("height", "0%");
+						$("#content_square2").css("top", "0%");
+
+
+						$("#content2_link_bottom_line").css("width", "0%");
+						$("#content2_link_right_line").css("height", "0%");
+						$("#content2_link_top_line").css("width", "0%");
+						$("#content2_link_left_line").css("height", "0%");
+						overlay2_flag=0;
+					}
+
+					if(overlay3_flag == 1){
+						$('.overlay_div3').animate({
+								height: '-=400px'
+							});
+						$(".overlay_content3").animate({
+							    opacity: '-=0.5'
+							});
+						$("#content3_bottom_line").css("width", "0%");
+						$("#content3_right_line").css("height", "0%");
+						$("#content3_top_line").css("width", "0%");
+						$("#content3_left_line").css("height", "0%");
+						$("#content_square3").css("top", "0%");
+
+
+						$("#content3_link_bottom_line").css("width", "0%");
+						$("#content3_link_right_line").css("height", "0%");
+						$("#content3_link_top_line").css("width", "0%");
+						$("#content3_link_left_line").css("height", "0%");
+						overlay3_flag=0;
+					}
+
+				}
+
+				var square_offset = $('.square').offset().top;
+
+				var overlay1_offset = $('.overlay_div1').offset().top;
+
+				if(overlay1_offset - square_offset < 400){
+					if(overlay1_flag==0){
+						$('.overlay_div1').animate({
+							height: '+=400px'
+						});
+						$(".overlay_content1").animate({
+						      opacity: '+=0.5'
+						    });
+						$("#content_square1").animate({
+						      top: '10%'
+						    });
+						overlay1_flag=1;
+						move("content1_");
+						move("content1_link_")
+					}
+
+					$(".now_div").html("content");
+				}
+
+
+
+				if(overlay1_offset - square_offset < 400){
+					if(opacity_flag==0){
+						$(".back_img").animate({
+					      opacity : "0",
+					    });
+					    opacity_flag=1;
+					}
+				}
+
+				if(overlay1_offset - square_offset > 400){
+					if(opacity_flag==1){
+						$(".back_img").animate({
+					      opacity : "1",
+					    });
+					    opacity_flag=0;
+					}
+				}
+
+
+				var overlay2_offset = $('.overlay_div2').offset().top;
+
+				if(overlay2_offset - square_offset < 400){
+					if(overlay2_flag==0){
+						$('.overlay_div2').animate({
+							height: '+=400px'
+						});
+						$(".overlay_content2").animate({
+						      opacity: '+=0.5'
+						    });
+						$("#content_square2").animate({
+						      top: '10%'
+						    });
+						overlay2_flag=1;
+						move("content2_");
+						move("content2_link_")
+					}
+
+					//$(".now_div").html("content2");
+				}
+
+
+
+				var overlay3_offset = $('.overlay_div3').offset().top;
+
+				if(overlay3_offset - square_offset < 400){
+					if(overlay3_flag==0){
+						$('.overlay_div3').animate({
+							height: '+=400px'
+						});
+						$(".overlay_content3").animate({
+						      opacity: '+=0.5'
+						    });
+						$("#content_square3").animate({
+						      top: '10%'
+						    });
+						overlay3_flag=1;
+						move("content3_");
+						move("content3_link_")
+					}
+
+					//$(".now_div").html("content3");
+				}
+
+
+
+				/*
+				var video_div_offset = $('.video_div').offset().top;
+
+				
+				if((height/$('body').height())*110 <= 70){
+					video_elem.style.width = (height/$('body').height())*110 + '%';
+				}
+				
+				
+				if(height > video_div_offset){
+					$('.back_img').css('display', 'none');
+				}
+				else{
+					$('.back_img').css('display', 'block');
+				}
+				*/
+
+
+
+				var bottom_div_offset = $('.bottom').offset().top;
+
+				if(bottom_div_offset < height*1.3){
+					$(".now_div").html("contact");
+				}
+
+			    {
+			      o++;
+			      side_progress_elem.style.height = (height/$('body').height())*140 + '%';
+				  //ovrelay_elem.style.opacity = ($('body').height()/(height*40))*5;
+			    }
+		});
+
+
+		/*
+		$(document).ready(function(){ 
+		    //** notice we are including jquery and the color plugin at 
+		    //** http://code.jquery.com/color/jquery.color-2.1.0.js
+		    
+		    var scroll_pos = 0;
+		    var animation_begin_pos = 0; //where you want the animation to begin
+		    var animation_end_pos = 7000; //where you want the animation to stop
+		    var beginning_color = new $.Color( 'rgb(210,50,98)' ); //we can set this here, but it'd probably be better to get it from the CSS; for the example we're setting it here.
+		    var ending_color = new $.Color( 'rgb(0,197,209)' ); ;//what color we want to use in the end
+		    $(document).scroll(function() {
+		        scroll_pos = $(this).scrollTop(); 
+		        if(scroll_pos >= animation_begin_pos && scroll_pos <= animation_end_pos ) { 
+		           // console.log( 'scrolling and animating' );
+		            //we want to calculate the relevant transitional rgb value
+		            var percentScrolled = scroll_pos / ( animation_end_pos - animation_begin_pos );
+		            var newRed = beginning_color.red() + ( ( ending_color.red() - beginning_color.red() ) * percentScrolled );
+		            var newGreen = beginning_color.green() + ( ( ending_color.green() - beginning_color.green() ) * percentScrolled );
+		            var newBlue = beginning_color.blue() + ( ( ending_color.blue() - beginning_color.blue() ) * percentScrolled );
+		            var newColor = new $.Color( newRed, newGreen, newBlue );
+		            //console.log( newColor.red(), newColor.green(), newColor.blue() );
+		            $('body').animate({ backgroundColor: newColor }, 0);
+		        } else if ( scroll_pos > animation_end_pos ) {
+		             $('body').animate({ backgroundColor: ending_color }, 0);
+		        } else if ( scroll_pos < animation_begin_pos ) {
+		             $('body').animate({ backgroundColor: beginning_color }, 0);
+		        } else { }
+		    });
+		});
+		*/
+
+	</script>
+
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex,0);
+
+		function plusSlides(n) {
+		  showSlides(slideIndex += n,1);
+		}
+
+		function currentSlide(n) {
+		  showSlides(slideIndex = n,1);
+		}
+
+		function showSlides(n,check) {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		  var dots = document.getElementsByClassName("dot");
+		  if (n > slides.length) {slideIndex = 1}    
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+		      slides[i].style.display = "none";  
+		  }
+		  for (i = 0; i < dots.length; i++) {
+		      dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";  
+		  dots[slideIndex-1].className += " active";
+
+		  if(check==0){
+			  setTimeout(function(){
+			  	 slideIndex++;
+			  	 showSlides(slideIndex,0);
+			  }, 4000);
+			}
+		}
+	</script>
+</body>
+</html>
