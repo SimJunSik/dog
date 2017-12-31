@@ -26,7 +26,7 @@
 
 
 	<style type="text/css">
-	@media (min-width:751px) {
+	@media (min-width:1200px) {
 		.square{
 			position: absolute;
 			left: 20%;
@@ -478,7 +478,7 @@
 
 
 
-  @media (max-width:750px) {
+  @media (max-width:1200px) {
   		body{
   			height: 900vw;
   		}
@@ -937,7 +937,7 @@
 	<style>
 * {box-sizing:border-box}
 body {font-family: Verdana,sans-serif;margin:0}
-@media (min-width:750px) {
+@media (min-width:1200px) {
 	.mySlides {display:none}
 
 	.cover_img{
@@ -1027,7 +1027,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 	}
 }
 
-@media (max-width:750px) {
+@media (max-width:1200px) {
 	.mySlides {display:none}
 
 	.cover_img{
@@ -1604,7 +1604,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 				var w = $(window).width();
 
-				alert(w);
+				//alert(w);
 
 				/*  scroll 값  */
 				var height = $(document).scrollTop();
@@ -1612,7 +1612,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 				//alert(w);
 
-				if(w > 500){
+				if(w > 1000){
 
 			    /*  상단 고정 메뉴바 이벤트  */
                 if(height > 100){
@@ -1683,7 +1683,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
             }
 
-            if(w < 500){
+            if(w < 1000){
             	if(height > 100){
             		$('.top').css({
                         	'-webkit-transform' : 'translate(0%, -50%)',
