@@ -407,23 +407,16 @@
                       map: resultsMap,
                       position: results[0].geometry.location               
                     });
-                    //alert(results[0].geometry.location.lat());
-                    //alert(results[0].geometry.location.lng());
-                    //alert(document.getElementById('address').value);
-                    /*
-                    $.ajax({
-                      url: '/register_marker/',
-                      data: {
-                        'location_name': document.getElementById('address').value,
-                        'x' : results[0].geometry.location.lat(),
-                        'y' : results[0].geometry.location.lng()
-                      },
-                      dataType: 'json',
-                      success: function (data) {
-                        alert(data.result);
+
+                    
+                    for(var key in x_marker_list){
+                      if(distance(x_marker_list[key], y_marker_list[key], results[0].geometry.location.lat() , results[0].geometry.location.lng(), 'K') <= 3){
+                        $('#' + key.trim()).css('display' , 'block');
                       }
-                    });
-                    */
+                      else{
+                        $('#' + key.trim()).css('display' , 'none');
+                      }
+                    }
                   } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                   }
