@@ -585,7 +585,7 @@
 			background-color: transparent;
 			opacity: 1;
 			width: 100%;
-			height: 10vw;
+			height: 30vw;
 			overflow: hidden;
 			float: left;
 		}
@@ -621,7 +621,7 @@
 			background-color: transparent;
 			opacity: 1;
 			width: 100%;
-			height: 10vw;
+			height: 30vw;
 			overflow: hidden;
 			float: left;
 		}
@@ -657,7 +657,7 @@
 			background-color: transparent;
 			opacity: 1;
 			width: 100%;
-			height: 10vw;
+			height: 30vw;
 			overflow: hidden;
 			float: left;
 		}
@@ -1947,7 +1947,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 					if(overlay1_flag == 1){
 						$('.overlay_div1').animate({
-								height: '-=400px'
+								height: '20vw'
 							});
 						$(".overlay_content1").animate({
 							    opacity: '-=0.5'
@@ -1970,7 +1970,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 					if(overlay2_flag == 1){
 						$('.overlay_div2').animate({
-								height: '-=400px'
+								height: '20vw'
 							});
 						$(".overlay_content2").animate({
 							    opacity: '-=0.5'
@@ -1991,7 +1991,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 					if(overlay3_flag == 1){
 						$('.overlay_div3').animate({
-								height: '-=400px'
+								height: '20vw'
 							});
 						$(".overlay_content3").animate({
 							    opacity: '-=0.5'
@@ -2016,7 +2016,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 				var overlay1_offset = $('.overlay_div1').offset().top;
 
-				if(overlay1_offset - square_offset < 300){
+				if(overlay1_offset - square_offset < 100){
 					if(overlay1_flag==0){
 						$('.overlay_div1').animate({
 							height: '100vw'
@@ -2032,12 +2032,12 @@ body {font-family: Verdana,sans-serif;margin:0}
 						move("content1_link_")
 					}
 
-					$(".now_div").html("content");
+					$(".now_div").html("content1");
 				}
 
 
 
-				if(overlay1_offset - square_offset < 300){
+				if(overlay1_offset - square_offset < 100){
 					if(opacity_flag==0){
 						$(".back_img").animate({
 					      opacity : "0",
@@ -2046,7 +2046,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 					}
 				}
 
-				if(overlay1_offset - square_offset > 300){
+				if(overlay1_offset - square_offset > 100){
 					if(opacity_flag==1){
 						$(".back_img").animate({
 					      opacity : "1",
@@ -2058,7 +2058,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 				var overlay2_offset = $('.overlay_div2').offset().top;
 
-				if(overlay2_offset - square_offset < 300){
+				if(overlay2_offset - square_offset < 100){
 					if(overlay2_flag==0){
 						$('.overlay_div2').animate({
 							height: '100vw'
@@ -2074,14 +2074,14 @@ body {font-family: Verdana,sans-serif;margin:0}
 						move("content2_link_")
 					}
 
-					//$(".now_div").html("content2");
+					$(".now_div").html("content2");
 				}
 
 
 
 				var overlay3_offset = $('.overlay_div3').offset().top;
 
-				if(overlay3_offset - square_offset < 300){
+				if(overlay3_offset - square_offset < 100){
 					if(overlay3_flag==0){
 						$('.overlay_div3').animate({
 							height: '100vw'
@@ -2097,7 +2097,7 @@ body {font-family: Verdana,sans-serif;margin:0}
 						move("content3_link_")
 					}
 
-					//$(".now_div").html("content3");
+					$(".now_div").html("content3");
 				}
             }
 
