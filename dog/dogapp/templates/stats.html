@@ -8,15 +8,10 @@
     <script type="text/javascript" src="../../static/js/stats.js"></script>
     <link rel="stylesheet" type="text/css" href="../../static/css/stats.css">
 
-	
 </head>
 
 <body>
-	<script type="text/javascript">
 	
-</script>
-
-
 	<button onclick="topFunction()" id="topBtn" title="Go to top">TOP</button>
 
 	
@@ -27,167 +22,83 @@
 			<div class='top_nav'>
 				<a href="../"><span class="menu" id="w"> HOME </span></a>
 				<span class='menu_slash'> / </span>
-				<a href="../matching"><span class="menu" id="tmp"> 멍미테스트 </span></a>
+				<span class="menu" id="tmp"> MATCHING </span>
 				<span class='menu_slash'> / </span>
-				<a href="../notice"><span class="menu" id="h"> 찾아줄개 </span></a>
+				<span class="menu" id="h"> MBTI </span>
 				<span class='menu_slash'> / </span>
-				<a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
+				
+				<a href="../shelter"><span class="menu" id="h"> SHELTERS </span></a>
 				<span class='menu_slash'> / </span>
-				<a href="../shelter"><span class="menu" id="h"> 데려갈개 </span></a>
-				<span class='menu_slash'> / </span>
-				<a href="../about_us"><span class="menu"> 우린누구개 </span></a>
+				<a href="../about_us"><span class="menu"> ABOUTUS </span></a>
 
 			</div>
 		</div>
 
 		<div class="top_title">
 			<div class="logo_img_div">
+									<img src="../../static/img/logo_img_color.png"  style="width: 2vw; height: auto; ">
+
 				<p style="font-size: 1.5vw; font-weight: 900;">
-				<img src="../../static/img/logo_img_color.png" align="middle" style="width: 5vw; height: auto;">
-				통개자료
+
+						STATISTICS
 				</p>
 			</div>
 		</div>
-	
-	<div class='page'>	
-		<div class='vidBox'>
-			<video autoplay loop muted id="dogVid">
-				<source src='../../static/video/sleepy_dog.mp4' type='video/mp4'>
-					Your browser does not support HTML5 video.
-			</video>
-		</div>
-
-	
-		<a href="#layer2" class="btn-example">유기견 퀴즈</a>
-		<div class="dim-layer">
-			    <div class="dimBg"></div>
-			    <div id="layer2" class="pop-layer">
-			        <div class="pop-container">
-			            <div class="pop-conts">
-			                <!--content //-->
-			                <p class="ctxt mb20">간단 OX 퀴즈<br> <br>
-					 	 	1. 반려견이 죽을 떄까지 사는 가족의 비율은 1/4 정도이다. <br>
-					 	 	x 10% 정도<br><br>
-						 	2. 포획된 유기견은 대부분 수용소에서 자연사한다. <br>
-						 	x 안락사<br><br>
-						 	3. 유기견은 휴가철에 더 많이 버려진다. <br>
-						 	o<br><br>
-						 	4. 현재 국내에서 반려견의 온라인 매매는 금지되어 있다. <br>
-						 	x 가능<br><br>
-			                </p>
-
-			                <div class="btn-r">
-			                    <a href="#" class="btn-layerClose">Close</a>
-			                </div>
-			                <!--// content-->
-			            </div>
-			        </div>
-			    </div>
-			</div>
-
-	</div>
-	
-			
 
 
-	<div class='page'>
 		<img src="../../static/img/stat_bg11.jpg" class="hero-image2" style="width: 100%;">
 		  <div class="hero-text" >
 		    <h1>알고 계셨나요?</h1>
 		    <p>우리나라 유기동물 현실</p>
 
 		  </div>
-	</div>
 
-	
-	<div class='page'>
-		<div class='stat_img' id='stat_img1'>
-			<div class='stat_img_1'>			
-				<img id='stat_img1_1' src='../../static/img/static_contents.png' style='width: 85%; margin-right: auto; margin-left: auto; display: block; position: relative; top: 100px;'>
+		<div class='mid'>
+			<div class='stat_img' id='stat_img1'>
+				<img id='stat_img1' src='../../static/img/static_contents.png' >				
+				
 			</div>
-			<div class='stat_img_2'>		
-				<img id='stat_img1_2' src='../../static/img/static_contents.png' style='width: 85%; position: absolute; top:120px; left:100px; visibility: hidden; transform: rotate(3deg); transform-origin:center'>
+
+
+			<div class='stat_img' id='stat_img2'>
+				<img id='stat_img2' src='../../static/img/static_contents.png' >
+				
 			</div>
-			<button id="showTruth1" onclick="showHidden1()" style='margin-right: auto; margin-left: auto; display: block; position: relative; top: 100px;
-			box-shadow: 2px 2px 2px gray; background-color: #242424'> CLICK!!</button>
+
+
+			<div class='stat_img' id='stat_img3'>
+				<img id='stat_img3' src='../../static/img/static_contents.png' >
+				
+				
+			</div>
+
+			<div class='stat_img' id='stat_img4'>
+				<img id='stat_img4' src='../../static/img/static_contents.png' >
+				
+				
+			</div>
+
+			<div class='stat_img' id='stat_img5'>
+				<img id='stat_img5' src='../../static/img/static_contents.png' >
+				
+				
+			</div>
+
+			<div class='vidBox'>
+				<video autoplay loop muted id="dogVid">
+					<source src='../../static/video/sleepy_dog.mp4' type='video/mp4'>
+						Your browser does not support HTML5 video.
+				</video>
+			</div>
+
+
+			<p id='last_next'> 당신은 <br> 어떻게 하시겠습니까?<br>
+			<button class="linkbtn" >MATCHING</button>	
+			<a href="../shelter"><button class="linkbtn" >SHELTERS</button></a>	<br><br></p>
+
 		</div>
-	</div>
 
-
-	<div class='page'>
-		<div class='stat_img' id='stat_img2'>
-			<div class='stat_img_1'>			
-				<img id='stat_img2_1' src='../../static/img/static_contents.png' style='width: 85%; margin-right: auto; margin-left: auto; display: block; position: relative; top: 100px;'>
-			</div>
-			<div class='stat_img_2'>		
-				<img id='stat_img2_2' src='../../static/img/static_contents.png' style='width: 85%; position: absolute; top:120px; left:100px; visibility: hidden; transform: rotate(-3deg); transform-origin:center'>
-			</div>
-			<button id="showTruth2" onclick="showHidden2()" style='margin-right: auto; margin-left: auto; display: block; position: relative; top: 100px;
-			box-shadow: 2px 2px 2px gray; background-color: #242424'> CLICK!!</button>
-		</div>
-	</div>
-
-
-	<div class='page'>
-		<div class='stat_img' id='stat_img3'>
-			<div class='stat_img_1'>			
-				<img id='stat_img3_1' src='../../static/img/static_contents.png' style='width: 85%; margin-right: auto; margin-left: auto; display: block; position: relative; top: 100px;'>
-			</div>
-			<div class='stat_img_2'>		
-				<img id='stat_img3_2' src='../../static/img/static_contents.png' style='width: 85%; position: absolute; top:120px; left:100px; visibility: hidden; transform: rotate(4deg); transform-origin:center'>
-			</div>
-			<button id="showTruth3" onclick="showHidden3()" style='margin-right: auto; margin-left: auto; display: block; position: relative; top: 100px;
-			box-shadow: 2px 2px 2px gray; background-color: #242424'> CLICK!!</button>
-		</div>
-	</div>
-
-	<div class='page' id="last_next" >
-		<p style='margin-top:50%;'> 당신은 <br> 어떻게 하시겠습니까?</p>
-		<button id="showTruth4" >멍미테스트</button>	
-		<a href="../shelter"><button id="showTruth4" >데려갈개</button>	<br></a>
-	</div>
 </body>
-
-
-<script type="text/javascript">
-$('.btn-example').click(function(){
-        var $href = $(this).attr('href');
-        layer_popup($href);
-    });
-    function layer_popup(el){
-
-        var $el = $(el);        //레이어의 id를 $el 변수에 저장
-        var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
-
-        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
-
-        var $elWidth = ~~($el.outerWidth()),
-            $elHeight = ~~($el.outerHeight()),
-            docWidth = $(document).width(),
-            docHeight = $(document).height();
-
-        // 화면의 중앙에 레이어를 띄운다.
-        if ($elHeight < docHeight || $elWidth < docWidth) {
-            $el.css({
-                marginTop: -$elHeight /2,
-                marginLeft: -$elWidth/2
-            })
-        } else {
-            $el.css({top: 0, left: 0});
-        }
-
-        $el.find('a.btn-layerClose').click(function(){
-            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
-            return false;
-        });
-
-        $('.layer .dimBg').click(function(){
-            $('.dim-layer').fadeOut();
-            return false;
-        });
-
-    }
-</script>
 
 </html>
 
