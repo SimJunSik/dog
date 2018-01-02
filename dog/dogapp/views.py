@@ -9,6 +9,105 @@ from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
+def DogCrawling(request) :
+	import sys, os
+	from django.conf import settings
+	import codecs
+	from bs4 import BeautifulSoup
+	import urllib.request
+	from urllib.parse import quote
+	from urllib.request import Request, urlopen
+	from django.shortcuts import render_to_response
+	import urllib
+
+
+	
+	a = 'http://www.dogbreedslist.info/all-dog-breeds/'
+	b = 'list_1_'
+	c = '.html#.WiK_Tkpl-Uk'
+	cnt = 0
+	href_list = []
+
+
+	for num in range(1, 20) :
+
+		result = a + b + str(num) + c
+		html = urllib.request.urlopen(result)
+		soup = BeautifulSoup(html, 'lxml')
+
+		link = soup.find_all("div", {"class" : "left"})
+		for m in link :
+			if(m.find("a")) :
+				try:
+					#print(m.a.get('href'))
+					href_list.append(m.a.get('href'))
+				except :
+					continue
+
+	#print(cnt)
+
+
+
+	for num in href_list :
+		f = open('dogapp/result2.txt', 'a+')
+		html = urllib.request.urlopen(num)
+		soup = BeautifulSoup(html, 'lxml')
+
+		link = soup.find("table", {"class" : "table-01"})
+
+		items = link.find_all("td")
+
+		needs_list = ['Name', 'Size', 'Temperament', 'Grooming', 'Apartment Friendly', 'Child Friendly', 'Cat Friendly', 'Dog Friendly']
+		cnt = cnt+1
+		#print("NUMBER :: " + str(cnt))
+		print(cnt)
+		f.write("NUMBER :: " + str(cnt) + "\n")
+		for item in items :
+			
+			#print(item.get_text())
+			for i in needs_list :
+				if(item.get_text() == i) :
+					#print("**** " + item.get_text() + " ****")
+					f.write("**** " + item.get_text() + " ****"  + "\n")
+					#print(items[items.index(item)+1])
+					for string in items[items.index(item)+1] :
+						if(str(string)[0] == '<') :
+							tmp = ''
+							idx1 = 0
+							idx2 = 0
+							tmp_string = str(string).replace("<", "", 1)
+							for char in tmp_string :
+								if(char == '>') :
+									idx1 = str(tmp_string).index(char)
+
+								if(char == '<') :
+									idx2 = str(tmp_string).index(char)
+
+							tmp = str(tmp_string)[idx1+1:idx2]
+							#print(tmp)
+							try :
+								f.write(tmp  + "\n")
+								if(item.get_text() == 'Grooming' or 
+									item.get_text() == 'Apartment Friendly' or 
+									item.get_text() == 'Child Friendly' or 
+									item.get_text() == 'Cat Friendly' or
+									item.get_text() == 'Dog Friendly') :
+									break
+							except :
+								f.write("!!!!!!!!wrtie error\n")
+						else :
+							#print(str(string))
+							try :
+								f.write(str(string)  + "\n")
+							except :
+								f.write("!!!!!!!!wrtie error\n")
+
+		f.write("\n\n")
+						
+								
+
+		f.close()
+
 def HomeView2(request) :
 
 	import sys, os
