@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^take_dog/', views.TakedogView),
     url(r'^take_register_dog/', views.take_register_dog),
     url(r'^getaddr/', views.GetAddr),
+    url(r'^updateData/', views.UpdateData),
+    url(r'^updateData2/', views.UpdateData2),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

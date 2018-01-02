@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
-from django.urls import reverse
+from django.core.urlresolvers import reverse
 from django.core import serializers
 import json
 from django.conf import settings
@@ -90,6 +90,31 @@ def HomeView(request) :
 	"""
 
 	return render(request, './index_html.html')
+
+def UpdateData(request) :
+	json_serializer = serializers.get_serializer("json")()
+	dogs = json_serializer.serialize(Marker.objects.all(), ensure_ascii=False)
+
+	data = {
+		'dogs' : dogs
+	}
+
+
+	return JsonResponse(data)
+
+
+def UpdateData2(request) :
+
+	json_serializer = serializers.get_serializer("json")()
+	dogs = json_serializer.serialize(TakeMarker.objects.all(), ensure_ascii=False)
+
+	data = {
+		'dogs' : dogs
+	}
+
+
+	return JsonResponse(data)
+
 
 def ShelterView(request) :
 
