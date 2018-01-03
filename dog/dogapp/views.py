@@ -19,6 +19,7 @@ def DogCrawling(request) :
 	from urllib.request import Request, urlopen
 	from django.shortcuts import render_to_response
 	import urllib
+	import csv
 
 
 	
@@ -27,6 +28,10 @@ def DogCrawling(request) :
 	c = '.html#.WiK_Tkpl-Uk'
 	cnt = 0
 	href_list = []
+
+	f = open('dogapp/result.csv', 'w', encoding='utf-8', newline='')
+	wr = csv.writer(f)
+
 
 
 	for num in range(1, 20) :
@@ -45,11 +50,14 @@ def DogCrawling(request) :
 					continue
 
 	#print(cnt)
-
+	needs_list2 = ['Name', 'Size', 'Temperament', 'Grooming', 'Apartment Friendly', 'Child Friendly', 'Cat Friendly', 'Dog Friendly']
+	needs_list = ['Name']
+	wr.writerow(needs_list)
 
 
 	for num in href_list :
-		f = open('dogapp/result2.txt', 'a+')
+		#f = open('dogapp/result2.txt', 'a+')
+
 		html = urllib.request.urlopen(num)
 		soup = BeautifulSoup(html, 'lxml')
 
@@ -57,18 +65,18 @@ def DogCrawling(request) :
 
 		items = link.find_all("td")
 
-		needs_list = ['Name', 'Size', 'Temperament', 'Grooming', 'Apartment Friendly', 'Child Friendly', 'Cat Friendly', 'Dog Friendly']
 		cnt = cnt+1
 		#print("NUMBER :: " + str(cnt))
 		print(cnt)
-		f.write("NUMBER :: " + str(cnt) + "\n")
+		tmp_content = []
+		#f.write("NUMBER :: " + str(cnt) + "\n")
 		for item in items :
-			
 			#print(item.get_text())
 			for i in needs_list :
 				if(item.get_text() == i) :
 					#print("**** " + item.get_text() + " ****")
-					f.write("**** " + item.get_text() + " ****"  + "\n")
+					#f.write("**** " + item.get_text() + " ****"  + "\n")
+
 					#print(items[items.index(item)+1])
 					for string in items[items.index(item)+1] :
 						if(str(string)[0] == '<') :
@@ -86,7 +94,10 @@ def DogCrawling(request) :
 							tmp = str(tmp_string)[idx1+1:idx2]
 							#print(tmp)
 							try :
-								f.write(tmp  + "\n")
+								#print(tmp)
+								#f.write(tmp  + "\n")
+								tmp_content.append(tmp)
+								wr.writerow(tmp_content)
 								if(item.get_text() == 'Grooming' or 
 									item.get_text() == 'Apartment Friendly' or 
 									item.get_text() == 'Child Friendly' or 
@@ -94,19 +105,27 @@ def DogCrawling(request) :
 									item.get_text() == 'Dog Friendly') :
 									break
 							except :
-								f.write("!!!!!!!!wrtie error\n")
+								print('aa')
+								tmp_content.append(str(string))
+								#wr.writerow(tmp_content)
+								#f.write("!!!!!!!!wrtie error\n")
 						else :
 							#print(str(string))
 							try :
-								f.write(str(string)  + "\n")
+								#print(str(string))
+								tmp_content.append(str(string))
+								#wr.writerow(tmp_content)
 							except :
-								f.write("!!!!!!!!wrtie error\n")
-
-		f.write("\n\n")
+								print("bb")
+								#wr.writerow(tmp_content)
+								#f.write("!!!!!!!!wrtie error\n")
+		#print(tmp_content)
+		wr.writerow(tmp_content)
+		#f.write("\n\n")
 						
 								
 
-		f.close()
+	f.close()
 
 def HomeView2(request) :
 
@@ -500,3 +519,23 @@ def take_register_dog(request) :
 		context['dog'] = None
 
 	return render(request, './take_register_dog.html', context)
+
+
+
+def show_info(request) :
+
+	pk_id = request.GET.get('pk_id', None)
+	#print(pk_id)
+	marker = Marker.objects.get(pk=pk_id)
+	
+	location_name = marker.location_name
+	dog_name = marker.dog_name
+	img_src = marker.img_src
+
+	data = {
+			'location_name' : location_name,
+			'dog_name' : dog_name,
+			'img_src' : img_src
+		}
+
+	return JsonResponse(data)

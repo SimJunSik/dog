@@ -181,6 +181,7 @@
     position: relative;
     width: 100%;
     height: 300px;
+    display: 
   }
 
   .board{
@@ -682,8 +683,76 @@
             <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_E5Ls2VQ_yDsadA9-KhCLTBFoJ6AxuJo&callback=initMap">
             </script>
+            <style type="text/css">
+              .pop-up{
+                width: 80vw;
+                height: 40vw;
+                background-color: white;
+                z-index: 9999;
+                position: fixed;
+                left : 50%;
+                display: none;
+                -webkit-transform: translate(-50%, 0%);
+                -ms-transform: translate(-50%, 0%);
+                -moz-transform: translate(-50%, 0%);
+                -o-transform: translate(-50%, 0%);
+                transform: translate(-50%, 0%);
+                box-shadow: 10px 10px 10px black;
+              }
+              .pop_content{
+                position: relative;
+                width: 90%;
+                height: 90%;
+                background-color: white;
+                left : 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+              }
+              .pop_img_div{
+                float: left;
+                width: 50%;
+                height: 100%;
+                text-align: center;
+                background-color: yellow;
+              }
+              .pop_info_div{
+                float: left;
+                width: 50%;
+                height: 100%;
+                background-color: blue;
+              }
+              .close_btn_div{
+                width: 3vw;
+                height: 3vw;
+                position: fixed;
+                top: 0%;
+                right: 0%;
+                background-color: yellow;
+              }
+            </style>
 </head>
 <body>
+  <div class="pop-up">
+    <div class="close_btn_div" onclick="pop_close();">
+    </div>
+    <div class="pop_content">
+      <div class="pop_img_div">
+        <img id="pop_img" src="" style="width: 30vw; height: 30vw;">
+      </div>
+      <div class="pop_info_div">
+        <span id="pop_info" style="font-size: 2vw; color: white;">
+          이름 : <span id="pop_info_name"></span><br>
+          위치 : <span id="pop_info_location"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
   <div class='top'>
       <div class='top_logo'>
         <img class='top_logo_img' src="../../static/img/logo_txt_color.png">  
@@ -777,6 +846,79 @@
     </div>
     <script type="text/javascript">
 
+      function pop_close(){
+        $('.pop-up').css('display', 'none');
+        $('.top').css({
+            '-webkit-filter': 'blur(0px)',
+            '-moz-filter': 'blur(0px)',
+            '-o-filter': 'blur(0px)',
+            '-ms-filter': 'blur(0px)',
+            'filter': 'blur(0px)'
+        });
+        $('.top_title').css({
+            '-webkit-filter': 'blur(0px)',
+            '-moz-filter': 'blur(0px)',
+            '-o-filter': 'blur(0px)',
+            '-ms-filter': 'blur(0px)',
+            'filter': 'blur(0px)'
+        });
+        $('.middle').css({
+            '-webkit-filter': 'blur(0px)',
+            '-moz-filter': 'blur(0px)',
+            '-o-filter': 'blur(0px)',
+            '-ms-filter': 'blur(0px)',
+            'filter': 'blur(0px)'
+        });
+      }
+
+      function info_popup(pk){
+        //alert(pk);
+        $.ajax({
+                      url: '/show_info/',
+                      data: {
+                        'pk_id' : pk
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        $('#pop_img').attr('src', data.img_src);
+                        $('#pop_info_location').html(data.location_name);
+                        $('#pop_info_name').html(data.dog_name);
+                        $('.top').css({
+                          '-webkit-filter': 'blur(4px)',
+                          '-moz-filter': 'blur(4px)',
+                          '-o-filter': 'blur(4px)',
+                          '-ms-filter': 'blur(4px)',
+                          'filter': 'blur(4px)'
+                        });
+                        $('.top_title').css({
+                          '-webkit-filter': 'blur(4px)',
+                          '-moz-filter': 'blur(4px)',
+                          '-o-filter': 'blur(4px)',
+                          '-ms-filter': 'blur(4px)',
+                          'filter': 'blur(4px)'
+                        });
+                        $('.middle').css({
+                          '-webkit-filter': 'blur(4px)',
+                          '-moz-filter': 'blur(4px)',
+                          '-o-filter': 'blur(4px)',
+                          '-ms-filter': 'blur(4px)',
+                          'filter': 'blur(4px)'
+                        });
+
+
+
+                        $('.pop-up').fadeIn(1000);
+                        $('.pop-up').css({
+                          '-webkit-filter': 'blur(0px)',
+                          '-moz-filter': 'blur(0px)',
+                          '-o-filter': 'blur(0px)',
+                          '-ms-filter': 'blur(0px)',
+                          'filter': 'blur(0px)'
+                        });
+                      }
+              });
+      }
+
       /*  scroll 이벤트 관리 변수 */
     var flag1 = 0;
     var flag2 = 0;
@@ -789,6 +931,7 @@
     var location_name_list = [];
     var dog_name_list = [];
     var img_src_list = [];
+    var pk_list = [];
 
     function updateData(){
       $.ajax({
@@ -802,13 +945,19 @@
           //console.log(data.dogs);
           var total = data.dogs;
           while(total.length > 0){
+            var pk_idx = total.indexOf("pk");
+            var tm = total.substring(pk_idx+5, total.length);
+
+            var idx1 = tm.indexOf(",");
+            var pk = tm.substring(0, idx1);
+
             var location_name_idx = total.indexOf("location_name");
             if(location_name_idx <= 0){
               break;
             }
             var tmp = total.substring(location_name_idx+17, total.length);
 
-            var idx1 = tmp.indexOf(",");
+            idx1 = tmp.indexOf(",");
             var location_name = tmp.substring(0,idx1-1);
 
 
@@ -826,17 +975,20 @@
             idx1 = tmp3.indexOf(",");
             var img_src = tmp3.substring(0,idx1-1);
 
+            pk_list.push(pk);
             location_name_list.push(location_name);
             dog_name_list.push(dog_name);
             img_src_list.push(img_src);
 
             total = tmp3;
+
+            //alert(String(pk) + location_name + dog_name + img_src);
           }
 
           var content = '';
 
           for(var i=location_name_list.length-1;i>=location_name_list.length-5;i--){
-            var a = "<div class='realtime_list_content'><div class='dog_img_div' style=\"\"><img class=\"realtime_list_img\" src=";
+            var a = "<div class='realtime_list_content' id=\"" + pk_list[i] +"\" onclick=\"info_popup(this.id);\"><div class='dog_img_div' style=\"\"><img class=\"realtime_list_img\" src=";
             var b = "\"" + img_src_list[i] + "\"" +  "style=\"\"></div>";
             var c = "<div class='location_name_div' id=\"location_name_div\" style=\"\">";
             var d = "<span class=\"info_span\" style=\"\">";

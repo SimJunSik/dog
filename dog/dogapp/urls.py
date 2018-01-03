@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^getaddr/', views.GetAddr),
     url(r'^updateData/', views.UpdateData),
     url(r'^updateData2/', views.UpdateData2),
+    url(r'^show_info/', views.show_info),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
