@@ -1,69 +1,13 @@
 from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core import serializers
 import json
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
-# Create your views here.
-# def DogMatching(user_input):
-# # 가족구성원: 1인/2인/아이/부모님/3대
-# # 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
-# # 설거지: 쌓아둔다/바로바로한다/만들지않는다
-# # (집빈시간)
-# # 연예인상: 
-# # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
-	
-# # size/temperament/aparmtent_friendliness/child_friendliness/grooming
-# 	no_recommendation=False
 
-# # 가족구성원: 1인/2인/아이/부모님/3대
-# 	if(user_input1=3):
-# 		child_frendliness=5
-
-# # 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
-# 	if(user_input2=1):
-# 		aparmtent_friendliness=1
-# 	elif(user_input2=2):
-# 		aparmtent_friendliness=4
-# 	elif(user_input2=3):
-# 		aparmtent_friendliness=5
-# 	elif(user_input2=4):
-# 		no_recommendation=True
-
-# # 설거지: 쌓아둔다/바로바로한다/만들지않는다
-# 	if(user_input3=1):
-# 		grooming=2 #이하
-# 	elif(user_input3=2):
-# 		grooming=3 #이상
-# 	elif(user_input3=3):
-# 		no_recommendation=True
-		
-# # 연예인상: 
-# 	if(user_input4=1):
-# 		ideal_type=1
-# 	elif(user_input4=2):
-# 		ideal_type=2
-# 	elif(user_input4=3):
-# 		ideal_type=3
-# 	elif(user_input4=4):
-# 		ideal_type=4
-# 	elif(user_input4=5):
-# 		ideal_type=5
-
-# # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
-# 	if(user_input5=1):
-# 		trait_key=1
-# 	elif(user_input5=2):
-# 		trait_key=2
-# 	elif(user_input5=3):
-# 		trait_key=3
-# 	elif(user_input5=4):
-# 		trait_key=4
-# 	elif(user_input5=5):
-# 		trait_key=5
 
 def DogCrawling(request) :
 	import sys, os
@@ -454,6 +398,7 @@ def validate_username(request):
 
 
 
+
 def result_dog(request) :
 
 	select = []
@@ -462,11 +407,95 @@ def result_dog(request) :
 		tmp = request.POST['question' + str(i)]
 		select.append(tmp)
 
+# 가족구성원: 1인/2인/아이/부모님/3대
+# 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
+# 설거지: 쌓아둔다/바로바로한다/만들지않는다
+# 연예인상: 강아지/고양이/곰상 
+# 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
+	
+# size/temperament/aparmtent_friendliness/child_friendliness/grooming
+	no_recommendation=False
+
+	child_friendliness=0
+	apartment_friendliness=0
+	grooming=0
+	fur=""
+	temperament=0
+	size=""
+	face_type=""
+
+# 가족구성원: 1인/2인/아이/부모님/3대
+	if(select[0]=="3"):
+		child_friendliness=5
+
+# 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
+	if(select[1]=="1"):
+		apartment_friendliness=1
+	elif(select[1]=="2"):
+		apartment_friendliness=4
+	elif(select[1]=="3"):
+		apartment_friendliness=5
+	elif(select[1]=="4"):
+		no_recommendation=True
+
+# 설거지: 쌓아둔다/바로바로한다/만들지않는다
+	if(select[2]=='1'):
+		grooming="low"
+	elif(select[2]=='2'):
+		grooming="high"
+	elif(select[2]=='3'):
+		no_recommendation=True
+		
+# 연예인상: 강아지 /고양이/곰상/공룡/여우
+	if(select[3]=='1'):
+		face_type="강아지"
+	elif(select[3]=='2'):
+		face_type="고양이"
+	elif(select[3]=='3'):
+		face_type="곰상"
+	elif(select[3]=='4'):
+		face_type="공룡"
+	elif(select[3]=='5'):
+		face_type="여우"
+
+# 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
+	if(select[4]=='1'):
+		temperament=1
+	elif(select[4]=='2'):
+		temperament=2
+	elif(select[4]=='3'):
+		temperament=3
+	elif(select[4]=='4'):
+		temperament=4
+	elif(select[4]=='5'):
+		temperament=5
+	
+# 머리스타일: 곱슬/ 단모/ 장모
+	if(select[5]=='1'):
+		fur="곱슬"
+	elif(select[5]=='2'):
+		fur="단모"
+	elif(select[5]=='3'):
+		fur="장모"
+	
 	print(select)
 
 	data = {
-		'result' : 'bichon'
+		'result' : ''
 	}
+
+	if(no_recommendation):
+		data['result']='no dog for you'
+	else:	
+		for breed in Breed.objects.all():
+			if( int(breed.child_friendliness)>=int(child_friendliness) 
+				and int(breed.apartment_friendliness)>=int(apartment_friendliness) 
+				and  ( (int(breed.grooming)<=2 and grooming=="low") or(int(breed.grooming)>=3 and grooming=="high" ))
+				and breed.face_type==face_type
+				and breed.fur==fur
+				):
+				data['result']+="\n"+breed.name
+
 
 	return JsonResponse(data)
 
