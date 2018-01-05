@@ -10,7 +10,7 @@ class Breed(models.Model):
 	grooming=models.IntegerField(default=0)
 	face_type=models.CharField(max_length=50,default="unknown")
 	fur=models.CharField(max_length=50,default="unknown")
-
+	temp_group=models.CharField(max_length=50,default="unknown")
 	def __str__(self):
 		return self.name
 

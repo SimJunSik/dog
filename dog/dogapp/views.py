@@ -423,6 +423,7 @@ def result_dog(request) :
 	temperament=0
 	size=""
 	face_type=""
+	temper_group=[]
 
 # 가족구성원: 1인/2인/아이/부모님/3대
 	if(select[0]=="3"):
@@ -494,7 +495,8 @@ def result_dog(request) :
 				and breed.face_type==face_type
 				and breed.fur==fur
 				):
-				data['result']+="\n"+breed.name
+				if str(temperament) in breed.temp_group:
+					data['result']+="\n"+breed.name
 
 
 	return JsonResponse(data)
