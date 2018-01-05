@@ -13,8 +13,7 @@
 body, html {
     margin:0;
     background-color:#F7F1E6;
-
-
+    font-size: 62.5%;
 }
 
 .mid{
@@ -38,8 +37,6 @@ text-align:center;
     font-size: 5vw;
 }
 .vidBox{
-
-
     margin-bottom:2%;
     margin-left:auto;
     margin-right:auto;
@@ -155,98 +152,86 @@ and (max-width : 768px){
     font-size: 10vw;
 }
 
-.top{
-    width: 100%;
-    position: fixed;     /*  화면상 위치 고정  */
-    z-index: 3;          /*  z값 결정  */
-    top : 0;
-    height: 3vw;
-    background-color: white;
-  }
+/*  상단 고정 메뉴바 css  */
+    .top{
+      width: 100%;
+      position: fixed;     /*  화면상 위치 고정  */
+      z-index: 3;          /*  z값 결정  */
+      top : 0;
+      height: 9vw;
+      background-color: white;
+    }
 
-  .top_logo{
-    position: relative;
-    margin-top: 0vw;
-    margin-left: 50%;
-    -webkit-transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0%);
-    -moz-transform: translate(-50%, 0%);
-    -o-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
-    width: 30%;
-    text-align: center;
-    font-weight: 900;
-  }
-  .top_nav{  
-    position: relative;
-    /*margin-top: 3%;*/    /*  top 여백 설정  */
-    width: 100%;
-    margin-left: 50%;
-    -webkit-transform: translate(-50%, 0%);
-    -ms-transform: translate(-50%, 0%);
-    -moz-transform: translate(-50%, 0%);
-    -o-transform: translate(-50%, 0%);
-    transform: translate(-50%, 0%);
-    text-align: center;
-  }
+    .top_logo{
+      position: relative;
+      margin-top: 0.5vw;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      width: 50%;
+      text-align: center;
+      font-weight: 900;
+    }
+    .top_nav{  
+      position: relative;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 100%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      text-align: center;
+    }
+    .menu{
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
+      color: #B5996D;
+      font-size: 2vw;
+      font-weight: 900;
+    }
+    .menu:hover {
+      font-weight: 900;
+      font-size: 2vw;
+    }
+    .top_logo_img{
+      width: 28vw;
+      height: 4vw;
+      margin: 0;
+    }
+    .menu_slash{
+      color: #BDBDBD;
+      font-size: 1vw;
+    }
+    .top_logo_txt{
+      font-size: 2vw;
+      font-family: 'Clicker Script', cursive;
+      color: #B5996D;
+    }
 
+    .top_nav a{
+        text-decoration: none;
+    }
 
-  .menu{
-    margin-left: 0.5vw;
-    margin-right: 0.5vw;
-    color: #B5996D;
-    font-size: 1vw;
-    font-weight: 900;
-  }
-  .menu:hover {
-    font-weight: 900;
-    font-size: 1vw;
-  }
-  .top_logo_img{
-    width: 14vw;
-    height: 2vw;
-    margin: 0;
-  }
-  .menu_slash{
-    color: #BDBDBD;
-    font-size: 1vw;
-  }
-  .top_logo_txt{
-    font-size: 2vw;
-    font-family: 'Clicker Script', cursive;
-    color: #B5996D;
-  }
+    .top_title{
+        width: 100%;
+        background-color: white;
+        height: 5vw;
+        margin-top: 9vw;
+    }
 
-  .top_nav a{
-    text-decoration: none;
-  }
-
-  .top_title{
-    position:fixed;
-    z-index: 1000;
-    top:0;
-    left:10vw;
-    width: 10%;
-    /*background-color: white;*/
-    height: 3vw;
-  }
-  .logo_img_div p{
-    display:none;
-    z-index: 10000;
-    position: fixed;
-    top:0.5vw;
-    color: transparent;}
-
-  .logo_img_div{
-    position:fixed;
-    top:0;
-    left:5vw;
-    z-index: 1001;
-    width: 1vw;
-    height: 1.5vw;
-    /*background-color: white;*/
-    margin-top: 0vw;
-  }
+    .logo_img_div{
+        width: 80%;
+        height: 100%;
+        background-color: white;
+        margin: auto;
+        margin-top: 5%;
+    }
+/*  end   */
 
 .stat_img{
     position:relative;
