@@ -1,6 +1,18 @@
 from django.db import models
 
 # Create your models here.
+class Breed(models.Model):
+	name=models.CharField(max_length=50)
+	size=models.CharField(max_length=50)
+	temperament=models.CharField(max_length=500)
+	apartment_friendliness=models.IntegerField(max_length=5)
+	child_friendliness=models.IntegerField(max_length=5)
+	grooming=models.IntegerField(max_length=5)
+	
+	def__str__(self) :
+		return self.name
+
+
 
 class Dog(models.Model) :
 
