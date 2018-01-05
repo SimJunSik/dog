@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+<<<<<<< HEAD
 class Breed(models.Model):
 	name=models.CharField(max_length=50,default="unknown")
 	size=models.CharField(max_length=50,default="unknown")
@@ -15,6 +16,8 @@ class Breed(models.Model):
 		return self.name
 
 
+=======
+>>>>>>> 180105 junsik1
 
 class Dog(models.Model) :
 

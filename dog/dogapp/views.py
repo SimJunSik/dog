@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
-from django.urls import reverse
+from django.core.urlresolvers import reverse
 from django.core import serializers
 import json
 from django.conf import settings
@@ -65,8 +65,6 @@ from django.core.files.storage import FileSystemStorage
 # 	elif(user_input5=5):
 # 		trait_key=5
 
-
-
 def DogCrawling(request) :
 	import sys, os
 	from django.conf import settings
@@ -108,8 +106,9 @@ def DogCrawling(request) :
 					continue
 
 	#print(cnt)
-	needs_list2 = ['Name', 'Size', 'Temperament', 'Grooming', 'Apartment Friendly', 'Child Friendly', 'Cat Friendly', 'Dog Friendly']
-	needs_list = ['Name']
+
+	needs_list = ['Name', 'Size', 'Temperament', 'Grooming', 'Apartment Friendly', 'Child Friendly', 'Cat Friendly', 'Dog Friendly']
+	needs_list2 = ['Name']
 	wr.writerow(needs_list)
 
 
@@ -155,7 +154,7 @@ def DogCrawling(request) :
 								#print(tmp)
 								#f.write(tmp  + "\n")
 								tmp_content.append(tmp)
-								wr.writerow(tmp_content)
+								#wr.writerow(tmp_content)
 								if(item.get_text() == 'Grooming' or 
 									item.get_text() == 'Apartment Friendly' or 
 									item.get_text() == 'Child Friendly' or 
@@ -323,18 +322,20 @@ def NoticeView(request) :
 
 	context = {'markers' : markers, 'dogs' : dogs}
 
-	if request.method == 'POST' and request.FILES['dog_image'] :
-		img_src = request.FILES['dog_image']
-		fs = FileSystemStorage()
-		filename = fs.save(img_src.name, img_src)
-		uploaded_file_url = fs.url(filename)
-		#print(uploaded_file_url)
+	if request.method == 'POST':
+		file_get = request.POST.get('dog_image', False)
+		if(file_get == False) :
+			img_src = request.FILES['dog_image']
+			fs = FileSystemStorage()
+			filename = fs.save(img_src.name, img_src)
+			uploaded_file_url = fs.url(filename)
+			#print(uploaded_file_url)
 
 		location_name = request.POST.get('location_name')
-		print(location_name)
+		#print(location_name)
 		lat = request.POST.get('lat')
 		lng = request.POST.get('lng')
-		print(lat, lng)
+		#print(lat, lng)
 		dog_name = request.POST.get('dog_name')
 		psw_txt = request.POST.get('psw_txt')
 		#print(location_name, lat, lng)
@@ -351,7 +352,8 @@ def NoticeView(request) :
 			marker.y = lng
 			marker.dog_name = dog_name
 			marker.psw = psw_txt
-			marker.img_src = uploaded_file_url
+			if(file_get == False) :
+				marker.img_src = uploaded_file_url
 			marker.save()
 
 	return render(request, './notice_test.html', context)

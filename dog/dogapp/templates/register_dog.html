@@ -267,12 +267,34 @@
   			          }
   			        });
   			      }
+
+
+              function readURL(input) {
+                  if (input.files && input.files[0]) {
+                      var reader = new FileReader();
+
+                      reader.onload = function (e) {
+                          $('#dog_img_id').css('display', 'block');
+                          $('#dog_img_id').attr('src', e.target.result);
+                      }
+
+                      reader.readAsDataURL(input.files[0]);
+                  }
+              }
+
+              $(document).ready(function(){
+                $("#dog_img_input").change(function () {
+                      var img_src = $(this).val();
+                      readURL(this);
+                    });
+              });
   			    </script>
 
   			    <script async defer
   			    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_E5Ls2VQ_yDsadA9-KhCLTBFoJ6AxuJo&callback=initMap">
   			    </script>
 </head>
+
 <body>
 	<div class='top'>
       <div class='top_logo'>
@@ -313,19 +335,21 @@
       		<div id="map"></div>
       	</div>
     	<div class='board_menu'>
-	       <form method="POST" enctype="multipart/form-data" action="../notice/">
+	       <form method="POST" enctype="multipart/form-data" name="frm" action="../notice/">
 		    {% csrf_token %}
 		    <p>
 		    	강아지사진
-		    	{% if dog == 'None' %}
-			    <input type="file" name="dog_image">
+		    	{% if dog == None %}
+          <img id="dog_img_id" src="" style="width: 10vw; height: 10vw; display: none;"><br>
+			    <input type="file" name="dog_image" id="dog_img_input">
 			    {% else %}
-			    <input type="file" name="dog_image" value="{{dog.img_src}}">
+          <img id="dog_img_id" src="{{dog.img_src}}" style="width: 10vw; height: 10vw;">
+			    <input type="file" id="dog_img_input" name="dog_image" value="{{dog.img_src}}">
 			    {% endif %}
 			</p>
 			<p>
 		    	강아지이름
-		    	{% if dog == 'None' %}
+		    	{% if dog == None %}
 			    <input type="text" name="dog_name">
 			    {% else %}
 			    <input type="text" name="dog_name" value="{{dog.dog_name}}">
@@ -333,13 +357,13 @@
 			</p>
 			<p>
 		    	위치&nbsp;
-		    	{% if dog == 'None' %}
+		    	{% if dog == None %}
 			    <input type="text" id="location_name" name="location_name" hidden>
 			    <span id="location_name_txt" style="font-size: 20px;">
 			    	위치를 지정해주세요.
 			    </span>
 			    {% else %}
-			    <input type="text" id="location_name" name="location_name" hidden>
+			    <input type="text" id="location_name" name="location_name" value="{{dog.location_name}}" hidden>
 			    <span id="location_name_txt" style="font-size: 20px;">
 			    	{{dog.location_name}}
 			    </span>
@@ -347,26 +371,26 @@
 			</p>
 			<p>
 		    	위도&nbsp;
-		    	{% if dog == 'None' %}
+		    	{% if dog == None %}
 			    <input type="text" id="lat" name="lat" hidden>
 			    <span id="lat_txt" style="font-size: 20px;">
 
 			    </span>
 			    {% else %}
-			    <input type="text" id="lat" name="lat" hidden>
+			    <input type="text" id="lat" name="lat" value="{{dog.x}}" hidden>
 			    <span id="lat_txt" style="font-size: 20px;">
 			    	{{dog.x}}
 			    </span>
 			    {% endif %}
 			    <br>
 			    경도&nbsp;
-			    {% if dog == 'None' %}
+			    {% if dog == None %}
 			    <input type="text" id="lng" name="lng" hidden>
 			    <span id="lng_txt" style="font-size: 20px;">
 
 			    </span>
 			    {% else %}
-			    <input type="text" id="lng" name="lng" hidden>
+			    <input type="text" id="lng" name="lng" value="{{dog.y}}" hidden>
 			    <span id="lng_txt" style="font-size: 20px;">
 			    	{{dog.y}}
 			    </span>
@@ -374,14 +398,14 @@
 			</p>
 			<p>
 				비밀번호&nbsp;
-				{% if dog == 'None' %}
+				{% if dog == None %}
 				<input type="text" name="psw_txt">
 				{% else %}
 				<input type="text" name="psw_txt" value="{{dog.psw}}">
 				{% endif %}
 			</p>
 			<p>
-				{% if dog == 'None' %}
+				{% if dog == None %}
 				<input type="text" name="pk_value" value="none" hidden>
 				{% else %}
 				<input type="text" name="pk_value" value="{{dog.pk}}" hidden>
