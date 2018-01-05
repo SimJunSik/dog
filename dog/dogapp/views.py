@@ -1,69 +1,69 @@
 from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.core import serializers
 import json
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
-def DogMatching(user_input):
-# 가족구성원: 1인/2인/아이/부모님/3대
-# 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
-# 설거지: 쌓아둔다/바로바로한다/만들지않는다
-# (집빈시간)
-# 연예인상: 
-# 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
+# def DogMatching(user_input):
+# # 가족구성원: 1인/2인/아이/부모님/3대
+# # 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
+# # 설거지: 쌓아둔다/바로바로한다/만들지않는다
+# # (집빈시간)
+# # 연예인상: 
+# # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
 	
-# size/temperament/aparmtent_friendliness/child_friendliness/grooming
-	no_recommendation=False
+# # size/temperament/aparmtent_friendliness/child_friendliness/grooming
+# 	no_recommendation=False
 
-# 가족구성원: 1인/2인/아이/부모님/3대
-	if(user_input1=3):
-		child_frendliness=5
+# # 가족구성원: 1인/2인/아이/부모님/3대
+# 	if(user_input1=3):
+# 		child_frendliness=5
 
-# 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
-	if(user_input2=1):
-		aparmtent_friendliness=1
-	elif(user_input2=2):
-		aparmtent_friendliness=4
-	elif(user_input2=3):
-		aparmtent_friendliness=5
-	elif(user_input2=4):
-		no_recommendation=True
+# # 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
+# 	if(user_input2=1):
+# 		aparmtent_friendliness=1
+# 	elif(user_input2=2):
+# 		aparmtent_friendliness=4
+# 	elif(user_input2=3):
+# 		aparmtent_friendliness=5
+# 	elif(user_input2=4):
+# 		no_recommendation=True
 
-# 설거지: 쌓아둔다/바로바로한다/만들지않는다
-	if(user_input3=1):
-		grooming=2 #이하
-	elif(user_input3=2):
-		grooming=3 #이상
-	elif(user_input3=3):
-		no_recommendation=True
+# # 설거지: 쌓아둔다/바로바로한다/만들지않는다
+# 	if(user_input3=1):
+# 		grooming=2 #이하
+# 	elif(user_input3=2):
+# 		grooming=3 #이상
+# 	elif(user_input3=3):
+# 		no_recommendation=True
 		
-# 연예인상: 
-	if(user_input4=1):
-		ideal_type=1
-	elif(user_input4=2):
-		ideal_type=2
-	elif(user_input4=3):
-		ideal_type=3
-	elif(user_input4=4):
-		ideal_type=4
-	elif(user_input4=5):
-		ideal_type=5
+# # 연예인상: 
+# 	if(user_input4=1):
+# 		ideal_type=1
+# 	elif(user_input4=2):
+# 		ideal_type=2
+# 	elif(user_input4=3):
+# 		ideal_type=3
+# 	elif(user_input4=4):
+# 		ideal_type=4
+# 	elif(user_input4=5):
+# 		ideal_type=5
 
-# 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
-	if(user_input5=1):
-		trait_key=1
-	elif(user_input5=2):
-		trait_key=2
-	elif(user_input5=3):
-		trait_key=3
-	elif(user_input5=4):
-		trait_key=4
-	elif(user_input5=5):
-		trait_key=5
+# # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
+# 	if(user_input5=1):
+# 		trait_key=1
+# 	elif(user_input5=2):
+# 		trait_key=2
+# 	elif(user_input5=3):
+# 		trait_key=3
+# 	elif(user_input5=4):
+# 		trait_key=4
+# 	elif(user_input5=5):
+# 		trait_key=5
 
 
 

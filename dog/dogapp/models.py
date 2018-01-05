@@ -2,14 +2,16 @@ from django.db import models
 
 # Create your models here.
 class Breed(models.Model):
-	name=models.CharField(max_length=50)
-	size=models.CharField(max_length=50)
-	temperament=models.CharField(max_length=500)
-	apartment_friendliness=models.IntegerField(max_length=5)
-	child_friendliness=models.IntegerField(max_length=5)
-	grooming=models.IntegerField(max_length=5)
-	
-	def__str__(self) :
+	name=models.CharField(max_length=50,default="unknown")
+	size=models.CharField(max_length=50,default="unknown")
+	temperament=models.CharField(max_length=500,default="unknown")
+	apartment_friendliness=models.IntegerField(default=0)
+	child_friendliness=models.IntegerField(default=0)
+	grooming=models.IntegerField(default=0)
+	face_type=models.CharField(max_length=50,default="unknown")
+	fur=models.CharField(max_length=50,default="unknown")
+
+	def __str__(self):
 		return self.name
 
 
