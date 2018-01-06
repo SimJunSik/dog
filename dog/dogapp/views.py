@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
-from django.core.urlresolver import reverse
 from django.core import serializers
 import json
 from django.conf import settings
