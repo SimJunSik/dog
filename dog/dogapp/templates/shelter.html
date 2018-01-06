@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<style type="text/css">
-		.selter_name_list{
-			width: 100%;
-			height: 30vw;
-			background-color: green;
-		}
-		.shelter_name_list_content{
-			display: none;
-		}
+  <title></title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <style type="text/css">
+    @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
-		.shelter_info_content{
-			display: none;
-		}
+    *{
+      font-family: 'Hanna', serif;
+    }
+    .selter_name_list{
+      width: 100%;
+      height: 30vw;
+      background-color: green;
+    }
+    .shelter_name_list_content{
+      display: none;
+    }
+
+    .shelter_info_content{
+      display: none;
+    }
 
     .shelter_div{
       margin-top: 750px;
+      width: 100%;
+      height: 50vw;
     }
 
     /*  상단 고정 메뉴바 css  */
@@ -86,8 +93,8 @@
       text-decoration: none;
     }
 /*  end   */
-	</style>
-	<style>
+  </style>
+  <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
@@ -115,34 +122,34 @@
         padding-left: 10px;
       }
     </style>
-	<script>
+  <script>
 
 
-		function change_location(id){
-			$('.shelter_name_list_content').css('display', 'none');
-			$('.' + id).css('display' , 'block');
+    function change_location(id){
+      $('.shelter_name_list_content').css('display', 'none');
+      $('.' + id).css('display' , 'block');
 
-			$('.shelter_info_content').css('display', 'none');
+      $('.shelter_info_content').css('display', 'none');
 
-			var num = $('.' + id).length;
-			$('#cnt').html(num);
-		}
+      var num = $('.' + id).length;
+      $('#cnt').html(num);
+    }
 
-		function show_info(id){
-			$('.shelter_info_content').css('display', 'none');
-			$('#info_' + id).css('display' , 'block');
+    function show_info(id){
+      $('.shelter_info_content').css('display', 'none');
+      $('#info_' + id).css('display' , 'block');
 
-			var map = new google.maps.Map(document.getElementById('map'), {
+      var map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 16,
                   center: new google.maps.LatLng(37.49, 127.02),
                   mapTypeId: 'roadmap'
                 });
 
-			var geocoder = new google.maps.Geocoder();
+      var geocoder = new google.maps.Geocoder();
 
-			//alert(id);
+      //alert(id);
 
-			$.ajax({
+      $.ajax({
                       url: '/getaddr/',
                       data: {
                         'num' : id
@@ -163,7 +170,7 @@
                         geocodeAddress(geocoder, map, addr);
                       }
             });
-		}
+    }
 
 
               var x_marker_list = {};
@@ -340,8 +347,13 @@
       </div>
   </div>
 
+  <div class="map_title" style="width: 100%; height: 1vw;">
+    <div class='map_title.png' style="width: 100%; background-color: white; text-align: center;">
+      <img src="../../static/img/map title.png" style="width: 27vw; height: 5vw;margin-top: 7vw;">
+    </div>
+  </div>
 
-	<div class="btn_div" style="width: 100%; height: 5vw;">
+  <div class="btn_div" style="width: 100%; height: 5vw; margin-top: 12vw;">
     <div class='map_img' style="background-color: white;">
       <map id="imgmap2017122914859" name="imgmap2017122914859">
         <area id="강원도" shape="rect" alt="" title="" coords="343,105,439,157"  target="" onclick="change_location(this.id)" /> 
@@ -359,7 +371,7 @@
         <area id="전라남도" shape="rect" alt="" title="" coords="175,524,284,580"  target="" onclick="change_location(this.id)"/>
         <area id="울산" shape="rect" alt="" title="" coords="488,423,540,469"  target="" onclick="change_location(this.id)"/>
         <area id="부산" shape="rect" alt="" title="" coords="461,486,520,534"  target="" onclick="change_location(this.id)"/>
-        <area id="제주" shape="rect" alt="" title="" coords="128,678,201,720"  target="" onclick="change_location(this.id)"/>
+        <area id="제주도" shape="rect" alt="" title="" coords="128,678,201,720"  target="" onclick="change_location(this.id)"/>
         <!-- Created by Online Image Map Editor (http://www.maschek.hu/imagemap/index) -->
       </map>    
     </div>     
@@ -370,31 +382,36 @@
   </div>
 
   <div class="shelter_div">
-  	<div class="shelter_name_list_div" style="width: 30%; height: 100%; float: left;">
-  		<div class="cnt" style="width: 100%; height: 5vw;">
-  			<span id="cnt">
-  				
-  			</span>
-  		</div>
-  		<div class="shelter_name_list" style="width: 50%; height: 20vw; overflow-y: scroll;">
-  			{% for shelter in shelters %}
-  				<div class="{{shelter.location}} shelter_name_list_content" id="{{shelter.num}}" onclick="show_info(this.id)">
-  					{{shelter.name}}
-  				</div>
-  			{% endfor %}
-  		</div>
-  	</div>
+    <div style="width: 10%; height: 100%; float: left; position: relative;">
+    </div>
+    <div class="shelter_name_list_div" style="width: 30%; height: 100%; float: left; position: relative;">
+      <div class="cnt" style="width: 100%; height: 5vw;">
+        <span id="cnt">
+          
+        </span>
+      </div>
+      <div class="shelter_name_list" style="width: 50%; height: 20vw; overflow-y: scroll; position: relative;">
+        {% for shelter in shelters %}
+          <div class="{{shelter.location}} shelter_name_list_content" id="{{shelter.num}}" onclick="show_info(this.id)">
+            {{shelter.name}}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
 
-  	<div class="shelter_info" style="width: 70%; height: 100%; float: left;">
-  		{% for shelter in shelters %}
-  			<div class="shelter_info_content" id="info_{{shelter.num}}">
-  				{{shelter.name}}<br>
-  				{{shelter.addr}}<br>
-  				{{shelter.num}}<br>
-  			</div>
-  		{% endfor %}
-        		<div id="map"></div>
-  	</div>
+    <div class="shelter_info" style="width: 30%; height: 100%; float: left; position: relative;">
+      {% for shelter in shelters %}
+        <div class="shelter_info_content" id="info_{{shelter.num}}">
+          {{shelter.name}}<br>
+          {{shelter.addr}}<br>
+          {{shelter.num}}<br>
+        </div>
+      {% endfor %}
+            <div id="map"></div>
+    </div>
+    <br>
+    <br>
+    <br>
   </div>
 </body>
 </html>
