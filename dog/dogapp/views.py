@@ -408,11 +408,14 @@ def result_dog(request) :
 # 설거지: 쌓아둔다/바로바로한다/만들지않는다
 # 연예인상: 강아지/고양이/곰상 
 # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
+# 사이즈: s/m/l/g
 	
 # size/temperament/aparmtent_friendliness/child_friendliness/grooming
 	no_recommendation=False
 
 	child_friendliness=0
+	cat_friendliness=0
+	dog_friendliness=0
 	apartment_friendliness=0
 	grooming=0
 	fur=""
@@ -421,8 +424,12 @@ def result_dog(request) :
 	face_type=""
 	temper_group=[]
 
-# 가족구성원: 1인/2인/아이/부모님/3대
-	if(select[0]=="3"):
+# 가족구성원: 고양이/강아지/아이
+	if(select[0]=="1"):
+		cat_friendliness=3
+	elif(select[0]=="2"):
+		dog_friendliness=3
+	elif(select[0]=="3"):
 		child_friendliness=5
 
 # 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
@@ -474,8 +481,16 @@ def result_dog(request) :
 		fur="단모"
 	elif(select[5]=='3'):
 		fur="장모"
-	
-	print(select)
+
+# 사이즈: s/m/l/g
+	if(select[6]=='1'):
+		size='Small'
+	elif(select[6]=='2'):
+		size="Medium"
+	elif(select[6]=='3'):
+		size="Large"
+	elif(select[6]=='4'):
+		size="Giant"
 
 	data = {
 		'result' : ''
@@ -490,6 +505,7 @@ def result_dog(request) :
 				and  ( (int(breed.grooming)<=2 and grooming=="low") or(int(breed.grooming)>=3 and grooming=="high" ))
 				and breed.face_type==face_type
 				and breed.fur==fur
+				and size in breed.size
 				):
 				if str(temperament) in breed.temp_group:
 					data['result']+="\n"+breed.name

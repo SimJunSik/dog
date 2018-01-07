@@ -7,6 +7,8 @@ class Breed(models.Model):
 	temperament=models.CharField(max_length=500,default="unknown")
 	apartment_friendliness=models.IntegerField(default=0)
 	child_friendliness=models.IntegerField(default=0)
+	cat_friendliness=models.IntegerField(default=0)
+	dog_friendliness=models.IntegerField(default=0)
 	grooming=models.IntegerField(default=0)
 	face_type=models.CharField(max_length=50,default="unknown")
 	fur=models.CharField(max_length=50,default="unknown")
