@@ -164,11 +164,11 @@
 		width: 100%; 
 		height: 2vw; 
 		text-align: center;
-    margin-bottom: 8vw;
+    margin-bottom: 3vw;
 	}
 
 	.question_title_txt{
-		font-size: 5vw;
+		font-size: 3vw;
 	}
 
   .submit_btn_div{
@@ -834,13 +834,15 @@ function question_start(){
 	<div class="side_bar">
 		<div class="side_bar_content">
 			<div class="sharing_icon">
-				<img class='contact_sns_icon' src="../../static/img/facebook_img3.png" align="middle">
+        <a href="javascript:sharefacebook('http://puppysignal.com/matching')">
+				<img class='contact_sns_icon' src="../../static/img/facebook_img3.png" align="middle"></a>
 			</div>
 			<div class="sharing_icon">
-				<img class='contact_sns_icon' src="../../static/img/kakao_img3.png" align="middle">
+          <img class='contact_sns_icon' src="../../static/img/kakao_img3.png" align="middle">
 			</div>
 			<div class="sharing_icon">
-				<img class='contact_sns_icon' src="../../static/img/twitter_img.png" align="middle">
+        <a href="javascript:sharetwitter('http://puppysignal.com/matching')">
+				<img class='contact_sns_icon' src="../../static/img/twitter_img.png" align="middle"></a>
 
 			</div>
 		</div>
@@ -908,8 +910,8 @@ function question_start(){
 
 				<div class="question_content" id="question1">
 					<div class="question_title" style="">
-						<span class="question_title_txt" style="">
-							가족 구성
+						<span class="question_title_txt" >
+              우리 가족은..
 						</span>
 					</div>
 
@@ -963,7 +965,7 @@ function question_start(){
 
 				<div class="question_content" id="question2">
 					<div class="question_title" style="">
-						<span class="question_title_txt" style="">
+						<span class="question_title_txt" >
 							우리 집은..
 						</span>
 					</div>
@@ -1011,7 +1013,7 @@ function question_start(){
 
 				<div class="question_content" id="question3">
 					<div class="question_title" style="">
-						<span class="question_title_txt" style="">
+						<span class="question_title_txt">
 							우리는 설거지를..
 						</span>
 					</div>
@@ -1067,7 +1069,7 @@ function question_start(){
 
 				<div class="question_content" id="question4">
 					<div class="question_title" style="">
-						<span class="question_title_txt" style="">
+						<span class="question_title_txt" >
 							내가 좋아하는 얼굴형은..
 						</span>
 					</div>
@@ -1088,7 +1090,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>고양상</h4>
+		                            <h4>고양이상</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q4_answer3" name="question4" onclick="question_ch(this, '4')" value="3">
@@ -1125,7 +1127,7 @@ function question_start(){
 
 				<div class="question_content" id="question5">
 					<div class="question_title" style="">
-						<span class="question_title_txt" style="">
+						<span class="question_title_txt" >
 							나의 이상형은..
 						</span>
 					</div>
@@ -1184,7 +1186,7 @@ function question_start(){
 
 				<div class="question_content" id="question6">
 					<div class="question_title" style="">
-						<span class="question_title_txt" style="">
+						<span class="question_title_txt" >
 							내가 선호하는 머리스타일은..
 						</span>
 					</div>
@@ -1196,7 +1198,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>곱슬곱슬 펌</h4>
+		                            <h4>곱슬곱슬 파마 머리</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q6_answer2"  name="question6" onclick="question_ch(this, '6')" value="2">
@@ -1225,8 +1227,8 @@ function question_start(){
 
 				<div class="question_content" id="question7">
 					<div class="question_title" style="">
-						<span class="question_title_txt" style="">
-							내가 선호하는 크기는..
+						<span class="question_title_txt">
+							나의 드림카는..
 						</span>
 					</div>
 
@@ -1237,7 +1239,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>작고 아담한</h4>
+		                            <h4>작고 아담한 경차</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q7_answer2"  name="question7" onclick="question_ch(this, '7')" value="2">
@@ -1246,7 +1248,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>무난하게 중간</h4>
+		                            <h4>대중적인 크기의 세단</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q7_answer3" name="question7" onclick="question_ch(this, '7')" value="3">
@@ -1255,7 +1257,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>듬직하게 큰</h4>
+		                            <h4>듬직한 대형차</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q7_answer4" name="question7" onclick="question_ch(this, '7')" value="4">
@@ -1264,7 +1266,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>ㄱ.거..거대한</h4>
+		                            <h4>육중하고 딴딴한 SUV</h4>
 		                    </label>
 	                    </div>
 
@@ -1404,6 +1406,42 @@ function question_start(){
 			$("#question" + num).css('display', 'block');
 		}
 
+
+    function sharefacebook(url){
+        window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+    }
+
+    function sharetwitter(url){
+        window.open("https://twitter.com/intent/tweet?text=나에게 맞는 강아지 찾기&url=" + url);
+    }
+
+//카카오톡 아직 완성 x
+    var param = 'sendurl?msg=' + encodeURIComponent('나에게 맞는 강아지 찾기');
+        param += '&url=' + 'https://puppysignal.com/matching';
+        param += '&type=link';
+        param += '&apiver=2.0.1';
+        param += '&appver=2.0';
+        param += '&appid=dev.epiloum.net';
+        param += '&appname=' + encodeURIComponent('지금 찾으러 가기');
+     
+    if(navigator.userAgent.match(/android/i))
+    {
+        setTimeout(function(){
+            location.href = 'intent://' + param + '#Intent;package=com.kakao.talk;end';
+        }, 100);
+    }
+    else if(navigator.userAgent.match(/(iphone)|(ipod)|(ipad)/i))
+    {
+        setTimeout(function(){
+            location.href = 'itms-apps://itunes.apple.com/app/id362057947?mt=8';
+        }, 200);
+        setTimeout(function(){
+            location.href = 'kakaolink://' + param;
+        }, 100);
+    }
+
+
+//
 	</script>
 
 </body>
