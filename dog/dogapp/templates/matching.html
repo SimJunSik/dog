@@ -3,7 +3,12 @@
 <head>
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 	<style type="text/css">
   @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
@@ -838,7 +843,8 @@ function question_start(){
 				<img class='contact_sns_icon' src="../../static/img/facebook_img3.png" align="middle"></a>
 			</div>
 			<div class="sharing_icon">
-          <img class='contact_sns_icon' src="../../static/img/kakao_img3.png" align="middle">
+        <a id="kakao-link-btn" href="javascript:;">
+        <img class='contact_sns_icon' src="../../static/img/kakao_img3.png" align="middle"></a>
 			</div>
 			<div class="sharing_icon">
         <a href="javascript:sharetwitter('http://puppysignal.com/matching')">
@@ -911,7 +917,7 @@ function question_start(){
 				<div class="question_content" id="question1">
 					<div class="question_title" style="">
 						<span class="question_title_txt" >
-              우리 가족은..
+              우리 집에는..
 						</span>
 					</div>
 
@@ -922,7 +928,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>1인가구</h4>
+		                            <h4>고양이가 살아요</h4>
 
 		                    </label>
 		                    <br>
@@ -932,7 +938,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>2인가구</h4>
+		                            <h4>강아지가 살아요</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q1_answer3" name="question1" onclick="question_ch(this, '1')" value="3">
@@ -977,7 +983,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>주택이에요</h4>
+		                            <h4>개인 주택</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q2_answer2"  name="question2" onclick="question_ch(this, '2')" value="2">
@@ -986,7 +992,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>넓은 아파트에요</h4>
+		                            <h4>넓은 아파트</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q2_answer3" name="question2" onclick="question_ch(this, '2')" value="3">
@@ -995,7 +1001,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>좁은 아파트/빌라에요</h4>
+		                            <h4>좁은 아파트/빌라</h4>
 		                    </label>
 		                    <br>
 		                    <input type=checkbox id="q2_answer4" name="question2" onclick="question_ch(this, '2')" value="4">
@@ -1004,7 +1010,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>원룸/오피스텔이에요</h4>
+		                            <h4>원룸/오피스텔</h4>
 		                    </label>
 	                    </div>
 	
@@ -1044,7 +1050,7 @@ function question_start(){
 		                                @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 		                                h4 {font-family: 'Hanna';}
 		                            </style>
-		                            <h4>설거지를 만들지 않아요</h4>
+		                            <h4>귀찮게 설거지 따위는 만들지 않아요</h4>
 		                    </label>
 		                   <!--  <br>
 =======
@@ -1416,29 +1422,45 @@ function question_start(){
     }
 
 //카카오톡 아직 완성 x
-    var param = 'sendurl?msg=' + encodeURIComponent('나에게 맞는 강아지 찾기');
-        param += '&url=' + 'https://puppysignal.com/matching';
-        param += '&type=link';
-        param += '&apiver=2.0.1';
-        param += '&appver=2.0';
-        param += '&appid=dev.epiloum.net';
-        param += '&appname=' + encodeURIComponent('지금 찾으러 가기');
-     
-    if(navigator.userAgent.match(/android/i))
-    {
-        setTimeout(function(){
-            location.href = 'intent://' + param + '#Intent;package=com.kakao.talk;end';
-        }, 100);
-    }
-    else if(navigator.userAgent.match(/(iphone)|(ipod)|(ipad)/i))
-    {
-        setTimeout(function(){
-            location.href = 'itms-apps://itunes.apple.com/app/id362057947?mt=8';
-        }, 200);
-        setTimeout(function(){
-            location.href = 'kakaolink://' + param;
-        }, 100);
-    }
+  //<![CDATA[
+    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('YOUR APP KEY');
+    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    Kakao.Link.createDefaultButton({
+      container: '#kakao-link-btn',
+      objectType: 'feed',
+      content: {
+        title: '나에게 맞는 강아지는?',
+        description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+        imageUrl: '',
+        link: {
+          mobileWebUrl: 'https://puppysignal.com/matching',
+          webUrl: 'https://puppysignal.com/matching'
+        }
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'https://puppysignal.com/matching',
+            webUrl: 'https://puppysignal.com/matching'
+          }
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: 'https://puppysignal.com/matching',
+            webUrl: 'https://puppysignal.com/matching'
+          }
+        }
+      ]
+    });
+  //]]>
 
 
 //
