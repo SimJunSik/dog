@@ -81,7 +81,8 @@ $(window).scroll(function () {
                             $('.top').css("background-color", "white");
                             $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
                             //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
-                            $('.menu').css("color", "#B5996D");
+
+                            $('.menu').css("color", "black");
                             
 
                             $('.top_logo').animate({
@@ -90,7 +91,7 @@ $(window).scroll(function () {
 
                             $('.top_nav').animate({
                                 marginLeft: '50%',
-                                marginTop : '-0%'
+                                marginTop : '1%'
                             });
 
                             $('.top').animate({

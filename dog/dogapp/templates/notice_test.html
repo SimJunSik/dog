@@ -105,11 +105,12 @@
       -o-transform: translate(-50%, 0%);
       transform: translate(-50%, 0%);
       text-align: center;
+      margin-top: 1%;
     }
     .menu{
       margin-left: 0.5vw;
       margin-right: 0.5vw;
-      color: #B5996D;
+      color: black;
       font-size: 1vw;
       font-weight: 900;
     }
@@ -189,16 +190,32 @@
     display: 
   }
 
+  .board_menu_div{
+    position: relative;
+    width: 25%;
+    height: 95%;
+    float: left;
+    left: 25vw;
+  }
+
+  .bookmark{
+    width: 20%;
+    height: 5vw;
+    background-color: green;
+    float: left;
+  }
+
   .board{
     position: relative;
-    width: 70%;
+    width: 60%;
     height: 100%;
+    margin-left: 10%;
     float: left;
   }
 
   .board_menu{
     position: relative;
-    width: 30%;
+    width: 80%;
     height: 100%;
     background-color: gray;
     float: left;
@@ -238,8 +255,7 @@
   }
 
   .dog_img_div{
-    width: 30%;
-    float: left;
+    width: 100%;
   }
 
   .location_name_div{
@@ -295,12 +311,13 @@
       -o-transform: translate(-50%, 0%);
       transform: translate(-50%, 0%);
       text-align: center;
+      margin-top: 1%;
     }
     .menu{
       margin-left: 0.5vw;
       margin-right: 0.5vw;
-      color: #B5996D;
-      font-size: 2vw;
+      color: black;
+      font-size: 3.1vw;
       font-weight: 900;
     }
     .menu:hover {
@@ -842,18 +859,44 @@
         </div>
       </div>
 
-      <div class='board_menu'  id="web_board_menu">
-        <a href="../register_dog"><button>잃어버린 강아지 등록하기</button></a>
-        <br>
-        <span style="font-size: 2vw; color: white;"> 최신 등록 리스트 </span>
-        <div class='realtime_list'>
-          
+      <div class="board_menu_div">
+
+        <div class="bookmark" id="bookmark_open" onclick="open_div();">
+          최신 등록 리스트
+        </div>
+        <div class="bookmark" id="bookmark_close" onclick="close_div();" style="display: none;">
+          CLOSE
+        </div>
+
+        <div class='board_menu'  id="web_board_menu">
+          <a href="../register_dog"><button>잃어버린 강아지 등록하기</button></a>
+          <br>
+          <span style="font-size: 2vw; color: white;"> 최신 등록 리스트 </span>
+          <div class='realtime_list'>
+            
+          </div>
         </div>
       </div>
 
 
     </div>
     <script type="text/javascript">
+
+      function open_div(){
+        $('.board_menu_div').animate({
+          "left" : "0vw"
+        });
+        $('#bookmark_open').css('display', 'none');
+        $('#bookmark_close').css('display', 'block');
+      }
+
+      function close_div(){
+        $('.board_menu_div').animate({
+          "left" : "25vw"
+        });
+        $('#bookmark_open').css('display', 'block');
+        $('#bookmark_close').css('display', 'none');
+      }
 
       function pop_close(){
         $('.pop-up').css('display', 'none');
@@ -1067,7 +1110,7 @@ $(window).scroll(function () {
                             $('.top').css("background-color", "white");
                             $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
                             //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
-                            $('.menu').css("color", "#B5996D");
+                            $('.menu').css("color", "black");
                             
 
                             $('.top_logo').animate({
@@ -1076,7 +1119,7 @@ $(window).scroll(function () {
 
                             $('.top_nav').animate({
                                 marginLeft: '50%',
-                                marginTop : '-0%'
+                                marginTop : '1%'
                             });
 
                             $('.top').animate({

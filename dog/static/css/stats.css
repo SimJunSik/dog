@@ -186,13 +186,15 @@ and (max-width : 768px){
       -o-transform: translate(-50%, 0%);
       transform: translate(-50%, 0%);
       text-align: center;
+      margin-top: 1%;
     }
     .menu{
       margin-left: 0.5vw;
       margin-right: 0.5vw;
-      color: #B5996D;
-      font-size: 2vw;
+      color: black;
+      font-size: 3.1vw;
       font-weight: 900;
+      font-family: 'Hanna', serif;
     }
     .menu:hover {
       font-weight: 900;
@@ -407,15 +409,17 @@ and (min-width : 768px){
     -o-transform: translate(-50%, 0%);
     transform: translate(-50%, 0%);
     text-align: center;
+    margin-top: 1%;
   }
 
 
   .menu{
     margin-left: 0.5vw;
     margin-right: 0.5vw;
-    color: #B5996D;
+    color: black;
     font-size: 1vw;
     font-weight: 900;
+    font-family: 'Hanna', serif;
   }
   .menu:hover {
     font-weight: 900;
@@ -429,6 +433,7 @@ and (min-width : 768px){
   .menu_slash{
     color: #BDBDBD;
     font-size: 1vw;
+    font-family: 'Hanna', serif;
   }
   .top_logo_txt{
     font-size: 2vw;

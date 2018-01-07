@@ -408,7 +408,6 @@ def result_dog(request) :
 # 설거지: 쌓아둔다/바로바로한다/만들지않는다
 # 연예인상: 강아지/고양이/곰상 
 # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
-# 사이즈: s/m/l/g
 	
 # size/temperament/aparmtent_friendliness/child_friendliness/grooming
 	no_recommendation=False
