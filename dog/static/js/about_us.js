@@ -64,72 +64,103 @@
 				}
 				*/
 
+                var w = $(window).width();
 
 
-							    /*  상단 고정 메뉴바 이벤트  */
-                if(height > 100){
-                    if(flag3==0){
-                        $('.top').css("background-color", "#B5996D");
-                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_white.png");
-                        //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
-                        $('.menu').css("color", "#ffffff");
-                        
-                        $('.top_logo').animate({
-                        	marginLeft : '10%',
-                        });
 
-                        $('.top_nav').animate({
-                        	marginLeft : '80%',
-                        	marginTop : '-2%'
-                        });
+                //alert(w);
 
-                        $('.top').animate({
-                        	height : '3vw',
-                        });
+                if(w > 500){
 
-                        $('.top_nav').css({
-                        	/*
-                        	'-webkit-transform' : 'translate(-50%, 0%)',
-						    '-ms-transform' : 'translate(-50%, 0%)',
-						    '-moz-transform' : 'translate(-50%, 0%)',
-						    '-o-transform' : 'translate(-50%, 0%)',
-						    'transform' : 'translate(-50%, 0%)'
-						    */
-                        });
-						
-                        flag3=1;
+                    /*  상단 고정 메뉴바 이벤트  */
+                    if(height > 100){
+                        if(flag3==0){
+                            $('.top').css("background-color", "#B5996D");
+                            $('.top_logo_img').attr("src", "../../static/img/logo_txt_white.png");
+                            //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
+                            $('.menu').css("color", "#ffffff");
+                            
+                            $('.top_logo').animate({
+                                marginLeft : '10%',
+                            });
+
+                            $('.top_nav').animate({
+                                marginLeft : '80%',
+                                marginTop : '-2%'
+                            });
+
+                            $('.top').animate({
+                                height : '3vw',
+                            });
+
+                            $('.top_nav').css({
+                                /*
+                                '-webkit-transform' : 'translate(-50%, 0%)',
+                                '-ms-transform' : 'translate(-50%, 0%)',
+                                '-moz-transform' : 'translate(-50%, 0%)',
+                                '-o-transform' : 'translate(-50%, 0%)',
+                                'transform' : 'translate(-50%, 0%)'
+                                */
+                            });
+                            
+                            flag3=1;
+                        }
+                    }
+
+                    if(height < 100){
+                        if(flag3==1){
+                            $('.top').css("background-color", "white");
+                            $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
+                            //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
+
+                            $('.menu').css("color", "black");
+                            
+
+                            $('.top_logo').animate({
+                                marginLeft : '50%',
+                            });
+
+                            $('.top_nav').animate({
+                                marginLeft: '50%',
+                                marginTop : '1%'
+                            });
+
+                            $('.top').animate({
+                                height : '5vw',
+                            });
+
+                            $('.top_nav').css({
+                                '-webkit-transform' : 'translate(-50%, 0%)',
+                                '-ms-transform' : 'translate(-50%, 0%)',
+                                '-moz-transform' : 'translate(-50%, 0%)',
+                                '-o-transform' : 'translate(-50%, 0%)',
+                                'transform' : 'translate(-50%, 0%)'
+                            });
+                            flag3=0;
+                        }
                     }
                 }
 
-                if(height < 100){
-                    if(flag3==1){
-                        $('.top').css("background-color", "white");
-                        $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
-                        //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
-                        $('.menu').css("color", "#B5996D");
-                        
 
-                        $('.top_logo').animate({
-                        	marginLeft : '50%',
-                        });
+                if(w < 500){
+                    if(height > 100){
+                        $('.top').css({
+                                '-webkit-transform' : 'translate(0%, -50%)',
+                                '-ms-transform' : 'translate(0%, -50%)',
+                                '-moz-transform' : 'translate(0%, -50%)',
+                                '-o-transform' : 'translate(0%, -50%)',
+                                'transform' : 'translate(0%, -50%)'
+                            });
+                    }
 
-                        $('.top_nav').animate({
-                        	marginLeft: '50%',
-                        	marginTop : '-0%'
-                        });
-
-                        $('.top').animate({
-                        	height : '5vw',
-                        });
-
-                        $('.top_nav').css({
-                        	'-webkit-transform' : 'translate(-50%, 0%)',
-						    '-ms-transform' : 'translate(-50%, 0%)',
-						    '-moz-transform' : 'translate(-50%, 0%)',
-						    '-o-transform' : 'translate(-50%, 0%)',
-						    'transform' : 'translate(-50%, 0%)'
-                        });
-                        flag3=0;
+                    if(height < 100){
+                        $('.top').css({
+                                '-webkit-transform' : 'translate(0%, 0%)',
+                                '-ms-transform' : 'translate(0%, 0%)',
+                                '-moz-transform' : 'translate(0%, 0%)',
+                                '-o-transform' : 'translate(0%, 0%)',
+                                'transform' : 'translate(0%, 0%)'
+                            });
                     }
                 }
 		});
