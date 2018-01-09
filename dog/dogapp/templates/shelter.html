@@ -122,6 +122,26 @@
     #mobile_btn_div{
       display: none;
     }
+
+    #shelter_info_cover_txt{
+      font-size: 40px;
+    }
+
+    .shelter_name_list_div{
+      width: 15%;
+      height: auto; 
+      float: left; 
+      position: relative; 
+      border: 10px solid #242424; 
+      margin-right: 15%;
+    }
+
+    .shelter_info{
+      width: 30%;
+      height: 100%; 
+      float: left; 
+      position: relative;
+    }
   }
 
   @media (max-width:750px) {
@@ -223,6 +243,26 @@
       margin-top: 400px;
       width: 100%;
       height: 50vw;
+    }
+
+    #shelter_info_cover_txt{
+      font-size: 15px;
+    }
+
+    .shelter_name_list_div{
+      width: 30%;
+      height: auto; 
+      float: left; 
+      position: relative; 
+      border: 3px solid #242424; 
+      margin-right: 5%;
+    }
+
+    .shelter_info{
+      width: 50%;
+      height: 100%; 
+      float: left; 
+      position: relative;
     }
   }
   </style>
@@ -662,7 +702,7 @@
   <div class="shelter_div">
     <div style="width: 10%; height: 100%; float: left; position: relative;">
     </div>
-    <div class="shelter_name_list_div" style="width: 15%; height: auto; float: left; position: relative; border: 10px solid #242424; margin-right: 15%;">
+    <div class="shelter_name_list_div" style="">
       <div class="cnt" style="width: 100%; height: 5vw;">
         <span id="cnt">
           
@@ -677,15 +717,14 @@
       </div>
     </div>
 
-    <div class="shelter_info" style="width: 30%; height: 100%; float: left; position: relative;">
+    <div class="shelter_info" style="">
       <div class="shelter_info_cover">
-        <span style="font-size: 40px;">
+        <span id="shelter_info_cover_txt">
           오른쪽 보호소 이름을 "클릭" 하시면 <br>조금 더 자세한 정보가 나옵니다.
         </span>
       </div>
       {% for shelter in shelters %}
         <div class="shelter_info_content" id="info_{{shelter.num}}">
-          <br><br>
           {{shelter.name}}<br>
           {{shelter.addr}}<br>
           {{shelter.num}}<br>
