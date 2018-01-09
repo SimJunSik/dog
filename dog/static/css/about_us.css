@@ -34,88 +34,98 @@
 				transform: translate(-50%, 0%);
 			}
 
+			.title {
+				    color: grey;
+				    font-size: 1vw;
+				    font-family: 'Pacifico', cursive;
+				}
+
 			/*  상단 고정 메뉴바 css  */
 	
-    .top{
-      width: 100%;
-      position: fixed;     /*  화면상 위치 고정  */
-      z-index: 3;          /*  z값 결정  */
-      top : 0;
-      height: 5vw;
-      background-color: white;
-    }
+		    .top{
+		      width: 100%;
+		      position: fixed;     /*  화면상 위치 고정  */
+		      z-index: 3;          /*  z값 결정  */
+		      top : 0;
+		      height: 5vw;
+		      background-color: white;
+		    }
 
-    .top_logo{
-      position: relative;
-      margin-top: 0.5vw;
-      margin-left: 50%;
-      -webkit-transform: translate(-50%, 0%);
-      -ms-transform: translate(-50%, 0%);
-      -moz-transform: translate(-50%, 0%);
-      -o-transform: translate(-50%, 0%);
-      transform: translate(-50%, 0%);
-      width: 30%;
-      text-align: center;
-      font-weight: 900;
-    }
-    .top_nav{  
-      position: relative;
-      /*margin-top: 3%;*/    /*  top 여백 설정  */
-      width: 50%;
-      margin-left: 50%;
-      -webkit-transform: translate(-50%, 0%);
-      -ms-transform: translate(-50%, 0%);
-      -moz-transform: translate(-50%, 0%);
-      -o-transform: translate(-50%, 0%);
-      transform: translate(-50%, 0%);
-      text-align: center;
-      margin-top: 1%;
-    }
-    .menu{
-      margin-left: 0.5vw;
-      margin-right: 0.5vw;
-      color: black;
-      font-size: 1vw;
-      font-weight: 900;
-      font-family: 'Hanna', serif;
-    }
-    .menu:hover {
-      font-weight: 900;
-      font-size: 1vw;
-    }
-    .top_logo_img{
-      width: 14vw;
-      height: 2vw;
-      margin: 0;
-    }
-    .menu_slash{
-      color: #BDBDBD;
-      font-size: 1vw;
-      font-family: 'Hanna', serif;
-    }
-    .top_logo_txt{
-      font-size: 2vw;
-      font-family: 'Clicker Script', cursive;
-      color: #B5996D;
-    }
+		    .top_logo{
+		      position: relative;
+		      margin-top: 0.5vw;
+		      margin-left: 50%;
+		      -webkit-transform: translate(-50%, 0%);
+		      -ms-transform: translate(-50%, 0%);
+		      -moz-transform: translate(-50%, 0%);
+		      -o-transform: translate(-50%, 0%);
+		      transform: translate(-50%, 0%);
+		      width: 30%;
+		      text-align: center;
+		      font-weight: 900;
+		    }
+		    .top_nav{  
+		      position: relative;
+		      /*margin-top: 3%;*/    /*  top 여백 설정  */
+		      width: 50%;
+		      margin-left: 50%;
+		      -webkit-transform: translate(-50%, 0%);
+		      -ms-transform: translate(-50%, 0%);
+		      -moz-transform: translate(-50%, 0%);
+		      -o-transform: translate(-50%, 0%);
+		      transform: translate(-50%, 0%);
+		      text-align: center;
+		      margin-top: 1%;
+		    }
+		    .menu{
+		      margin-left: 0.5vw;
+		      margin-right: 0.5vw;
+		      color: black;
+		      font-size: 1vw;
+		      font-weight: 900;
+		      font-family: 'Hanna', serif;
+		    }
+		    .menu:hover {
+		      font-weight: 900;
+		      font-size: 1vw;
+		    }
+		    .top_logo_img{
+		      width: 14vw;
+		      height: 2vw;
+		      margin: 0;
+		    }
+		    .menu_slash{
+		      color: #BDBDBD;
+		      font-size: 1vw;
+		      font-family: 'Hanna', serif;
+		    }
+		    .top_logo_txt{
+		      font-size: 2vw;
+		      font-family: 'Clicker Script', cursive;
+		      color: #B5996D;
+		    }
 
-    .top_nav a{
-    	text-decoration: none;
-    }
+		    .top_nav a{
+		    	text-decoration: none;
+		    }
 
-    .top_title{
-    	width: 100%;
-    	background-color: white;
-    	height: 5vw;
-    }
+		    .top_title{
+		    	width: 100%;
+		    	background-color: white;
+		    	height: 5vw;
+		    }
 
-    .logo_img_div{
-    	width: 80%;
-    	height: 100%;
-    	background-color: white;
-    	margin: auto;
-    	margin-top: 5%;
-    }
+		    .logo_img_div{
+		    	width: 80%;
+		    	height: 100%;
+		    	background-color: white;
+		    	margin: auto;
+		    	margin-top: 5%;
+		    }
+
+		    .our_team_img{
+				width: 100%;
+			}
 		}
 
 		@media (max-width:750px) {
@@ -132,89 +142,99 @@
 				transform: translate(-50%, 0%);
 			}
 
+			.title {
+				    color: grey;
+				    font-size: 5px;
+				    font-family: 'Pacifico', cursive;
+				}
+
 
 			/*  상단 고정 메뉴바 css  */
-    .top{
-      width: 100%;
-      position: fixed;     /*  화면상 위치 고정  */
-      z-index: 3;          /*  z값 결정  */
-      top : 0;
-      height: 9vw;
-      background-color: white;
-    }
+		    .top{
+		      width: 100%;
+		      position: fixed;     /*  화면상 위치 고정  */
+		      z-index: 3;          /*  z값 결정  */
+		      top : 0;
+		      height: 9vw;
+		      background-color: white;
+		    }
 
-    .top_logo{
-      position: relative;
-      margin-top: 0.5vw;
-      margin-left: 50%;
-      -webkit-transform: translate(-50%, 0%);
-      -ms-transform: translate(-50%, 0%);
-      -moz-transform: translate(-50%, 0%);
-      -o-transform: translate(-50%, 0%);
-      transform: translate(-50%, 0%);
-      width: 50%;
-      text-align: center;
-      font-weight: 900;
-    }
-    .top_nav{  
-      position: relative;
-      /*margin-top: 3%;*/    /*  top 여백 설정  */
-      width: 100%;
-      margin-left: 50%;
-      -webkit-transform: translate(-50%, 0%);
-      -ms-transform: translate(-50%, 0%);
-      -moz-transform: translate(-50%, 0%);
-      -o-transform: translate(-50%, 0%);
-      transform: translate(-50%, 0%);
-      text-align: center;
-      margin-top: 1%;
-    }
-    .menu{
-      margin-left: 0.5vw;
-      margin-right: 0.5vw;
-      color: black;
-      font-size: 3.1vw;
-      font-weight: 900;
-      font-family: 'Hanna', serif;
-    }
-    .menu:hover {
-      font-weight: 900;
-      font-size: 2vw;
-    }
-    .top_logo_img{
-      width: 28vw;
-      height: 4vw;
-      margin: 0;
-    }
-    .menu_slash{
-      color: #BDBDBD;
-      font-size: 1vw;
-      font-family: 'Hanna', serif;
-    }
-    .top_logo_txt{
-      font-size: 2vw;
-      font-family: 'Clicker Script', cursive;
-      color: #B5996D;
-    }
+		    .top_logo{
+		      position: relative;
+		      margin-top: 0.5vw;
+		      margin-left: 50%;
+		      -webkit-transform: translate(-50%, 0%);
+		      -ms-transform: translate(-50%, 0%);
+		      -moz-transform: translate(-50%, 0%);
+		      -o-transform: translate(-50%, 0%);
+		      transform: translate(-50%, 0%);
+		      width: 50%;
+		      text-align: center;
+		      font-weight: 900;
+		    }
+		    .top_nav{  
+		      position: relative;
+		      /*margin-top: 3%;*/    /*  top 여백 설정  */
+		      width: 100%;
+		      margin-left: 50%;
+		      -webkit-transform: translate(-50%, 0%);
+		      -ms-transform: translate(-50%, 0%);
+		      -moz-transform: translate(-50%, 0%);
+		      -o-transform: translate(-50%, 0%);
+		      transform: translate(-50%, 0%);
+		      text-align: center;
+		      margin-top: 1%;
+		    }
+		    .menu{
+		      margin-left: 0.5vw;
+		      margin-right: 0.5vw;
+		      color: black;
+		      font-size: 3.1vw;
+		      font-weight: 900;
+		      font-family: 'Hanna', serif;
+		    }
+		    .menu:hover {
+		      font-weight: 900;
+		      font-size: 2vw;
+		    }
+		    .top_logo_img{
+		      width: 28vw;
+		      height: 4vw;
+		      margin: 0;
+		    }
+		    .menu_slash{
+		      color: #BDBDBD;
+		      font-size: 1vw;
+		      font-family: 'Hanna', serif;
+		    }
+		    .top_logo_txt{
+		      font-size: 2vw;
+		      font-family: 'Clicker Script', cursive;
+		      color: #B5996D;
+		    }
 
-    .top_nav a{
-    	text-decoration: none;
-    }
+		    .top_nav a{
+		    	text-decoration: none;
+		    }
 
-    .top_title{
-    	width: 100%;
-    	background-color: white;
-    	height: 5vw;
-    	margin-top: 10vw;
-    }
+		    .top_title{
+		    	width: 100%;
+		    	background-color: white;
+		    	height: 5vw;
+		    	margin-top: 10vw;
+		    }
 
-    .logo_img_div{
-    	width: 80%;
-    	height: 100%;
-    	background-color: white;
-    	margin: auto;
-    	margin-top: 5%;
-    }
+		    .logo_img_div{
+		    	width: 80%;
+		    	height: 100%;
+		    	background-color: white;
+		    	margin: auto;
+		    	margin-top: 5%;
+		    }
+
+		    .our_team_img{
+				width: 100%;
+			}
 		}
 
 		.content{
@@ -257,9 +277,6 @@
 				 display: none; /*  안보이게 설정 */
 			}
 			.our_team{
-				width: 100%;
-			}
-			.our_team_img{
 				width: 100%;
 			}
 			.container_top{
@@ -321,12 +338,6 @@
 				  width: 100%;
 				}
 
-
-				.title {
-				    color: grey;
-				    font-size: 1vw;
-				    font-family: 'Pacifico', cursive;
-				}
 
 				button {
 				    border: none;
