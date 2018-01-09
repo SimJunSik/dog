@@ -3,11 +3,18 @@
 <head>
   <title></title>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style type="text/css">
     @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
     *{
       font-family: 'Hanna', serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    html{
+      font-size: 62.5%;
     }
 
   @media (min-width:750px) {
@@ -95,9 +102,23 @@
     .top_nav a{
       text-decoration: none;
     }
+
+    .btn_div{
+      width: 100%; 
+      height: 5vw; 
+      margin-top: 20vw;
+    }
+
+    #web_btn_div{
+      display: block;
+    }
+
+    #mobile_btn_div{
+      display: none;
+    }
   }
 
-  @media (max-width:1000px) {
+  @media (max-width:750px) {
     /*  상단 고정 메뉴바 css  */
     .top{
       width: 100%;
@@ -164,6 +185,39 @@
       text-decoration: none;
     }
 /*  end   */
+
+    .btn_div{
+      width: 100%; 
+      height: 5vw; 
+      margin-top: 20vw;
+    }
+
+    #web_btn_div{
+      display: none;
+    }
+
+    #mobile_btn_div{
+      display: block;
+    }
+
+    .selter_name_list{
+      width: 100%;
+      height: 30vw;
+      background-color: green;
+    }
+    .shelter_name_list_content{
+      display: none;
+    }
+
+    .shelter_info_content{
+      display: none;
+    }
+
+    .shelter_div{
+      margin-top: 400px;
+      width: 100%;
+      height: 50vw;
+    }
   }
   </style>
   <style>
@@ -533,7 +587,7 @@
     </div>
   </div>
 
-  <div class="btn_div" style="width: 100%; height: 5vw; margin-top: 20vw;">
+  <div class="btn_div" id="web_btn_div">
     <div class='map_img' style="background-color: white;">
       <map id="imgmap2017122914859" name="imgmap2017122914859">
         <area id="강원도" shape="rect" alt="" title="" coords="343,105,439,157"  target="" onclick="change_location(this.id)" /> 
@@ -558,6 +612,35 @@
 
     <div class="map_div" style="width: 100%; height: auto; text-align: center;">
       <img src="../../static/img/korea_map_final3.jpg" style="width: auto; height: auto;" alt="" usemap="#imgmap2017122914859">
+    </div>
+  </div>
+
+
+  <div class="btn_div" id="mobile_btn_div">
+    <div class='map_img' style="background-color: white;">
+      <map id="imgmap20181818952" name="imgmap20181818952">
+        <area id="강원도" shape="rect" alt="" title="" coords="170,52,236,83" target="" onclick="change_location(this.id)"/>
+        <area id="서울" shape="rect" alt="" title="" coords="116,66,148,95"  target="" onclick="change_location(this.id)"/>
+        <area id="인천" shape="rect" alt="" title="" coords="74,55,113,84"  target="" onclick="change_location(this.id)"/>
+        <area id="경기도" shape="rect" alt="" title="" coords="110,101,158,118"  target="" onclick="change_location(this.id)"/>
+        <area id="충청남도" shape="rect" alt="" title="" coords="70,134,144,158"  target="" onclick="change_location(this.id)"/>
+        <area id="충청북도" shape="rect" alt="" title="" coords="157,115,211,136"  target="" onclick="change_location(this.id)"/>
+        <area id="대전" shape="rect" alt="" title="" coords="131,159,164,185"  target="" onclick="change_location(this.id)"/>
+        <area id="경상북도" shape="rect" alt="" title="" coords="199,145,268,173"  target="" onclick="change_location(this.id)"/>
+        <area id="대구" shape="rect" alt="" title="" coords="206,181,245,206"  target="" onclick="change_location(this.id)"/>
+        <area id="경상남도" shape="rect" alt="" title="" coords="173,219,224,247"  target="" onclick="change_location(this.id)"/>
+        <area id="전라북도" shape="rect" alt="" title="" coords="101,197,164,227"  target="" onclick="change_location(this.id)"/>
+        <area id="광주" shape="rect" alt="" title="" coords="108,238,140,263"  target="" onclick="change_location(this.id)"/>
+        <area id="전라남도" shape="rect" alt="" title="" coords="78,265,148,287"  target="" onclick="change_location(this.id)"/>
+        <area id="울산" shape="rect" alt="" title="" coords="243,209,290,231"  target="" onclick="change_location(this.id)"/>
+        <area id="부산" shape="rect" alt="" title="" coords="231,243,266,264"  target="" onclick="change_location(this.id)"/>
+        <area id="제주" shape="rect" alt="" title="" coords="57,334,109,363"  target="" onclick="change_location(this.id)"/>
+        <!-- Created by Online Image Map Editor (http://www.maschek.hu/imagemap/index) -->
+      </map>
+    </div>
+
+    <div class="map_div" style="width: 100%; height: auto; text-align: center;">
+      <img src="../../static/img/mobile_korea_map_final3.jpg" style="width: auto; height: auto;" alt="" usemap="#imgmap20181818952">
     </div>
   </div>
 
