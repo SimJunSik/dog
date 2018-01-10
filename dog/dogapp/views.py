@@ -424,13 +424,14 @@ def result_dog(request) :
 	face_type=""
 	temper_group=[]
 
-# 가족구성원: 고양이/강아지/아이
+# 가족구성원: 고양이/강아지/아이/해당없음
 	if(select[0]=="1"):
 		cat_friendliness=3
 	elif(select[0]=="2"):
 		dog_friendliness=3
 	elif(select[0]=="3"):
 		child_friendliness=5
+
 
 # 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
 	if(select[1]=="1"):
@@ -450,7 +451,7 @@ def result_dog(request) :
 	elif(select[2]=='3'):
 		no_recommendation=True
 		
-# 연예인상: 강아지 /고양이/곰상/공룡/여우
+# 연예인상: 강아지 /고양이/곰상/공룡
 	if(select[3]=='1'):
 		face_type="강아지"
 	elif(select[3]=='2'):
@@ -459,8 +460,8 @@ def result_dog(request) :
 		face_type="곰상"
 	elif(select[3]=='4'):
 		face_type="공룡"
-	elif(select[3]=='5'):
-		face_type="여우"
+	# elif(select[3]=='5'):
+	# 	face_type="여우"
 
 # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
 	if(select[4]=='1'):
@@ -509,6 +510,7 @@ def result_dog(request) :
 				):
 				if str(temperament) in breed.temp_group:
 					data['result']+="\n"+breed.name
+					
 
 	return JsonResponse(data)
 
