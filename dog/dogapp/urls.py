@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^membership/', views.MembershipView),
     url(r'^login', views.LoginView),
     url(r'^validate_username/', views.validate_username),
-    url(r'^result_dog/', views.result_dog),
+    url(r'^result_dog/$', views.result_dog),
     url(r'^register_marker/', views.register_marker),
     url(r'^register_dog/', views.register_dog),
     url(r'^delete_marker/', views.delete_marker),
