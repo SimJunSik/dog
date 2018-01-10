@@ -180,14 +180,13 @@
     width: 100%;
     height: 45vw;
     overflow-y: scroll;
-    background-color: yellow;
   }
 
   .list_content{
     position: relative;
     width: 100%;
     height: 300px;
-    display: 
+    display: none;
   }
 
   .board_menu_div{
@@ -387,13 +386,13 @@
     width: 100%;
     height: 90vw;
     overflow-y: scroll;
-    background-color: yellow;
   }
 
   .list_content{
     position: relative;
     width: 100%;
     height: 300px;
+    display: none;
   }
 
   .board{
@@ -487,6 +486,7 @@
               }
 
               function my_location(){
+                $('.list_info').css('display', 'none');
                   var map = new google.maps.Map(document.getElementById('map'), {
                     center: {lat: -34.397, lng: 150.644},
                     zoom: 12
@@ -542,10 +542,10 @@
                 
                 for(var key in x_marker_list){
                   if(distance(x_marker_list[key], y_marker_list[key], position.coords.latitude, position.coords.longitude, 'K') <= 3){
-                    $('#' + key.trim()).css('display' , 'block');
+                    $('#lc' + key).css('display','block');
                   }
                   else{
-                    $('#' + key.trim()).css('display' , 'none');
+                    $('#lc' + key).css('display','none');
                   }
                 }
                 
@@ -677,8 +677,10 @@
                 });
               }
 
+              var list_by_location = [];
 
               function geocodeAddress(geocoder, resultsMap) {
+                $('.list_info').css('display', 'none');
                 var address = document.getElementById('address').value;
                 geocoder.geocode({'address': address}, function(results, status) {
                   if (status === 'OK') {
@@ -688,12 +690,18 @@
                       position: results[0].geometry.location               
                     });
 
+                  list_by_location = [];
                   for(var key in x_marker_list){
-                    if(distance(x_marker_list[key], y_marker_list[key], results[0].geometry.location.lat() , results[0].geometry.location.lng(), 'K') <= 3){
-                      $('#' + key.trim()).css('display' , 'block');
+                    var dist = distance(x_marker_list[key], y_marker_list[key], results[0].geometry.location.lat() , results[0].geometry.location.lng(), 'K');
+                    var tmp = [];
+                    if(dist <= 3){
+                      $('#lc' + key.trim()).css('display','block');
+                      tmp.push(key);
+                      tmp.push(dist);
+                      list_by_location.push(tmp);
                     }
                     else{
-                      $('#' + key.trim()).css('display' , 'none');
+                      $('#lc' + key.trim()).css('display','none');
                     }
                   }
 
@@ -701,6 +709,38 @@
                     alert('Geocode was not successful for the following reason: ' + status);
                   }
                 });
+              }
+
+              function sort_by_location(){
+                  for(var i=0;i<list_by_location.length-1;i++){
+                    for(var j=i+1;j<list_by_location.length;j++){
+                      if(list_by_location[i][1] >= list_by_location[j][1]){
+                        var tmp = list_by_location[i];
+                        list_by_location[i] = list_by_location[j];
+                        list_by_location[j] = tmp;
+                      }
+                    }
+                  }
+
+                  for(var i=0;i<list_by_location.length;i++){
+                    $('#lc' + list_by_location[i][0]).appendTo($('.list_div'));
+                  }
+              }
+
+              function sort_by_latest(){
+                  for(var i=0;i<list_by_location.length-1;i++){
+                    for(var j=i+1;j<list_by_location.length;j++){
+                      if(list_by_location[i][0] <= list_by_location[j][0]){
+                        var tmp = list_by_location[i];
+                        list_by_location[i] = list_by_location[j];
+                        list_by_location[j] = tmp;
+                      }
+                    }
+                  }
+
+                  for(var i=0;i<list_by_location.length;i++){
+                    $('#lc' + list_by_location[i][0]).appendTo($('.list_div'));
+                  }
               }
             </script>
 
@@ -833,18 +873,26 @@
           <div class='buttons'>
             <a href="../take_dog"><button class="btn"> 데리고 있어요 </button></a>
             <a href="../notice"><button  class="btn" style="margin-left: 5vw; margin-right: 5vw;"> 잃어버렸어요 </button></a>
+            <button class="btn" onclick="sort_by_location();"> 거리순 정렬 </button>
+            <button class="btn" onclick="sort_by_latest();"> 최신등록순 정렬 </button>
             <button class="btn" style="display: none;"> 입양소에 있어요 </button>
           </div>
         </div>
 
         <div class='list_div'>
+          <div class="list_info">
+            <span>
+              위의 지도에서 지역을 검색하시면 거리기반 리스트가 나옵니다.
+            </span>
+          </div>
           {% for dog in dogs %}
-            <div class='list_content' id="{{dog.pk}}">
+            <div class='list_content' id="lc{{dog.pk}}">
               <div class='dog_img_div' style="width: 30%; float: left;">
                 <img src="{{dog.img_src}}" style="max-width: 100%; height: 200px;">
               </div>
               <div class='location_name_div' style="width: 50%; float: left;">
                 <span style="font-size: 20px;">
+                  번호 : {{dog.pk}}<br>
                   위치 : {{dog.location_name}}<br>
                   이름 : {{dog.dog_name}}
                 </span>
