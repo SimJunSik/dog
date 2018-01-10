@@ -432,7 +432,6 @@ def result_dog(request) :
 	elif(select[0]=="3"):
 		child_friendliness=5
 
-
 # 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
 	if(select[1]=="1"):
 		apartment_friendliness=1
@@ -510,7 +509,6 @@ def result_dog(request) :
 				):
 				if str(temperament) in breed.temp_group:
 					data['result']+="\n"+breed.name
-					
 
 	return JsonResponse(data)
 
