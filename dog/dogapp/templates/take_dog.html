@@ -11,7 +11,7 @@
     *{
       font-family: 'Hanna', serif;
     }
-    @media (min-width:500px) {
+    @media (min-width:750px) {
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
@@ -39,7 +39,7 @@
       }
     }
 
-    @media (max-width:500px) {
+    @media (max-width:750px) {
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
@@ -69,7 +69,7 @@
 
     </style>
   <style type="text/css">
-  @media (min-width:500px) {
+  @media (min-width:750px) {
     /*  상단 고정 메뉴바 css  */
   
     .top{
@@ -105,11 +105,12 @@
       -o-transform: translate(-50%, 0%);
       transform: translate(-50%, 0%);
       text-align: center;
+      margin-top: 1%;
     }
     .menu{
       margin-left: 0.5vw;
       margin-right: 0.5vw;
-      color: #B5996D;
+      color: black;
       font-size: 1vw;
       font-weight: 900;
     }
@@ -179,25 +180,41 @@
     width: 100%;
     height: 45vw;
     overflow-y: scroll;
-    background-color: yellow;
   }
 
   .list_content{
     position: relative;
     width: 100%;
     height: 300px;
+    display: none;
+  }
+
+  .board_menu_div{
+    position: relative;
+    width: 25%;
+    height: 95%;
+    float: left;
+    left: 25vw;
+  }
+
+  .bookmark{
+    width: 20%;
+    height: 5vw;
+    background-color: green;
+    float: left;
   }
 
   .board{
     position: relative;
-    width: 70%;
+    width: 60%;
     height: 100%;
+    margin-left: 10%;
     float: left;
   }
 
   .board_menu{
     position: relative;
-    width: 30%;
+    width: 80%;
     height: 100%;
     background-color: gray;
     float: left;
@@ -237,8 +254,7 @@
   }
 
   .dog_img_div{
-    width: 30%;
-    float: left;
+    width: 100%;
   }
 
   .location_name_div{
@@ -257,15 +273,16 @@
 /*  end  */
 }
 
-@media (max-width:500px) {
+@media (max-width:750px) {
       /*  상단 고정 메뉴바 css  */
   
     .top{
       width: 100%;
       position: fixed;     /*  화면상 위치 고정  */
-      z-index: 6;          /*  z값 결정  */
+
+      z-index: 3;          /*  z값 결정  */
       top : 0;
-      height: 5vw;
+      height: 9vw;
       background-color: white;
     }
 
@@ -278,14 +295,14 @@
       -moz-transform: translate(-50%, 0%);
       -o-transform: translate(-50%, 0%);
       transform: translate(-50%, 0%);
-      width: 30%;
+      width: 50%;
       text-align: center;
       font-weight: 900;
     }
     .top_nav{  
       position: relative;
       /*margin-top: 3%;*/    /*  top 여백 설정  */
-      width: 50%;
+      width: 100%;
       margin-left: 50%;
       -webkit-transform: translate(-50%, 0%);
       -ms-transform: translate(-50%, 0%);
@@ -293,21 +310,22 @@
       -o-transform: translate(-50%, 0%);
       transform: translate(-50%, 0%);
       text-align: center;
+      margin-top: 1%;
     }
     .menu{
       margin-left: 0.5vw;
       margin-right: 0.5vw;
-      color: #B5996D;
-      font-size: 1vw;
+      color: black;
+      font-size: 3.1vw;
       font-weight: 900;
     }
     .menu:hover {
       font-weight: 900;
-      font-size: 1vw;
+      font-size: 2vw;
     }
     .top_logo_img{
-      width: 14vw;
-      height: 2vw;
+      width: 28vw;
+      height: 4vw;
       margin: 0;
     }
     .menu_slash{
@@ -328,6 +346,7 @@
       width: 100%;
       background-color: white;
       height: 5vw;
+      margin-top: 10vw;
     }
 
     .logo_img_div{
@@ -365,15 +384,15 @@
   .list_div{
     position: relative;
     width: 100%;
-    height: 45vw;
+    height: 90vw;
     overflow-y: scroll;
-    background-color: yellow;
   }
 
   .list_content{
     position: relative;
     width: 100%;
     height: 300px;
+    display: none;
   }
 
   .board{
@@ -658,7 +677,10 @@
               }
 
 
+              var list_by_location = [];
+
               function geocodeAddress(geocoder, resultsMap) {
+                $('.list_info').css('display', 'none');
                 var address = document.getElementById('address').value;
                 geocoder.geocode({'address': address}, function(results, status) {
                   if (status === 'OK') {
@@ -668,27 +690,137 @@
                       position: results[0].geometry.location               
                     });
 
-                    
-                    for(var key in x_marker_list){
-                      if(distance(x_marker_list[key], y_marker_list[key], results[0].geometry.location.lat() , results[0].geometry.location.lng(), 'K') <= 3){
-                        $('#' + key.trim()).css('display' , 'block');
-                      }
-                      else{
-                        $('#' + key.trim()).css('display' , 'none');
-                      }
+                  list_by_location = [];
+                  for(var key in x_marker_list){
+                    var dist = distance(x_marker_list[key], y_marker_list[key], results[0].geometry.location.lat() , results[0].geometry.location.lng(), 'K');
+                    var tmp = [];
+                    if(dist <= 3){
+                      $('#lc' + key.trim()).css('display','block');
+                      tmp.push(key);
+                      tmp.push(dist);
+                      list_by_location.push(tmp);
                     }
+                    else{
+                      $('#lc' + key.trim()).css('display','none');
+                    }
+                  }
+
                   } else {
                     alert('Geocode was not successful for the following reason: ' + status);
                   }
                 });
+              }
+
+              function sort_by_location(){
+                  for(var i=0;i<list_by_location.length-1;i++){
+                    for(var j=i+1;j<list_by_location.length;j++){
+                      if(list_by_location[i][1] >= list_by_location[j][1]){
+                        var tmp = list_by_location[i];
+                        list_by_location[i] = list_by_location[j];
+                        list_by_location[j] = tmp;
+                      }
+                    }
+                  }
+
+                  for(var i=0;i<list_by_location.length;i++){
+                    $('#lc' + list_by_location[i][0]).appendTo($('.list_div'));
+                  }
+              }
+
+              function sort_by_latest(){
+                  for(var i=0;i<list_by_location.length-1;i++){
+                    for(var j=i+1;j<list_by_location.length;j++){
+                      if(list_by_location[i][0] <= list_by_location[j][0]){
+                        var tmp = list_by_location[i];
+                        list_by_location[i] = list_by_location[j];
+                        list_by_location[j] = tmp;
+                      }
+                    }
+                  }
+
+                  for(var i=0;i<list_by_location.length;i++){
+                    $('#lc' + list_by_location[i][0]).appendTo($('.list_div'));
+                  }
               }
             </script>
 
             <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_E5Ls2VQ_yDsadA9-KhCLTBFoJ6AxuJo&callback=initMap">
             </script>
+
+            <style type="text/css">
+              .pop-up{
+                width: 80vw;
+                height: 40vw;
+                background-color: white;
+                z-index: 9999;
+                position: fixed;
+                left : 50%;
+                display: none;
+                -webkit-transform: translate(-50%, 0%);
+                -ms-transform: translate(-50%, 0%);
+                -moz-transform: translate(-50%, 0%);
+                -o-transform: translate(-50%, 0%);
+                transform: translate(-50%, 0%);
+                box-shadow: 10px 10px 10px black;
+              }
+              .pop_content{
+                position: relative;
+                width: 90%;
+                height: 90%;
+                background-color: white;
+                left : 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+              }
+              .pop_img_div{
+                float: left;
+                width: 50%;
+                height: 100%;
+                text-align: center;
+                background-color: yellow;
+              }
+              .pop_info_div{
+                float: left;
+                width: 50%;
+                height: 100%;
+                background-color: blue;
+              }
+              .close_btn_div{
+                width: 3vw;
+                height: 3vw;
+                position: fixed;
+                top: 0%;
+                right: 0%;
+                background-image: url(../../static/img/close_btn.png);
+                background-repeat: no-repeat;
+                background-size:100% 100%;
+              }
+            </style>
 </head>
 <body>
+
+  <div class="pop-up">
+    <div class="close_btn_div" onclick="pop_close();">
+    </div>
+    <div class="pop_content">
+      <div class="pop_img_div">
+        <img id="pop_img" src="" style="width: 30vw; height: 30vw;">
+      </div>
+      <div class="pop_info_div">
+        <span id="pop_info" style="font-size: 2vw; color: white;">
+          이름 : <span id="pop_info_name"></span><br>
+          위치 : <span id="pop_info_location"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
   <div class='top'>
       <div class='top_logo'>
         <img class='top_logo_img' src="../../static/img/logo_txt_color.png">  
@@ -743,13 +875,20 @@
           <div class='buttons'>
             <a href="../take_dog"><button class="btn"> 데리고 있어요 </button></a>
             <a href="../notice"><button  class="btn" style="margin-left: 5vw; margin-right: 5vw;"> 잃어버렸어요 </button></a>
+            <button class="btn" onclick="sort_by_location();"> 거리순 정렬 </button>
+            <button class="btn" onclick="sort_by_latest();"> 최신등록순 정렬 </button>
             <button class="btn" style="display: none;"> 입양소에 있어요 </button>
           </div>
         </div>
 
         <div class='list_div'>
+          <div class="list_info">
+            <span>
+              위의 지도에서 지역을 검색하시면 거리기반 리스트가 나옵니다.
+            </span>
+          </div>
           {% for dog in dogs %}
-            <div class='list_content' id="{{dog.pk}}">
+            <div class='list_content' id="lc{{dog.pk}}">
               <div class='dog_img_div' style="width: 30%; float: left;">
                 <img src="{{dog.img_src}}" style="max-width: 100%; height: 200px;">
               </div>
@@ -769,12 +908,38 @@
         </div>
       </div>
 
-      <div class='board_menu'  id="web_board_menu">
-        <a href="../register_dog"><button>데리고있는 강아지 등록하기</button></a>
-        <br>
-        <span style="font-size: 2vw; color: white;"> 최신 등록 리스트 </span>
-        <div class='realtime_list'>
-          
+      <div class="board_menu_div">
+
+        <div class="bookmark" id="bookmark_open" onclick="open_div();">
+          <span style="font-size: 0.7vw;">
+            최<br>
+            신<br>
+            등<Br>
+            록&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◀<br>
+            리<br>
+            스<br>
+            트<br>
+          </span>
+        </div>
+        <div class="bookmark" id="bookmark_close" onclick="close_div();" style="display: none;">
+          <span style="font-size: 0.7vw;">
+            <br>
+            C<br>
+            L<br>
+            O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▶<Br>
+            S<br>
+            E<br>
+            <Br>
+          </span>
+        </div>
+
+        <div class='board_menu'  id="web_board_menu">
+          <a href="../take_register_dog"><button>데리고 있는 강아지 등록하기</button></a>
+          <br>
+          <span style="font-size: 2vw; color: white;"> 최신 등록 리스트 </span>
+          <div class='realtime_list'>
+            
+          </div>
         </div>
       </div>
 
@@ -785,6 +950,95 @@
 
 
     <script type="text/javascript">
+
+      function open_div(){
+        $('.board_menu_div').animate({
+          "left" : "0vw"
+        });
+        $('#bookmark_open').css('display', 'none');
+        $('#bookmark_close').css('display', 'block');
+      }
+
+      function close_div(){
+        $('.board_menu_div').animate({
+          "left" : "25vw"
+        });
+        $('#bookmark_open').css('display', 'block');
+        $('#bookmark_close').css('display', 'none');
+      }
+
+      function pop_close(){
+        $('.pop-up').css('display', 'none');
+        $('.top').css({
+            '-webkit-filter': 'blur(0px)',
+            '-moz-filter': 'blur(0px)',
+            '-o-filter': 'blur(0px)',
+            '-ms-filter': 'blur(0px)',
+            'filter': 'blur(0px)'
+        });
+        $('.top_title').css({
+            '-webkit-filter': 'blur(0px)',
+            '-moz-filter': 'blur(0px)',
+            '-o-filter': 'blur(0px)',
+            '-ms-filter': 'blur(0px)',
+            'filter': 'blur(0px)'
+        });
+        $('.middle').css({
+            '-webkit-filter': 'blur(0px)',
+            '-moz-filter': 'blur(0px)',
+            '-o-filter': 'blur(0px)',
+            '-ms-filter': 'blur(0px)',
+            'filter': 'blur(0px)'
+        });
+      }
+
+      function info_popup(pk){
+        //alert(pk);
+        $.ajax({
+                      url: '/show_info/',
+                      data: {
+                        'take_pk_id' : pk
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        $('#pop_img').attr('src', data.img_src);
+                        $('#pop_info_location').html(data.location_name);
+                        $('#pop_info_name').html(data.dog_name);
+                        $('.top').css({
+                          '-webkit-filter': 'blur(4px)',
+                          '-moz-filter': 'blur(4px)',
+                          '-o-filter': 'blur(4px)',
+                          '-ms-filter': 'blur(4px)',
+                          'filter': 'blur(4px)'
+                        });
+                        $('.top_title').css({
+                          '-webkit-filter': 'blur(4px)',
+                          '-moz-filter': 'blur(4px)',
+                          '-o-filter': 'blur(4px)',
+                          '-ms-filter': 'blur(4px)',
+                          'filter': 'blur(4px)'
+                        });
+                        $('.middle').css({
+                          '-webkit-filter': 'blur(4px)',
+                          '-moz-filter': 'blur(4px)',
+                          '-o-filter': 'blur(4px)',
+                          '-ms-filter': 'blur(4px)',
+                          'filter': 'blur(4px)'
+                        });
+
+
+
+                        $('.pop-up').fadeIn(1000);
+                        $('.pop-up').css({
+                          '-webkit-filter': 'blur(0px)',
+                          '-moz-filter': 'blur(0px)',
+                          '-o-filter': 'blur(0px)',
+                          '-ms-filter': 'blur(0px)',
+                          'filter': 'blur(0px)'
+                        });
+                      }
+              });
+      }
 
     /*  scroll 이벤트 관리 변수 */
     var flag1 = 0;
@@ -800,6 +1054,7 @@
       var location_name_list = [];
       var dog_name_list = [];
       var img_src_list = [];
+      var pk_list = [];
 
       $.ajax({
         url: '/updateData2/',
@@ -812,13 +1067,19 @@
           //console.log(data.dogs);
           var total = data.dogs;
           while(total.length > 0){
+            var pk_idx = total.indexOf("pk");
+            var tm = total.substring(pk_idx+5, total.length);
+
+            var idx1 = tm.indexOf(",");
+            var pk = tm.substring(0, idx1);
+
             var location_name_idx = total.indexOf("location_name");
             if(location_name_idx <= 0){
               break;
             }
             var tmp = total.substring(location_name_idx+17, total.length);
 
-            var idx1 = tmp.indexOf(",");
+            idx1 = tmp.indexOf(",");
             var location_name = tmp.substring(0,idx1-1);
 
 
@@ -836,6 +1097,7 @@
             idx1 = tmp3.indexOf(",");
             var img_src = tmp3.substring(0,idx1-1);
 
+            pk_list.push(pk);
             location_name_list.push(location_name);
             dog_name_list.push(dog_name);
             img_src_list.push(img_src);
@@ -858,7 +1120,7 @@
             if(location_name_list.length == 0){
               break;
             }
-            var a = "<div class='realtime_list_content'><div class='dog_img_div' style=\"\"><img class=\"realtime_list_img\" src=";
+            var a = "<div class='realtime_list_content' id=\"" + pk_list[i] +"\" onclick=\"info_popup(this.id);\"><div class='dog_img_div' style=\"\"><img class=\"realtime_list_img\" src=";
             var b = "\"" + img_src_list[i] + "\"" +  "style=\"\"></div>";
             var c = "<div class='location_name_div' id=\"location_name_div\" style=\"\">";
             var d = "<span class=\"info_span\" style=\"\">";

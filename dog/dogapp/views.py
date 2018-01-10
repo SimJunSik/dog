@@ -627,8 +627,13 @@ def take_register_dog(request) :
 def show_info(request) :
 
 	pk_id = request.GET.get('pk_id', None)
-	#print(pk_id)
-	marker = Marker.objects.get(pk=pk_id)
+	take_pk_id = request.GET.get('take_pk_id', None)
+	#print(pk_id , take_pk_id)
+	if(pk_id != None) :
+		marker = Marker.objects.get(pk=pk_id)
+
+	else :
+		marker = TakeMarker.objects.get(pk=take_pk_id)
 	
 	location_name = marker.location_name
 	dog_name = marker.dog_name
