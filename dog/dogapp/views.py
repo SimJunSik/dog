@@ -258,11 +258,6 @@ def GetAddr(request) :
 def NoticeView(request) :
 
 	json_serializer = serializers.get_serializer("json")()
-	markers = json_serializer.serialize(Marker.objects.all(), ensure_ascii=False)
-
-	dogs = Marker.objects.all()
-
-	context = {'markers' : markers, 'dogs' : dogs}
 
 	if request.method == 'POST':
 		file_get = request.POST.get('dog_image', False)
@@ -297,6 +292,11 @@ def NoticeView(request) :
 			if(file_get == False) :
 				marker.img_src = uploaded_file_url
 			marker.save()
+
+	dogs = Marker.objects.all()
+	markers = json_serializer.serialize(dogs, ensure_ascii=False)
+
+	context = {'markers' : markers, 'dogs' : dogs}
 
 	return render(request, './notice_test.html', context)
 

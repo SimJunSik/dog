@@ -471,6 +471,8 @@
               var x_marker_list = {};
               var y_marker_list = {};
 
+              var list_by_location = [];
+
               function distance(lat1, lon1, lat2, lon2, unit) {
                 var radlat1 = Math.PI * lat1/180
                 var radlat2 = Math.PI * lat2/180
@@ -533,21 +535,28 @@
                 for(var key in x_marker_list){
                   features.push({
                     position: new google.maps.LatLng(x_marker_list[key], y_marker_list[key]),
-                    type: 'puppy'
+                    type: 'puppy',
+                    pk : key
                   });
                 }
 
 
                 //alert(distance(x_marker_list[0], y_marker_list[0], x_marker_list[1], y_marker_list[1], 'K'));
                 
-                for(var key in x_marker_list){
-                  if(distance(x_marker_list[key], y_marker_list[key], position.coords.latitude, position.coords.longitude, 'K') <= 3){
-                    $('#lc' + key).css('display','block');
+                list_by_location = [];
+                  for(var key in x_marker_list){
+                    var dist = distance(x_marker_list[key], y_marker_list[key], position.coords.latitude ,position.coords.longitude, 'K');
+                    var tmp = [];
+                    if(dist <= 3){
+                      $('#lc' + key.trim()).css('display','block');
+                      tmp.push(key);
+                      tmp.push(dist);
+                      list_by_location.push(tmp);
+                    }
+                    else{
+                      $('#lc' + key.trim()).css('display','none');
+                    }
                   }
-                  else{
-                    $('#lc' + key).css('display','none');
-                  }
-                }
                 
 
                 // Create markers.
@@ -559,9 +568,10 @@
                   });
 
                   marker.addListener('click', function() {
-                    map.setZoom(20);
+                    map.setZoom(15);
                     map.setCenter(marker.getPosition());
-                    alert("click event");
+                    //alert("click event");
+                    info_popup(feature.pk);
                   });
                 });
                     }, function() {
@@ -585,6 +595,7 @@
               function initMap() {
                 var markers = '{{ markers|escapejs }}';
                 //alert(markers);
+                console.log(markers);
 
                 map = new google.maps.Map(document.getElementById('map'), {
                   zoom: 16,
@@ -632,7 +643,7 @@
                 }
 
                 //alert(x_marker_list);
-                console.log(x_marker_list);
+                //console.log(x_marker_list);
 
                 var iconBase = '../../static/img/';
                 var icons = {
@@ -648,7 +659,8 @@
                 for(var key in x_marker_list){
                   features.push({
                     position: new google.maps.LatLng(x_marker_list[key], y_marker_list[key]),
-                    type: 'puppy'
+                    type: 'puppy',
+                    pk : key
                   });
                 }
                 
@@ -664,9 +676,10 @@
                   });
 
                   marker.addListener('click', function() {
-                    map.setZoom(20);
+                    map.setZoom(15);
                     map.setCenter(marker.getPosition());
-                    alert("click event");
+                    //alert("click event");
+                    info_popup(feature.pk);
                   });
                 });
 
@@ -677,7 +690,6 @@
                 });
               }
 
-              var list_by_location = [];
 
               function geocodeAddress(geocoder, resultsMap) {
                 $('.list_info').css('display', 'none');
@@ -711,6 +723,16 @@
                 });
               }
 
+
+
+
+
+
+
+
+
+
+
               function sort_by_location(){
                   for(var i=0;i<list_by_location.length-1;i++){
                     for(var j=i+1;j<list_by_location.length;j++){
@@ -742,212 +764,19 @@
                     $('#lc' + list_by_location[i][0]).appendTo($('.list_div'));
                   }
               }
-            </script>
-
-            <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_E5Ls2VQ_yDsadA9-KhCLTBFoJ6AxuJo&callback=initMap">
-            </script>
-            <style type="text/css">
-              .pop-up{
-                width: 80vw;
-                height: 40vw;
-                background-color: white;
-                z-index: 9999;
-                position: fixed;
-                left : 50%;
-                display: none;
-                -webkit-transform: translate(-50%, 0%);
-                -ms-transform: translate(-50%, 0%);
-                -moz-transform: translate(-50%, 0%);
-                -o-transform: translate(-50%, 0%);
-                transform: translate(-50%, 0%);
-                box-shadow: 10px 10px 10px black;
-              }
-              .pop_content{
-                position: relative;
-                width: 90%;
-                height: 90%;
-                background-color: white;
-                left : 50%;
-                top: 50%;
-                -webkit-transform: translate(-50%, -50%);
-                -ms-transform: translate(-50%, -50%);
-                -moz-transform: translate(-50%, -50%);
-                -o-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-              }
-              .pop_img_div{
-                float: left;
-                width: 50%;
-                height: 100%;
-                text-align: center;
-                background-color: yellow;
-              }
-              .pop_info_div{
-                float: left;
-                width: 50%;
-                height: 100%;
-                background-color: blue;
-              }
-              .close_btn_div{
-                width: 3vw;
-                height: 3vw;
-                position: fixed;
-                top: 0%;
-                right: 0%;
-                background-image: url(../../static/img/close_btn.png);
-                background-repeat: no-repeat;
-                background-size:100% 100%;
-              }
-            </style>
-</head>
-<body>
-  <div class="pop-up">
-    <div class="close_btn_div" onclick="pop_close();">
-    </div>
-    <div class="pop_content">
-      <div class="pop_img_div">
-        <img id="pop_img" src="" style="width: 30vw; height: 30vw;">
-      </div>
-      <div class="pop_info_div">
-        <span id="pop_info" style="font-size: 2vw; color: white;">
-          이름 : <span id="pop_info_name"></span><br>
-          위치 : <span id="pop_info_location"></span>
-        </span>
-      </div>
-    </div>
-  </div>
 
 
-  <div class='top'>
-      <div class='top_logo'>
-        <img class='top_logo_img' src="../../static/img/logo_txt_color.png">  
-      </div>
-      <div class='top_nav'>
-        <a href="../"><span class="menu" id="w"> HOME </span></a>
-        <span class='menu_slash'> / </span>
-        <a href="../matching"><span class="menu" id="tmp"> 강아지매칭 </span></a>
-        <span class='menu_slash'> / </span>
-        <a href="../notice"><span class="menu" id="h"> 실종신고 </span></a>
-        <span class='menu_slash'> / </span>
-        <a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
-        <span class='menu_slash'> / </span>
-        <a href="../shelter"><span class="menu" id="h"> 보호소 </span></a>
-        <span class='menu_slash'> / </span>
-        <a href="../about_us"><span class="menu"> ABOUT US </span></a>
-      </div>
-  </div>
-
-    <div class="top_title">
-      <div class="logo_img_div">
-        <p style="font-size: 1.5vw; font-weight: 900;">
-        <img src="../../static/img/logo_img_color.png" align="middle" style="width: 5vw; height: auto;">
-        실종신고
-
-        </p>
-      </div>
-    </div>
-
-    <div class='middle'>
-      <div class='board_menu' id="mobile_board_menu">
-        <a href="../register_dog"><button>잃어버린 강아지 등록하기</button></a>
-        <br>
-        <span style="font-size: 2vw; color: white;"> 최근 등록 강아지 </span>
-        <div class='realtime_list'>
-          
-        </div>
-      </div>
 
 
-      <div class='board'>
-        <div class='map_div'>
-          <div id="floating-panel">
-            <input id="address" type="textbox" value="">
-            <input id="submit" type="button" value="검색">
-            <button onclick="my_location()">my location</button>
-          </div>
-          <div id="map"></div>
-        </div>
-
-        <div class='function_div'>
-          <div class='buttons'>
-            <a href="../take_dog"><button class="btn"> 데리고 있어요 </button></a>
-            <a href="../notice"><button  class="btn" style="margin-left: 5vw; margin-right: 5vw;"> 잃어버렸어요 </button></a>
-            <br><br>
-            <button class="btn" onclick="sort_by_location();"> 거리순 정렬 </button>
-            <button class="btn" onclick="sort_by_latest();"> 최신등록순 정렬 </button>
-            <button class="btn" style="display: none;"> 입양소에 있어요 </button>
-          </div>
-        </div>
-
-        <div class='list_div'>
-          <div class="list_info">
-            <span>
-              위의 지도에서 지역을 검색하시면 거리기반 리스트가 나옵니다.
-            </span>
-          </div>
-          {% for dog in dogs %}
-            <div class='list_content' id="lc{{dog.pk}}">
-              <div class='dog_img_div' style="width: 30%; float: left;">
-                <img src="{{dog.img_src}}" style="max-width: 100%; height: 200px;">
-              </div>
-              <div class='location_name_div' style="width: 50%; float: left;">
-                <span style="font-size: 20px;">
-                  번호 : {{dog.pk}}<br>
-                  위치 : {{dog.location_name}}<br>
-                  이름 : {{dog.dog_name}}
-                </span>
-              </div>
-              <div class='button_div' style="width: 20%; float: left;">
-                비밀번호 : <input type="text" id="psw_txt{{dog.pk}}" name="psw_txt"><br>
-                <button id="ch_btn_{{dog.pk}}" onclick="change_marker(this.id)">수정</button>
-                <button id="del_btn_{{dog.pk}}" onclick="delete_marker(this.id)">삭제</button>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="board_menu_div">
-
-        <div class="bookmark" id="bookmark_open" onclick="open_div();">
-          <span style="font-size: 0.7vw;">
-            최<br>
-            신<br>
-            등<Br>
-            록&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◀<br>
-            리<br>
-            스<br>
-            트<br>
-          </span>
-        </div>
-        <div class="bookmark" id="bookmark_close" onclick="close_div();" style="display: none;">
-          <span style="font-size: 0.7vw;">
-            <br>
-            C<br>
-            L<br>
-            O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▶<Br>
-            S<br>
-            E<br>
-            <Br>
-          </span>
-        </div>
-
-        <div class='board_menu'  id="web_board_menu">
-          <a href="../register_dog"><button>잃어버린 강아지 등록하기</button></a>
-          <br>
-          <span style="font-size: 2vw; color: white;"> 최신 등록 리스트 </span>
-          <div class='realtime_list'>
-            
-          </div>
-        </div>
-      </div>
 
 
-    </div>
-    <script type="text/javascript">
 
-      function open_div(){
+
+
+
+
+
+              function open_div(){
         $('.board_menu_div').animate({
           "left" : "0vw"
         });
@@ -1307,6 +1136,208 @@ $(window).scroll(function () {
                       }
             });
           }
-    </script>
+            </script>
+
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_E5Ls2VQ_yDsadA9-KhCLTBFoJ6AxuJo&callback=initMap">
+            </script>
+            <style type="text/css">
+              .pop-up{
+                width: 80vw;
+                height: 40vw;
+                background-color: white;
+                z-index: 9999;
+                position: fixed;
+                left : 50%;
+                display: none;
+                -webkit-transform: translate(-50%, 0%);
+                -ms-transform: translate(-50%, 0%);
+                -moz-transform: translate(-50%, 0%);
+                -o-transform: translate(-50%, 0%);
+                transform: translate(-50%, 0%);
+                box-shadow: 10px 10px 10px black;
+              }
+              .pop_content{
+                position: relative;
+                width: 90%;
+                height: 90%;
+                background-color: white;
+                left : 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+              }
+              .pop_img_div{
+                float: left;
+                width: 50%;
+                height: 100%;
+                text-align: center;
+                background-color: yellow;
+              }
+              .pop_info_div{
+                float: left;
+                width: 50%;
+                height: 100%;
+                background-color: blue;
+              }
+              .close_btn_div{
+                width: 3vw;
+                height: 3vw;
+                position: fixed;
+                top: 0%;
+                right: 0%;
+                background-image: url(../../static/img/close_btn.png);
+                background-repeat: no-repeat;
+                background-size:100% 100%;
+              }
+            </style>
+</head>
+<body>
+  <div class="pop-up">
+    <div class="close_btn_div" onclick="pop_close();">
+    </div>
+    <div class="pop_content">
+      <div class="pop_img_div">
+        <img id="pop_img" src="" style="width: 30vw; height: 30vw;">
+      </div>
+      <div class="pop_info_div">
+        <span id="pop_info" style="font-size: 2vw; color: white;">
+          이름 : <span id="pop_info_name"></span><br>
+          위치 : <span id="pop_info_location"></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='top'>
+      <div class='top_logo'>
+        <img class='top_logo_img' src="../../static/img/logo_txt_color.png">  
+      </div>
+      <div class='top_nav'>
+        <a href="../"><span class="menu" id="w"> HOME </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../matching"><span class="menu" id="tmp"> 강아지매칭 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../notice"><span class="menu" id="h"> 실종신고 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../shelter"><span class="menu" id="h"> 보호소 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../about_us"><span class="menu"> ABOUT US </span></a>
+      </div>
+  </div>
+
+    <div class="top_title">
+      <div class="logo_img_div">
+        <p style="font-size: 1.5vw; font-weight: 900;">
+        <img src="../../static/img/logo_img_color.png" align="middle" style="width: 5vw; height: auto;">
+        실종신고
+
+        </p>
+      </div>
+    </div>
+
+    <div class='middle'>
+      <div class='board_menu' id="mobile_board_menu">
+        <a href="../register_dog"><button>잃어버린 강아지 등록하기</button></a>
+        <br>
+        <span style="font-size: 2vw; color: white;"> 최근 등록 강아지 </span>
+        <div class='realtime_list'>
+          
+        </div>
+      </div>
+
+
+      <div class='board'>
+        <div class='map_div'>
+          <div id="floating-panel">
+            <input id="address" type="textbox" value="">
+            <input id="submit" type="button" value="검색">
+            <button onclick="my_location()">my location</button>
+          </div>
+          <div id="map"></div>
+        </div>
+
+        <div class='function_div'>
+          <div class='buttons'>
+            <a href="../take_dog"><button class="btn"> 데리고 있어요 </button></a>
+            <a href="../notice"><button  class="btn" style="margin-left: 5vw; margin-right: 5vw;"> 잃어버렸어요 </button></a>
+            <br><br>
+            <button class="btn" onclick="sort_by_location();"> 거리순 정렬 </button>
+            <button class="btn" onclick="sort_by_latest();"> 최신등록순 정렬 </button>
+            <button class="btn" style="display: none;"> 입양소에 있어요 </button>
+          </div>
+        </div>
+
+        <div class='list_div'>
+          <div class="list_info">
+            <span>
+              위의 지도에서 지역을 검색하시면 거리기반 리스트가 나옵니다.
+            </span>
+          </div>
+          {% for dog in dogs %}
+            <div class='list_content' id="lc{{dog.pk}}">
+              <div class='dog_img_div' style="width: 30%; float: left;">
+                <img src="{{dog.img_src}}" style="max-width: 100%; height: 200px;">
+              </div>
+              <div class='location_name_div' style="width: 50%; float: left;">
+                <span style="font-size: 20px;">
+                  번호 : {{dog.pk}}<br>
+                  위치 : {{dog.location_name}}<br>
+                  이름 : {{dog.dog_name}}
+                </span>
+              </div>
+              <div class='button_div' style="width: 20%; float: left;">
+                비밀번호 : <input type="text" id="psw_txt{{dog.pk}}" name="psw_txt"><br>
+                <button id="ch_btn_{{dog.pk}}" onclick="change_marker(this.id)">수정</button>
+                <button id="del_btn_{{dog.pk}}" onclick="delete_marker(this.id)">삭제</button>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="board_menu_div">
+
+        <div class="bookmark" id="bookmark_open" onclick="open_div();">
+          <span style="font-size: 0.7vw;">
+            최<br>
+            신<br>
+            등<Br>
+            록&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◀<br>
+            리<br>
+            스<br>
+            트<br>
+          </span>
+        </div>
+        <div class="bookmark" id="bookmark_close" onclick="close_div();" style="display: none;">
+          <span style="font-size: 0.7vw;">
+            <br>
+            C<br>
+            L<br>
+            O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▶<Br>
+            S<br>
+            E<br>
+            <Br>
+          </span>
+        </div>
+
+        <div class='board_menu'  id="web_board_menu">
+          <a href="../register_dog"><button>잃어버린 강아지 등록하기</button></a>
+          <br>
+          <span style="font-size: 2vw; color: white;"> 최신 등록 리스트 </span>
+          <div class='realtime_list'>
+            
+          </div>
+        </div>
+      </div>
+
+
+    </div>
 </body>
 </html>
