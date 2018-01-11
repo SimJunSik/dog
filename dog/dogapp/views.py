@@ -276,11 +276,14 @@ def NoticeView(request) :
 		dog_name = request.POST.get('dog_name')
 		psw_txt = request.POST.get('psw_txt')
 		#print(location_name, lat, lng)
+		losted_at = request.POST.get('losted_at')
+
+		feature = request.POST.get('feature')
 
 		pk_value = request.POST.get('pk_value')
 		#print(pk_value)
 		if pk_value == 'none'  or len(pk_value)==0 :
-			marker = Marker(location_name = location_name, x = lat, y = lng, dog_name = dog_name, img_src = uploaded_file_url, psw = psw_txt)
+			marker = Marker(location_name = location_name, x = lat, y = lng, dog_name = dog_name, img_src = uploaded_file_url, psw = psw_txt, losted_at = losted_at, feature = feature)
 			marker.save()
 		else :
 			marker = Marker.objects.get(pk=pk_value)
@@ -289,6 +292,8 @@ def NoticeView(request) :
 			marker.y = lng
 			marker.dog_name = dog_name
 			marker.psw = psw_txt
+			marker.losted_at = losted_at
+			makker.feature = feature
 			if(file_get == False) :
 				marker.img_src = uploaded_file_url
 			marker.save()
@@ -305,32 +310,32 @@ def NoticeView(request) :
 def TakedogView(request) :
 
 	json_serializer = serializers.get_serializer("json")()
-	markers = json_serializer.serialize(TakeMarker.objects.all(), ensure_ascii=False)
 
-	dogs = TakeMarker.objects.all()
-
-	context = {'markers' : markers, 'dogs' : dogs}
-
-	if request.method == 'POST' and request.FILES['dog_image'] :
-		img_src = request.FILES['dog_image']
-		fs = FileSystemStorage()
-		filename = fs.save(img_src.name, img_src)
-		uploaded_file_url = fs.url(filename)
-		#print(uploaded_file_url)
+	if request.method == 'POST':
+		file_get = request.POST.get('dog_image', False)
+		if(file_get == False) :
+			img_src = request.FILES['dog_image']
+			fs = FileSystemStorage()
+			filename = fs.save(img_src.name, img_src)
+			uploaded_file_url = fs.url(filename)
+			#print(uploaded_file_url)
 
 		location_name = request.POST.get('location_name')
-		print(location_name)
+		#print(location_name)
 		lat = request.POST.get('lat')
 		lng = request.POST.get('lng')
-		print(lat, lng)
+		#print(lat, lng)
 		dog_name = request.POST.get('dog_name')
 		psw_txt = request.POST.get('psw_txt')
 		#print(location_name, lat, lng)
+		losted_at = request.POST.get('losted_at')
+
+		feature = request.POST.get('feature')
 
 		pk_value = request.POST.get('pk_value')
 		#print(pk_value)
-		if pk_value == 'none' or len(pk_value)==0 :
-			marker = TakeMarker(location_name = location_name, x = lat, y = lng, dog_name = dog_name, img_src = uploaded_file_url, psw = psw_txt)
+		if pk_value == 'none'  or len(pk_value)==0 :
+			marker = TakeMarker(location_name = location_name, x = lat, y = lng, dog_name = dog_name, img_src = uploaded_file_url, psw = psw_txt, losted_at = losted_at, feature = feature)
 			marker.save()
 		else :
 			marker = TakeMarker.objects.get(pk=pk_value)
@@ -339,8 +344,16 @@ def TakedogView(request) :
 			marker.y = lng
 			marker.dog_name = dog_name
 			marker.psw = psw_txt
-			marker.img_src = uploaded_file_url
+			marker.losted_at = losted_at
+			makker.feature = feature
+			if(file_get == False) :
+				marker.img_src = uploaded_file_url
 			marker.save()
+
+	dogs = TakeMarker.objects.all()
+	markers = json_serializer.serialize(dogs, ensure_ascii=False)
+
+	context = {'markers' : markers, 'dogs' : dogs}
 
 	return render(request, './take_dog.html', context)
 
@@ -638,11 +651,17 @@ def show_info(request) :
 	location_name = marker.location_name
 	dog_name = marker.dog_name
 	img_src = marker.img_src
+	losted_at = marker.losted_at
+	created_at = marker.created_at
+	feature = marker.feature
 
 	data = {
 			'location_name' : location_name,
 			'dog_name' : dog_name,
-			'img_src' : img_src
+			'img_src' : img_src,
+			'losted_at' : losted_at,
+			'created_at' : created_at,
+			'feature' : feature
 		}
 
 	return JsonResponse(data)

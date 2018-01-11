@@ -189,19 +189,61 @@
     display: none;
   }
 
+  .register_btn{
+    position: fixed;
+    width: 10%;
+    height: auto;
+    left: 70vw;
+    background-color: #242424;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+  }
+
   .board_menu_div{
     position: relative;
     width: 25%;
     height: 95%;
     float: left;
-    left: 25vw;
+    left: 24vw;
   }
 
   .bookmark{
+    position: relative;
+    top: 1vw;
     width: 20%;
     height: 5vw;
-    background-color: green;
+    background-color: #f4f4f4;
     float: left;
+    font-size: 1.5vw;
+    text-align: center;
+    display: table;
+    z-index: 3;
+  }
+
+  #bookmark_open{
+    background-image: url(../../static/img/arrow.png);
+    background-repeat: no-repeat;
+    background-size:40% 40%;
+    background-position: center;
+    border-top-left-radius: 20px 20px;
+    border-bottom-left-radius: 20px 20px;
+    box-shadow: -2px -2px 2px 2px gray;
+  }
+
+  #bookmark_close{
+    background-image: url(../../static/img/arrow.png);
+    background-repeat: no-repeat;
+    background-size:40% 40%;
+    background-position: center;
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -ms-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    transform:rotate(180deg);
+    border-top-right-radius: 20px 20px;
+    border-bottom-right-radius: 20px 20px;
+    box-shadow: 2px 2px 2px 2px gray;
   }
 
   .board{
@@ -216,8 +258,10 @@
     position: relative;
     width: 80%;
     height: 100%;
-    background-color: gray;
+    background-color: #f4f4f4;
     float: left;
+    text-align: center;
+    box-shadow: -2px -2px 2px 2px gray;
   }
 
   .function_div{
@@ -240,6 +284,13 @@
     margin: auto;
   }
 
+  .btn{
+    width: 49%;
+    height: 1.5vw;
+    float: left;
+    margin-right: 1%;
+  }
+
   #mobile_board_menu{
     display: none;
   }
@@ -258,11 +309,13 @@
   }
 
   .location_name_div{
-    width: 50%;
-    float: left;
+    width: 80%;
+    text-align: left;
+    margin: auto;
   }
 
   .info_span{
+    width: 100%;
     font-size: 1vw;
   }
 
@@ -776,9 +829,9 @@
 
 
 
-              function open_div(){
+      function open_div(){
         $('.board_menu_div').animate({
-          "left" : "0vw"
+          "left" : "-1vw"
         });
         $('#bookmark_open').css('display', 'none');
         $('#bookmark_close').css('display', 'block');
@@ -786,7 +839,7 @@
 
       function close_div(){
         $('.board_menu_div').animate({
-          "left" : "25vw"
+          "left" : "24vw"
         });
         $('#bookmark_open').css('display', 'block');
         $('#bookmark_close').css('display', 'none');
@@ -829,6 +882,11 @@
                         $('#pop_img').attr('src', data.img_src);
                         $('#pop_info_location').html(data.location_name);
                         $('#pop_info_name').html(data.dog_name);
+                        $('#pop_info_losted_at').html(data.losted_at);
+                        $('#pop_info_created_at').html(data.created_at);
+                        $('#pop_info_feature').html(data.feature);
+
+
                         $('.top').css({
                           '-webkit-filter': 'blur(4px)',
                           '-moz-filter': 'blur(4px)',
@@ -874,12 +932,13 @@
       updateData();
     });
 
-    var location_name_list = [];
-    var dog_name_list = [];
-    var img_src_list = [];
-    var pk_list = [];
 
     function updateData(){
+      var location_name_list = [];
+      var dog_name_list = [];
+      var img_src_list = [];
+      var pk_list = [];
+
       $.ajax({
         url: '/updateData/',
         data: {
@@ -927,13 +986,23 @@
             img_src_list.push(img_src);
 
             total = tmp3;
-
-            //alert(String(pk) + location_name + dog_name + img_src);
           }
 
           var content = '';
 
-          for(var i=location_name_list.length-1;i>=location_name_list.length-5;i--){
+          var end_idx = 0;
+          if(location_name_list.length < 5){
+            end_idx = location_name_list.length;
+          }
+
+          else{
+            end_idx = 5;
+          }
+
+          for(var i=location_name_list.length-1;i>=location_name_list.length-end_idx;i--){
+            if(location_name_list.length == 0){
+              break;
+            }
             var a = "<div class='realtime_list_content' id=\"" + pk_list[i] +"\" onclick=\"info_popup(this.id);\"><div class='dog_img_div' style=\"\"><img class=\"realtime_list_img\" src=";
             var b = "\"" + img_src_list[i] + "\"" +  "style=\"\"></div>";
             var c = "<div class='location_name_div' id=\"location_name_div\" style=\"\">";
@@ -1206,7 +1275,10 @@ $(window).scroll(function () {
       <div class="pop_info_div">
         <span id="pop_info" style="font-size: 2vw; color: white;">
           이름 : <span id="pop_info_name"></span><br>
-          위치 : <span id="pop_info_location"></span>
+          위치 : <span id="pop_info_location"></span><br>
+          잃어버린 날짜 : <span id="pop_info_losted_at"></span><br>
+          등록 날짜 :<span id="pop_info_created_at"></span><br>
+          특징 : <span id="pop_info_feature"></span><br>
         </span>
       </div>
     </div>
@@ -1266,10 +1338,17 @@ $(window).scroll(function () {
         <div class='function_div'>
           <div class='buttons'>
             <a href="../take_dog"><button class="btn"> 데리고 있어요 </button></a>
-            <a href="../notice"><button  class="btn" style="margin-left: 5vw; margin-right: 5vw;"> 잃어버렸어요 </button></a>
-            <br><br>
-            <button class="btn" onclick="sort_by_location();"> 거리순 정렬 </button>
-            <button class="btn" onclick="sort_by_latest();"> 최신등록순 정렬 </button>
+            <a href="../notice"><button  class="btn"> 잃어버렸어요 </button></a>
+            <br><br><br>
+            <div class="sort_div" style="width: 100%; height: 2vw;">
+              <div id="sort_by_location_div" onclick="sort_by_location();" style="width: 10%; float: right; border: 1px solid #242424; font-size: 15px;">
+                거리순
+              </div>
+              <span  style="width: 5%; float: right;  font-size: 15px;"> / </span>
+              <div id="sort_by_latset_div" onclick="sort_by_latest();"  style="width: 10%; float: right; border: 1px solid #242424;  font-size: 15px;">
+                최신등록순
+              </div>
+            </div>
             <button class="btn" style="display: none;"> 입양소에 있어요 </button>
           </div>
         </div>
@@ -1289,7 +1368,10 @@ $(window).scroll(function () {
                 <span style="font-size: 20px;">
                   번호 : {{dog.pk}}<br>
                   위치 : {{dog.location_name}}<br>
-                  이름 : {{dog.dog_name}}
+                  이름 : {{dog.dog_name}}<br>
+                  잃어버린 날짜 : {{dog.losted_at}}<br>
+                  등록 날짜 : {{dog.created_at}}<br>
+                  특징 : {{dog.feature}}<br>
                 </span>
               </div>
               <div class='button_div' style="width: 20%; float: left;">
@@ -1302,39 +1384,30 @@ $(window).scroll(function () {
         </div>
       </div>
 
+      <a href="../register_dog">
+        <div class="register_btn">
+          잃어버린 <br>
+          강아지 <br>
+          등록하기
+        </div>
+      </a>
       <div class="board_menu_div">
 
-        <div class="bookmark" id="bookmark_open" onclick="open_div();">
-          <span style="font-size: 0.7vw;">
-            최<br>
-            신<br>
-            등<Br>
-            록&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;◀<br>
-            리<br>
-            스<br>
-            트<br>
-          </span>
-        </div>
-        <div class="bookmark" id="bookmark_close" onclick="close_div();" style="display: none;">
-          <span style="font-size: 0.7vw;">
-            <br>
-            C<br>
-            L<br>
-            O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▶<Br>
-            S<br>
-            E<br>
-            <Br>
-          </span>
-        </div>
-
-        <div class='board_menu'  id="web_board_menu">
-          <a href="../register_dog"><button>잃어버린 강아지 등록하기</button></a>
-          <br>
-          <span style="font-size: 2vw; color: white;"> 최신 등록 리스트 </span>
-          <div class='realtime_list'>
+          <div class="bookmark" id="bookmark_open" onclick="open_div();">
+              
+          </div>
+          <div class="bookmark" id="bookmark_close" onclick="close_div();" style="display: none;">
             
           </div>
-        </div>
+
+
+            <div class='board_menu'  id="web_board_menu">
+              <br>
+              <span style="font-size: 2vw;"> 최신 등록 리스트 </span>
+              <div class='realtime_list'>
+                
+              </div>
+            </div>
       </div>
 
 

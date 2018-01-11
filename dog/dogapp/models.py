@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Breed(models.Model):
@@ -44,6 +45,12 @@ class Marker(models.Model) :
 
 	img_src = models.CharField(max_length=400, default='../../media/dog.png')
 
+	created_at = models.DateTimeField(default=timezone.now)
+
+	losted_at = models.DateTimeField(default=timezone.now)
+
+	feature = models.CharField(max_length=1000, default='')
+
 	#document = models.FileField(upload_to='documents/', default='documents/')
     #uploaded_at = models.DateTimeField(auto_now_add=True)
 
@@ -65,6 +72,12 @@ class TakeMarker(models.Model) :
 	dog_name = models.CharField(max_length=40, default='unknown')
 
 	img_src = models.CharField(max_length=400, default='../../media/dog.png')
+
+	created_at = models.DateTimeField(default=timezone.now)
+
+	losted_at = models.DateTimeField(default=timezone.now)
+
+	feature = models.CharField(max_length=1000, default='')
 
 	#document = models.FileField(upload_to='documents/', default='documents/')
     #uploaded_at = models.DateTimeField(auto_now_add=True)
