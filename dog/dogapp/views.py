@@ -547,7 +547,6 @@ def result_dog(request) :
 		'result' : ''
 	}
 
-<<<<<<< HEAD
 	
 	for breed in Breed.objects.all():
 		if( int(breed.child_friendliness)>=int(child_friendliness) 
@@ -583,20 +582,6 @@ def result_dog(request) :
 				and int(breed.dog_friendliness)>=int(dog_friendliness)-1			
 				and int(breed.grooming)<=int(grooming)
 				):
-=======
-	if(no_recommendation):
-		data['result']='no dog for you'
-	else:	
-		for breed in Breed.objects.all():
-			if( int(breed.child_friendliness)>=int(child_friendliness) 
-				and int(breed.apartment_friendliness)>=int(apartment_friendliness) 
-				and  ( (int(breed.grooming)<=2 and grooming=="low") or(int(breed.grooming)>=3 and grooming=="high" ))
-				and breed.face_type==face_type
-				and breed.fur==fur
-				and size in breed.size
-				):
-				if str(temperament) in breed.temp_group:
->>>>>>> 180112 junsik1
 					data['result']+="\n"+breed.name
 
 	return JsonResponse(data)
@@ -682,7 +667,7 @@ def complete_marker(request) :
 
 	print(psw_txt)
 	if pk_id != None :
-		query = Ma1rker.objects.get(pk=pk_id)
+		query = Marker.objects.get(pk=pk_id)
 	else :
 		query = TakeMarker.objects.get(pk=take_pk_id)
 
