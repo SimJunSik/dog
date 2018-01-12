@@ -412,6 +412,8 @@ def validate_username(request):
 def result_dog(request) :
 
 	select = []
+	no_room=False
+	too_lazy=False
 
 	for i in range(1,8) :
 		tmp = request.POST['question' + str(i)]
@@ -424,7 +426,6 @@ def result_dog(request) :
 # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
 	
 # size/temperament/aparmtent_friendliness/child_friendliness/grooming
-	no_recommendation=False
 
 	child_friendliness=0
 	cat_friendliness=0
@@ -449,19 +450,20 @@ def result_dog(request) :
 	if(select[1]=="1"):
 		apartment_friendliness=1
 	elif(select[1]=="2"):
-		apartment_friendliness=4
+		apartment_friendliness=2
 	elif(select[1]=="3"):
-		apartment_friendliness=5
+		apartment_friendliness=4
 	elif(select[1]=="4"):
-		no_recommendation=True
+		apartment_friendliness=5
+		no_room=True
 
 # 설거지: 쌓아둔다/바로바로한다/만들지않는다
 	if(select[2]=='1'):
-		grooming="low"
+		grooming=3
 	elif(select[2]=='2'):
-		grooming="high"
+		grooming=5
 	elif(select[2]=='3'):
-		no_recommendation=True
+		grooming=1
 		
 # 연예인상: 강아지 /고양이/곰상/공룡
 	if(select[3]=='1'):
@@ -509,18 +511,41 @@ def result_dog(request) :
 		'result' : ''
 	}
 
-	if(no_recommendation):
-		data['result']='no dog for you'
-	else:	
+	
+	for breed in Breed.objects.all():
+		if( int(breed.child_friendliness)>=int(child_friendliness) 
+			and int(breed.apartment_friendliness)>=int(apartment_friendliness) 
+			and int(breed.cat_friendliness)>=int(cat_friendliness) 
+			and int(breed.dog_friendliness)>=int(dog_friendliness)
+			and int(breed.grooming)<=int(grooming)
+			and breed.face_type==face_type
+			and breed.fur==fur
+			and size in breed.size
+			and str(temperament) in breed.temp_group
+			):
+				data['result']+="\n"+breed.name
+	
+	if data['result']=='':
 		for breed in Breed.objects.all():
-			if( int(breed.child_friendliness)>=int(child_friendliness) 
-				and int(breed.apartment_friendliness)>=int(apartment_friendliness) 
-				and  ( (int(breed.grooming)<=2 and grooming=="low") or(int(breed.grooming)>=3 and grooming=="high" ))
-				and breed.face_type==face_type
+
+			if( int(breed.child_friendliness)>=int(child_friendliness)
+				and int(breed.apartment_friendliness)>=int(apartment_friendliness)
+				and int(breed.cat_friendliness)>=int(cat_friendliness)
+				and int(breed.dog_friendliness)>=int(dog_friendliness)
+				and int(breed.grooming)<=int(grooming)
 				and breed.fur==fur
-				and size in breed.size
+				and str(temperament) in breed.temp_group
 				):
-				if str(temperament) in breed.temp_group:
+					data['result']+="\n"+breed.name
+	if data['result']=='':
+		for breed in Breed.objects.all():
+
+			if( int(breed.child_friendliness)>=int(child_friendliness)
+				and int(breed.apartment_friendliness)>=int(apartment_friendliness)
+				and int(breed.cat_friendliness)>=int(cat_friendliness)-1
+				and int(breed.dog_friendliness)>=int(dog_friendliness)-1			
+				and int(breed.grooming)<=int(grooming)
+				):
 					data['result']+="\n"+breed.name
 
 	return JsonResponse(data)
