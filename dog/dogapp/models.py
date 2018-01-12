@@ -45,11 +45,15 @@ class Marker(models.Model) :
 
 	img_src = models.CharField(max_length=400, default='../../media/dog.png')
 
-	created_at = models.DateTimeField(default=timezone.now)
+	created_at = models.DateField(default=timezone.now)
 
-	losted_at = models.DateTimeField(default=timezone.now)
+	losted_at = models.DateField(default=timezone.now)
 
 	feature = models.CharField(max_length=1000, default='')
+
+	phone = models.CharField(max_length=20, default='000-0000-000')
+
+	reward = models.CharField(max_length=20, default='0000')
 
 	#document = models.FileField(upload_to='documents/', default='documents/')
     #uploaded_at = models.DateTimeField(auto_now_add=True)
@@ -73,11 +77,49 @@ class TakeMarker(models.Model) :
 
 	img_src = models.CharField(max_length=400, default='../../media/dog.png')
 
-	created_at = models.DateTimeField(default=timezone.now)
+	created_at = models.DateField(default=timezone.now)
 
-	losted_at = models.DateTimeField(default=timezone.now)
+	losted_at = models.DateField(default=timezone.now)
 
 	feature = models.CharField(max_length=1000, default='')
+
+	phone = models.CharField(max_length=20, default='000-0000-000')
+
+	reward = models.CharField(max_length=20, default='0000')
+
+	#document = models.FileField(upload_to='documents/', default='documents/')
+    #uploaded_at = models.DateTimeField(auto_now_add=True)
+
+	x = models.FloatField(default=0.0)
+
+	y = models.FloatField(default=0.0)
+
+	psw = models.CharField(max_length=15, default='0000')
+
+	def __str__(self) :
+		return self.location_name
+
+
+
+class CompleteMarker(models.Model) :
+
+	location_name = models.CharField(max_length=200)
+
+	dog_name = models.CharField(max_length=40, default='unknown')
+
+	img_src = models.CharField(max_length=400, default='../../media/dog.png')
+
+	created_at = models.DateField(default=timezone.now)
+
+	losted_at = models.DateField(default=timezone.now)
+
+	feature = models.CharField(max_length=1000, default='')
+
+	phone = models.CharField(max_length=20, default='000-0000-000')
+
+	reward = models.CharField(max_length=20, default='0000')
+
+	completed_at = models.DateField(default=timezone.now)
 
 	#document = models.FileField(upload_to='documents/', default='documents/')
     #uploaded_at = models.DateTimeField(auto_now_add=True)

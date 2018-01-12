@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^register_dog/', views.register_dog),
     url(r'^delete_marker/', views.delete_marker),
     url(r'^change_marker/', views.change_marker),
+    url(r'^complete_marker/', views.complete_marker),
     url(r'^notice/', views.NoticeView),
     url(r'^take_dog/', views.TakedogView),
     url(r'^take_register_dog/', views.take_register_dog),
@@ -28,6 +29,9 @@ urlpatterns = [
     url(r'^updateData/', views.UpdateData),
     url(r'^updateData2/', views.UpdateData2),
     url(r'^show_info/', views.show_info),
+    url(r'^sort_by_search/', views.sort_by_search),
+    url(r'^sort_by_search_take/', views.sort_by_search_take),
+    url(r'^complete_dog/', views.CompleteDogView),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

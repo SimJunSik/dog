@@ -855,6 +855,18 @@
             </div>
           </p>
           <p class="register_input">
+            <div class="input_title" id="input_title_feature">
+              연락처&nbsp;
+            </div>
+            <div class="input_content" id="input_content_feature">
+              {% if dog == None %}
+              <input type="text" style="" name="phone" maxlength="20" placeholder="000-0000-0000">
+              {% else %}
+              <input type="text" style="" name="phone" value="{{dog.phone}}">
+              {% endif %}
+            </div>
+          </p>
+          <p class="register_input">
             <div class="input_title">
               비밀번호&nbsp;
             </div>

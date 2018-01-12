@@ -280,10 +280,23 @@ def NoticeView(request) :
 
 		feature = request.POST.get('feature')
 
+		phone = request.POST.get('phone')
+
+		reward = request.POST.get('reward')
+
 		pk_value = request.POST.get('pk_value')
 		#print(pk_value)
 		if pk_value == 'none'  or len(pk_value)==0 :
-			marker = Marker(location_name = location_name, x = lat, y = lng, dog_name = dog_name, img_src = uploaded_file_url, psw = psw_txt, losted_at = losted_at, feature = feature)
+			marker = Marker(location_name = location_name, 
+							x = lat, 
+							y = lng, 
+							dog_name = dog_name, 
+							img_src = uploaded_file_url, 
+							psw = psw_txt, 
+							losted_at = losted_at, 
+							feature = feature,
+							phone = phone,
+							reward = reward)
 			marker.save()
 		else :
 			marker = Marker.objects.get(pk=pk_value)
@@ -294,6 +307,8 @@ def NoticeView(request) :
 			marker.psw = psw_txt
 			marker.losted_at = losted_at
 			makker.feature = feature
+			marker.phone = phone
+			marker.reward = reward
 			if(file_get == False) :
 				marker.img_src = uploaded_file_url
 			marker.save()
@@ -332,10 +347,20 @@ def TakedogView(request) :
 
 		feature = request.POST.get('feature')
 
+		phone = request.POST.get('phone')
+
 		pk_value = request.POST.get('pk_value')
 		#print(pk_value)
 		if pk_value == 'none'  or len(pk_value)==0 :
-			marker = TakeMarker(location_name = location_name, x = lat, y = lng, dog_name = dog_name, img_src = uploaded_file_url, psw = psw_txt, losted_at = losted_at, feature = feature)
+			marker = TakeMarker(location_name = location_name, 
+								x = lat, 
+								y = lng, 
+								dog_name = dog_name, 
+								img_src = uploaded_file_url, 
+								psw = psw_txt, 
+								losted_at = losted_at, 
+								feature = feature,
+								phone = phone)
 			marker.save()
 		else :
 			marker = TakeMarker.objects.get(pk=pk_value)
@@ -346,6 +371,7 @@ def TakedogView(request) :
 			marker.psw = psw_txt
 			marker.losted_at = losted_at
 			makker.feature = feature
+			marker.phone = phone
 			if(file_get == False) :
 				marker.img_src = uploaded_file_url
 			marker.save()
@@ -357,6 +383,15 @@ def TakedogView(request) :
 
 	return render(request, './take_dog.html', context)
 
+
+
+def CompleteDogView(request) :
+
+	dogs = CompleteMarker.objects.all()
+
+	context = {'dogs' : dogs}
+
+	return render(request, './complete_dog.html', context)
 
 
 
@@ -426,6 +461,7 @@ def result_dog(request) :
 # 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
 	
 # size/temperament/aparmtent_friendliness/child_friendliness/grooming
+	no_recommendation=False
 
 	child_friendliness=0
 	cat_friendliness=0
@@ -511,6 +547,7 @@ def result_dog(request) :
 		'result' : ''
 	}
 
+<<<<<<< HEAD
 	
 	for breed in Breed.objects.all():
 		if( int(breed.child_friendliness)>=int(child_friendliness) 
@@ -546,6 +583,20 @@ def result_dog(request) :
 				and int(breed.dog_friendliness)>=int(dog_friendliness)-1			
 				and int(breed.grooming)<=int(grooming)
 				):
+=======
+	if(no_recommendation):
+		data['result']='no dog for you'
+	else:	
+		for breed in Breed.objects.all():
+			if( int(breed.child_friendliness)>=int(child_friendliness) 
+				and int(breed.apartment_friendliness)>=int(apartment_friendliness) 
+				and  ( (int(breed.grooming)<=2 and grooming=="low") or(int(breed.grooming)>=3 and grooming=="high" ))
+				and breed.face_type==face_type
+				and breed.fur==fur
+				and size in breed.size
+				):
+				if str(temperament) in breed.temp_group:
+>>>>>>> 180112 junsik1
 					data['result']+="\n"+breed.name
 
 	return JsonResponse(data)
@@ -623,6 +674,94 @@ def change_marker(request) :
 	return JsonResponse(data)
 
 
+def complete_marker(request) :
+
+	pk_id = request.GET.get('pk_id', None)
+	take_pk_id = request.GET.get('take_pk_id', None)
+	psw_txt = request.GET.get('psw_txt', None)
+
+	print(psw_txt)
+	if pk_id != None :
+		query = Ma1rker.objects.get(pk=pk_id)
+	else :
+		query = TakeMarker.objects.get(pk=take_pk_id)
+
+	if(query.psw == psw_txt) :
+		complete_marker = CompleteMarker(location_name = query.location_name, 
+										x = query.x, 
+										y = query.y, 
+										dog_name = query.dog_name, 
+										img_src = query.img_src, 
+										psw = query.psw, 
+										losted_at = query.losted_at, 
+										feature = query.feature,
+										phone = query.phone,
+										reward = query.reward)
+		complete_marker.save()
+		query.delete()
+		data = {
+			'result' : 'success'
+		}
+	else :
+		data = {
+			'result' : '비밀번호가 다릅니다.'
+		}
+
+	return JsonResponse(data)
+
+
+
+def sort_by_search(request) :
+
+	dog_name = request.GET.get('dog_name', None)
+	phone = request.GET.get('dog_phone', None)
+
+	pk_list = []
+
+	if dog_name != None :
+		querys = Marker.objects.filter(dog_name = dog_name)
+
+	if dog_name == None :
+		querys = Marker.objects.filter(phone = phone)
+
+	if dog_name != None and phone != None :
+		querys = Marker.objects.filter(dog_name = dog_name, phone = phone)
+
+	for query in querys :
+		pk_list.append(query.pk)
+
+	data = {
+		'pk_list' : pk_list
+	}
+
+	return JsonResponse(data)
+
+
+
+def sort_by_search_take(request) :
+
+	dog_name = request.GET.get('dog_name', None)
+	phone = request.GET.get('dog_phone', None)
+
+	pk_list = []
+
+	if dog_name != None :
+		querys = TakeMarker.objects.filter(dog_name = dog_name)
+
+	if dog_name == None :
+		querys = TakeMarker.objects.filter(phone = phone)
+
+	if dog_name != None and phone != None :
+		querys = TakeMarker.objects.filter(dog_name = dog_name, phone = phone)
+
+	for query in querys :
+		pk_list.append(query.pk)
+
+	data = {
+		'pk_list' : pk_list
+	}
+
+	return JsonResponse(data)
 
 
 def register_dog(request) :
@@ -669,9 +808,11 @@ def show_info(request) :
 	#print(pk_id , take_pk_id)
 	if(pk_id != None) :
 		marker = Marker.objects.get(pk=pk_id)
+		reward = marker.reward
 
 	else :
 		marker = TakeMarker.objects.get(pk=take_pk_id)
+		reward = None
 	
 	location_name = marker.location_name
 	dog_name = marker.dog_name
@@ -679,6 +820,7 @@ def show_info(request) :
 	losted_at = marker.losted_at
 	created_at = marker.created_at
 	feature = marker.feature
+	phone = marker.phone
 
 	data = {
 			'location_name' : location_name,
@@ -686,7 +828,9 @@ def show_info(request) :
 			'img_src' : img_src,
 			'losted_at' : losted_at,
 			'created_at' : created_at,
-			'feature' : feature
+			'feature' : feature,
+			'phone' : phone,
+			'reward' : reward
 		}
 
 	return JsonResponse(data)

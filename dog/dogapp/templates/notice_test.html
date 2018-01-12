@@ -285,7 +285,7 @@
   }
 
   .btn{
-    width: 49%;
+    width: 32%;
     height: 1.5vw;
     float: left;
     margin-right: 1%;
@@ -322,6 +322,11 @@
   .realtime_list_content{
     width: 100%;
     float: left;
+  }
+
+  .sort_div{
+    width: 100%;
+    height: 3vw;
   }
 /*  end  */
 }
@@ -516,6 +521,11 @@
   .realtime_list_content{
     width: 20%;
     float: left;
+  }
+
+  .sort_div{
+    width: 100%;
+    height: 6vw;
   }
 /*  end  */
 }
@@ -819,9 +829,95 @@
               }
 
 
+              function sort_by_all(){
+                var obj = document.getElementsByClassName('list_content');
+                var pk_list = [];
+
+                for(var i=0;i<obj.length;i++){
+                  pk_list.push(obj[i].id.substring(2,obj[i].id.length));
+                }
+
+                for(var i=0;i<pk_list.length-1;i++){
+                  for(var j=i+1;j<pk_list.length;j++){
+                    if(pk_list[i] <= pk_list[j]){
+                      var tmp = pk_list[i];
+                      pk_list[i] = pk_list[j];
+                      pk_list[j] = tmp;
+                    }
+                  }
+                }
+
+                //console.log(pk_list);
+
+                $('.list_info').css('display', 'none');
+
+                for(var i=0;i<pk_list.length;i++){
+                  $('#lc' + pk_list[i]).appendTo($('.list_div'));
+                  $('#lc' + pk_list[i]).css('display', 'block');
+                }
+
+              }
 
 
 
+
+              function sort_by_search(){
+                var input_name_val = $('#dog_name_input').val();
+                var input_phone_val = $('#dog_phone_input').val();
+
+                if(input_name_val.length == 0 && input_phone_val.length == 0){
+                  alert("값을 입력해주세요!");
+                }
+
+                else if(input_name_val.length != 0 && input_phone_val.length == 0){
+                  $.ajax({
+                      url: '/sort_by_search/',
+                      data: {
+                        'dog_name' : input_name_val
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        $('.list_content').css('display', 'none');
+                        for(var i=0;i<data.pk_list.length;i++){
+                          $('#lc' + String(data.pk_list[i])).css('display', 'block');
+                        }
+                      }
+                  });
+                }
+
+                else if(input_name_val.length == 0 && input_phone_val.length != 0){
+                  $.ajax({
+                      url: '/sort_by_search/',
+                      data: {
+                        'dog_phone' : input_phone_val
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        $('.list_content').css('display', 'none');
+                        for(var i=0;i<data.pk_list.length;i++){
+                          $('#lc' + String(data.pk_list[i])).css('display', 'block');
+                        }
+                      }
+                  });
+                }
+
+                else if(input_name_val.length != 0 && input_phone_val.length != 0){
+                  $.ajax({
+                      url: '/sort_by_search/',
+                      data: {
+                        'dog_name' : input_name_val,
+                        'dog_phone' : input_phone_val
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        $('.list_content').css('display', 'none');
+                        for(var i=0;i<data.pk_list.length;i++){
+                          $('#lc' + String(data.pk_list[i])).css('display', 'block');
+                        }
+                      }
+                  });
+                }
+              }
 
 
 
@@ -885,6 +981,8 @@
                         $('#pop_info_losted_at').html(data.losted_at);
                         $('#pop_info_created_at').html(data.created_at);
                         $('#pop_info_feature').html(data.feature);
+                        $('#pop_info_phone').html(data.phone);
+                        $('#pop_info_reward').html(data.reward);
 
 
                         $('.top').css({
@@ -1205,12 +1303,36 @@ $(window).scroll(function () {
                       }
             });
           }
+
+
+          function complete_marker(btn_id){
+            var btn_id_str = String(btn_id);
+            var pk_id = btn_id_str.substring(13, btn_id_str.length);
+
+            var psw_txt = $("#psw_txt" + pk_id).val();
+
+            $.ajax({
+                      url: '/complete_marker/',
+                      data: {
+                        'pk_id' : pk_id,
+                        'psw_txt' : psw_txt
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        if(data.result == 'success'){
+                          alert(data.result);
+                          location.reload();
+                        }
+                      }
+            });
+          }
             </script>
 
             <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_E5Ls2VQ_yDsadA9-KhCLTBFoJ6AxuJo&callback=initMap">
             </script>
             <style type="text/css">
+            @media (min-width:750px) {
               .pop-up{
                 width: 80vw;
                 height: 40vw;
@@ -1262,6 +1384,61 @@ $(window).scroll(function () {
                 background-repeat: no-repeat;
                 background-size:100% 100%;
               }
+            }
+
+            @media (max-width:750px) {
+              .pop-up{
+                width: 90vw;
+                height: 90vw;
+                background-color: white;
+                z-index: 9999;
+                position: fixed;
+                left : 50%;
+                display: none;
+                -webkit-transform: translate(-50%, 30%);
+                -ms-transform: translate(-50%, 30%);
+                -moz-transform: translate(-50%, 30%);
+                -o-transform: translate(-50%, 30%);
+                transform: translate(-50%, 30%);
+                box-shadow: 10px 10px 10px black;
+              }
+              .pop_content{
+                position: relative;
+                width: 90%;
+                height: 90%;
+                background-color: white;
+                left : 50%;
+                top: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -moz-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+              }
+              .pop_img_div{
+                float: left;
+                width: 50%;
+                height: 100%;
+                text-align: center;
+                background-color: yellow;
+              }
+              .pop_info_div{
+                float: left;
+                width: 50%;
+                height: 100%;
+                background-color: blue;
+              }
+              .close_btn_div{
+                width: 6vw;
+                height: 6vw;
+                position: fixed;
+                top: 0%;
+                right: 0%;
+                background-image: url(../../static/img/close_btn.png);
+                background-repeat: no-repeat;
+                background-size:100% 100%;
+              }
+            }
             </style>
 </head>
 <body>
@@ -1279,6 +1456,8 @@ $(window).scroll(function () {
           잃어버린 날짜 : <span id="pop_info_losted_at"></span><br>
           등록 날짜 :<span id="pop_info_created_at"></span><br>
           특징 : <span id="pop_info_feature"></span><br>
+          사례금 : <span id="pop_info_reward"></span><br>
+          연락처 : <span id="pop_info_phone"></span>
         </span>
       </div>
     </div>
@@ -1339,8 +1518,36 @@ $(window).scroll(function () {
           <div class='buttons'>
             <a href="../take_dog"><button class="btn"> 데리고 있어요 </button></a>
             <a href="../notice"><button  class="btn"> 잃어버렸어요 </button></a>
+            <a href="../complete_dog"><button  class="btn"> 찾았어요 </button></a>
             <br><br><br>
-            <div class="sort_div" style="width: 100%; height: 2vw;">
+            <div class="sort_div">
+              <div id="sort_by_search_content" style="width: 40%; float: left; border: 1px solid #242424; font-size: 15px;">
+                <div style="width: 50%; float: left;">
+                  강아지이름 :
+                </div>
+                <div style="width: 50%; float: left;">
+                  <input type="text" id="dog_name_input" style="width: 95%;">
+                </div>
+
+                <br>
+
+                <div style="width: 50%; float: left;">
+                  연락처 :
+                </div>
+                <div style="width: 50%; float: left;">
+                  <input type="text" id="dog_phone_input" style="width: 95%;">
+                </div>
+              </div>
+              <div id="sort_by_search_div" onclick="sort_by_search();" style="width: 10%; float: left; border: 1px solid #242424; font-size: 15px;">
+                게시물찾기
+              </div>
+
+
+              <div id="sort_by_location_div" onclick="sort_by_all();" style="width: 10%; float: right; border: 1px solid #242424; font-size: 15px;">
+                전체
+              </div>
+              <span  style="width: 5%; float: right;  font-size: 15px;"> / </span>
+
               <div id="sort_by_location_div" onclick="sort_by_location();" style="width: 10%; float: right; border: 1px solid #242424; font-size: 15px;">
                 거리순
               </div>
@@ -1372,12 +1579,15 @@ $(window).scroll(function () {
                   잃어버린 날짜 : {{dog.losted_at}}<br>
                   등록 날짜 : {{dog.created_at}}<br>
                   특징 : {{dog.feature}}<br>
+                  사례금 : {{dog.reward}}<br>
+                  연락처 : {{dog.phone}}
                 </span>
               </div>
               <div class='button_div' style="width: 20%; float: left;">
                 비밀번호 : <input type="text" id="psw_txt{{dog.pk}}" name="psw_txt"><br>
                 <button id="ch_btn_{{dog.pk}}" onclick="change_marker(this.id)">수정</button>
                 <button id="del_btn_{{dog.pk}}" onclick="delete_marker(this.id)">삭제</button>
+                <button id="complete_btn_{{dog.pk}}" onclick="complete_marker(this.id)">완료</button>
               </div>
             </div>
           {% endfor %}
