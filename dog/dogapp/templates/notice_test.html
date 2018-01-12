@@ -657,7 +657,11 @@
               function initMap() {
                 var markers = '{{ markers|escapejs }}';
 
-                var map = new google.maps.Map(document.getElementById('map'), {
+                var map_var = document.getElementById('map');
+
+                console.log(map_var);
+                
+                var map = new google.maps.Map(map_var, {
                   zoom: 16,
                   center: new google.maps.LatLng(37.49, 127.02),
                   mapTypeId: 'roadmap'
