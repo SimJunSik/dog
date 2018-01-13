@@ -395,6 +395,11 @@ def CompleteDogView(request) :
 
 
 
+def DonatorView(request) :
+
+	return render(request, './donator.html')
+
+
 def AboutView(request) :
 
 	return render(request, './about_us.html')
