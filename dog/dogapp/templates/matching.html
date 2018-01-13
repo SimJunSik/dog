@@ -195,6 +195,7 @@
     width: 10vw; 
     height: 5vw;
     margin-bottom: 5vw;
+    display: none;
   }
 
   #start_btn{
@@ -541,6 +542,7 @@ font-size:16px;
     margin-top: 5vw;
 		width: 40vw; 
 		height: 10vw;
+    display: none;
 	}
 
   #start_btn{
@@ -1295,7 +1297,7 @@ function question_start(){
 				</div>
 
 					<div class="submit_btn_div" style="">
-						<input type="button" id="submit_btn" name="submit_btn" style="" disabled="true" value="submit">
+						<input type="button" id="submit_btn" name="submit_btn" style="" value="submit">
 					</div>
 				</form>
 			</div>
@@ -1383,30 +1385,30 @@ function question_start(){
 
 		        add_flag = 0;
 
-		        for(var i=1; i<=7; i++){
-		        	var cnt = 0;
-					var obj = document.getElementsByName("question" + num);
+		      for(var i=1; i<=7; i++){
+		        var cnt = 0;
+					  var obj = document.getElementsByName("question" + num);
 					for(var j=0; j<obj.length; j++){
-
 			            if(obj[j].checked == true){
 			                $('#question' + num + '_btn').css('background-color', '#B5996D');
 			                cnt++;
 			                if(add_flag == 0){
 			                	if(check_cnt < 7){				             
 					                check_cnt++;
-					            }
+					             }
 				                add_flag=1;
 				                minus_flag=0;
-				            }
+				              }
 
-				     		if(check_cnt == 7){
-				                $('#submit_btn').attr("disabled", false);
-				                $('#heart_rate_img').attr('src', '../../static/img/test' + String(6) + '.gif');
-				            }
-				            else{
-				                $('#heart_rate_img').attr('src', '../../static/img/test' + String(check_cnt) + '.gif');
-				            }
-			                break;
+    				     		if(check_cnt == 7){
+    				                //$('#submit_btn').attr("disabled", false);
+                            $('#submit_btn').css('display', 'block');
+    				                $('#heart_rate_img').attr('src', '../../static/img/test' + String(6) + '.gif');
+    				            }
+    				        else{
+    				                $('#heart_rate_img').attr('src', '../../static/img/test' + String(check_cnt) + '.gif');
+    				            }
+    			                break;
 			            }
 
 			        }
@@ -1417,6 +1419,7 @@ function question_start(){
 			        		check_cnt--;
 			        		minus_flag=1;
 			        	}
+                $('#submit_btn').css('display', 'none');
 			        	$('#heart_rate_img').attr('src', '../../static/img/test' + String(check_cnt) + '.gif');
 			        }
 				}
