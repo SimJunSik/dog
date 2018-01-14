@@ -549,7 +549,8 @@ def result_dog(request) :
 		size="Giant"
 
 	data = {
-		'result' : ''
+		'result' : '',
+		'k_result' : ''
 	}
 
 	
@@ -565,6 +566,7 @@ def result_dog(request) :
 			and str(temperament) in breed.temp_group
 			):
 				data['result']+="\n"+breed.name
+				data['k_result'] += "\n"+breed.k_name
 	
 	if data['result']=='':
 		for breed in Breed.objects.all():
@@ -578,6 +580,8 @@ def result_dog(request) :
 				and str(temperament) in breed.temp_group
 				):
 					data['result']+="\n"+breed.name
+					data['k_result'] += "\n"+breed.k_name
+
 	if data['result']=='':
 		for breed in Breed.objects.all():
 
@@ -587,8 +591,9 @@ def result_dog(request) :
 				and int(breed.dog_friendliness)>=int(dog_friendliness)-1			
 				and int(breed.grooming)<=int(grooming)
 				):
-					data['result']+="\n"+breed.name+" "+breed.k_name
-
+					data['result']+="\n"+breed.name
+					data['k_result'] += "\n"+breed.k_name
+					
 	return JsonResponse(data)
 
 

@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+	<style type="text/css">
+  @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+    *{
+      font-family: 'Hanna', serif;
+    }
+
+	body, html{
+        width: 100%;
+      }
+
+      html{
+        font-size: 62.5%;
+      }
+		*{
+			margin: 0;
+		}
+
+
+@media (min-width:750px) {
+	*{
+		margin: 0;
+	}
+		/*  상단 고정 메뉴바 css  */
+	
+    .top{
+      width: 100%;
+      position: fixed;     /*  화면상 위치 고정  */
+      z-index: 3;          /*  z값 결정  */
+      top : 0;
+      height: 5vw;
+      background-color: white;
+    }
+
+    .top_logo{
+      position: relative;
+      margin-top: 0.5vw;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      width: 30%;
+      text-align: center;
+      font-weight: 900;
+    }
+    .top_nav{  
+      position: relative;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 50%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      text-align: center;
+      margin-top: 1%;
+    }
+    .menu{
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
+      color: black;
+      font-size: 1vw;
+      font-weight: 900;
+    }
+    .menu:hover {
+      font-weight: 900;
+      font-size: 1vw;
+    }
+    .top_logo_img{
+      width: 14vw;
+      height: 2vw;
+      margin: 0;
+    }
+    .menu_slash{
+      color: #BDBDBD;
+      font-size: 1vw;
+    }
+    .top_logo_txt{
+      font-size: 2vw;
+      font-family: 'Clicker Script', cursive;
+      color: #B5996D;
+    }
+
+    .top_nav a{
+    	text-decoration: none;
+    }
+
+    .top_title{
+    	width: 100%;
+    	background-color: white;
+    	height: 5vw;
+    }
+
+    .logo_img_div{
+    	width: 80%;
+    	height: 100%;
+    	background-color: white;
+    	margin: auto;
+    	margin-top: 5%;
+    }
+
+    html{
+	  font-size: 62.5%;
+	}
+
+/*  end   */
+
+
+/*  middle  */
+	.middle{
+		width: 60%;
+		height: 63vw;
+		margin: auto;
+		background-color: white;
+	}
+
+  .donator_list{
+    width: 100%;
+    height: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .donator_organization{
+    width: 90%;
+    height: 48%;
+    margin: auto;
+    margin-bottom: 2%;
+    background-color: yellow;
+  }
+
+  .donator_individual{
+    width: 90%;
+    height: 48%;
+    margin: auto;
+    margin-bottom: 2%;
+  }
+
+  .donator_list_title{
+    width: 60%;
+    height: 9vw;
+    margin-bottom: 4%;
+    background-color: #ebd8b8; 
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1.5vw;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+  }
+
+  .donate_state_title{
+    width: 60%;
+    height: 9vw;
+    margin-bottom: 4%;
+    background-color: #ebd8b8; 
+    border-radius: 20px;
+    text-align: center;
+    font-size: 4vw;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+  }
+
+  .donator_list_content{
+    width: 100%;
+    height: 78%;
+    margin-bottom: 10%;
+  }
+
+  .donate_state{
+    width: 90%;
+    height: 30vw;
+    margin: auto;
+    margin-bottom: 5%;
+  }
+
+  .donate_goal{
+    width: 100%;
+    height: 48%;
+    margin-bottom: 2%;
+    background-color: #FFD9EC;
+    text-align: center;
+    font-size: 1.5vw;
+  }
+
+  .donate_now{
+    width: 100%;
+    height: 48%;
+    margin-bottom: 2%;
+    background-color: #FFA7A7;
+    text-align: center;
+    font-size: 1.5vw;
+  }
+
+  .donators{
+    width: 25%;
+    height: 3vw;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 0.5%;
+    margin-bottom: 4%;
+    background-color: #f7f1e6; 
+    border-radius: 20px;
+    float: left;
+    text-align: center;
+    font-size: 1vw;
+  }
+
+  .donators_txt{
+    width: 100%; 
+    height: auto; 
+    top: 50%; 
+    position: relative;
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    -moz-transform: translate(0%, -50%);
+    -o-transform: translate(0%,-50%);
+    transform: translate(0%, -50%);
+  }
+
+	.project_info{
+    width: 100%; 
+    height: 80vw;
+    margin-bottom: 15%;
+  }
+
+  .project_info_title{
+    width: 45vw; 
+    height: 8vw; 
+    position: relative; 
+    left: 50%; 
+    margin-bottom: 3%;
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+  }
+
+  .project_info_title_txt{
+    width: 35vw; 
+    height: 100%; 
+    float: left; 
+    font-size: 4.5vw; 
+    text-align: center; 
+    background-color: #ebd8b8; 
+    border-radius: 20px;
+  }
+
+  .project_info_title_txt_content{
+    width: 100%; 
+    height: 50%; 
+    top: 50%; 
+    position: relative; 
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    -moz-transform: translate(0%, -50%);
+    -o-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+  }
+
+  .project_info_title_img{
+    width: 10vw; 
+    height: 100%; 
+    float: left;
+  }
+
+  .project_funding_term{
+    width: 100%; 
+    height: 5vw; 
+    font-size: 2vw; 
+    text-align: center; 
+    margin-bottom: 3%;
+  }
+
+  .project_info_content{
+    width: 90%; 
+    height: 35vw; 
+    border: 4px solid #666666; 
+    margin-bottom: 5%;
+  }
+
+  .project_info_content_img{
+    width: 40%; 
+    height: 100%;
+    float: left;
+  }
+
+  .project_info_content_txt{
+    width: 55%;
+    height: 100%; 
+    float: left; 
+    font-size: 2.5vw; 
+    margin-left: 3%;
+    line-height: 1.3em;
+  }
+
+  .project_result{
+    width: 100%; 
+    height: 10vw; 
+    font-size: 2.5vw;  
+    margin-bottom: 12%;
+  }
+
+  .project_result_txt{
+    width: 90%; 
+    margin: auto;
+    line-height: 1.3em;
+  }
+
+  .funding_addr{
+    width: 100%; 
+    height: 10vw; 
+    font-size: 3vw;
+  }
+
+  .funding_addr_txt{
+    width: 90%; 
+    margin: auto;
+  }
+
+	button {
+		width: 3vw;
+		height: 3vw;
+		background-color: white;
+		border-radius: 50%;
+	}
+
+	button:hover {
+		background-color: yellow;
+	}
+
+
+
+/*  end  */
+
+/*  side  */
+	.side_bar{
+		width: 20%;
+		position: fixed;
+		right: 0;
+		height: 50%;
+		background-color: white; 
+	}
+
+	.side_bar_content{
+		width: 20%;
+		position: relative;
+		background-color: white;
+		height: 100%;
+	}
+
+	.sharing_icon{
+		width: 100%;
+		margin-bottom: 40%;
+		margin-left: 40%;
+	}
+
+  .contact_sns_icon{
+     width: 100%;
+  }
+
+  #kakao_div{
+    display: none;
+  }
+/*  end  */
+
+/*  check box  */
+.checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
+  content: ' ';
+  display: inline-block;
+  width: 21px;  /* 체크박스의 너비를 지정 */
+  height: 21px;  /* 체크박스의 높이를 지정 */
+  line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
+  margin: -2px 8px 0 0;
+  text-align: center; 
+  vertical-align: middle;
+  background: #ffffff;
+  border: 4px solid #ffffff;
+  border-radius : 3px;
+  box-shadow: 0px 1px 2px rgba(255,255,255,0.5), inset 0px -15px 10px -12px rgba(255,255,255,0.5);
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label:active:before,
+.checks input[type="checkbox"]:checked + label:active:before {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+  font-size:16px;
+}
+
+.checks input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
+  content: '\2714';  /* 체크표시 유니코드 사용 */
+  color: #9FC93C;
+  text-shadow: 1px 1px #fff;
+  background: #9FC93C;
+  border-color: #9FC93C;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(0,0,0,0.1);
+  font-size:16px;
+}
+
+.checks.small input[type="checkbox"] + label {
+  font-size: 12px;
+}
+
+.checks.small input[type="checkbox"] + label:before {
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  font-size: 11px;
+}
+
+.checks.etrans input[type="checkbox"] + label {
+  padding-left: 30px;
+  font-size:16px;
+}
+.checks.etrans input[type="checkbox"] + label:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 0;
+  opacity: .6;
+  box-shadow: none;
+  border-color: #000000;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+  font-size:16px;
+}
+
+.checks.etrans input[type="checkbox"]:checked + label:before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity:1; 
+  background: transparent;
+  border-color:transparent #000000 #000000 transparent;
+  border-top-color:transparent;
+  border-left-color:transparent;
+  -ms-transform:rotate(45deg);
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+font-size:16px;
+}
+.checks.etrans{
+    font-size:16px;
+  }
+
+.no-csstransforms .checks.etrans input[type="checkbox"]:checked + label:before {
+  /*content:"\2713";*/
+  content: "\2714";
+  top: 0;
+  left: 0;
+  width: 21px;
+  line-height: 21px;
+  color: #000000;
+  text-align: center;
+  border: 1px solid #000000;
+
+/* end  */
+}
+
+}
+@media (max-width:750px) {
+
+		*{
+		margin: 0;
+	}
+	/*  상단 고정 메뉴바 css  */
+    .top{
+      width: 100%;
+      position: fixed;     /*  화면상 위치 고정  */
+      z-index: 3;          /*  z값 결정  */
+      top : 0;
+      height: 9vw;
+      background-color: white;
+    }
+
+    .top_logo{
+      position: relative;
+      margin-top: 0.5vw;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      width: 50%;
+      text-align: center;
+      font-weight: 900;
+    }
+    .top_nav{  
+      position: relative;
+      /*margin-top: 3%;*/    /*  top 여백 설정  */
+      width: 100%;
+      margin-left: 50%;
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
+      -moz-transform: translate(-50%, 0%);
+      -o-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+      text-align: center;
+      margin-top: 1%;
+    }
+    .menu{
+      margin-left: 0.5vw;
+      margin-right: 0.5vw;
+      color: black;
+      font-size: 3.1vw;
+      font-weight: 900;
+    }
+    .menu:hover {
+      font-weight: 900;
+      font-size: 2vw;
+    }
+    .top_logo_img{
+      width: 28vw;
+      height: 4vw;
+      margin: 0;
+    }
+    .menu_slash{
+      color: #BDBDBD;
+      font-size: 1vw;
+    }
+    .top_logo_txt{
+      font-size: 2vw;
+      font-family: 'Clicker Script', cursive;
+      color: #B5996D;
+    }
+
+    .top_nav a{
+    	text-decoration: none;
+    }
+
+    .top_title{
+    	width: 100%;
+    	background-color: white;
+    	height: 5vw;
+    	margin-top: 10vw;
+    }
+
+    .logo_img_div{
+    	width: 80%;
+    	height: 100%;
+    	background-color: white;
+    	margin: auto;
+    	margin-top: 5%;
+    }
+/*  end   */
+
+
+/*  middle  */
+	.middle{
+		margin-top: 5vw;
+		width: 80%;
+		height: 100vw;
+		margin: auto;
+		background-color: white;
+	}
+
+  .donator_list{
+    width: 100%;
+    height: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .donator_organization{
+    width: 90%;
+    height: 48%;
+    margin: auto;
+    margin-bottom: 2%;
+    background-color: yellow;
+  }
+
+  .donator_individual{
+    width: 90%;
+    height: 48%;
+    margin: auto;
+    margin-bottom: 2%;
+  }
+
+  .donator_list_title{
+    width: 60%;
+    height: 9vw;
+    margin-bottom: 4%;
+    background-color: #ebd8b8; 
+    border-radius: 20px;
+    text-align: center;
+    font-size: 1.5vw;
+    position: relative;
+    left: 50%;
+    font-size: 2vw;
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+  }
+
+  .donate_state_title{
+    width: 60%;
+    height: 9vw;
+    margin-bottom: 4%;
+    background-color: #ebd8b8; 
+    border-radius: 20px;
+    text-align: center;
+    font-size: 4vw;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+  }
+
+  .donator_list_content{
+    width: 100%;
+    height: 78%;
+    margin-bottom: 10%;
+  }
+
+  .donate_state{
+    width: 90%;
+    height: 30vw;
+    margin: auto;
+    margin-bottom: 5%;
+  }
+
+  .donate_goal{
+    width: 100%;
+    height: 48%;
+    margin-bottom: 2%;
+    background-color: #FFD9EC;
+    text-align: center;
+    font-size: 1.5vw;
+  }
+
+  .donate_now{
+    width: 100%;
+    height: 48%;
+    margin-bottom: 2%;
+    background-color: #FFA7A7;
+    text-align: center;
+    font-size: 1.5vw;
+  }
+
+  .donators{
+    width: 25%;
+    height: 3vw;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 0.5%;
+    margin-bottom: 4%;
+    background-color: #f7f1e6; 
+    border-radius: 20px;
+    float: left;
+    text-align: center;
+    font-size: 1vw;
+  }
+
+  .donators_txt{
+    width: 100%; 
+    height: auto; 
+    top: 50%; 
+    position: relative;
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    -moz-transform: translate(0%, -50%);
+    -o-transform: translate(0%,-50%);
+    transform: translate(0%, -50%);
+  }
+
+
+  .project_info{
+    width: 100%; 
+    height: 80vw;
+    margin-bottom: 15%;
+  }
+
+  .project_info_title{
+    width: 45vw; 
+    height: 8vw; 
+    position: relative; 
+    left: 50%; 
+    margin-bottom: 3%;
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+  }
+
+  .project_info_title_txt{
+    width: 35vw; 
+    height: 100%; 
+    float: left; 
+    font-size: 4.5vw; 
+    text-align: center; 
+    background-color: #ebd8b8; 
+    border-radius: 20px;
+  }
+
+  .project_info_title_txt_content{
+    width: 100%; 
+    height: 50%; 
+    top: 50%; 
+    position: relative; 
+    -webkit-transform: translate(0%, -50%);
+    -ms-transform: translate(0%, -50%);
+    -moz-transform: translate(0%, -50%);
+    -o-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+  }
+
+  .project_info_title_img{
+    width: 10vw; 
+    height: 100%; 
+    float: left;
+  }
+
+  .project_funding_term{
+    width: 100%; 
+    height: 5vw; 
+    font-size: 2vw; 
+    text-align: center; 
+    margin-bottom: 3%;
+  }
+
+  .project_info_content{
+    width: 90%; 
+    height: 35vw; 
+    border: 4px solid #666666; 
+    margin-bottom: 5%;
+  }
+
+  .project_info_content_img{
+    width: 40%; 
+    height: 100%;
+    float: left;
+  }
+
+  .project_info_content_txt{
+    width: 55%;
+    height: 100%; 
+    float: left; 
+    font-size: 2.5vw; 
+    margin-left: 3%;
+    line-height: 1.3em;
+  }
+
+  .project_result{
+    width: 100%; 
+    height: 10vw; 
+    font-size: 2.5vw;  
+    margin-bottom: 12%;
+  }
+
+  .project_result_txt{
+    width: 60%; 
+    margin: auto;
+    line-height: 1.3em;
+  }
+
+
+  .funding_addr{
+    width: 100%; 
+    height: 10vw; 
+    font-size: 3vw;
+  }
+
+  .funding_addr_txt{
+    width: 80%; 
+    margin: auto;
+  }
+
+	button {
+		width: 6vw;
+		height: 6vw;
+		background-color: white;
+		border-radius: 50%;
+	}
+
+	button:hover {
+		background-color: yellow;
+	}
+
+
+/*  end  */
+
+/*  side  */
+	.side_bar{
+		width: 10%;
+		position: fixed;
+		right: 0;
+		height: 50%;
+		background-color: white; 
+	}
+
+	.side_bar_content{
+		width: 20%;
+		position: relative;
+		background-color: white;
+		height: 100%;
+	}
+
+	.sharing_icon{
+		width: 100%;
+		margin-bottom: 300%;
+		margin-left: 100%;
+	}
+
+  #kakao_div{
+    display: block;
+  }
+
+  .contact_sns_icon{
+     width: 200%;
+  }
+/*  end  */
+
+/*  check box  */
+.checks input[type="checkbox"] {  /* 실제 체크박스는 화면에서 숨김 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label:before {  /* 가짜 체크박스 */
+  content: ' ';
+  display: inline-block;
+  width: 21px;  /* 체크박스의 너비를 지정 */
+  height: 21px;  /* 체크박스의 높이를 지정 */
+  line-height: 21px; /* 세로정렬을 위해 높이값과 일치 */
+  margin: -2px 8px 0 0;
+  text-align: center; 
+  vertical-align: middle;
+  background: #ffffff;
+  border: 4px solid #ffffff;
+  border-radius : 3px;
+  box-shadow: 0px 1px 2px rgba(255,255,255,0.5), inset 0px -15px 10px -12px rgba(255,255,255,0.5);
+  font-size:16px;
+}
+.checks input[type="checkbox"] + label:active:before,
+.checks input[type="checkbox"]:checked + label:active:before {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+  font-size:16px;
+}
+
+.checks input[type="checkbox"]:checked + label:before {  /* 체크박스를 체크했을때 */ 
+  content: '\2714';  /* 체크표시 유니코드 사용 */
+  color: #9FC93C;
+  text-shadow: 1px 1px #fff;
+  background: #9FC93C;
+  border-color: #9FC93C;
+  box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(0,0,0,0.1);
+  font-size:16px;
+}
+
+.checks.small input[type="checkbox"] + label {
+  font-size: 12px;
+}
+
+.checks.small input[type="checkbox"] + label:before {
+  width: 17px;
+  height: 17px;
+  line-height: 17px;
+  font-size: 11px;
+}
+
+.checks.etrans input[type="checkbox"] + label {
+  padding-left: 30px;
+  font-size:16px;
+}
+.checks.etrans input[type="checkbox"] + label:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 0;
+  opacity: .6;
+  box-shadow: none;
+  border-color: #000000;
+  -webkit-transition: all .12s, border-color .08s;
+  transition: all .12s, border-color .08s;
+  font-size:16px;
+}
+
+.checks.etrans input[type="checkbox"]:checked + label:before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  top: -5px;
+  left: 5px;
+  border-radius: 0;
+  opacity:1; 
+  background: transparent;
+  border-color:transparent #000000 #000000 transparent;
+  border-top-color:transparent;
+  border-left-color:transparent;
+  -ms-transform:rotate(45deg);
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+font-size:16px;
+}
+.checks.etrans{
+    font-size:16px;
+  }
+
+.no-csstransforms .checks.etrans input[type="checkbox"]:checked + label:before {
+  /*content:"\2713";*/
+  content: "\2714";
+  top: 0;
+  left: 0;
+  width: 21px;
+  line-height: 21px;
+  color: #000000;
+  text-align: center;
+  border: 1px solid #000000;
+
+/* end  */
+}
+
+}
+	</style>
+
+
+	<script type="text/javascript">
+var flag1=0;
+var flag3=0;
+
+$(window).scroll(function () {
+
+                var w = $(window).width();
+
+                //alert(w);
+
+                /*  scroll 값  */
+                var height = $(document).scrollTop();
+
+
+                //alert(w);
+
+                if(w > 500){
+
+                    /*  상단 고정 메뉴바 이벤트  */
+                    if(height > 100){
+                        if(flag3==0){
+                            $('.top').css("background-color", "#B5996D");
+                            $('.top_logo_img').attr("src", "../../static/img/logo_txt_white.png");
+                            //$('.top_logo_txt').animate({fontSize: '1.3rem'}, "fast");
+                            $('.menu').css("color", "#ffffff");
+                            
+                            $('.top_logo').animate({
+                                marginLeft : '10%',
+                            });
+
+                            $('.top_nav').animate({
+                                marginLeft : '80%',
+                                marginTop : '-2%'
+                            });
+
+                            $('.top').animate({
+                                height : '3vw',
+                            });
+
+                            $('.top_nav').css({
+                                /*
+                                '-webkit-transform' : 'translate(-50%, 0%)',
+                                '-ms-transform' : 'translate(-50%, 0%)',
+                                '-moz-transform' : 'translate(-50%, 0%)',
+                                '-o-transform' : 'translate(-50%, 0%)',
+                                'transform' : 'translate(-50%, 0%)'
+                                */
+                            });
+                            
+                            flag3=1;
+                        }
+                    }
+
+                    if(height < 100){
+                        if(flag3==1){
+                            $('.top').css("background-color", "white");
+                            $('.top_logo_img').attr("src", "../../static/img/logo_txt_color.png");
+                            //$('.top_logo_txt').animate({fontSize: '1rem'}, "fast");
+
+                            $('.menu').css("color", "black");
+                            
+
+                            $('.top_logo').animate({
+                                marginLeft : '50%',
+                            });
+
+                            $('.top_nav').animate({
+                                marginLeft: '50%',
+                                marginTop : '1%'
+                            });
+
+                            $('.top').animate({
+                                height : '5vw',
+                            });
+
+                            $('.top_nav').css({
+                                '-webkit-transform' : 'translate(-50%, 0%)',
+                                '-ms-transform' : 'translate(-50%, 0%)',
+                                '-moz-transform' : 'translate(-50%, 0%)',
+                                '-o-transform' : 'translate(-50%, 0%)',
+                                'transform' : 'translate(-50%, 0%)'
+                            });
+                            flag3=0;
+                        }
+                    }
+                }
+
+
+                if(w < 500){
+                    if(height > 100){
+                        $('.top').css({
+                                '-webkit-transform' : 'translate(0%, -50%)',
+                                '-ms-transform' : 'translate(0%, -50%)',
+                                '-moz-transform' : 'translate(0%, -50%)',
+                                '-o-transform' : 'translate(0%, -50%)',
+                                'transform' : 'translate(0%, -50%)'
+                            });
+                    }
+
+                    if(height < 100){
+                        $('.top').css({
+                                '-webkit-transform' : 'translate(0%, 0%)',
+                                '-ms-transform' : 'translate(0%, 0%)',
+                                '-moz-transform' : 'translate(0%, 0%)',
+                                '-o-transform' : 'translate(0%, 0%)',
+                                'transform' : 'translate(0%, 0%)'
+                            });
+                    }
+                }
+});
+
+
+
+	</script>
+</head>
+<body>
+	<!--  상단 고졍 메뉴바 div  -->
+	<div class='top'>
+      <div class='top_logo'>
+        <img class='top_logo_img' src="../../static/img/logo_txt_color.png">  
+      </div>
+      <div class='top_nav'>
+        <a href="../"><span class="menu" id="w"> HOME </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../matching"><span class="menu" id="tmp"> 강아지매칭 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../notice"><span class="menu" id="h"> 실종신고 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../stats"><span class="menu" id="h"> 통개자료 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../shelter"><span class="menu" id="h"> 보호소 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../donator"><span class="menu" id="h"> 멍예의전당 </span></a>
+        <span class='menu_slash'> / </span>
+        <a href="../about_us"><span class="menu"> ABOUT US </span></a>
+      </div>
+  </div>
+
+	<div class="top_title">
+		<div class="logo_img_div">
+			<p style="font-size: 1.5vw; font-weight: 900;">
+			<img src="../../static/img/logo_img_color.png" align="middle" style="width: 5vw; height: auto;">
+			 멍예의 전당
+			</p>
+		</div>
+	</div>
+
+
+	<div class="side_bar">
+		<div class="side_bar_content">
+			<div class="sharing_icon">
+        <a href="javascript:sharefacebook('http://puppysignal.com/matching')">
+				<img class='contact_sns_icon' src="../../static/img/facebook_img2.png" align="middle"></a>
+			</div>
+			<div class="sharing_icon" id="kakao_div">
+        <a id="kakao-link-btn" href="javascript:;">
+        <img class='contact_sns_icon' src="../../static/img/kakao_img2.png" align="middle"></a>
+			</div>
+			<div class="sharing_icon">
+        <a href="javascript:sharetwitter('http://puppysignal.com/matching')">
+				<img class='contact_sns_icon' src="../../static/img/twitter_img2.png" align="middle"></a>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="middle">
+    <div class="project_info">
+      <div class="project_info_title" style="">
+        <div class="project_info_title_txt" style="">
+          <div class="project_info_title_txt_content" style="">
+            프로젝트 소개
+          </div>
+        </div>
+        <div class="project_info_title_img" style="">
+          <img src="../../static/img/info_title_img.png" style="width: 100%; height: 100%;">
+        </div>
+      </div>
+
+
+      <div class="project_funding_term" style="">
+        펀딩 기간 : 2018.01.19 ~ 2018.01.xx
+      </div>
+
+      <div class="project_info_content" style="">
+        <div class="project_info_content_img" style="">
+          <img src="../../static/img/강아지여.jpg" style="width: 100%; height: 50%;">
+          <img src="../../static/img/고양이여.jpg" style="width: 100%; height: 50%;">
+        </div>
+        <div class="project_info_content_txt" style="">
+          <br>
+          &nbsp;&nbsp;Puppysignal은 웹 서비스에서 한걸음 더 나아가
+          크라우드 펀딩을 통해 유기견들에게 더 직접적인 도움을 주고자 합니다.<br><br>
+          &nbsp;&nbsp;저희와 24시간 함께하는 스마트폰을 통해
+          유기견들을 생각하자는 의미로 휴대폰 케이스를 제작하였습니다.<br>
+        </div>
+      </div>
+
+      <div class="project_result" style="">
+        <div class="project_result_txt" style="">
+          여러분의 따뜻한 성원에 힘입어 <span style="background-color: #bcdadf; font-size: 3vw;">총 500,000 원</span><br>
+          기부금을 이리오시개에 전달 하였습니다. <br>
+          이 비용은 83마리의 유기견들의 구충제 3년치 구매에 사용됩니다.
+        </div>
+      </div>
+
+      <div class="funding_addr" style="">
+        <div class="funding_addr_txt" style="">
+          펀딩 주소 : https://tumblbug.com/puppysignal
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="donator_list">
+      <div class="donator_individual">
+        <div class="donator_list_title">
+          <br>
+          <span style="font-size: 4vw;">
+            멍예의 전당
+          </span>
+          <br>
+          <span style="font-size: 1.5vw;">
+            이번 프로젝트를 통해 저희를 후원해 주신 분들
+          </span>
+          <Br>
+        </div>
+
+        <div class="donator_list_content">
+          <div class="donators">
+            <div class="donators_txt">
+              심준식
+            </div>
+          </div>
+          <div class="donators">
+            <div class="donators_txt">
+              이예은
+            </div>
+          </div>
+          <div class="donators">
+            <div class="donators_txt">
+              강민정
+            </div>
+          </div>
+          <div class="donators">
+            <div class="donators_txt">
+              유용환
+            </div>
+          </div>
+          <div class="donators">
+            <div class="donators_txt">
+              지서영
+            </div>
+          </div>
+          <div class="donators">
+
+          </div>
+          <div class="donators">
+
+          </div>
+          <div class="donators">
+
+          </div>
+          <div class="donators">
+            
+          </div>
+          <div class="donators">
+            
+          </div>
+          <div class="donators">
+            
+          </div>
+          <div class="donators">
+            
+          </div>
+        </div>
+
+        <div class="for_donator" style="width: 100%; height: 40%; border: 6px solid #5d8f97; text-align: center; font-size: 3vw;">
+          <div style="width: 100%; height: auto; position: relative; top: 50%;
+          -webkit-transform: translate(0%, -50%);
+          -ms-transform: translate(0%, -50%);
+          -moz-transform: translate(0%, -50%);
+          -o-transform: translate(0%,-50%);
+          transform: translate(0%, -50%);">
+            프로젝트 펀딩과 응원에 참여해주신 모든 분들께<br>
+            진심으로 감사드립니다!
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="donate_state">
+      <div class="donate_state_title">
+          <div class="project_info_title_txt_content" style="">
+            펀딩 정산 안내
+          </div>
+      </div>
+    </div>
+
+
+	</div>
+
+</body>
+</html>

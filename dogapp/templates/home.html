@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<style type="text/css">
+		.selter_name_list{
+			width: 100%;
+			height: 30vw;
+			background-color: green;
+		}
+		.shelter_name_list_content{
+			display: none;
+		}
+
+		.shelter_info_content{
+			display: none;
+		}
+	</style>
+	<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        width: 80%;
+        height: 20vw;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+
+    </style>
+	<script>
+
+		function change_location(id){
+			$('.shelter_name_list_content').css('display', 'none');
+			$('.' + id).css('display' , 'block');
+
+			$('.shelter_info_content').css('display', 'none');
+
+			var num = $('.' + id).length;
+			$('#cnt').html(num);
+		}
+
+		function show_info(id){
+			$('.shelter_info_content').css('display', 'none');
+			$('#info_' + id).css('display' , 'block');
+
+			var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 16,
+                  center: new google.maps.LatLng(37.49, 127.02),
+                  mapTypeId: 'roadmap'
+                });
+
+			var geocoder = new google.maps.Geocoder();
+
+			//alert(id);
+
+			$.ajax({
+                      url: '/getaddr/',
+                      data: {
+                        'num' : id
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        //alert(data.addr);    
+                        geocodeAddress(geocoder, map, data.addr);
+                      }
+            });
+		}
+
+
+              var x_marker_list = {};
+              var y_marker_list = {};
+
+              function distance(lat1, lon1, lat2, lon2, unit) {
+                var radlat1 = Math.PI * lat1/180
+                var radlat2 = Math.PI * lat2/180
+                var theta = lon1-lon2
+                var radtheta = Math.PI * theta/180
+                var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+                dist = Math.acos(dist)
+                dist = dist * 180/Math.PI
+                dist = dist * 60 * 1.1515
+                if (unit=="K") { dist = dist * 1.609344 }
+                if (unit=="N") { dist = dist * 0.8684 }
+                return dist
+              }
+
+              function my_location(){
+                  var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: -34.397, lng: 150.644},
+                    zoom: 12
+                  });
+                  var infoWindow = new google.maps.InfoWindow({map: map});
+
+                  var geocoder = new google.maps.Geocoder();
+
+                  document.getElementById('submit').addEventListener('click', function() {
+                    geocodeAddress(geocoder, map);
+                  });
+
+                  // Try HTML5 geolocation.
+                  if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                      var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                      };
+
+                      infoWindow.setPosition(pos);
+                      infoWindow.setContent('Location found.');
+                      map.setCenter(pos);
+
+                
+                    }, function() {
+                      handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                  } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                  }
+
+                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                  infoWindow.setPosition(pos);
+                  infoWindow.setContent(browserHasGeolocation ?
+                                        'Error: The Geolocation service failed.' :
+                                        'Error: Your browser doesn\'t support geolocation.');
+                }
+              }
+
+
+              var map;
+              function initMap() {
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 16,
+                  center: new google.maps.LatLng(37.49, 127.02),
+                  mapTypeId: 'roadmap'
+                });
+
+                var iconBase = '../../static/img/';
+                var icons = {
+                  puppy: {
+                    icon: iconBase + 'takedog_marker.png'
+                  }
+                };
+
+                var features = [
+               
+                ];
+                
+
+                //console.log(features);
+
+                // Create markers.
+                features.forEach(function(feature) {
+                  var marker = new google.maps.Marker({
+                    position: feature.position,
+                    icon: icons[feature.type].icon,
+                    map: map
+                  });
+
+                  marker.addListener('click', function() {
+                    map.setZoom(20);
+                    map.setCenter(marker.getPosition());
+                    alert("click event");
+                  });
+                });
+
+               var geocoder = new google.maps.Geocoder();
+
+                document.getElementById('submit').addEventListener('click', function() {
+                  geocodeAddress(geocoder, map);
+                });
+              }
+
+
+              function geocodeAddress(geocoder, resultsMap, addr) {
+                var address = addr;
+                geocoder.geocode({'address': address}, function(results, status) {
+                  if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                      map: resultsMap,
+                      position: results[0].geometry.location               
+                    });
+                    //alert(results[0].geometry.location.lat());
+                    //alert(results[0].geometry.location.lng());
+                    //alert(document.getElementById('address').value);
+                    /*
+                    $.ajax({
+                      url: '/register_marker/',
+                      data: {
+                        'location_name': document.getElementById('address').value,
+                        'x' : results[0].geometry.location.lat(),
+                        'y' : results[0].geometry.location.lng()
+                      },
+                      dataType: 'json',
+                      success: function (data) {
+                        alert(data.result);
+                      }
+                    });
+                    */
+                  } else {
+                    //alert('Geocode was not successful for the following reason: ' + status);
+                    alert('죄송합니다. 해당 보호소를 지도에 표시할 수 없습니다.');
+                  }
+                });
+              }
+            </script>
+
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_E5Ls2VQ_yDsadA9-KhCLTBFoJ6AxuJo&callback=initMap">
+            </script>
+</head>
+<body>
+	<div class="btn_div" style="width: 100%; height: 5vw;">
+    <div class='map_img' style="background-color: white;">
+    <map id="imgmap2017122914859" name="imgmap2017122914859">
+      <area id="강원도" shape="rect" alt="" title="" coords="343,105,439,157"  target="" onclick="change_location(this.id)" /> 
+      <area id="서울" shape="rect" alt="" title="" coords="232,143,296,187"  target="" onclick="change_location(this.id)"/>
+      <area id="인천" shape="rect" alt="" title="" coords="170,123,223,161"  target="" onclick="change_location(this.id)"/>
+      <area id="경기도" shape="rect" alt="" title="" coords="237,204,313,244"  target="" onclick="change_location(this.id)"/>
+      <area id="충청남도" shape="rect" alt="" title="" coords="181,279,288,324"  target="" onclick="change_location(this.id)"/>
+      <area id="충청북도" shape="rect" alt="" title="" coords="315,235,411,276"  target="" onclick="change_location(this.id)"/>
+      <area id="대전" shape="rect" alt="" title="" coords="267,328,323,364"  target="" onclick="change_location(this.id)"/>
+      <area id="경상북도" shape="rect" alt="" title="" coords="391,299,518,352"  target="" onclick="change_location(this.id)"/>
+      <area id="대구" shape="rect" alt="" title="" coords="419,368,480,406"  target="" onclick="change_location(this.id)"/>
+      <area id="경상남도" shape="rect" alt="" title="" coords="340,444,456,495"  target="" onclick="change_location(this.id)"/>
+      <area id="전라북도" shape="rect" alt="" title="" coords="221,402,325,449"  target="" onclick="change_location(this.id)"/>
+      <area id="광주" shape="rect" alt="" title="" coords="220,484,275,525"  target="" onclick="change_location(this.id)"/>
+      <area id="전라남도" shape="rect" alt="" title="" coords="175,524,284,580"  target="" onclick="change_location(this.id)"/>
+      <area id="울산" shape="rect" alt="" title="" coords="488,423,540,469"  target="" onclick="change_location(this.id)"/>
+      <area id="부산" shape="rect" alt="" title="" coords="461,486,520,534"  target="" onclick="change_location(this.id)"/>
+      <area id="제주도" shape="rect" alt="" title="" coords="128,678,201,720"  target="" onclick="change_location(this.id)"/>
+      <!-- Created by Online Image Map Editor (http://www.maschek.hu/imagemap/index) -->
+    </map>
+      
+</div>     
+
+    <div class="map_div" style="width: 100%; height: auto; text-align: center;">
+      <img src="../../static/img/korea_map_final3.jpg" style="width: auto; height: auto;" alt="" usemap="#imgmap2017122914859">
+    </div>
+  </div>
+	<div class="shelter_name_list_div" style="width: 30%; height: 100%; float: left; margin-top: 750px;">
+		<div class="cnt" style="width: 100%; height: 5vw;">
+			<span id="cnt">
+				
+			</span>
+		</div>
+		<div class="shelter_name_list" style="width: 50%; height: 20vw; overflow-y: scroll;">
+			{% for shelter in shelters %}
+				<div class="{{shelter.location}} shelter_name_list_content" id="{{shelter.num}}" onclick="show_info(this.id)">
+					{{shelter.name}}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="shelter_info" style="width: 70%; height: 100%; float: left; margin-top: 750px;">
+		{% for shelter in shelters %}
+			<div class="shelter_info_content" id="info_{{shelter.num}}">
+				{{shelter.name}}<br>
+				{{shelter.addr}}<br>
+				{{shelter.num}}<br>
+			</div>
+		{% endfor %}
+      		<div id="map"></div>
+	</div>
+</body>
+</html>
