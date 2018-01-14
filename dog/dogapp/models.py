@@ -4,6 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class Breed(models.Model):
 	name=models.CharField(max_length=50,default="unknown")
+	k_name=models.CharField(max_length=50,default="unknown")
 	size=models.CharField(max_length=50,default="unknown")
 	temperament=models.CharField(max_length=500,default="unknown")
 	apartment_friendliness=models.IntegerField(default=0)

@@ -587,7 +587,7 @@ def result_dog(request) :
 				and int(breed.dog_friendliness)>=int(dog_friendliness)-1			
 				and int(breed.grooming)<=int(grooming)
 				):
-					data['result']+="\n"+breed.name
+					data['result']+="\n"+breed.name+" "+breed.k_name
 
 	return JsonResponse(data)
 
@@ -824,3 +824,32 @@ def show_info(request) :
 		}
 
 	return JsonResponse(data)
+
+
+
+# python manage.py shell에서 아래 입력 (DB)
+
+# from dogapp.models import *
+# import openpyxl
+# excel_document = openpyxl.load_workbook('dog_result.xlsx')
+# sheet = excel_document.get_sheet_by_name('result')
+
+
+
+# for row in sheet.rows:
+#     if(row[0].value=="Name"):
+#         continue
+#     newbreed=Breed()
+#     newbreed.name=row[0].value
+#     newbreed.grooming=str(row[1].value)[0]
+#     newbreed.apartment_friendliness=str(row[2].value)[0]
+#     newbreed.child_friendliness=str(row[3].value)[0]
+#     newbreed.cat_friendliness=str(row[4].value)[0]
+#     newbreed.dog_friendliness=str(row[5].value)[0]
+#     newbreed.temperament=str(row[6].value).split(',')
+#     newbreed.size=str(row[7].value).split(' to ')
+#     newbreed.face_type=row[8].value
+#     newbreed.fur=row[9].value
+#     newbreed.temp_group=row[10].value
+#     newbreed.k_name=row[11].value
+#     newbreed.save()
