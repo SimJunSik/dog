@@ -840,6 +840,7 @@
     <script>
               var x_marker_list = {};
               var y_marker_list = {};
+              var img_marker_list = {};
 
               var list_by_location = [];
 
@@ -969,18 +970,33 @@
                 console.log(map_var);
                 
                 var map = new google.maps.Map(map_var, {
-                  zoom: 16,
+                  zoom: 10,
                   center: new google.maps.LatLng(37.49, 127.02),
                   mapTypeId: 'roadmap'
                 });
 
                 while(markers.length > 0){
+                  //console.log(markers);
                   pk_position_start = markers.indexOf('"pk');
                   pk_tmp = markers.substring(pk_position_start+5, markers.length);
                   //alert(pk_tmp);
                   pk_position_end = pk_tmp.indexOf(',');
                   pk_position = pk_tmp.substring(0, pk_position_end);
                   //alert(pk_position);
+
+                  pk_str = String(pk_position).trim();
+                  //alert(pk_str);
+
+
+                  img_position_start = markers.indexOf('"img_src');
+                  img_tmp = markers.substring(img_position_start+11, markers.length);
+                  //alert(img_tmp);
+                  img_tmp_end = img_tmp.indexOf(',');
+                  img_postion = img_tmp.substring(1, img_tmp_end-1);
+                  //alert(img_postion);
+                  if(pk_str.length > 0){
+                    img_marker_list[pk_str] = img_postion;
+                  }
 
 
 
@@ -992,8 +1008,7 @@
                   //alert(x_position);
                   //x_marker_list.push(x_position);
 
-                  pk_str = String(pk_position).trim();
-                  //alert(pk_str);
+          
                   if(pk_str.length > 0){
                     x_marker_list[pk_str] = x_position;
                   }
@@ -1012,16 +1027,40 @@
 
                   markers = y_tmp.substring(y_position_end, markers.length);
                 }
-
+                //console.log(img_marker_list);
                 //alert(x_marker_list);
                 //console.log(x_marker_list);
-
+                /*
                 var iconBase = '../../static/img/';
                 var icons = {
                   puppy: {
                     icon: iconBase + 'puppy_footprint2.png'
                   }
                 };
+                */
+
+                /*
+                var icon = {
+                    url: "../../static/img/puppy_footprint2.png", // url
+                    scaledSize: new google.maps.Size(25, 25), // scaled size
+                    origin: new google.maps.Point(0,0), // origin
+                    anchor: new google.maps.Point(0, 0) // anchor
+                };
+                */
+
+                var icon = {
+
+                };
+
+                for(var key in img_marker_list){
+                  icon[key] = { url: img_marker_list[key], // url
+                                scaledSize: new google.maps.Size(30, 30), // scaled size
+                                origin: new google.maps.Point(0,0), // origin
+                                anchor: new google.maps.Point(0, 0) // anchor
+                              };
+                }
+
+                //console.log(icon);
 
                 var features = [
                
@@ -1042,9 +1081,12 @@
                 features.forEach(function(feature) {
                   var marker = new google.maps.Marker({
                     position: feature.position,
-                    icon: icons[feature.type].icon,
+                    icon: icon[feature.pk],
+                    animation: google.maps.Animation.DROP,
                     map: map
                   });
+
+                  //console.log(icon[feature.pk]);
 
                   marker.addListener('click', function() {
                     map.setZoom(15);
@@ -1052,6 +1094,14 @@
                     //alert("click event");
                     info_popup(feature.pk);
                   });
+                  marker.addListener('click', toggleBounce);
+                  function toggleBounce() {
+                    if (marker.getAnimation() !== null) {
+                      marker.setAnimation(null);
+                    } else {
+                      marker.setAnimation(google.maps.Animation.BOUNCE);
+                    }
+                  }
                 });
 
                var geocoder = new google.maps.Geocoder();
