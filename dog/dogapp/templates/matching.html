@@ -202,6 +202,41 @@
     margin-bottom: 5vw;
   }
 
+  .result{
+    width : 30%; 
+    height : 20vw; 
+    margin-top: 10%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    border-style: solid; 
+    float: left;
+  }
+
+  .result_img{
+    position: relative;
+    top: 0%;
+    width: 100%; 
+    height: 12vw;
+  }
+
+  #result_div{
+    margin-top: 10%;
+    height: 70vw;
+  }
+
+  #result_num{
+    position: relative; 
+    top: 0%; 
+    left: 0%; 
+    z-index: 10;
+    -webkit-transform: translate(-250%, -50%);
+    -ms-transform: translate(-250%, -50%);
+    -moz-transform: translate(-250%,-50%);
+    -o-transform: translate(-250%, -50%);
+    transform: translate(-250%, -50%);
+  }
+
   #submit_btn{
     margin: auto;
     margin-top: 10vw;
@@ -512,11 +547,11 @@ font-size:16px;
 		margin-top: 10vw;
 		left: 50%;
 		top: 50%;
-	    -webkit-transform: translate(-50%, -50%);
-	    -ms-transform: translate(-50%, -50%);
-	    -moz-transform: translate(-50%,-50%);
-	    -o-transform: translate(-50%, -50%);
-	    transform: translate(-50%, -50%);
+	  -webkit-transform: translate(-50%, -50%);
+	  -ms-transform: translate(-50%, -50%);
+	  -moz-transform: translate(-50%,-50%);
+	  -o-transform: translate(-50%, -50%);
+	  transform: translate(-50%, -50%);
 	}
 
 	.question_title{
@@ -534,6 +569,7 @@ font-size:16px;
 		position: relative;
 		width: 100%; 
 		height: 28vw;
+    margin-bottom: 10%;
     display: none;
 	}
 
@@ -542,6 +578,42 @@ font-size:16px;
 		height: 70vw;
 		background-color: transparent;
 	}
+
+  .result{
+    width : 30%;
+    margin-top: 10%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    height : 20vw; 
+    border-style: solid; 
+    float: left;
+  }
+
+  .result_img{
+    width: 100%; 
+    height: 12vw;
+  }
+
+  #result_div{
+    margin-top: 10%;
+    height: 90vw;
+  }
+
+  #result_num{
+    position: relative; 
+    top: 0; 
+    left: 0; 
+    z-index: 10;
+    width: 4vw;
+    height: 4vw;
+    font-size: 2vw;
+    -webkit-transform: translate(-300%, -50%);
+    -ms-transform: translate(-300%, -50%);
+    -moz-transform: translate(-300%,-50%);
+    -o-transform: translate(-300%, -50%);
+    transform: translate(-300%, -50%);
+  }
 
 	.submit_btn_div{
 		width: 80%; 
@@ -1400,15 +1472,15 @@ function question_start(){
                       content = '';
 
                       for(var i=1;i<data.result.split('\n').length;i++){
-                        var cnt = String(i) + "번";
-                        var a = "<div class=\"result\" style=\"width : 95%; height : 10vw; border-style: solid;\"><img src=\"";
-                        var img_src = "../../static/img/dog_img2/" + data.result.split('\n')[i].replace(/ /gi, "-") + "-1.jpg\"";
+                        var a = "<div class=\"result\" style=\"\">";
+                        var num_div = "<button id=\"result_num\"style=\"\">" + String(i) + "</button>";
+                        var img_src = "<img class=\"result_img\" src=\"../../static/img/dog_img2/" + data.result.split('\n')[i].replace(/ /gi, "-") + "-1.jpg\"";
                         //alert(img_src);
-                        var d = "style=\"width: 10vw; height: 10vw; float: left;\"><div class=\"result_div_txt\" style=\"text-align: center; float: left; font-size:2vw;\"><span>이름 :";
+                        var d = "style=\"\"><div class=\"result_div_txt\" style=\"text-align: center; font-size:2vw;\"><span>";
                         var b = data.k_result.split('\n')[i];
                         var c = "</span></div></div>";
 
-                        content = content + cnt + a + img_src + d + b + c;
+                        content = content + a + num_div + img_src + d + b + c;
                       }
                       $('#result_div').html(content);
 						        }
