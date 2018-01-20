@@ -15,8 +15,9 @@ class Breed(models.Model):
 	face_type=models.CharField(max_length=50,default="unknown")
 	fur=models.CharField(max_length=50,default="unknown")
 	temp_group=models.CharField(max_length=50,default="unknown")
+	result_cnt=models.IntegerField(default=0)
 	def __str__(self):
-		return self.name
+		return self.k_name
 
 class Dog(models.Model) :
 

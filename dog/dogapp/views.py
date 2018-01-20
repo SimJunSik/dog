@@ -567,6 +567,8 @@ def result_dog(request) :
 			):
 				data['result']+="\n"+breed.name
 				data['k_result'] += "\n"+breed.k_name
+				breed.result_cnt = breed.result_cnt + 1
+				breed.save()
 	
 	if data['result']=='':
 		for breed in Breed.objects.all():
@@ -581,6 +583,8 @@ def result_dog(request) :
 				):
 					data['result']+="\n"+breed.name
 					data['k_result'] += "\n"+breed.k_name
+					breed.result_cnt = breed.result_cnt + 1
+					breed.save()
 
 	if data['result']=='':
 		for breed in Breed.objects.all():
@@ -593,6 +597,8 @@ def result_dog(request) :
 				):
 					data['result']+="\n"+breed.name
 					data['k_result'] += "\n"+breed.k_name
+					breed.result_cnt = breed.result_cnt + 1
+					breed.save()
 					
 	return JsonResponse(data)
 
