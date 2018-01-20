@@ -148,6 +148,7 @@
 		height: 30vw;
 		background-color: white;
 		margin-top: 5%;
+    margin-bottom: 10%;
 	}
 
 	.question_stage{
@@ -277,6 +278,11 @@
 	#question1, #question2, #question3, #question4, #question5, #question6, #question7{
 		display: none;
 	}
+
+  .goback_matching{
+    text-align: center; 
+    margin-bottom: 10%; 
+  }
 
 /*  end  */
 
@@ -530,6 +536,7 @@ font-size:16px;
 		height: 60vw;
 		background-color: white;
 		margin-top: 5%;
+    margin-bottom: 10%;
 	}
 
 	.question_stage{
@@ -662,6 +669,12 @@ font-size:16px;
   #question1, #question2, #question3, #question4, #question5, #question6, #question7{
     display: none;
   }
+
+  .goback_matching{
+    text-align: center; 
+    margin-bottom: 10%; 
+  }
+
 
 /*  end  */
 
@@ -1438,6 +1451,16 @@ function question_start(){
 				</form>
 			</div>
 		</div>
+
+    <div class="goback_matching" style="">
+        <a href="../../matching">
+          <button id="start_btn" style="position: relative; top:80%; background-color: ;">
+            <span id="start_btn_txt">
+              매칭 다시하기
+            </span>
+          </button>
+        </a>
+    </div>
 	</div>
 
   <button id="result_str_tmp" style="display: none;" value="{{select_str}}"></button>
