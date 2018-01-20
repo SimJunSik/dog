@@ -225,7 +225,7 @@
     height: 70vw;
   }
 
-  #result_num{
+  .result_num{
     position: relative; 
     top: 0%; 
     left: 0%; 
@@ -600,7 +600,7 @@ font-size:16px;
     height: 90vw;
   }
 
-  #result_num{
+  .result_num{
     position: relative; 
     top: 0; 
     left: 0; 
@@ -973,7 +973,7 @@ function question_start(){
 	<div class="side_bar">
 		<div class="side_bar_content">
 			<div class="sharing_icon">
-        <a href="javascript:sharefacebook('http://puppysignal.com/matching')">
+        <a href="javascript:sharefacebook('http://puppysignal.com/matching_result/{{select_str}}')">
 				<img class='contact_sns_icon' src="../../static/img/facebook_img2.png" align="middle"></a>
 			</div>
 			<div class="sharing_icon" id="kakao_div">
@@ -981,7 +981,7 @@ function question_start(){
         <img class='contact_sns_icon' src="../../static/img/kakao_img2.png" align="middle"></a>
 			</div>
 			<div class="sharing_icon">
-        <a href="javascript:sharetwitter('http://puppysignal.com/matching')">
+        <a href="javascript:sharetwitter('http://puppysignal.com/matching_result/{{select_str}}')">
 				<img class='contact_sns_icon' src="../../static/img/twitter_img2.png" align="middle"></a>
 
 			</div>
@@ -989,12 +989,12 @@ function question_start(){
 	</div>
 
 	<div class="middle">
-		<div class="heart_rate" style="">
+		<div class="heart_rate" style="display: block;">
 			<div style="height: 100%; width: 33%; float: left;">
 				<img src="../../static/img/circle_person.png" style="width: 100%; height: 100%;">
 			</div>
 			<div style="height: 100%; width: 34%; float: left;">
-				<img id="heart_rate_img" src="../../static/img/heartrate1.gif" style="max-width: 100%; height: 100%; margin-top: 0%;">
+				<img id="heart_rate_img" src="../../static/img/heartrate6.gif" style="max-width: 100%; height: 100%; margin-top: 0%;">
 			</div>
 			<div style="height: 100%; width: 33%; float: left;">
 				<img src="../../static/img/circle_dog.png" style="width: 100%; height: 100%;">
@@ -1017,7 +1017,7 @@ function question_start(){
     <div class="question" id="result_div" style="text-align: center; overflow: scroll; overflow-x: hidden;">
       {% for result in results %}
         <div class="result">
-          <button id="result_num"></button>
+          <button class="result_num"></button>
           <img class="result_img" src="../../static/img/dog_img2/{{result.name}}.jpg">
           <div class="result_div_txt" style="text-align: center; font-size: 2vw;">
             <span>
@@ -1464,6 +1464,11 @@ function question_start(){
     var name_list = []
 			$(document).ready(function() 
 			{
+        var obj = document.getElementsByClassName('result_num');
+        for(var i=0;i<obj.length;i++){
+          obj[i].innerHTML = String(i+1);
+        }
+
 				$("#submit_btn").click(function()
 				{
 					var formData = $("#question_form").serialize();
