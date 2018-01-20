@@ -1183,14 +1183,14 @@ $(window).scroll(function () {
       <div class="project_result" style="">
         <div class="project_result_txt" style="">
           여러분의 따뜻한 성원에 힘입어 <span style="background-color: #bcdadf; font-size: 3vw;">총 500,000 원</span><br>
-          기부금을 <a href="https://www.facebook.com/%EB%B0%98%EB%A0%A4%EA%B2%AC%EC%9E%85%EC%96%91%EC%B9%B4%ED%8E%98-%EC%9D%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EA%B0%9C-1141826159177483/" style="text-decoration: none; color: #5d8f97; ">'이리오시개' </a>에 전달 하였습니다. <br>
+          기부금을 <a href="https://www.facebook.com/%EB%B0%98%EB%A0%A4%EA%B2%AC%EC%9E%85%EC%96%91%EC%B9%B4%ED%8E%98-%EC%9D%B4%EB%A6%AC%EC%98%A4%EC%8B%9C%EA%B0%9C-1141826159177483/" style="text-decoration: none; color: #5d8f97; " target="_blank">'이리오시개' </a>에 전달 하였습니다. <br>
           이 비용은 83마리의 유기견들의 구충제 3년치 구매에 사용됩니다.
         </div>
       </div>
-    
+
       <div class="funding_addr" style="">
         <div class="funding_addr_txt" style="">
-          펀딩 주소 : <a href="https://tumblbug.com/puppysignal" style="text-decoration: none; color: #5d8f97; ">https://tumblbug.com/puppysignal</a>
+          펀딩 주소 : <a href="https://tumblbug.com/puppysignal" style="text-decoration: none; color: #5d8f97;" target="_blank">https://tumblbug.com/puppysignal</a>
         </div>
       </div>
 
@@ -1287,6 +1287,55 @@ $(window).scroll(function () {
 
 
 	</div>
+  <script type="text/javascript">
+    function sharefacebook(url){
+        window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+    }
 
+    function sharetwitter(url){
+        window.open("https://twitter.com/intent/tweet?text=나에게 맞는 강아지 찾기&url=" + url);
+    }
+    
+
+//카카오톡 아직 완성 x
+  //<![CDATA[
+    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('6b1fb30a551b852c8a1461ba40480259');
+    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    Kakao.Link.createDefaultButton({
+      container: '#kakao-link-btn',
+      objectType: 'feed',
+      content: {
+        title: '나에게 맞는 강아지는?',
+        description: '#강아지 #매칭 #유기견 #입양 #개주팔자',
+        imageUrl: '',
+        link: {
+          mobileWebUrl: 'http://puppysignal.com/matching',
+          webUrl: 'http://puppysignal.com/matching'
+        }
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'http://puppysignal.com/matching',
+            webUrl: 'http://puppysignal.com/matching'
+          }
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: 'http://puppysignal.com/matching',
+            webUrl: 'http://puppysignal.com/matching'
+          }
+        }
+      ]
+    });
+  </script>
 </body>
 </html>
