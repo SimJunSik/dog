@@ -554,8 +554,9 @@ def MatchingResultView(request) :
 				#data['result']+="\n"+breed.name
 				#data['k_result'] += "\n"+breed.k_name
 				result.append(breed)
-				breed.result_cnt = breed.result_cnt + 1
-				breed.save()
+				if len(rp) <= 17 :
+					breed.result_cnt = breed.result_cnt + 1
+					breed.save()
 	
 	if not result :
 		for breed in Breed.objects.all():
@@ -571,8 +572,9 @@ def MatchingResultView(request) :
 					#data['result']+="\n"+breed.name
 					#data['k_result'] += "\n"+breed.k_name
 					result.append(breed)
-					breed.result_cnt = breed.result_cnt + 1
-					breed.save()
+					if len(rp) <= 17 :
+						breed.result_cnt = breed.result_cnt + 1
+						breed.save()
 
 	if not result :
 		for breed in Breed.objects.all():
@@ -586,8 +588,9 @@ def MatchingResultView(request) :
 					#data['result']+="\n"+breed.name
 					#data['k_result'] += "\n"+breed.k_name
 					result.append(breed)
-					breed.result_cnt = breed.result_cnt + 1
-					breed.save()
+					if len(rp) <= 17 :
+						breed.result_cnt = breed.result_cnt + 1
+						breed.save()
 
 	for item in result :
 		if " " in item.name :
