@@ -425,7 +425,7 @@ def MatchingResultView(request) :
 
 	select = []
 	select_str = ''
-	is_shared=False
+	is_not_shared=True
 	no_room=False
 	too_lazy=False
 
@@ -437,7 +437,7 @@ def MatchingResultView(request) :
 		for item in rp[17:] :
 			select.append(item)
 			select_str = select_str + str(item)
-			is_shared=True
+		is_not_shared=False
 		#print(select)
 
 	else :
@@ -556,7 +556,7 @@ def MatchingResultView(request) :
 				#data['result']+="\n"+breed.name
 				#data['k_result'] += "\n"+breed.k_name
 				result.append(breed)
-				if not is_shared :
+				if is_not_shared :
 					breed.result_cnt = breed.result_cnt + 1
 					breed.save()
 	
@@ -574,7 +574,7 @@ def MatchingResultView(request) :
 					#data['result']+="\n"+breed.name
 					#data['k_result'] += "\n"+breed.k_name
 					result.append(breed)
-					if not is_shared :
+					if is_not_shared :
 						breed.result_cnt = breed.result_cnt + 1
 						breed.save()
 
@@ -590,7 +590,7 @@ def MatchingResultView(request) :
 					#data['result']+="\n"+breed.name
 					#data['k_result'] += "\n"+breed.k_name
 					result.append(breed)
-					if not is_shared :
+					if is_not_shared :
 						breed.result_cnt = breed.result_cnt + 1
 						breed.save()
 
