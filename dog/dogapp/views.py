@@ -419,6 +419,192 @@ def MatchingView(request) :
 	return render(request, './matching.html')
 
 
+
+
+def MatchingResultView(request) :
+
+	select = []
+	select_str = ''
+	no_room=False
+	too_lazy=False
+
+	rp = request.path
+	#print(rp)
+
+	if len(rp) > 17 :
+		#print(rp[17:])
+		for item in rp[17:] :
+			select.append(item)
+			select_str = select_str + str(item)
+		#print(select)
+
+	else :
+		for i in range(1,8) :
+			tmp = request.POST['question' + str(i)]
+			select.append(tmp)
+			select_str = select_str + str(tmp)
+
+		#print(select)
+
+	#print(select_str)
+
+# 가족구성원: 1인/2인/아이/부모님/3대
+# 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
+# 설거지: 쌓아둔다/바로바로한다/만들지않는다
+# 연예인상: 강아지/고양이/곰상 
+# 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
+	
+# size/temperament/aparmtent_friendliness/child_friendliness/grooming
+	no_recommendation=False
+
+	child_friendliness=0
+	cat_friendliness=0
+	dog_friendliness=0
+	apartment_friendliness=0
+	grooming=0
+	fur=""
+	temperament=0
+	size=""
+	face_type=""
+	temper_group=[]
+
+# 가족구성원: 고양이/강아지/아이/해당없음
+	if(select[0]=="1"):
+		cat_friendliness=3
+	elif(select[0]=="2"):
+		dog_friendliness=3
+	elif(select[0]=="3"):
+		child_friendliness=5
+
+# 집형태: 마당/넓은아파트/좁은아파트/원룸 및 오피스텔
+	if(select[1]=="1"):
+		apartment_friendliness=1
+	elif(select[1]=="2"):
+		apartment_friendliness=2
+	elif(select[1]=="3"):
+		apartment_friendliness=4
+	elif(select[1]=="4"):
+		apartment_friendliness=5
+		no_room=True
+
+# 설거지: 쌓아둔다/바로바로한다/만들지않는다
+	if(select[2]=='1'):
+		grooming=3
+	elif(select[2]=='2'):
+		grooming=5
+	elif(select[2]=='3'):
+		grooming=1
+		
+# 연예인상: 강아지 /고양이/곰상/공룡
+	if(select[3]=='1'):
+		face_type="강아지"
+	elif(select[3]=='2'):
+		face_type="고양이"
+	elif(select[3]=='3'):
+		face_type="곰상"
+	elif(select[3]=='4'):
+		face_type="공룡"
+	# elif(select[3]=='5'):
+	# 	face_type="여우"
+
+# 이상형: 지적인/애교많은/사교적인/해바라기/듬직한
+	if(select[4]=='1'):
+		temperament=1
+	elif(select[4]=='2'):
+		temperament=2
+	elif(select[4]=='3'):
+		temperament=3
+	elif(select[4]=='4'):
+		temperament=4
+	elif(select[4]=='5'):
+		temperament=5
+	
+# 머리스타일: 곱슬/ 단모/ 장모
+	if(select[5]=='1'):
+		fur="곱슬"
+	elif(select[5]=='2'):
+		fur="단모"
+	elif(select[5]=='3'):
+		fur="장모"
+
+# 사이즈: s/m/l/g
+	if(select[6]=='1'):
+		size='Small'
+	elif(select[6]=='2'):
+		size="Medium"
+	elif(select[6]=='3'):
+		size="Large"
+	elif(select[6]=='4'):
+		size="Giant"
+
+	result = []
+
+	
+	for breed in Breed.objects.all():
+		if( int(breed.child_friendliness)>=int(child_friendliness) 
+			and int(breed.apartment_friendliness)>=int(apartment_friendliness) 
+			and int(breed.cat_friendliness)>=int(cat_friendliness) 
+			and int(breed.dog_friendliness)>=int(dog_friendliness)
+			and int(breed.grooming)<=int(grooming)
+			and breed.face_type==face_type
+			and breed.fur==fur
+			and size in breed.size
+			and str(temperament) in breed.temp_group
+			):
+				#data['result']+="\n"+breed.name
+				#data['k_result'] += "\n"+breed.k_name
+				result.append(breed)
+				breed.result_cnt = breed.result_cnt + 1
+				breed.save()
+	
+	if not result :
+		for breed in Breed.objects.all():
+
+			if( int(breed.child_friendliness)>=int(child_friendliness)
+				and int(breed.apartment_friendliness)>=int(apartment_friendliness)
+				and int(breed.cat_friendliness)>=int(cat_friendliness)
+				and int(breed.dog_friendliness)>=int(dog_friendliness)
+				and int(breed.grooming)<=int(grooming)
+				and breed.fur==fur
+				and str(temperament) in breed.temp_group
+				):
+					#data['result']+="\n"+breed.name
+					#data['k_result'] += "\n"+breed.k_name
+					result.append(breed)
+					breed.result_cnt = breed.result_cnt + 1
+					breed.save()
+
+	if not result :
+		for breed in Breed.objects.all():
+
+			if( int(breed.child_friendliness)>=int(child_friendliness)
+				and int(breed.apartment_friendliness)>=int(apartment_friendliness)
+				and int(breed.cat_friendliness)>=int(cat_friendliness)-1
+				and int(breed.dog_friendliness)>=int(dog_friendliness)-1			
+				and int(breed.grooming)<=int(grooming)
+				):
+					#data['result']+="\n"+breed.name
+					#data['k_result'] += "\n"+breed.k_name
+					result.append(breed)
+					breed.result_cnt = breed.result_cnt + 1
+					breed.save()
+
+	for item in result :
+		if " " in item.name :
+			item.name = item.name.replace(" ", "-") + "-1"
+		else :
+			item.name = item.name + "-1"
+
+	context = { 'results' : result , 'select_str' : select_str}
+
+
+	return render(request, './matching_result.html', context)
+
+
+
+
+
+
 def LoginView(request) :
 
 	return render(request, './login.html')
@@ -623,7 +809,7 @@ def register_marker(request) :
 	#print(uploaded_file_url)
 
 	dn = request.POST.get('id_dog_name', False)
-	print(dn)
+	#print(dn)
 
 	data = {
 		'result' : 'success'
@@ -769,6 +955,7 @@ def register_dog(request) :
 	context = {}
 
 	rp = request.path
+	
 	if len(rp) > 14 :
 		pk_id = rp[14:]
 		#print(pk_id)
@@ -779,7 +966,6 @@ def register_dog(request) :
 	else :
 		context['dog'] = None
 
-	print(context)
 
 	return render(request, './register_dog.html', context)
 

@@ -1004,7 +1004,9 @@ function question_start(){
     <div class="question" id="page_info" style="background-color: transparent; text-align: center; background-image: url(../../static/img/matching_info.png);
       background-repeat: no-repeat;
       background-size:60% 100%;
-      background-position: center;">
+      background-position: center;
+      display: none;
+      ">
       <button id="start_btn" onclick="question_start();" style="position: relative; top:80%; background-color: ;">
         <span id="start_btn_txt">
         나에게 맞는 강아지 찾기
@@ -1012,12 +1014,22 @@ function question_start(){
       </button>
     </div>
 
-    <div class="question" id="result_div" style="text-align: center; display: none; overflow: scroll; overflow-x: hidden;">
-
+    <div class="question" id="result_div" style="text-align: center; overflow: scroll; overflow-x: hidden;">
+      {% for result in results %}
+        <div class="result">
+          <button id="result_num"></button>
+          <img class="result_img" src="../../static/img/dog_img2/{{result.name}}.jpg">
+          <div class="result_div_txt" style="text-align: center; font-size: 2vw;">
+            <span>
+              {{result.k_name}}
+            </span>
+          </div>
+        </div>
+      {% endfor %}
     </div>
 
 		<div class="question" id="question" style="display: none;">
-			<div class="question_stage">
+			<div class="question_stage" style="display: none;">
 				<table style="width: 100%; text-align: center;">
 					<tr>
 						<td>
@@ -1045,7 +1057,7 @@ function question_start(){
 				</table>
 			</div>
 			<div class="question_body">
-				<form method="POST" action="" id="question_form" name="question_form">
+				<form method="post" action="" id="question_form" name="question_form">
 					{% csrf_token %}
 
 				<div class="question_content" id="question1">
@@ -1428,6 +1440,8 @@ function question_start(){
 		</div>
 	</div>
 
+  <button id="result_str_tmp" style="display: none;" value="{{select_str}}"></button>
+
 	<script type="text/javascript">
 		var idx = 2;
 		var check_cnt = 0;
@@ -1448,7 +1462,6 @@ function question_start(){
 			 });
 		}
     var name_list = []
-    /*
 			$(document).ready(function() 
 			{
 				$("#submit_btn").click(function()
@@ -1481,6 +1494,7 @@ function question_start(){
                         var b = data.k_result.split('\n')[i];
                         var c = "</span></div></div>";
 
+
                         content = content + a + num_div + img_src + d + b + c;
                       }
                       $('#result_div').html(content);
@@ -1488,17 +1502,6 @@ function question_start(){
 					});
 				});
 			});
-      */
-
-      $(document).ready(function() 
-      {
-        $("#submit_btn").click(function()
-        {
-          var p = document.question_form;
-          p.action = '../matching_result/';
-          p.submit();
-        });
-      });
 
 			function onSuccess(json, status){alert($.trim(json));}
 			function onError(data, status){alert("error");}
@@ -1590,8 +1593,8 @@ function question_start(){
         description: '#강아지 #매칭 #유기견 #입양 #개주팔자',
         imageUrl: '',
         link: {
-          mobileWebUrl: 'http://puppysignal.com/matching',
-          webUrl: 'http://puppysignal.com/matching'
+          mobileWebUrl: 'http://puppysignal.com/matching/' + String($('#result_str_tmp').val()),
+          webUrl: 'http://puppysignal.com/matching/' + String($('#result_str_tmp').val())
         }
       },
       social: {
@@ -1603,15 +1606,15 @@ function question_start(){
         {
           title: '웹으로 보기',
           link: {
-            mobileWebUrl: 'http://puppysignal.com/matching',
-            webUrl: 'http://puppysignal.com/matching'
+            mobileWebUrl: 'http://puppysignal.com/matching/' + String($('#result_str_tmp').val()),
+            webUrl: 'http://puppysignal.com/matching/' + String($('#result_str_tmp').val())
           }
         },
         {
           title: '앱으로 보기',
           link: {
-            mobileWebUrl: 'http://puppysignal.com/matching',
-            webUrl: 'http://puppysignal.com/matching'
+            mobileWebUrl: 'http://puppysignal.com/matching/' + String($('#result_str_tmp').val()),
+            webUrl: 'http://puppysignal.com/matching/' + String($('#result_str_tmp').val())
           }
         }
       ]
