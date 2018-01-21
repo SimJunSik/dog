@@ -452,17 +452,18 @@ and (min-width : 768px){
   }
 
   .logo_img_div{
-        z-index:1001;
-
+    z-index:1001;
     width: 50%;
     height: 100%;
     background-color: white;
     margin-left:10%;
     margin-top: 5%;
+    font-family: 'Hanna', serif;
   }
   .logo_img_div p{
     z-index:1001;
-    color:#B5996D;
+    color: black;
+    font-family: 'Hanna', serif;
   }
 
 .stat_img{
