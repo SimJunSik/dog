@@ -846,9 +846,9 @@ $(window).scroll(function () {
 <body>
 	<!--  상단 고졍 메뉴바 div  -->
 	<div class='top'>
-			<div class='top_logo'>
-				<img class='top_logo_img' src="../../static/img/logo_txt_color.png">	
-			</div>
+      <div class='top_logo'>
+        <img class='top_logo_img' src="../../static/img/logo_txt_color.png">  
+      </div>
       <div class='top_nav'>
         <a href="../"><span class="menu" id="w"> HOME </span></a>
         <span class='menu_slash'> / </span>
@@ -860,9 +860,11 @@ $(window).scroll(function () {
         <span class='menu_slash'> / </span>
         <a href="../shelter"><span class="menu" id="h"> 보호소 </span></a>
         <span class='menu_slash'> / </span>
+        <a href="../donator"><span class="menu" id="h"> 멍예의전당 </span></a>
+        <span class='menu_slash'> / </span>
         <a href="../about_us"><span class="menu"> ABOUT US </span></a>
       </div>
-	</div>
+  </div>
 
 	<div class="top_title">
 		<div class="logo_img_div">
@@ -877,7 +879,7 @@ $(window).scroll(function () {
 	<div class="side_bar">
 		<div class="side_bar_content">
 			<div class="sharing_icon">
-        <a href="javascript:sharefacebook('http://puppysignal.com/matching')">
+        <a href="javascript:sharefacebook('http://puppysignal.com/complete_dog/')">
 				<img class='contact_sns_icon' src="../../static/img/facebook_img2.png" align="middle"></a>
 			</div>
 			<div class="sharing_icon" id="kakao_div">
@@ -885,7 +887,7 @@ $(window).scroll(function () {
         <img class='contact_sns_icon' src="../../static/img/kakao_img2.png" align="middle"></a>
 			</div>
 			<div class="sharing_icon">
-        <a href="javascript:sharetwitter('http://puppysignal.com/matching')">
+        <a href="javascript:sharetwitter('http://puppysignal.com/complete_dog/')">
 				<img class='contact_sns_icon' src="../../static/img/twitter_img2.png" align="middle"></a>
 
 			</div>
@@ -900,11 +902,65 @@ $(window).scroll(function () {
         </div>
         <div class="">
           강아지이름 : {{dog.dog_name}}<br>
-          위치 : {{dog.location_name}}
+          위치 : {{dog.location_name}}<br>
+          잃어버린 날짜 : {{dog.losted_at}}<br>
+          찾은 날짜 : {{dog.completed_at}}
         </div>
       </div>
     {% endfor %}
 	</div>
 
+
+  <script type="text/javascript">
+    function sharefacebook(url){
+        window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+    }
+
+    function sharetwitter(url){
+        window.open("https://twitter.com/intent/tweet?text=나에게 맞는 강아지 찾기&url=" + url);
+    }
+    
+
+//카카오톡 아직 완성 x
+  //<![CDATA[
+    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('6b1fb30a551b852c8a1461ba40480259');
+    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+    Kakao.Link.createDefaultButton({
+      container: '#kakao-link-btn',
+      objectType: 'feed',
+      content: {
+        title: '나에게 맞는 강아지는?',
+        description: '#강아지 #매칭 #유기견 #입양 #개주팔자',
+        imageUrl: '',
+        link: {
+          mobileWebUrl: 'http://puppysignal.com/matching_result/' + String($('#result_str_tmp').val()),
+          webUrl: 'http://puppysignal.com/matching_result/' + String($('#result_str_tmp').val())
+        }
+      },
+      social: {
+        likeCount: 286,
+        commentCount: 45,
+        sharedCount: 845
+      },
+      buttons: [
+        {
+          title: '웹으로 보기',
+          link: {
+            mobileWebUrl: 'http://puppysignal.com/matching_result/' + String($('#result_str_tmp').val()),
+            webUrl: 'http://puppysignal.com/matching_result/' + String($('#result_str_tmp').val())
+          }
+        },
+        {
+          title: '앱으로 보기',
+          link: {
+            mobileWebUrl: 'http://puppysignal.com/matching_result/' + String($('#result_str_tmp').val()),
+            webUrl: 'http://puppysignal.com/matching_result/' + String($('#result_str_tmp').val())
+          }
+        }
+      ]
+    });
+  //]]>
+  </script>
 </body>
 </html>
