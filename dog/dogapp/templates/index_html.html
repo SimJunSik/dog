@@ -20,7 +20,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 	
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="http://code.jquery.com/color/jquery.color-2.1.0.js"></script>
@@ -344,6 +344,14 @@
 			margin-bottom: 50%;
 		}
 
+		#kakao_div{
+			display: none;
+		}
+
+		.sharing_div{
+			margin-top: 5%;
+		}
+
 
 /*  상단 고정 메뉴바 css  */
     .top{
@@ -522,7 +530,7 @@
 
 		.content_title_txt{
 			color: white;
-			font-size: 3vw;
+			font-size: 2.5vw;
 		}
 
 		.content_title_link{
@@ -810,6 +818,15 @@
 			margin-bottom: 50%;
 		}
 
+		#kakao_div{
+			display: block;
+		}
+
+		.sharing_div{
+			margin-top: 5%;
+			font-size: 2vw;
+		}
+
 
 /*  상단 고정 메뉴바 css  */
     .top{
@@ -929,8 +946,8 @@
       }
 
       .contact_sns_icon{
-        width: 2vw;
-        height: 2vw;
+        width: 4vw;
+        height: 4vw;
       }
 
       .domain_content_title{
@@ -1512,7 +1529,9 @@ body {font-family: Verdana,sans-serif;margin:0}
 						<hr width="80%" align="left" style="color:#EDA900; background-color:#EDA900; height:1px; border:none;" />
 					</span>
 					<span style="color: white; font-size: 1vw;">
-						<strong>www.ohmycompany.com</strong>
+						<a href="https://tumblbug.com/puppysignal" style="text-decoration: none; color: white;" target="_blank">
+							<strong>https://tumblbug.com/puppysignal</strong>
+						</a>
 					</span>
 				</div>
 
@@ -1523,12 +1542,26 @@ body {font-family: Verdana,sans-serif;margin:0}
 						<hr width="80%" align="left" style="color:#EDA900; background-color:#EDA900; height:1px; border:none;" />
 						</span>
 					<span style="color: white; font-size: 1vw;">
-						<img class='contact_sns_icon' src="../../static/img/facebook_img.png" align="middle">
-						&nbsp;페이스북 공유
-						<br>
-						<img class='contact_sns_icon' src="../../static/img/kakao_img.png" align="middle">
-						&nbsp;카카오톡 공유
-						<br>
+						<div class="sharing_div">
+							<a href="javascript:sharefacebook('http://puppysignal.com/')"  style="text-decoration: none;">
+								<img class='contact_sns_icon' src="../../static/img/facebook_img2.png" align="middle">
+							</a>
+							&nbsp;페이스북 공유
+							<br>
+						</div>
+						<div class="sharing_div" id="kakao_div">
+							<a id="kakao-link-btn" href="javascript:;"  style="text-decoration: none;">
+						        <img class='contact_sns_icon' src="../../static/img/kakao_img2.png" align="middle">
+						    </a>
+							&nbsp;카카오톡 공유
+							<br>
+						</div>
+						<div class="sharing_div">
+							<a href="javascript:sharetwitter('http://puppysignal.com/')" style="text-decoration: none;">
+								<img class='contact_sns_icon' src="../../static/img/twitter_img2.png" align="middle">
+							</a>
+							&nbsp;트위터 공유
+						</div>
 					</span>
 				</div>
 			</div>
@@ -1546,7 +1579,51 @@ body {font-family: Verdana,sans-serif;margin:0}
 
 	<script>
 		//move();
+		function sharefacebook(url){
+        	window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
+	    }
 
+	    function sharetwitter(url){
+	        window.open("https://twitter.com/intent/tweet?text=나에게 맞는 강아지 찾기&url=" + url);
+	    }
+
+	    // // 사용할 앱의 JavaScript 키를 설정해 주세요.
+	    Kakao.init('6b1fb30a551b852c8a1461ba40480259');
+	    // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
+	    Kakao.Link.createDefaultButton({
+	      container: '#kakao-link-btn',
+	      objectType: 'feed',
+	      content: {
+	        title: '나에게 맞는 강아지는?',
+	        description: '#강아지 #매칭 #유기견 #입양 #개주팔자',
+	        imageUrl: '',
+	        link: {
+	          mobileWebUrl: 'http://puppysignal.com/matching',
+	          webUrl: 'http://puppysignal.com/matching'
+	        }
+	      },
+	      social: {
+	        likeCount: 286,
+	        commentCount: 45,
+	        sharedCount: 845
+	      },
+	      buttons: [
+	        {
+	          title: '웹으로 보기',
+	          link: {
+	            mobileWebUrl: 'http://puppysignal.com/matching',
+	            webUrl: 'http://puppysignal.com/matching'
+	          }
+	        },
+	        {
+	          title: '앱으로 보기',
+	          link: {
+	            mobileWebUrl: 'http://puppysignal.com/matching',
+	            webUrl: 'http://puppysignal.com/matching'
+	          }
+	        }
+	      ]
+	    });
 
 		function side_progress(){
 		  var elem = document.getElementById("side_progress");   
