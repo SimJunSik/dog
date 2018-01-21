@@ -16,7 +16,7 @@
   <meta property="og:title" content="퍼피시그널">
   <meta property="og:description" content="내게 맞는 강아지를 찾아보세요.">
   <meta property="og:url" content="http://puppysignal.com">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
@@ -1261,6 +1261,11 @@
                   for(var i=0;i<list_by_location.length;i++){
                     $('#lc' + list_by_location[i][0]).appendTo($('.list_div'));
                   }
+
+                  var address = document.getElementById('address').value;
+                  if(address.length == 0){
+                    alert("위 지도에서 '검색' 혹은 '내위치' 로 지역을 지정하시고 이용해주세요.");
+                  }
               }
 
               function sort_by_latest(){
@@ -1276,6 +1281,11 @@
 
                   for(var i=0;i<list_by_location.length;i++){
                     $('#lc' + list_by_location[i][0]).appendTo($('.list_div'));
+                  }
+
+                  var address = document.getElementById('address').value;
+                  if(address.length == 0){
+                    alert("위 지도에서 '검색' 혹은 '내위치' 로 지역을 지정하시고 이용해주세요.");
                   }
               }
 
