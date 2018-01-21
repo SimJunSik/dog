@@ -16,6 +16,8 @@ class Breed(models.Model):
 	fur=models.CharField(max_length=50,default="unknown")
 	temp_group=models.CharField(max_length=50,default="unknown")
 	result_cnt=models.IntegerField(default=0)
+	rank=models.IntegerField(default=0)
+
 	def __str__(self):
 		return self.k_name
 

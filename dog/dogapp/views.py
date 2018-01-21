@@ -600,7 +600,45 @@ def MatchingResultView(request) :
 		else :
 			item.name = item.name + "-1"
 
-	context = { 'results' : result , 'select_str' : select_str}
+	#지적인/애교많은/사교적인/해바라기/듬직한
+		item.temp_group = item.temp_group.replace("[", "")
+		item.temp_group = item.temp_group.replace("]", "")
+		item.temp_group = item.temp_group.replace(",", "")
+		item.temp_group = item.temp_group.replace(" ", "")
+		item.temp_group = item.temp_group.replace("'", "")
+
+		tmp = item.temp_group
+		#print(item.temp_group)
+		item.temp_group = []
+		for t in tmp :
+			if t=='1' :
+				item.temp_group.append('지적인')
+			if t=='2' :
+				item.temp_group.append('애교많은')
+			if t=='3' :
+				item.temp_group.append('사교적인')
+			if t=='4' :
+				item.temp_group.append('해바라기')
+			if t=='5' :
+				item.temp_group.append('듬직한')	
+
+		#print(item.temp_group)
+
+
+	#print(select_str[4])
+	select_4 = ''
+	if select_str[4] == '1' :
+		select_4 = '지적인'
+	if select_str[4] == '2' :
+		select_4 = '애교많은'
+	if select_str[4] == '3' :
+		select_4 = '사교적인'
+	if select_str[4] == '4' :
+		select_4 = '해바라기같은'
+	if select_str[4] == '5' :
+		select_4 = '듬직한'
+
+	context = { 'results' : result , 'select_str' : select_str, 'select_4' : select_4}
 
 
 	return render(request, './matching_result.html', context)
@@ -1028,6 +1066,35 @@ def show_info(request) :
 	return JsonResponse(data)
 
 
+def add_rank(request) :
+
+	import openpyxl
+	excel_document = openpyxl.load_workbook('dog_result.xlsx')
+	sheet = excel_document.get_sheet_by_name('result')
+
+	cnt = 0
+	for row in sheet.rows:
+		cnt = cnt+1
+		if(row[0].value=="Name"):
+			continue
+		newbreed=Breed()
+		newbreed.name=row[0].value
+		newbreed.grooming=str(row[1].value)[0]
+		newbreed.apartment_friendliness=str(row[2].value)[0]
+		newbreed.child_friendliness=str(row[3].value)[0]
+		newbreed.cat_friendliness=str(row[4].value)[0]
+		newbreed.dog_friendliness=str(row[5].value)[0]
+		newbreed.temperament=str(row[6].value).split(',')
+		newbreed.size=str(row[7].value).split(' to ')
+		newbreed.face_type=row[8].value
+		newbreed.fur=row[9].value
+		newbreed.temp_group=row[10].value
+		newbreed.k_name=row[11].value
+		newbreed.rank=cnt
+		newbreed.save()
+
+
+	return render(request, './tmp.html')
 
 # python manage.py shell에서 아래 입력 (DB)
 
