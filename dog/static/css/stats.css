@@ -158,7 +158,7 @@ and (max-width : 768px){
       position: fixed;     /*  화면상 위치 고정  */
       z-index: 3;          /*  z값 결정  */
       top : 0;
-      height: 9vw;
+      height: 10vw;
       background-color: white;
     }
 
@@ -223,7 +223,7 @@ and (max-width : 768px){
         width: 100%;
         background-color: white;
         height: 5vw;
-        margin-top: 9vw;
+        margin-top: 10vw;
     }
 
     .logo_img_div{
@@ -232,6 +232,7 @@ and (max-width : 768px){
         background-color: white;
         margin: auto;
         margin-top: 5%;
+        font-family: 'Hanna', serif;
     }
 /*  end   */
 
