@@ -618,9 +618,9 @@
 			z-index: -10;
 			background-color: #ebd8b8;
 			box-shadow: 10px 10px 10px black;
-			background-image: url(../../static/img/index_middle_cover.jpg);
+			background-image: url(../../static/img/index_middle_cover_mobile2.jpg);
 		    background-repeat: no-repeat;
-		    background-size:140% 90%;
+		    background-size:100% 80%;
 		    background-position: top;
 		}
 
@@ -846,13 +846,13 @@
 		}
 
 
-/*  상단 고정 메뉴바 css  */
+  /*  상단 고정 메뉴바 css  */
     .top{
       width: 100%;
       position: fixed;     /*  화면상 위치 고정  */
-      z-index: 3;          /*  z값 결정  */
+      z-index: 30;          /*  z값 결정  */
       top : 0;
-      height: 9vw;
+      height: 15vw;
       background-color: white;
     }
 
@@ -874,20 +874,21 @@
       /*margin-top: 3%;*/    /*  top 여백 설정  */
       width: 100%;
       margin-left: 50%;
-      -webkit-transform: translate(-50%, 0%);
-      -ms-transform: translate(-50%, 0%);
-      -moz-transform: translate(-50%, 0%);
-      -o-transform: translate(-50%, 0%);
-      transform: translate(-50%, 0%);
+      -webkit-transform: translate(-50%, 100%);
+      -ms-transform: translate(-50%, 100%);
+      -moz-transform: translate(-50%, 100%);
+      -o-transform: translate(-50%, 100%);
+      transform: translate(-50%, 100%);
       text-align: center;
       margin-top: 1%;
     }
     .menu{
       margin-left: 0.5vw;
       margin-right: 0.5vw;
-      color:black;
+      color: black;
       font-size: 3.1vw;
       font-weight: 900;
+      font-family: 'Hanna', serif;
     }
     .menu:hover {
       font-weight: 900;
@@ -901,6 +902,7 @@
     .menu_slash{
       color: #BDBDBD;
       font-size: 1vw;
+      font-family: 'Hanna', serif;
     }
     .top_logo_txt{
       font-size: 2vw;
@@ -909,7 +911,23 @@
     }
 
     .top_nav a{
-    	text-decoration: none;
+      text-decoration: none;
+    }
+
+    .top_title{
+      width: 100%;
+      background-color: white;
+      height: 5vw;
+      margin-top: 15vw;
+      font-family: 'Hanna', serif;
+    }
+
+    .logo_img_div{
+      width: 80%;
+      height: 100%;
+      background-color: white;
+      margin: auto;
+      margin-top: 5%;
     }
 /*  end   */
 
@@ -979,8 +997,9 @@
       }
 
       .share{
-        width: 33.3%;
+        width: 30%;
         height: 100%;
+        margin-left: 3.3%;
         float: left;
       }
 
