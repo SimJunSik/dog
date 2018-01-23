@@ -596,9 +596,9 @@ def MatchingResultView(request) :
 
 	for item in result :
 		if " " in item.name :
-			item.name = item.name.replace(" ", "-") + "-1"
+			item.name = item.name.replace(" ", "-")
 		else :
-			item.name = item.name + "-1"
+			item.name = item.name
 
 	#지적인/애교많은/사교적인/해바라기/듬직한
 		item.temp_group = item.temp_group.replace("[", "")
