@@ -41,6 +41,20 @@ class User(models.Model) :
 		return self.id_str
 
 
+class Area(models.Model) :
+
+	area_name = models.CharField(max_length=40, default = '')
+
+	lost_cnt = models.IntegerField(default=0)
+
+	take_cnt = models.IntegerField(default=0)
+	
+	def __str__(self) :
+
+		return self.area_name
+
+
+
 class Marker(models.Model) :
 
 	location_name = models.CharField(max_length=200)

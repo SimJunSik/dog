@@ -16,7 +16,7 @@
   <meta property="og:title" content="퍼피시그널">
   <meta property="og:description" content="내게 맞는 강아지를 찾아보세요.">
   <meta property="og:url" content="http://puppysignal.com">
-  
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta charset="utf-8">
@@ -574,15 +574,44 @@
                       map: resultsMap,
                       position: results[0].geometry.location               
                     });
-                    $('#location_name').val(address);
+                    //$('#location_name').val(address);
                     $('#lat').val(results[0].geometry.location.lat());
                     $('#lng').val(results[0].geometry.location.lng());
 
-                    $('#location_name_txt').html(address);
+                    //$('#location_name_txt').html(address);
                     $('#lat_txt').html(results[0].geometry.location.lat());
                     $('#lng_txt').html(results[0].geometry.location.lng());
+
+                    var tmp = String(results[0].geometry.location.lat()) + "," + String(results[0].geometry.location.lng());
+                    $('#latlng').val(tmp);
+                    geocodeLatLng(geocoder);
+
+
                   } else {
                     alert('Geocode was not successful for the following reason: ' + status);
+                  }
+                });
+              }
+
+
+              function geocodeLatLng(geocoder) {
+                var input = document.getElementById('latlng').value;
+                var latlngStr = input.split(',', 2);
+                var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+                geocoder.geocode({'location': latlng}, function(results, status) {
+                  if (status === 'OK') {
+                    if (results[1]) {
+                      //alert(results[1].formatted_address);
+                      $('#location_name').val(results[1].formatted_address);
+                      $('#location_name_txt').html(results[1].formatted_address);
+
+                      //infowindow.setContent(results[1].formatted_address);
+                      //infowindow.open(map, marker);
+                    } else {
+                      window.alert('No results found');
+                    }
+                  } else {
+                    window.alert('Geocoder failed due to: ' + status);
                   }
                 });
               }
@@ -909,5 +938,7 @@
 
       <button id="submit_btn" onclick="form_submit();"> 업로드 </button>
     </div>
+
+    <input type="text" style="display: none;" id="latlng">
 </body>
 </html>

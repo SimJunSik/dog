@@ -269,6 +269,15 @@ def NoticeView(request) :
 			#print(uploaded_file_url)
 
 		location_name = request.POST.get('location_name')
+
+		area_name = location_name.split(' ')[1]
+
+		#print(area_name)
+
+		query = Area.objects.get(area_name = area_name)
+		query.lost_cnt = query.lost_cnt + 1
+		query.save()
+
 		#print(location_name)
 		lat = request.POST.get('lat')
 		lng = request.POST.get('lng')
@@ -336,6 +345,15 @@ def TakedogView(request) :
 			#print(uploaded_file_url)
 
 		location_name = request.POST.get('location_name')
+
+		area_name = location_name.split(' ')[1]
+
+		#print(area_name)
+
+		query = Area.objects.get(area_name = area_name)
+		query.take_cnt = query.take_cnt + 1
+		query.save()
+		
 		#print(location_name)
 		lat = request.POST.get('lat')
 		lng = request.POST.get('lng')
@@ -1095,6 +1113,7 @@ def add_rank(request) :
 
 
 	return render(request, './tmp.html')
+
 
 # python manage.py shell에서 아래 입력 (DB)
 
