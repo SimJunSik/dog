@@ -712,6 +712,10 @@ def reset_cnt(request) :
 	return render(request, './matching_result_view.html')
 
 
+def RobotsView(request) :
+	return render(request, './robots.txt')
+
+
 def LoginView(request) :
 
 	return render(request, './login.html')

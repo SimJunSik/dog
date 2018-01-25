@@ -36,6 +36,7 @@ urlpatterns = [
     url(r'^complete_dog/', views.CompleteDogView),
     url(r'^donator/', views.DonatorView),
     url(r'^matching_result_view/', views.MatchingResultViewView),
+    url(r'^robots.txt/', views.RobotsView),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
