@@ -656,6 +656,34 @@ def MatchingResultView(request) :
 	if select_str[4] == '5' :
 		select_4 = '듬직한'
 
+	query1 = Question1.objects.get(answer_num = select_str[0])
+	query1.cnt = query1.cnt + 1
+	query1.save()
+
+	query1 = Question2.objects.get(answer_num = select_str[1])
+	query1.cnt = query1.cnt + 1
+	query1.save()
+
+	query1 = Question3.objects.get(answer_num = select_str[2])
+	query1.cnt = query1.cnt + 1
+	query1.save()
+
+	query1 = Question4.objects.get(answer_num = select_str[3])
+	query1.cnt = query1.cnt + 1
+	query1.save()
+
+	query1 = Question5.objects.get(answer_num = select_str[4])
+	query1.cnt = query1.cnt + 1
+	query1.save()
+
+	query1 = Question6.objects.get(answer_num = select_str[5])
+	query1.cnt = query1.cnt + 1
+	query1.save()
+
+	query1 = Question7.objects.get(answer_num = select_str[6])
+	query1.cnt = query1.cnt + 1
+	query1.save()
+
 	context = { 'results' : result , 'select_str' : select_str, 'select_4' : select_4}
 
 

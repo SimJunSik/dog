@@ -48,10 +48,105 @@ class Area(models.Model) :
 	lost_cnt = models.IntegerField(default=0)
 
 	take_cnt = models.IntegerField(default=0)
-	
+
 	def __str__(self) :
 
 		return self.area_name
+
+
+class Question1(models.Model):
+
+	answer_num = models.IntegerField(default=0)
+
+	answer_txt = models.CharField(max_length=40, default = '')
+
+	cnt = models.IntegerField(default=0)
+
+	def __str__(self):
+
+		return self.answer_txt
+
+class Question2(models.Model):
+
+	answer_num = models.IntegerField(default=0)
+
+	answer_txt = models.CharField(max_length=40, default = '')
+
+	cnt = models.IntegerField(default=0)
+
+	def __str__(self):
+
+		return self.answer_txt
+
+class Question3(models.Model):
+
+	answer_num = models.IntegerField(default=0)
+
+	answer_txt = models.CharField(max_length=40, default = '')
+
+	cnt = models.IntegerField(default=0)
+
+	def __str__(self):
+
+		return self.answer_txt
+
+class Question4(models.Model):
+
+	answer_num = models.IntegerField(default=0)
+
+	answer_txt = models.CharField(max_length=40, default = '')
+
+	cnt = models.IntegerField(default=0)
+
+	def __str__(self):
+
+		return self.answer_txt
+
+class Question5(models.Model):
+
+	answer_num = models.IntegerField(default=0)
+
+	answer_txt = models.CharField(max_length=40, default = '')
+
+	cnt = models.IntegerField(default=0)
+
+	def __str__(self):
+
+		return self.answer_txt
+
+class Question6(models.Model):
+
+	answer_num = models.IntegerField(default=0)
+
+	answer_txt = models.CharField(max_length=40, default = '')
+
+	cnt = models.IntegerField(default=0)
+
+	def __str__(self):
+
+		return self.answer_txt
+
+class Question7(models.Model):
+
+	answer_num = models.IntegerField(default=0)
+
+	answer_txt = models.CharField(max_length=40, default = '')
+
+	cnt = models.IntegerField(default=0)
+
+	def __str__(self):
+
+		return self.answer_txt
+
+
+
+
+
+
+
+
+
+
 
 
 
