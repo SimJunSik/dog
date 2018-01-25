@@ -691,7 +691,25 @@ def MatchingResultView(request) :
 
 
 
+def MatchingResultViewView(request) :
 
+	breeds = Breed.objects.all()
+
+	context = {
+		'breeds' : breeds
+	}
+
+	return render(request, './matching_result_view.html', context)
+
+def reset_cnt(request) :
+
+	breeds = Breed.objects.all()
+
+	for breed in breeds :
+		breed.result_cnt = 0
+		breed.save()
+
+	return render(request, './matching_result_view.html')
 
 
 def LoginView(request) :

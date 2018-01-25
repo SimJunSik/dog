@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% for breed in breeds %}
+		{% if breed.result_cnt > 0 %}
+			이름 : {{breed.k_name}}<br>
+			카운트 : {{breed.result_cnt}}<br><br>
+		{% endif %}
+	{% endfor %}
+</body>
+</html>

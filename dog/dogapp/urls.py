@@ -35,6 +35,7 @@ urlpatterns = [
     url(r'^sort_by_search_take/', views.sort_by_search_take),
     url(r'^complete_dog/', views.CompleteDogView),
     url(r'^donator/', views.DonatorView),
+    url(r'^matching_result_view/', views.MatchingResultViewView),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
