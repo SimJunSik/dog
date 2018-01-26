@@ -690,6 +690,11 @@ def MatchingResultView(request) :
 	return render(request, './matching_result.html', context)
 
 
+def SitemapView(request) :
+
+	return render(request, './sitemap.xml')
+
+
 
 def MatchingResultViewView(request) :
 
